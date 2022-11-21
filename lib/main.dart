@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:landina_coupon/ui/pages/home/home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,14 +56,7 @@ class LandinaCoupon extends StatelessWidget {
         // Locale('en', ''), // English, no country code
         Locale('fa', ''), // Persian, no country code
       ],
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      home: const HomePage(),
     );
   }
 }
