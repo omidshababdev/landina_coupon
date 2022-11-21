@@ -31,7 +31,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
             child: LandinaTextField(
-              hintText: "دنبال چی میگردی؟",
+              hintText: "دنبال چه کوپنی هستی؟",
               prefixIcon: IconlyLight.search,
               prefixIconOnPressed: () {},
               suffixIcon: IconlyLight.filter,
