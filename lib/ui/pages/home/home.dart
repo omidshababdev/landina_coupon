@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
           const Expanded(
             child: Center(
               child: Text(
-                'ای وای! قبلا دنبال چیزی نبودی. ',
+                'ای وای! کوپنی وجود نداره. مگه میشه؟! ',
               ),
             ),
           ),
