@@ -35,7 +35,8 @@ class Coupon extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Wrap(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   width: 50,
@@ -45,35 +46,53 @@ class Coupon extends StatelessWidget {
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 10,
-                        cornerSmoothing: 1,
+                        cornerSmoothing: 0.5,
                       ),
                     ),
                   ),
                 ),
-                Column(
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                    Text(
-                      brand,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14,
+                      Text(
+                        brand,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    loginModal(context);
-                  },
-                  icon: SvgPicture.asset(
-                    "assets/svg/reorder-two-outline.svg",
-                    color: const Color(0xff3B3B3B).withOpacity(0.5),
+                const SizedBox(width: 10),
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 1,
+                      color: const Color(0xffF1F1F1).withOpacity(0.5),
+                    ),
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                    child: IconButton(
+                      onPressed: () {
+                        loginModal(context);
+                      },
+                      icon: SvgPicture.asset(
+                        "assets/svg/reorder-two-outline.svg",
+                        color: const Color(0xff3B3B3B).withOpacity(0.5),
+                      ),
+                    ),
                   ),
                 ),
               ],

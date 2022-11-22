@@ -20,7 +20,7 @@ class LandinaButton extends StatelessWidget {
         shape: SmoothRectangleBorder(
           borderRadius: SmoothBorderRadius(
             cornerRadius: 10,
-            cornerSmoothing: 1,
+            cornerSmoothing: 0.5,
           ),
         ),
       ),

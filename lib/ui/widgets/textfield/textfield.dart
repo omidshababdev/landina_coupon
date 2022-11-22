@@ -7,20 +7,22 @@ class LandinaTextField extends StatelessWidget {
   final VoidCallback suffixIconOnPressed;
   final IconData prefixIcon;
   final VoidCallback prefixIconOnPressed;
-  const LandinaTextField({
+  late bool obscureText;
+
+  LandinaTextField({
     Key? key,
     required this.hintText,
     required this.suffixIcon,
     required this.suffixIconOnPressed,
     required this.prefixIcon,
     required this.prefixIconOnPressed,
+    required this.obscureText,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: const Color(0xffF1F1F1)),
         borderRadius: const SmoothBorderRadius.only(
@@ -45,6 +47,7 @@ class LandinaTextField extends StatelessWidget {
       child: TextField(
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
+        obscureText: obscureText,
         decoration: InputDecoration(
           hintText: hintText,
           contentPadding: const EdgeInsets.symmetric(vertical: 10),

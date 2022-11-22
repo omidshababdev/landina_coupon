@@ -44,14 +44,18 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            child: LandinaTextField(
-              hintText: "دنبال چه کوپنی هستی؟",
-              prefixIcon: IconlyLight.search,
-              prefixIconOnPressed: () {},
-              suffixIcon: IconlyLight.filter,
-              suffixIconOnPressed: () {
-                loginModal(context);
-              },
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              child: LandinaTextField(
+                hintText: "دنبال چه کوپنی هستی؟",
+                prefixIcon: IconlyLight.search,
+                prefixIconOnPressed: () {},
+                suffixIcon: IconlyLight.filter,
+                suffixIconOnPressed: () {
+                  loginModal(context);
+                },
+                obscureText: false,
+              ),
             ),
           ),
           Expanded(
