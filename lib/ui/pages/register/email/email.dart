@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
+import 'package:landina_coupon/ui/pages/register/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
-class ForgetPage extends StatelessWidget {
-  const ForgetPage({super.key});
+class EmailPage extends StatelessWidget {
+  const EmailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,11 @@ class ForgetPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: "فراموشی رمز",
-          rightIcon: IconlyLight.category,
-          rightIconOnPressed: () {},
+          title: "آدرس ایمیل",
+          rightIcon: IconlyLight.info_circle,
+          rightIconOnPressed: () {
+            aboutModal(context);
+          },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
             Navigator.pop(context);
@@ -36,7 +40,7 @@ class ForgetPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: const Text(
-                  "لطفا برای بازیابی رمز آدرس ایمیل خود را وارد کنید.",
+                  "لطفا یک آدرس ایمیل معتبر برای حساب کاربری خود وارد کنید.",
                 ),
               ),
               const SizedBox(height: 15),
@@ -57,8 +61,17 @@ class ForgetPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: LandinaButton(
-                  title: "ارسال ایمیل بازیابی",
-                  onPressed: () {},
+                  title: "برو مرحله بعد",
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return PasswordPage();
+                        },
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

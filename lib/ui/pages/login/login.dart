@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
+import 'package:landina_coupon/ui/pages/register/username/username.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -132,6 +133,14 @@ class _LoginPageState extends State<LoginPage> {
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return UsernamePage();
+                            },
+                          ),
+                        );
                       },
                       child: const Text(
                         "ایجاد حساب",

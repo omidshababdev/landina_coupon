@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
-class ForgetPage extends StatelessWidget {
-  const ForgetPage({super.key});
+class PasswordPage extends StatefulWidget {
+  const PasswordPage({super.key});
+
+  @override
+  State<PasswordPage> createState() => _PasswordPageState();
+}
+
+class _PasswordPageState extends State<PasswordPage> {
+  bool? _passwordVisible;
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +28,11 @@ class ForgetPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: "فراموشی رمز",
-          rightIcon: IconlyLight.category,
-          rightIconOnPressed: () {},
+          title: "رمز عبور حساب",
+          rightIcon: IconlyLight.info_circle,
+          rightIconOnPressed: () {
+            aboutModal(context);
+          },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
             Navigator.pop(context);
@@ -36,28 +52,32 @@ class ForgetPage extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: const Text(
-                  "لطفا برای بازیابی رمز آدرس ایمیل خود را وارد کنید.",
+                  "در این مرحله لطفا برای حساب کاربری خود یک رمز عبور قوی تنظیم کنید.",
                 ),
               ),
               const SizedBox(height: 15),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: LandinaTextField(
-                  hintText: "آدرس ایمیل",
-                  suffixIcon: IconlyLight.info_circle,
+                  hintText: "رمز عبور",
+                  suffixIcon: _passwordVisible == false
+                      ? IconlyLight.show
+                      : IconlyLight.hide,
                   suffixIconOnPressed: () {
-                    loginModal(context);
+                    setState(() {
+                      _passwordVisible = !_passwordVisible!;
+                    });
                   },
-                  prefixIcon: IconlyLight.user,
+                  prefixIcon: IconlyLight.password,
                   prefixIconOnPressed: () {},
-                  obscureText: false,
+                  obscureText: !_passwordVisible!,
                 ),
               ),
               const SizedBox(height: 15),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: LandinaButton(
-                  title: "ارسال ایمیل بازیابی",
+                  title: "منو به حساب کاربریم ببر",
                   onPressed: () {},
                 ),
               ),

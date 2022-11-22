@@ -4,7 +4,7 @@ import 'package:landina_coupon/ui/pages/login/login.dart';
 import 'package:landina_coupon/ui/pages/register/username/username.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 
-void loginModal(BuildContext context) {
+void aboutModal(BuildContext context) {
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
@@ -31,7 +31,7 @@ void loginModal(BuildContext context) {
             child: Column(
               children: [
                 LandinaButton(
-                  title: "باز کردن حساب جدید",
+                  title: "تماس با تیم لندینا",
                   onPressed: () {
                     Navigator.pop(context);
                     Navigator.push(
