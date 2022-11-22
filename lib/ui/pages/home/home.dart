@@ -22,13 +22,14 @@ class HomePage extends StatelessWidget {
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.profile,
           leftIconOnPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    loggedIn == false ? LoginPage() : ProfilePage(),
-              ),
-            );
+            loggedIn == false
+                ? landinaModal(context)
+                : Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfilePage(),
+                    ),
+                  );
           },
         ),
       ),

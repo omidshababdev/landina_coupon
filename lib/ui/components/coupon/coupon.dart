@@ -1,9 +1,7 @@
 import 'package:figma_squircle/figma_squircle.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
@@ -66,7 +64,9 @@ class Coupon extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  landinaModal(context);
+                },
                 icon: SvgPicture.asset(
                   "assets/svg/reorder-two-outline.svg",
                   color: const Color(0xff3B3B3B).withOpacity(0.5),
@@ -90,7 +90,9 @@ class Coupon extends StatelessWidget {
               title: "کپی کردن کد تخفیف",
               onPressed: () {
                 landinaModal(context);
-                Clipboard.setData(ClipboardData(text: "salambehamegi"));
+                Clipboard.setData(
+                  const ClipboardData(text: "salambehamegi"),
+                );
               },
             ),
           ],

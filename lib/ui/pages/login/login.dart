@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class LoginPage extends StatelessWidget {
@@ -38,7 +39,9 @@ class LoginPage extends StatelessWidget {
               LandinaTextField(
                 hintText: "رمز عبور",
                 suffixIcon: IconlyLight.show,
-                suffixIconOnPressed: () {},
+                suffixIconOnPressed: () {
+                  landinaModal(context);
+                },
                 prefixIcon: IconlyLight.password,
                 prefixIconOnPressed: () {},
               ),

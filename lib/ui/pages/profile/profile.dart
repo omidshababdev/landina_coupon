@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -13,7 +14,9 @@ class ProfilePage extends StatelessWidget {
         child: LandinaAppbar(
           title: "حساب کاربری",
           rightIcon: IconlyLight.call,
-          rightIconOnPressed: () {},
+          rightIconOnPressed: () {
+            landinaModal(context);
+          },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
             Navigator.pop(context);
