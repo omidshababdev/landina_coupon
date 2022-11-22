@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
@@ -18,7 +19,16 @@ class HomePage extends StatelessWidget {
         child: LandinaAppbar(
           title: "لندینا کوپن",
           rightIcon: IconlyLight.category,
-          rightIconOnPressed: () {},
+          rightIconOnPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return CategoriesPage();
+                },
+              ),
+            );
+          },
           leftIcon: IconlyLight.profile,
           leftIconOnPressed: () {
             loggedIn == false
