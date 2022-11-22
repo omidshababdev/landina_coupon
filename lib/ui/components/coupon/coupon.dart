@@ -2,6 +2,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
 import 'package:landina_coupon/ui/pages/brand/brand.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
@@ -138,7 +139,7 @@ class Coupon extends StatelessWidget {
             LandinaButton(
               title: "کپی کردن کد تخفیف",
               onPressed: () {
-                loginModal(context);
+                copyCouponModal(context);
                 Clipboard.setData(
                   const ClipboardData(text: "salambehamegi"),
                 );

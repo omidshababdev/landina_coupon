@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
+import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -102,7 +103,14 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const ForgetPage();
+                            },
+                          ),
+                        );
                       },
                       child: const Text(
                         "فراموشی رمز",

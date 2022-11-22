@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
+import 'package:landina_coupon/ui/components/modals/filter.modal.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -62,7 +63,7 @@ class HomePage extends StatelessWidget {
                 prefixIconOnPressed: () {},
                 suffixIcon: IconlyLight.filter,
                 suffixIconOnPressed: () {
-                  loginModal(context);
+                  filterModal(context);
                 },
                 obscureText: false,
               ),
