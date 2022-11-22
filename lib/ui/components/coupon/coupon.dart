@@ -1,7 +1,11 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 class Coupon extends StatelessWidget {
   final String title;
@@ -63,7 +67,10 @@ class Coupon extends StatelessWidget {
               ),
               trailing: IconButton(
                 onPressed: () {},
-                icon: const Icon(CupertinoIcons.recordingtape),
+                icon: SvgPicture.asset(
+                  "assets/svg/reorder-two-outline.svg",
+                  color: const Color(0xff3B3B3B).withOpacity(0.5),
+                ),
               ),
             ),
             const SizedBox(height: 10),
@@ -79,27 +86,12 @@ class Coupon extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            Container(
-              width: double.infinity,
-              height: 60,
-              decoration: ShapeDecoration(
-                color: const Color(0xffF1F1F1),
-                shape: SmoothRectangleBorder(
-                  borderRadius: SmoothBorderRadius(
-                    cornerRadius: 10,
-                    cornerSmoothing: 1,
-                  ),
-                ),
-              ),
-              child: TextButton(
-                onPressed: () {},
-                child: const Text(
-                  "کپی کردن کد تخفیف",
-                  style: TextStyle(
-                    color: Color(0xff3B3B3B),
-                  ),
-                ),
-              ),
+            LandinaButton(
+              title: "کپی کردن کد تخفیف",
+              onPressed: () {
+                landinaModal(context);
+                Clipboard.setData(ClipboardData(text: "salambehamegi"));
+              },
             ),
           ],
         ),

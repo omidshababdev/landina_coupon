@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/login/login.dart';
+import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -10,6 +12,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool loggedIn = false;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
@@ -18,7 +21,15 @@ class HomePage extends StatelessWidget {
           rightIcon: IconlyLight.category,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.profile,
-          leftIconOnPressed: () {},
+          leftIconOnPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    loggedIn == false ? LoginPage() : ProfilePage(),
+              ),
+            );
+          },
         ),
       ),
       body: Column(
@@ -53,7 +64,7 @@ class HomePage extends StatelessWidget {
               ),
               itemCount: 10,
               itemBuilder: (context, index) {
-                return Coupon(
+                return const Coupon(
                   title: "عنوان تخفیف موجود",
                   brand: "نام برند",
                   description:
