@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
-import 'package:landina_coupon/ui/pages/login/login.dart';
 import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,7 +22,7 @@ class HomePage extends StatelessWidget {
           leftIcon: IconlyLight.profile,
           leftIconOnPressed: () {
             loggedIn == false
-                ? landinaModal(context)
+                ? loginModal(context)
                 : Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -51,7 +50,7 @@ class HomePage extends StatelessWidget {
               prefixIconOnPressed: () {},
               suffixIcon: IconlyLight.filter,
               suffixIconOnPressed: () {
-                landinaModal(context);
+                loginModal(context);
               },
             ),
           ),

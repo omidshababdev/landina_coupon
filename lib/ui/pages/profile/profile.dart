@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -15,7 +15,7 @@ class ProfilePage extends StatelessWidget {
           title: "حساب کاربری",
           rightIcon: IconlyLight.call,
           rightIconOnPressed: () {
-            landinaModal(context);
+            loginModal(context);
           },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {

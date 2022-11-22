@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 
 class Coupon extends StatelessWidget {
   final String title;
@@ -26,8 +26,8 @@ class Coupon extends StatelessWidget {
           color: Colors.white,
           shape: SmoothRectangleBorder(
             borderRadius: SmoothBorderRadius(
-              cornerRadius: 10,
-              cornerSmoothing: 1,
+              cornerRadius: 20,
+              cornerSmoothing: 0.5,
             ),
           ),
         ),
@@ -65,7 +65,7 @@ class Coupon extends StatelessWidget {
               ),
               trailing: IconButton(
                 onPressed: () {
-                  landinaModal(context);
+                  loginModal(context);
                 },
                 icon: SvgPicture.asset(
                   "assets/svg/reorder-two-outline.svg",
@@ -89,7 +89,7 @@ class Coupon extends StatelessWidget {
             LandinaButton(
               title: "کپی کردن کد تخفیف",
               onPressed: () {
-                landinaModal(context);
+                loginModal(context);
                 Clipboard.setData(
                   const ClipboardData(text: "salambehamegi"),
                 );
