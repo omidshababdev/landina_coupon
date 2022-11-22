@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -14,8 +15,10 @@ class HomePage extends StatelessWidget {
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
           title: "لندینا کوپن",
-          rightIcon: IconlyLight.activity,
-          leftIcon: IconlyLight.paper,
+          rightIcon: IconlyLight.category,
+          rightIconOnPressed: () {},
+          leftIcon: IconlyLight.profile,
+          leftIconOnPressed: () {},
         ),
       ),
       body: Column(
@@ -40,11 +43,24 @@ class HomePage extends StatelessWidget {
               },
             ),
           ),
-          const Expanded(
-            child: Center(
-              child: Text(
-                'ای وای! کوپنی وجود نداره. مگه میشه؟! ',
+          Expanded(
+            child: ListView.separated(
+              key: const PageStorageKey<String>('home'),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
               ),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return Coupon(
+                  title: "عنوان تخفیف موجود",
+                  brand: "نام برند",
+                  description:
+                      "لورم ایپسوم متنی ساختگی با محتوایی نامفهوم از صنعت چاپ برای روزی روزگاری است که در این وادی می چرخد!",
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(height: 15),
             ),
           ),
         ],
