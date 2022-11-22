@@ -35,43 +35,48 @@ class Coupon extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            ListTile(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 0),
-              leading: Container(
-                width: 50,
-                height: 50,
-                decoration: ShapeDecoration(
-                  color: const Color(0xffF1F1F1),
-                  shape: SmoothRectangleBorder(
-                    borderRadius: SmoothBorderRadius(
-                      cornerRadius: 10,
-                      cornerSmoothing: 1,
+            Wrap(
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffF1F1F1),
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 10,
+                        cornerSmoothing: 1,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              title: Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
+                Column(
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      brand,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              subtitle: Text(
-                brand,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 14,
+                IconButton(
+                  onPressed: () {
+                    loginModal(context);
+                  },
+                  icon: SvgPicture.asset(
+                    "assets/svg/reorder-two-outline.svg",
+                    color: const Color(0xff3B3B3B).withOpacity(0.5),
+                  ),
                 ),
-              ),
-              trailing: IconButton(
-                onPressed: () {
-                  loginModal(context);
-                },
-                icon: SvgPicture.asset(
-                  "assets/svg/reorder-two-outline.svg",
-                  color: const Color(0xff3B3B3B).withOpacity(0.5),
-                ),
-              ),
+              ],
             ),
             const SizedBox(height: 10),
             Text(
