@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/register/username/username.dart';
@@ -30,9 +31,9 @@ class _LoginPageState extends State<LoginPage> {
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
           title: "ورود به حساب کاربری",
-          rightIcon: IconlyLight.call,
+          rightIcon: IconlyLight.info_circle,
           rightIconOnPressed: () {
-            loginModal(context);
+            aboutModal(context);
           },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
