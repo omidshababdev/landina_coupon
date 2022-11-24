@@ -13,69 +13,77 @@ class UsernamePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(65),
-        child: LandinaAppbar(
-          title: "نام کاربری",
-          rightIcon: IconlyLight.info_circle,
-          rightIconOnPressed: () {
-            aboutModal(context);
-          },
-          leftIcon: IconlyLight.arrow_left,
-          leftIconOnPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: Center(
-        child: Container(
-          width: 325,
-          constraints: const BoxConstraints(
-            maxWidth: 325,
-            minWidth: 50,
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(65),
+          child: LandinaAppbar(
+            title: "نام کاربری",
+            rightIcon: IconlyLight.info_circle,
+            rightIconOnPressed: () {
+              aboutModal(context);
+            },
+            leftIcon: IconlyLight.arrow_left,
+            leftIconOnPressed: () {
+              Navigator.pop(context);
+            },
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: const Text(
-                  "لطفا برای شروع ثبت نام برای خود یک نام کاربری وارد کنید.",
+        ),
+        body: Center(
+          child: Container(
+            width: 325,
+            constraints: const BoxConstraints(
+              maxWidth: 325,
+              minWidth: 50,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: const Text(
+                    "لطفا برای شروع ثبت نام برای خود یک نام کاربری وارد کنید.",
+                  ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: LandinaTextField(
-                  hintText: "نام کاربری",
-                  suffixIcon: IconlyLight.info_circle,
-                  suffixIconOnPressed: () {
-                    usernameModal(context);
-                  },
-                  prefixIcon: IconlyLight.user,
-                  prefixIconOnPressed: () {},
-                  obscureText: false,
+                const SizedBox(height: 15),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: LandinaTextField(
+                    hintText: "نام کاربری",
+                    suffixIcon: IconlyLight.info_circle,
+                    suffixIconOnPressed: () {
+                      usernameModal(context);
+                    },
+                    prefixIcon: IconlyLight.user,
+                    prefixIconOnPressed: () {},
+                    obscureText: false,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 15),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: LandinaTextButton(
-                  title: "برو مرحله بعد",
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return EmailPage();
-                        },
-                      ),
-                    );
-                  },
+                const SizedBox(height: 15),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: LandinaTextButton(
+                    title: "برو مرحله بعد",
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return EmailPage();
+                          },
+                        ),
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

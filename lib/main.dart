@@ -60,7 +60,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
   }
 
   void _navigate(Widget screen) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => screen));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
   }
 
   @override
