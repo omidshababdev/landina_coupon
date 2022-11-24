@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
-import 'package:landina_coupon/ui/pages/login/login.dart';
+
+import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:quick_actions/quick_actions.dart';
 
 Future<void> main() async {
@@ -30,9 +30,9 @@ class _LandinaCouponState extends State<LandinaCoupon> {
   QuickActions quickActions = const QuickActions();
 
   Map quickActionsReturns = {
-    'type1': const CouponPage(),
-    'type2': const HomePage(),
-    'type3': const LoginPage(),
+    'homePage': const HomePage(),
+    'categories': const CategoriesPage(),
+    'profile': const ProfilePage(),
   };
 
   @override
@@ -45,16 +45,16 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
     quickActions.setShortcutItems(<ShortcutItem>[
       const ShortcutItem(
-        type: "type1",
-        localizedTitle: "نوع ۱",
+        type: "homePage",
+        localizedTitle: "کوپن ها",
       ),
       const ShortcutItem(
-        type: "type2",
-        localizedTitle: "نوع ۲",
+        type: "categories",
+        localizedTitle: "دسته بندی ها",
       ),
       const ShortcutItem(
-        type: "type3",
-        localizedTitle: "نوع ۳",
+        type: "profile",
+        localizedTitle: "حساب کاربری",
       ),
     ]);
   }

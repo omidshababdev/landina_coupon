@@ -1,0 +1,8 @@
+{
+  "window.zoomLevel": 0.5,
+  "editor.codeActionsOnSave": {
+    "quickfix.add.required": true,
+    "quickfix.add.required.multi": true,
+    "quickfix.create.constructorForFinalFields": true
+  }
+}
