@@ -5,7 +5,7 @@ import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/components/modals/username.modal.dart';
 import 'package:landina_coupon/ui/pages/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/button/text.button.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class UsernamePage extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:landina_coupon/ui/pages/login/login.dart';
 import 'package:landina_coupon/ui/pages/register/username/username.dart';
-import 'package:landina_coupon/ui/widgets/button/text.button.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 void loginModal(BuildContext context) {
   showModalBottomSheet(
