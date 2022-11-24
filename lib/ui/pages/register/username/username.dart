@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
+import 'package:landina_coupon/ui/components/modals/username.modal.dart';
 import 'package:landina_coupon/ui/pages/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
@@ -50,7 +51,7 @@ class UsernamePage extends StatelessWidget {
                   hintText: "نام کاربری",
                   suffixIcon: IconlyLight.info_circle,
                   suffixIconOnPressed: () {
-                    loginModal(context);
+                    usernameModal(context);
                   },
                   prefixIcon: IconlyLight.user,
                   prefixIconOnPressed: () {},
