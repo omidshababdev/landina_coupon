@@ -1,10 +1,10 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 
-class LandinaButton extends StatelessWidget {
+class LandinaTextButton extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
-  const LandinaButton({
+  const LandinaTextButton({
     Key? key,
     required this.title,
     required this.onPressed,

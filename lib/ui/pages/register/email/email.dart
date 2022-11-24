@@ -4,7 +4,7 @@ import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email.modal.dart';
 import 'package:landina_coupon/ui/pages/register/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/button/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class EmailPage extends StatelessWidget {
@@ -60,7 +60,7 @@ class EmailPage extends StatelessWidget {
               const SizedBox(height: 15),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: LandinaButton(
+                child: LandinaTextButton(
                   title: "برو مرحله بعد",
                   onPressed: () {
                     Navigator.push(

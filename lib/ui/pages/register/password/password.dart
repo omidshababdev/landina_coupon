@@ -3,7 +3,7 @@ import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/button/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class PasswordPage extends StatefulWidget {
@@ -76,7 +76,7 @@ class _PasswordPageState extends State<PasswordPage> {
               const SizedBox(height: 15),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: LandinaButton(
+                child: LandinaTextButton(
                   title: "منو به حساب کاربریم ببر",
                   onPressed: () {},
                 ),

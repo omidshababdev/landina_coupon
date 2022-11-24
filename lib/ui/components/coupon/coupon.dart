@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
 import 'package:landina_coupon/ui/pages/brand/brand.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
-import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/button/text.button.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 
 class Coupon extends StatelessWidget {
@@ -136,7 +136,7 @@ class Coupon extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
-            LandinaButton(
+            LandinaTextButton(
               title: "کپی کردن کد تخفیف",
               onPressed: () {
                 copyCouponModal(context);

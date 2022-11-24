@@ -6,7 +6,7 @@ import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/register/username/username.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/button/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class LoginPage extends StatefulWidget {
@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 15),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: LandinaButton(
+                child: LandinaTextButton(
                   title: "ورود به حساب کاربری",
                   onPressed: () {},
                 ),

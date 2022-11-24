@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/forget.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/button/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class ForgetPage extends StatelessWidget {
@@ -56,7 +56,7 @@ class ForgetPage extends StatelessWidget {
               const SizedBox(height: 15),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 15),
-                child: LandinaButton(
+                child: LandinaTextButton(
                   title: "ارسال ایمیل بازیابی",
                   onPressed: () {},
                 ),

@@ -1,6 +1,6 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/button/text.button.dart';
 
 void forgetModal(BuildContext context) {
   showModalBottomSheet(
@@ -46,7 +46,7 @@ void forgetModal(BuildContext context) {
                   ),
                 ),
                 const SizedBox(height: 30),
-                LandinaButton(
+                LandinaTextButton(
                   title: "متوجه شدم باید چیکار کنم",
                   onPressed: () {
                     Navigator.pop(context);

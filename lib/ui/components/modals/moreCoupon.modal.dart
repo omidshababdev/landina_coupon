@@ -1,7 +1,7 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:landina_coupon/ui/pages/login/login.dart';
-import 'package:landina_coupon/ui/widgets/button/button.dart';
+import 'package:landina_coupon/ui/widgets/button/text.button.dart';
 
 void moreCouponModal(BuildContext context) {
   showModalBottomSheet(
@@ -29,14 +29,14 @@ void moreCouponModal(BuildContext context) {
             ),
             child: Column(
               children: [
-                LandinaButton(
+                LandinaTextButton(
                   title: "باز کردن حساب جدید",
                   onPressed: () {
                     Navigator.pop(context);
                   },
                 ),
                 const SizedBox(height: 15),
-                LandinaButton(
+                LandinaTextButton(
                   title: "ورود به حساب",
                   onPressed: () {
                     Navigator.pop(context);
@@ -44,7 +44,7 @@ void moreCouponModal(BuildContext context) {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage();
+                          return const LoginPage();
                         },
                       ),
                     );
