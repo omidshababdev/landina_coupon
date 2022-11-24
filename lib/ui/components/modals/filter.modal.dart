@@ -28,26 +28,23 @@ void filterModal(BuildContext context) {
               ),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                LandinaButton(
-                  title: "اعمال فیلتر",
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+                const Text(
+                  "فیلتر مورد نظرت رو انتخاب کن",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                const SizedBox(height: 15),
+                const Text(
+                  "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
+                ),
+                const SizedBox(height: 30),
                 LandinaButton(
-                  title: "نادیده گرفتن فیلتر",
+                  title: "تغییرات فیلتر رو اعمال کن",
                   onPressed: () {
                     Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return LoginPage();
-                        },
-                      ),
-                    );
                   },
                 ),
               ],

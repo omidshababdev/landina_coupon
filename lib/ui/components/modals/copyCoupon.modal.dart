@@ -28,26 +28,23 @@ void copyCouponModal(BuildContext context) {
               ),
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const Text(
+                  "کوپن کپی شد!",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const Text(
+                  "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
+                ),
+                const SizedBox(height: 30),
                 LandinaButton(
                   title: "ثبت نظر",
                   onPressed: () {
                     Navigator.pop(context);
-                  },
-                ),
-                const SizedBox(height: 15),
-                LandinaButton(
-                  title: "ورود به حساب",
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return LoginPage();
-                        },
-                      ),
-                    );
                   },
                 ),
               ],
