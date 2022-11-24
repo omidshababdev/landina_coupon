@@ -8,6 +8,7 @@ class LandinaTextField extends StatelessWidget {
   final IconData prefixIcon;
   final VoidCallback prefixIconOnPressed;
   late bool obscureText;
+  TextEditingController? textfieldController;
 
   LandinaTextField({
     Key? key,
@@ -17,6 +18,7 @@ class LandinaTextField extends StatelessWidget {
     required this.prefixIcon,
     required this.prefixIconOnPressed,
     required this.obscureText,
+    this.textfieldController,
   }) : super(key: key);
 
   @override
@@ -45,6 +47,7 @@ class LandinaTextField extends StatelessWidget {
         ),
       ),
       child: TextField(
+        controller: textfieldController,
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
         obscureText: obscureText,

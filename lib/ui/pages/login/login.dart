@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
-import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/register/username/username.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -18,6 +17,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool? _passwordVisible;
+  TextEditingController emailUsernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   void initState() {
@@ -77,6 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},
                     obscureText: false,
+                    textfieldController: emailUsernameController,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -95,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: IconlyLight.password,
                     prefixIconOnPressed: () {},
                     obscureText: !_passwordVisible!,
+                    textfieldController: passwordController,
                   ),
                 ),
                 const SizedBox(height: 15),
