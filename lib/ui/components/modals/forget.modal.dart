@@ -2,7 +2,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 
-void aboutModal(BuildContext context) {
+void forgetModal(BuildContext context) {
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.transparent,
@@ -30,7 +30,7 @@ void aboutModal(BuildContext context) {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  "راهنمای اپلیکیشن",
+                  "راهنمای فیلد ایمیل بازیابی",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
@@ -38,7 +38,7 @@ void aboutModal(BuildContext context) {
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  "اول از همه ممنون که منو انتخاب کردی. من برای این ساخته شدم که بتونم بهت کمک کنم که بیشتر از قبل پول هات رو ذخیره کنی. و این کار رو با پیدا کردن کوپن های مختلف می تونی انجام بدی.",
+                  "توی این قسمت فقط کافیه ایمیلی که باهاش ثبت نام کردی رو وارد کنی تا لینک بازیابی برات ارسال بشه. بعد با باز کردن لینک می تونی رمز جدید برای خودت تعریف کنی.",
                   style: TextStyle(
                     fontSize: 13,
                     color: const Color(0xff3B3B3B).withOpacity(0.5),
@@ -47,7 +47,7 @@ void aboutModal(BuildContext context) {
                 ),
                 const SizedBox(height: 30),
                 LandinaButton(
-                  title: "می خوام بیشتر در موردت بدونم",
+                  title: "متوجه شدم باید چیکار کنم",
                   onPressed: () {
                     Navigator.pop(context);
                   },

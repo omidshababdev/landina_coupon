@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/ui/components/modals/login.modal.dart';
+import 'package:landina_coupon/ui/components/modals/forget.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/button/button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -46,7 +46,7 @@ class ForgetPage extends StatelessWidget {
                   hintText: "آدرس ایمیل",
                   suffixIcon: IconlyLight.info_circle,
                   suffixIconOnPressed: () {
-                    loginModal(context);
+                    forgetModal(context);
                   },
                   prefixIcon: IconlyLight.user,
                   prefixIconOnPressed: () {},
