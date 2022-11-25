@@ -2,22 +2,22 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 
 class LandinaTextField extends StatelessWidget {
-  final String hintText;
-  final IconData suffixIcon;
-  final VoidCallback suffixIconOnPressed;
-  final IconData prefixIcon;
-  final VoidCallback prefixIconOnPressed;
-  late bool obscureText;
+  String? hintText;
+  IconData? suffixIcon;
+  VoidCallback? suffixIconOnPressed;
+  IconData? prefixIcon;
+  VoidCallback? prefixIconOnPressed;
+  bool? obscureText;
   TextEditingController? textfieldController;
 
   LandinaTextField({
     Key? key,
-    required this.hintText,
-    required this.suffixIcon,
-    required this.suffixIconOnPressed,
-    required this.prefixIcon,
-    required this.prefixIconOnPressed,
-    required this.obscureText,
+    this.hintText,
+    this.suffixIcon,
+    this.suffixIconOnPressed,
+    this.prefixIcon,
+    this.prefixIconOnPressed,
+    this.obscureText,
     this.textfieldController,
   }) : super(key: key);
 
@@ -50,7 +50,7 @@ class LandinaTextField extends StatelessWidget {
         controller: textfieldController,
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
-        obscureText: obscureText,
+        obscureText: obscureText!,
         decoration: InputDecoration(
           hintText: hintText,
           contentPadding: const EdgeInsets.symmetric(vertical: 10),
