@@ -2,6 +2,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:landina_coupon/ui/components/modals/brand.modal.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
 import 'package:landina_coupon/ui/pages/brand/brand.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
@@ -54,14 +55,7 @@ class Coupon extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return BrandPage();
-                        },
-                      ),
-                    );
+                    brandModal(context);
                   },
                   child: Container(
                     width: 50,
@@ -90,14 +84,7 @@ class Coupon extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const BrandPage();
-                              },
-                            ),
-                          );
+                          brandModal(context);
                         },
                         child: Text(
                           brand,
