@@ -52,7 +52,7 @@ class LandinaTextField extends StatelessWidget {
         controller: textfieldController,
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
-        obscureText: obscureText = false,
+        obscureText: obscureText!,
         enabled: enabled,
         decoration: InputDecoration(
           hintText: hintText,
