@@ -32,7 +32,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
   Map quickActionsReturns = {
     'homePage': const HomePage(),
     'categories': const CategoriesPage(),
-    'profile': const ProfilePage(),
+    'profile': ProfilePage(),
   };
 
   @override
