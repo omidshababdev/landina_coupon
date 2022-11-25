@@ -37,19 +37,11 @@ class ProfilePage extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: LandinaTextField(
-              hintText: "دنبال چه کوپنی هستی؟",
+              hintText: "تنظیمات حساب",
               prefixIcon: IconlyLight.search,
               prefixIconOnPressed: () {},
-              suffixIcon: IconlyLight.filter,
-              suffixIconOnPressed: () {},
-              obscureText: false,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-            child: LandinaListTile(
-              title: "دنبال چه کوپنی",
-              leadingIcon: IconlyLight.profile,
+              suffixIcon: IconlyLight.arrow_left_2,
+              enabled: false,
             ),
           ),
         ],
