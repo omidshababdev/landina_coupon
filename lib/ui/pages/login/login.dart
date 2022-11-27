@@ -32,11 +32,16 @@ class _LoginPageState extends State<LoginPage> {
     if (passwordController.text.isNotEmpty &&
         emailUsernameController.text.isNotEmpty) {
       final response = await http.post(
-          Uri.parse("http://localhost:8000/auth/login"),
-          body: ({
-            'login': emailUsernameController.text,
-            'password': passwordController.text
-          }));
+        Uri.parse('http://localhost:8000/auth/login'),
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: json.encode({
+          'email': emailUsernameController.text,
+          'password': passwordController.text
+        }),
+      );
+      print("${response.body}");
       if (response.statusCode == 200) {
         print("Correct");
         Navigator.push(
@@ -44,8 +49,16 @@ class _LoginPageState extends State<LoginPage> {
       } else {
         print("Wronggooooooooooooooooooooooooooo");
         print(response.statusCode);
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Invalid credentials")));
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              "نامعتبر",
+              style: TextStyle(
+                fontFamily: "Estedad",
+              ),
+            ),
+          ),
+        );
       }
     } else {
       ScaffoldMessenger.of(context)
