@@ -23,6 +23,7 @@ dependencies:
   json_annotation: ^4.7.0
   quick_actions: ^1.0.1
   share_plus: ^6.3.0
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   build_runner: ^2.3.2

@@ -8,6 +8,7 @@ import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -38,8 +39,13 @@ class HomePage extends StatelessWidget {
               );
             },
             leftIcon: IconlyLight.profile,
-            leftIconOnPressed: () {
-              Config.loggedIn == false
+            leftIconOnPressed: () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              var userEmail = prefs.getString("email");
+              var userPassword = prefs.getString("password");
+              print(userEmail);
+              print(userPassword);
+              userEmail == null && userPassword == null
                   ? loginModal(context)
                   : Navigator.push(
                       context,

@@ -15,6 +15,7 @@ import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -43,7 +44,12 @@ class _LoginPageState extends State<LoginPage> {
       print(response.body);
       if (response.statusCode == 200) {
         print("Correct");
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        pref.setString("email", emailUsernameController.text);
+        pref.setString("password", passwordController.text);
+
         Config.loggedIn = true;
+
         Navigator.pop(context);
         Navigator.push(
           context,
