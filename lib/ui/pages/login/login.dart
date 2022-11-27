@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/constants/endpoints.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
 
@@ -13,7 +14,6 @@ import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 import 'package:http/http.dart' as http;
-import 'package:landina_coupon/models/login.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -24,15 +24,13 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool? _passwordVisible;
-  Future<LoginModel>? _futureLogin;
   TextEditingController emailUsernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
   Future<void> loginUser() async {
     if (passwordController.text.isNotEmpty &&
         emailUsernameController.text.isNotEmpty) {
       final response = await http.post(
-        Uri.parse('http://localhost:8000/auth/login'),
+        Uri.parse('${EndPoints.baseUrl}auth/login'),
         headers: {
           "Content-type": "application/json",
         },
@@ -41,16 +39,21 @@ class _LoginPageState extends State<LoginPage> {
           'password': passwordController.text
         }),
       );
-      print("${response.body}");
+      print(response.body);
       if (response.statusCode == 200) {
         print("Correct");
+        Navigator.pop(context);
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ProfilePage()));
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProfilePage(),
+          ),
+        );
       } else {
-        print("Wronggooooooooooooooooooooooooooo");
+        print("Wrong");
         print(response.statusCode);
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
+          const SnackBar(
             content: Text(
               "نامعتبر",
               style: TextStyle(

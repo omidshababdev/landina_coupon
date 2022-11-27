@@ -1,8 +1,8 @@
 class LoginModel {
-  String? status;
-  String? accessToken;
+  final String status;
+  final String accessToken;
 
-  LoginModel({this.status, this.accessToken});
+  LoginModel({required this.status, required this.accessToken});
 
   factory LoginModel.fromJson(Map<String, dynamic> json) {
     return LoginModel(
