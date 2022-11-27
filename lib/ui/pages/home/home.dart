@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/components/modals/filter.modal.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
@@ -13,7 +14,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool loggedIn = false;
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
             },
             leftIcon: IconlyLight.profile,
             leftIconOnPressed: () {
-              loggedIn == false
+              Config.loggedIn == false
                   ? loginModal(context)
                   : Navigator.push(
                       context,

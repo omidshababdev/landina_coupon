@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/endpoints.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
@@ -42,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
       print(response.body);
       if (response.statusCode == 200) {
         print("Correct");
+        Config.loggedIn = true;
         Navigator.pop(context);
         Navigator.push(
           context,
