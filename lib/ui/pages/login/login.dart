@@ -1,14 +1,19 @@
-import 'dart:developer';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
+
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
+import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/pages/register/username/username.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+
+import 'package:http/http.dart' as http;
+import 'package:landina_coupon/models/login.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,13 +24,39 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool? _passwordVisible;
+  Future<LoginModel>? _futureLogin;
   TextEditingController emailUsernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  Future<void> loginUser() async {
+    if (passwordController.text.isNotEmpty &&
+        emailUsernameController.text.isNotEmpty) {
+      final response = await http.post(
+          Uri.parse("http://localhost:8000/auth/login"),
+          body: ({
+            'login': emailUsernameController.text,
+            'password': passwordController.text
+          }));
+      if (response.statusCode == 200) {
+        print("Correct");
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ProfilePage()));
+      } else {
+        print("Wronggooooooooooooooooooooooooooo");
+        print(response.statusCode);
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Invalid credentials")));
+      }
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Blank field is not allowed")));
+    }
+  }
 
   @override
   void initState() {
     super.initState();
-    _passwordVisible = true;
+    _passwordVisible = false;
   }
 
   @override
@@ -107,7 +138,11 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
                     title: "ورود به حساب کاربری",
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        loginUser();
+                      });
+                    },
                   ),
                 ),
                 const SizedBox(height: 15),
