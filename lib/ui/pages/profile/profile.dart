@@ -21,46 +21,39 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<UserModel>? futureUser;
 
   Future<UserModel> userInfo() async {
-    if (Config.loggedIn == true) {
-      final response = await http.get(
-        Uri.parse('${EndPoints.baseUrl}users/me'),
-        headers: {
-          "Content-type": "application/json",
-        },
+    final response = await http.get(
+      Uri.parse('${EndPoints.baseUrl}users/me'),
+      headers: {
+        "Content-type": "application/json",
+      },
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      print("Correct");
+      Config.loggedIn = true;
+      Navigator.pop(context);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProfilePage(),
+        ),
       );
-      print(response.body);
-      if (response.statusCode == 200) {
-        print("Correct");
-        Config.loggedIn = true;
-        Navigator.pop(context);
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProfilePage(),
-          ),
-        );
-        return UserModel.fromJson(jsonDecode(response.body));
-      } else {
-        print("Wrong");
-        print(response.statusCode);
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text(
-              "نامعتبر",
-              style: TextStyle(
-                fontFamily: "Estedad",
-              ),
-            ),
-          ),
-        );
-      }
+      return UserModel.fromJson(jsonDecode(response.body));
     } else {
+      print("Wrong");
+      print(response.statusCode);
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("Blank field is not allowed"),
+          content: Text(
+            "نامعتبر",
+            style: TextStyle(
+              fontFamily: "Estedad",
+            ),
+          ),
         ),
       );
     }
+
     return UserModel();
   }
 
@@ -76,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
           title: "حساب کاربری",
-          rightIcon: IconlyLight.info_circle,
+          rightIcon: IconlyLight.logout,
           rightIconOnPressed: () {
             aboutModal(context);
           },
@@ -94,7 +87,11 @@ class _ProfilePageState extends State<ProfilePage> {
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: CircularProgressIndicator(
+              color: Color(0xff3B3B3B),
+            ),
+          );
         },
       ),
     );

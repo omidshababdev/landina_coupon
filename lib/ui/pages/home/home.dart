@@ -47,12 +47,6 @@ class HomePage extends StatelessWidget {
               print(userEmail);
               print(userPassword);
 
-              NotificationApi.showNotification(
-                title: "title",
-                body: "body",
-                payload: "payload",
-              );
-
               userEmail == null && userPassword == null
                   ? loginModal(context)
                   : Navigator.push(
