@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/components/modals/filter.modal.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
@@ -45,6 +46,13 @@ class HomePage extends StatelessWidget {
               var userPassword = prefs.getString("password");
               print(userEmail);
               print(userPassword);
+
+              NotificationApi.showNotification(
+                title: "title",
+                body: "body",
+                payload: "payload",
+              );
+
               userEmail == null && userPassword == null
                   ? loginModal(context)
                   : Navigator.push(

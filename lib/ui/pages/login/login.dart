@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/endpoints.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
 
@@ -165,6 +166,11 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       setState(() {
                         loginUser();
+                        NotificationApi.showNotification(
+                          title: "title",
+                          body: "body",
+                          payload: "payload",
+                        );
                       });
                     },
                   ),

@@ -1,5 +1,9 @@
 PODS:
   - Flutter (1.0.0)
+  - flutter_local_notifications (0.0.1):
+    - Flutter
+  - flutter_native_timezone (0.0.1):
+    - Flutter
   - path_provider_ios (0.0.1):
     - Flutter
   - quick_actions_ios (0.0.1):
@@ -11,6 +15,8 @@ PODS:
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
+  - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - flutter_native_timezone (from `.symlinks/plugins/flutter_native_timezone/ios`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
   - quick_actions_ios (from `.symlinks/plugins/quick_actions_ios/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
@@ -19,6 +25,10 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
+  flutter_local_notifications:
+    :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  flutter_native_timezone:
+    :path: ".symlinks/plugins/flutter_native_timezone/ios"
   path_provider_ios:
     :path: ".symlinks/plugins/path_provider_ios/ios"
   quick_actions_ios:
@@ -30,6 +40,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
+  flutter_native_timezone: 5f05b2de06c9776b4cc70e1839f03de178394d22
   path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
   quick_actions_ios: d211ffc5d7619ace7e9fb1800540b14a1aafe940
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
