@@ -13,6 +13,7 @@ dependencies:
   figma_squircle: ^0.5.3
   flutter:
     sdk: flutter
+  flutter_local_notifications: ^12.0.4
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^1.1.6

@@ -20,10 +20,10 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   Future<UserModel>? futureUser;
 
-  Future<void> userInfo() async {
+  Future<UserModel> userInfo() async {
     if (Config.loggedIn == true) {
       final response = await http.get(
-        Uri.parse('${EndPoints.baseUrl}auth/login'),
+        Uri.parse('${EndPoints.baseUrl}users/me'),
         headers: {
           "Content-type": "application/json",
         },
@@ -39,6 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
             builder: (context) => ProfilePage(),
           ),
         );
+        return UserModel.fromJson(jsonDecode(response.body));
       } else {
         print("Wrong");
         print(response.statusCode);
@@ -54,9 +55,13 @@ class _ProfilePageState extends State<ProfilePage> {
         );
       }
     } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Blank field is not allowed")));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Blank field is not allowed"),
+        ),
+      );
     }
+    return UserModel();
   }
 
   @override
