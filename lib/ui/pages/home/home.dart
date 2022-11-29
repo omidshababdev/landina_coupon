@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.appName.toString(),
+            title: AppLocalizations.of(context)!.appName,
             rightIcon: IconlyLight.category,
             rightIconOnPressed: () {
               Navigator.push(
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: LandinaTextField(
-                  hintText: "دنبال چه کوپنی هستی؟",
+                  hintText: AppLocalizations.of(context)!.appName,
                   prefixIcon: IconlyLight.search,
                   prefixIconOnPressed: () {},
                   suffixIcon: IconlyLight.filter,

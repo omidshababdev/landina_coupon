@@ -8,6 +8,8 @@ import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:quick_actions/quick_actions.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -98,15 +100,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         /* dark theme settings */
       ),
       themeMode: ThemeMode.light,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'), // English, no country code
-        Locale('fa'), // Persian, no country code
-      ],
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const HomePage(),
     );
   }

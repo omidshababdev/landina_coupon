@@ -1,6 +1,4 @@
 {
   "appName": "Landina Coupon",
-  "@appName": {
-    "description": "The name of this app"
-  }
+  "searchField": "What are you looking for?"
 }
