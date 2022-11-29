@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LandinaAppbar extends StatelessWidget {
-  final String title;
+  String? title;
   IconData? leftIcon;
   VoidCallback? leftIconOnPressed;
   IconData? rightIcon;
@@ -9,7 +9,7 @@ class LandinaAppbar extends StatelessWidget {
 
   LandinaAppbar(
       {super.key,
-      required this.title,
+      this.title,
       this.leftIcon,
       this.rightIcon,
       this.leftIconOnPressed,
@@ -41,7 +41,7 @@ class LandinaAppbar extends StatelessWidget {
         ),
       ),
       title: Text(
-        title,
+        title!,
         style: const TextStyle(
           color: Color.fromARGB(255, 51, 51, 51),
           fontSize: 18,

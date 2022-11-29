@@ -11,6 +11,8 @@ import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -27,7 +29,7 @@ class HomePage extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: "لندینا کوپن",
+            title: AppLocalizations.of(context)!.appName.toString(),
             rightIcon: IconlyLight.category,
             rightIconOnPressed: () {
               Navigator.push(

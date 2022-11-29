@@ -104,8 +104,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
-        Locale('en', ''), // English, no country code
-        Locale('fa', ''), // Persian, no country code
+        Locale('en'), // English, no country code
+        Locale('fa'), // Persian, no country code
       ],
       home: const HomePage(),
     );

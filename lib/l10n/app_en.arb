@@ -1,0 +1,6 @@
+{
+  "appName": "Landina Coupon",
+  "@appName": {
+    "description": "The name of this app"
+  }
+}

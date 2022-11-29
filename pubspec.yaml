@@ -45,6 +45,7 @@ flutter_icons:
   image_path: "assets/images/landina-logo.png"
 
 flutter:
+  generate: true
   uses-material-design: true
 
   fonts:
