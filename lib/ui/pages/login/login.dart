@@ -110,7 +110,10 @@ class _LoginPageState extends State<LoginPage> {
                     title: "ورود به حساب کاربری",
                     onPressed: () {
                       setState(() {
-                        client.loginUser();
+                        client.loginUser(
+                          emailUsernameController,
+                          passwordController,
+                        );
                       });
                     },
                   ),
