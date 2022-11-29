@@ -20,43 +20,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   Future<UserModel>? futureUser;
 
-  Future<UserModel> userInfo() async {
-    final response = await http.get(
-      Uri.parse('${EndPoints.baseUrl}users/me'),
-      headers: {
-        "Content-type": "application/json",
-      },
-    );
-    print(response.body);
-    if (response.statusCode == 200) {
-      print("Correct");
-      Config.loggedIn = true;
-      Navigator.pop(context);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ProfilePage(),
-        ),
-      );
-      return UserModel.fromJson(jsonDecode(response.body));
-    } else {
-      print("Wrong");
-      print(response.statusCode);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text(
-            "نامعتبر",
-            style: TextStyle(
-              fontFamily: "Estedad",
-            ),
-          ),
-        ),
-      );
-    }
-
-    return UserModel();
-  }
-
   @override
   void initState() {
     super.initState();

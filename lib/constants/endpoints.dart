@@ -1,4 +1,5 @@
 class EndPoints {
   EndPoints._();
-  static String baseUrl = "http://localhost:8000/";
+  static String login = "auth/login";
+  static String signup = "";
 }
