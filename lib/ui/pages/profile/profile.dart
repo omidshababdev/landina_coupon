@@ -43,7 +43,8 @@ class _ProfilePageState extends State<ProfilePage> {
           if (snapshot.hasData) {
             // return Text(snapshot.data!.name);
             UserModel userInfo = snapshot.data;
-            print(userInfo.user!.email);
+            // print(userInfo.user!.email);
+            print("True");
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }

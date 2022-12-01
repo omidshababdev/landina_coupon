@@ -43,7 +43,7 @@ class ApiService {
     }
   }
 
-  Future<UserModel> userInfo() async {
+  Future<Null> userInfo() async {
     final response = await http.get(
       Uri.parse('${endPointUrl}users/me'),
       headers: {
@@ -54,13 +54,14 @@ class ApiService {
     if (response.statusCode == 200) {
       print("Correct");
 
-      print(response.statusCode);
+      SharedPreferences pref = await SharedPreferences.getInstance();
+      final String? email = pref.getString("email");
+      final String? password = pref.getString("password");
 
-      return UserModel();
+      print(response.statusCode);
     } else {
       print("Wrong");
       print(response.statusCode);
     }
-    return UserModel();
   }
 }
