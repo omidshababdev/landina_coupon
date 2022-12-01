@@ -5,6 +5,7 @@ import 'package:get/instance_manager.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/pages/login/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,5 +41,26 @@ class ApiService {
       print("Wrong");
       print(response.statusCode);
     }
+  }
+
+  Future<UserModel> userInfo() async {
+    final response = await http.get(
+      Uri.parse('${endPointUrl}users/me'),
+      headers: {
+        "Content-type": "application/json",
+      },
+    );
+    print(response.body);
+    if (response.statusCode == 200) {
+      print("Correct");
+
+      print(response.statusCode);
+
+      return UserModel();
+    } else {
+      print("Wrong");
+      print(response.statusCode);
+    }
+    return UserModel();
   }
 }
