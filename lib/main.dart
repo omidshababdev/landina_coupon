@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/route_manager.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
@@ -68,7 +66,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Landina Coupon',
       theme: ThemeData(
