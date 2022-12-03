@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: LandinaTextField(
-                  hintText: AppLocalizations.of(context)!.appName,
+                  hintText: AppLocalizations.of(context)!.searchField,
                   prefixIcon: IconlyLight.search,
                   prefixIconOnPressed: () {},
                   suffixIcon: IconlyLight.filter,
