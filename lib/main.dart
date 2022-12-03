@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
@@ -28,6 +31,8 @@ class LandinaCoupon extends StatefulWidget {
 }
 
 class _LandinaCouponState extends State<LandinaCoupon> {
+  VoidCallback rebuildOnLocaleChange() => () => setState(() {});
+
   QuickActions quickActions = const QuickActions();
 
   Map quickActionsReturns = {
@@ -66,11 +71,14 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
   @override
   Widget build(BuildContext context) {
+    Locale myLocale = window.locale;
+    PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Landina Coupon',
       theme: ThemeData(
-        fontFamily: "Estedad",
+        fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
         backgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           elevation: 0,
