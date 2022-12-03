@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 
-class LandinaTextField extends StatelessWidget {
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+class LandinaTextField extends StatefulWidget {
   String? hintText;
   IconData? suffixIcon;
   VoidCallback? suffixIconOnPressed;
@@ -24,7 +28,17 @@ class LandinaTextField extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<LandinaTextField> createState() => _LandinaTextFieldState();
+}
+
+class _LandinaTextFieldState extends State<LandinaTextField> {
+  VoidCallback rebuildOnLocaleChange() => () => setState(() {});
+
+  @override
   Widget build(BuildContext context) {
+    Locale myLocale = window.locale;
+    PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
@@ -49,39 +63,47 @@ class LandinaTextField extends StatelessWidget {
         ),
       ),
       child: TextField(
-        controller: textfieldController,
+        controller: widget.textfieldController,
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
-        obscureText: obscureText!,
-        enabled: enabled,
+        obscureText: widget.obscureText!,
+        enabled: widget.enabled,
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           contentPadding: const EdgeInsets.symmetric(vertical: 10),
           hintStyle: const TextStyle(
             fontSize: 15,
+            height: 2,
           ),
           focusColor: Colors.black,
           border: InputBorder.none,
           prefixIcon: IconButton(
-            onPressed: prefixIconOnPressed,
+            onPressed: widget.prefixIconOnPressed,
             icon: Icon(
-              prefixIcon,
+              widget.prefixIcon,
               color: const Color(0xff3b3b3b).withOpacity(0.5),
             ),
           ),
           suffixIcon: Container(
-            decoration: const BoxDecoration(
-              border: Border(
-                right: BorderSide(
-                  width: 1,
-                  color: Color(0xffF1F1F1),
-                ),
-              ),
+            decoration: BoxDecoration(
+              border: myLocale.languageCode == "en"
+                  ? const Border(
+                      left: BorderSide(
+                        width: 1,
+                        color: Color(0xffF1F1F1),
+                      ),
+                    )
+                  : const Border(
+                      right: BorderSide(
+                        width: 1,
+                        color: Color(0xffF1F1F1),
+                      ),
+                    ),
             ),
             child: IconButton(
-              onPressed: suffixIconOnPressed,
+              onPressed: widget.suffixIconOnPressed,
               icon: Icon(
-                suffixIcon,
+                widget.suffixIcon,
                 color: const Color(0xff3b3b3b).withOpacity(0.5),
               ),
             ),

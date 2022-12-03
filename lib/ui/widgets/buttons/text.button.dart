@@ -40,6 +40,8 @@ class LandinaTextButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: backgroundColor == true
               ? const TextStyle(
                   color: Colors.white,

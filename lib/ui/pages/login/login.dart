@@ -5,10 +5,13 @@ import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
 
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
+import 'package:landina_coupon/ui/pages/register/email/email.dart';
 import 'package:landina_coupon/ui/pages/register/username/username.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -42,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: "ورود به حساب کاربری",
+            title: AppLocalizations.of(context)!.loginToAccount,
             rightIcon: IconlyLight.info_circle,
             rightIconOnPressed: () {
               aboutModal(context);
@@ -65,15 +68,18 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text(
-                    "لطفا برای ورود به حساب کاربری خود اطلاعات زیر را وارد کنید.",
+                  child: Text(
+                    AppLocalizations.of(context)!.loginPageDescription,
+                    style: const TextStyle(
+                      height: 2,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 15),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText: "ایمیل و یا نام کاربری",
+                    hintText: AppLocalizations.of(context)!.landinaID,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
                       emailUsernameModal(context);
@@ -88,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText: "رمز عبور",
+                    hintText: AppLocalizations.of(context)!.password,
                     suffixIcon: _passwordVisible == false
                         ? IconlyLight.show
                         : IconlyLight.hide,
@@ -107,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: "ورود به حساب کاربری",
+                    title: AppLocalizations.of(context)!.loginToAccount,
                     onPressed: () {
                       setState(() {
                         client.loginUser(
@@ -135,9 +141,9 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           );
                         },
-                        child: const Text(
-                          "فراموشی رمز",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.forgetPass,
+                          style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Color(0xff3B3B3B),
                             fontSize: 13,
@@ -159,14 +165,14 @@ class _LoginPageState extends State<LoginPage> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return UsernamePage();
+                                return const EmailPage();
                               },
                             ),
                           );
                         },
-                        child: const Text(
-                          "ایجاد حساب",
-                          style: TextStyle(
+                        child: Text(
+                          AppLocalizations.of(context)!.createAnAccount,
+                          style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Color(0xff3B3B3B),
                             fontSize: 13,
