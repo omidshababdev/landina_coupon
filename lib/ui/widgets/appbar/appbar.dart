@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:ui';
 
-class LandinaAppbar extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:landina_coupon/main.dart';
+
+class LandinaAppbar extends StatefulWidget {
   String? title;
   IconData? leftIcon;
   VoidCallback? leftIconOnPressed;
@@ -16,7 +19,16 @@ class LandinaAppbar extends StatelessWidget {
       this.rightIconOnPressed});
 
   @override
+  State<LandinaAppbar> createState() => _LandinaAppbarState();
+}
+
+class _LandinaAppbarState extends State<LandinaAppbar> {
+  VoidCallback rebuildOnLocaleChange() => () => setState(() {});
+
+  @override
   Widget build(BuildContext context) {
+    Locale myLocale = window.locale;
+    PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
     return AppBar(
       leadingWidth: 66,
       leading: Padding(
@@ -32,18 +44,19 @@ class LandinaAppbar extends StatelessWidget {
           ),
           child: IconButton(
             icon: Icon(
-              rightIcon,
+              widget.rightIcon,
               color: const Color.fromARGB(255, 51, 51, 51),
             ),
-            onPressed: rightIconOnPressed,
+            onPressed: widget.rightIconOnPressed,
             hoverColor: Colors.transparent,
           ),
         ),
       ),
       title: Text(
-        title!,
-        style: const TextStyle(
-          color: Color.fromARGB(255, 51, 51, 51),
+        widget.title!,
+        style: TextStyle(
+          fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
+          color: const Color.fromARGB(255, 51, 51, 51),
           fontSize: 18,
         ),
       ),
@@ -61,10 +74,10 @@ class LandinaAppbar extends StatelessWidget {
             ),
             child: IconButton(
               icon: Icon(
-                leftIcon,
+                widget.leftIcon,
                 color: const Color.fromARGB(255, 51, 51, 51),
               ),
-              onPressed: leftIconOnPressed,
+              onPressed: widget.leftIconOnPressed,
               hoverColor: Colors.transparent,
             ),
           ),
