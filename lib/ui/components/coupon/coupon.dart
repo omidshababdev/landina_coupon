@@ -6,6 +6,7 @@ import 'package:landina_coupon/ui/components/modals/brand.modal.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
 import 'package:landina_coupon/ui/pages/brand/brand.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/web/web.page.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 
@@ -84,7 +85,12 @@ class Coupon extends StatelessWidget {
                       ),
                       GestureDetector(
                         onTap: () {
-                          brandModal(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WebPage(),
+                            ),
+                          );
                         },
                         child: Text(
                           brand,

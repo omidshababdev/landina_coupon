@@ -96,9 +96,9 @@ class HomePage extends StatelessWidget {
                 ),
                 itemCount: 10,
                 itemBuilder: (context, index) {
-                  return const Coupon(
+                  return Coupon(
                     title: "عنوان تخفیف موجود",
-                    brand: "نام برند",
+                    brand: AppLocalizations.of(context)!.brandName,
                     description:
                         "لورم ایپسوم متنی ساختگی با محتوایی نامفهوم از صنعت چاپ برای روزی روزگاری است که در این وادی می چرخد!",
                   );
