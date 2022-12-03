@@ -45,9 +45,11 @@ class LandinaTextButton extends StatelessWidget {
           style: backgroundColor == true
               ? const TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.w600,
                 )
               : const TextStyle(
                   color: Color(0xff3B3B3B),
+                  fontWeight: FontWeight.w600,
                 ),
         ),
       ),
