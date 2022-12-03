@@ -4,11 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:landina_coupon/ui/components/modals/brand.modal.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
-import 'package:landina_coupon/ui/pages/brand/brand.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/web/web.page.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Coupon extends StatelessWidget {
   final String title;
@@ -22,6 +23,8 @@ class Coupon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool brandName = true;
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -79,27 +82,33 @@ class Coupon extends StatelessWidget {
                     children: [
                       Text(
                         title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => WebPage(),
-                            ),
-                          );
-                        },
-                        child: Text(
-                          brand,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
+                      brandName == true
+                          ? GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const WebPage(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                brand,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            )
+                          : Container(),
                     ],
                   ),
                 ),
@@ -142,7 +151,8 @@ class Coupon extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             LandinaTextButton(
-              title: "کپی کردن کد تخفیف",
+              title: AppLocalizations.of(context)!.copyCouponCode,
+              backgroundColor: false,
               onPressed: () {
                 copyCouponModal(context);
                 Clipboard.setData(

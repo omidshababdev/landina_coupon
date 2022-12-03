@@ -97,10 +97,10 @@ class HomePage extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return Coupon(
-                    title: "عنوان تخفیف موجود",
+                    title: AppLocalizations.of(context)!.couponTextTitle,
                     brand: AppLocalizations.of(context)!.brandName,
                     description:
-                        "لورم ایپسوم متنی ساختگی با محتوایی نامفهوم از صنعت چاپ برای روزی روزگاری است که در این وادی می چرخد!",
+                        AppLocalizations.of(context)!.couponDescription,
                   );
                 },
                 separatorBuilder: (context, index) =>

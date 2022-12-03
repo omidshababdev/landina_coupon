@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class CouponPage extends StatelessWidget {
   const CouponPage({super.key});
 
@@ -11,7 +13,7 @@ class CouponPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: "کوپن",
+          title: AppLocalizations.of(context)!.couponTextTitle,
           rightIcon: IconlyLight.category,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,

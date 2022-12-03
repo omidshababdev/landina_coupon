@@ -1,5 +1,8 @@
 {
   "appName": "Landina Coupon",
   "searchField": "What are you looking for?",
+  "couponTextTitle": "Coupon Text Title",
+  "couponDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "copyCouponCode": "Copy Coupon Code",
   "brandName": "Brand Name"
 }
