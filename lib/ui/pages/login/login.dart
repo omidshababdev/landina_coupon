@@ -6,7 +6,6 @@ import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
 
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/register/email/email.dart';
-import 'package:landina_coupon/ui/pages/register/username/username.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';

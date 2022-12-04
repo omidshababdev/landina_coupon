@@ -4,6 +4,11 @@ import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
+// String Extension for Capitalize
+import 'package:landina_coupon/ui/extensions/string.extension.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class BrandPage extends StatelessWidget {
   const BrandPage({super.key});
 
@@ -13,7 +18,7 @@ class BrandPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: "صفحه برند",
+          title: AppLocalizations.of(context)!.brand.capitalize(),
           rightIcon: IconlyLight.category,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,
