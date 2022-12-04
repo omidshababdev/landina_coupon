@@ -7,6 +7,9 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
+// String Extension for Capitalize
+import 'package:landina_coupon/ui/extensions/string.extension.dart';
+
 class EmailPage extends StatelessWidget {
   const EmailPage({super.key});
 
@@ -47,7 +50,7 @@ class EmailPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: const Text(
-                    "لطفا یک آدرس ایمیل معتبر برای حساب کاربری خود وارد کنید.",
+                    "",
                   ),
                 ),
                 const SizedBox(height: 15),

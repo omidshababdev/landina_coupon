@@ -22,5 +22,6 @@
   "loginPageDescription": "لطفا برای ورود به حساب کاربری خود اطلاعات زیر را وارد کنید.",
   "loginToAccount": "ورود به حساب من",
   "forgetPass": "فراموشی رمز",
-  "createAnAccount": "ایجاد حساب کاربری"
+  "createAnAccount": "ایجاد حساب کاربری",
+  "emailPageDescription": "لطفا یک آدرس ایمیل معتبر برای حساب کاربری خود وارد کنید."
 }

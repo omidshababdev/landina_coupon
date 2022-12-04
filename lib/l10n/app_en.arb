@@ -22,5 +22,6 @@
   "loginPageDescription": "Please enter your landina id and password.",
   "loginToAccount": "Login to my account",
   "forgetPass": "Forget password",
-  "createAnAccount": "Create an account"
+  "createAnAccount": "Create an account",
+  "emailPageDescription": "Please enter a valid email address for your account."
 }
