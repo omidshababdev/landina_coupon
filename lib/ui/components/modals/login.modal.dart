@@ -55,7 +55,7 @@ void loginModal(BuildContext context) {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return LoginPage();
+                          return const LoginPage();
                         },
                       ),
                     );

@@ -10,6 +10,9 @@ import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
+// Internationalization and localizations
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class EmailPage extends StatelessWidget {
   const EmailPage({super.key});
 
@@ -26,7 +29,7 @@ class EmailPage extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: "آدرس ایمیل",
+            title: AppLocalizations.of(context)!.emailAddress.capitalize(),
             rightIcon: IconlyLight.info_circle,
             rightIconOnPressed: () {
               aboutModal(context);
@@ -49,15 +52,18 @@ class EmailPage extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text(
-                    "",
+                  child: Text(
+                    AppLocalizations.of(context)!
+                        .emailPageDescription
+                        .capitalize(),
                   ),
                 ),
                 const SizedBox(height: 15),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText: "آدرس ایمیل",
+                    hintText:
+                        AppLocalizations.of(context)!.emailAddress.capitalize(),
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
                       emailModal(context);
@@ -71,13 +77,15 @@ class EmailPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: "برو مرحله بعد",
+                    title: AppLocalizations.of(context)!
+                        .goToTheNextLevel
+                        .capitalize(),
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) {
-                            return PasswordPage();
+                            return const PasswordPage();
                           },
                         ),
                       );

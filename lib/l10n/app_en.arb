@@ -4,6 +4,7 @@
   "account": "account",
   "landinaID": "Landina ID",
   "email": "email",
+  "emailAddress": "email address",
   "password": "password",
   "coupon": "coupon",
   "coupons": "coupons",
@@ -23,5 +24,7 @@
   "loginToAccount": "Login to my account",
   "forgetPass": "Forget password",
   "createAnAccount": "Create an account",
-  "emailPageDescription": "Please enter a valid email address for your account."
+  "emailPageDescription": "Please enter a valid email address for your account.",
+  "passPageDescription": "Please enter an strong password for your account.",
+  "goToTheNextLevel": "go to the next level"
 }

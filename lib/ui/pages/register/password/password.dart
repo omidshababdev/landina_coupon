@@ -5,6 +5,12 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
+// String Extension for Capitalize
+import 'package:landina_coupon/ui/extensions/string.extension.dart';
+
+// Internationalization and localizations
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class PasswordPage extends StatefulWidget {
   const PasswordPage({super.key});
 
@@ -34,7 +40,7 @@ class _PasswordPageState extends State<PasswordPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: "رمز عبور حساب",
+            title: AppLocalizations.of(context)!.password.capitalize(),
             rightIcon: IconlyLight.info_circle,
             rightIconOnPressed: () {
               aboutModal(context);
@@ -57,15 +63,18 @@ class _PasswordPageState extends State<PasswordPage> {
               children: [
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text(
-                    "در این مرحله لطفا برای حساب کاربری خود یک رمز عبور قوی تنظیم کنید.",
+                  child: Text(
+                    AppLocalizations.of(context)!
+                        .passPageDescription
+                        .capitalize(),
                   ),
                 ),
                 const SizedBox(height: 15),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText: "رمز عبور",
+                    hintText:
+                        AppLocalizations.of(context)!.password.capitalize(),
                     suffixIcon: _passwordVisible == false
                         ? IconlyLight.show
                         : IconlyLight.hide,
@@ -83,7 +92,9 @@ class _PasswordPageState extends State<PasswordPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: "منو به حساب کاربریم ببر",
+                    title: AppLocalizations.of(context)!
+                        .goToTheNextLevel
+                        .capitalize(),
                     onPressed: () {},
                   ),
                 ),

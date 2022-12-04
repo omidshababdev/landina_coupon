@@ -4,7 +4,8 @@
   "account": "حساب کاربری",
   "landinaID": "شناسه لندینا",
   "email": "ایمیل",
-  "password": "پسورد",
+  "emailAddress": "آدرس ایمیل",
+  "password": "رمز عبور",
   "coupon": "کوپن",
   "coupons": "کوپن ها",
   "brand": "برند",
@@ -23,5 +24,7 @@
   "loginToAccount": "ورود به حساب من",
   "forgetPass": "فراموشی رمز",
   "createAnAccount": "ایجاد حساب کاربری",
-  "emailPageDescription": "لطفا یک آدرس ایمیل معتبر برای حساب کاربری خود وارد کنید."
+  "emailPageDescription": "لطفا یک آدرس ایمیل معتبر برای حساب کاربری خود وارد کنید.",
+  "passPageDescription": "لطفا یک رمز عبور قوی برای حساب کاربری خود وارد کنید.",
+  "goToTheNextLevel": "برو به مرحله بعد"
 }
