@@ -57,10 +57,11 @@ class BrandPage extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Text(
-                        "مجموعه لندینا",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.appName,
+                        style: const TextStyle(
                           fontWeight: FontWeight.w600,
+                          fontSize: 15,
                         ),
                       ),
                       const SizedBox(width: 5),
@@ -78,7 +79,7 @@ class BrandPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: Text(
-                          "شرکت",
+                          AppLocalizations.of(context)!.brand,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
