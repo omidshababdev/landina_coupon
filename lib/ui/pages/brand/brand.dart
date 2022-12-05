@@ -35,8 +35,8 @@ class BrandPage extends StatelessWidget {
           parent: AlwaysScrollableScrollPhysics(),
         ),
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Wrap(
+            spacing: 15,
             children: [
               Container(
                 width: 80,
@@ -45,35 +45,30 @@ class BrandPage extends StatelessWidget {
                   color: const Color(0xffF1F1F1),
                   shape: SmoothRectangleBorder(
                     borderRadius: SmoothBorderRadius(
-                      cornerRadius: 10,
+                      cornerRadius: 18,
                       cornerSmoothing: 0.5,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
+                  Wrap(
+                    spacing: 5,
                     children: [
                       Text(
                         AppLocalizations.of(context)!.appName,
                         style: const TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 15,
+                          fontSize: 18,
                         ),
                       ),
-                      const SizedBox(width: 5),
-                      const Icon(
-                        IconlyBold.tick_square,
-                        size: 18,
-                        color: Colors.blue,
-                      ),
-                      const SizedBox(width: 5),
                       Container(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 2),
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: const Color(0xffF1F1F1),
                           borderRadius: BorderRadius.circular(50),
@@ -82,69 +77,37 @@ class BrandPage extends StatelessWidget {
                           AppLocalizations.of(context)!.brand,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 12,
                             color: const Color(0xff3B3B3B).withOpacity(0.5),
                           ),
                         ),
                       ),
                     ],
                   ),
+                  const SizedBox(height: 10),
                   Text(
-                    "توسعه نرم افزار",
+                    AppLocalizations.of(context)!.brandName,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 12,
                       color: const Color(0xff3B3B3B).withOpacity(0.8),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      aboutModal(context);
-                    },
-                    child: Text(
-                      "landina.co",
-                      style: TextStyle(
-                        fontFamily: "Poppins",
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: const Color(0xff3B3B3B).withOpacity(0.8),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      Text(
-                        "۷۵۶",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: const Color(0xff3B3B3B).withOpacity(0.8),
-                        ),
-                      ),
-                      Text(
-                        " دنبال کننده",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
-                          color: const Color(0xff3B3B3B).withOpacity(0.8),
-                        ),
-                      ),
-                    ],
-                  )
                 ],
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
           Text(
-            "لورم ایپسوم متنی ساختگی با محتوایی نامفهوم از صنعت چاپ برای بهتر کردن دیزاین کار ها است.",
+            AppLocalizations.of(context)!.loginPageDescription +
+                AppLocalizations.of(context)!.loginPageDescription +
+                AppLocalizations.of(context)!.loginPageDescription,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontWeight: FontWeight.w400,
-              fontSize: 12,
               color: const Color(0xff3B3B3B).withOpacity(0.8),
             ),
           ),
+          const SizedBox(height: 15),
         ],
       ),
     );
