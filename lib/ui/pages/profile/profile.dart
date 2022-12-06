@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
@@ -18,6 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+    Config.inProfile = true;
   }
 
   @override

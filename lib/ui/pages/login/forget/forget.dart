@@ -5,6 +5,11 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
+// String Extension for Capitalize
+import 'package:landina_coupon/ui/extensions/string.extension.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class ForgetPage extends StatelessWidget {
   const ForgetPage({super.key});
 
@@ -21,7 +26,7 @@ class ForgetPage extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: "فراموشی رمز",
+            title: AppLocalizations.of(context)!.forgetPass.capitalize(),
             rightIcon: IconlyLight.category,
             rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,
@@ -42,15 +47,16 @@ class ForgetPage extends StatelessWidget {
               children: [
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
-                  child: const Text(
-                    "لطفا برای بازیابی رمز آدرس ایمیل خود را وارد کنید.",
+                  child: Text(
+                    AppLocalizations.of(context)!.forgetPassPageDescription,
                   ),
                 ),
                 const SizedBox(height: 15),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText: "آدرس ایمیل",
+                    hintText:
+                        AppLocalizations.of(context)!.emailAddress.capitalize(),
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
                       forgetModal(context);
@@ -64,7 +70,7 @@ class ForgetPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: "ارسال ایمیل بازیابی",
+                    title: AppLocalizations.of(context)!.sendRecoveryEmail,
                     onPressed: () {},
                   ),
                 ),

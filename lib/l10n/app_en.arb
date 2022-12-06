@@ -13,6 +13,9 @@
   "categories": "categories",
   "filter": "filter",
   "filters": "filters",
+  "follow": "follow",
+  "contact": "contact",
+  "website": "website",
   "searchField": "What are you looking for?",
   "couponTextTitle": "Coupon Text Title",
   "couponDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
@@ -26,5 +29,7 @@
   "createAnAccount": "Create an account",
   "emailPageDescription": "Please enter a valid email address for your account.",
   "passPageDescription": "Please enter an strong password for your account.",
-  "goToTheNextLevel": "go to the next level"
+  "goToTheNextLevel": "go to the next level",
+  "forgetPassPageDescription": "go to the next level",
+  "sendRecoveryEmail": "Send a recovery email"
 }

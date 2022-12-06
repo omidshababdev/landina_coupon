@@ -1,13 +1,15 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 class BrandPage extends StatelessWidget {
   const BrandPage({super.key});
@@ -51,46 +53,49 @@ class BrandPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Wrap(
-                    spacing: 5,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.appName,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 2,
-                        ),
-                        decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        child: Text(
-                          AppLocalizations.of(context)!.brand,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff3B3B3B).withOpacity(0.5),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Wrap(
+                      spacing: 5,
+                      children: [
+                        Text(
+                          AppLocalizations.of(context)!.appName,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!.brandName,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xff3B3B3B).withOpacity(0.8),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xffF1F1F1),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Text(
+                            AppLocalizations.of(context)!.brand,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: const Color(0xff3B3B3B).withOpacity(0.5),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                    Text(
+                      AppLocalizations.of(context)!.brandName,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xff3B3B3B).withOpacity(0.8),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -103,10 +108,23 @@ class BrandPage extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               fontWeight: FontWeight.w400,
+              height: 2,
               color: const Color(0xff3B3B3B).withOpacity(0.8),
             ),
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 30),
+          ButtonBarSuper(
+            children: [
+              LandinaTextButton(
+                title: AppLocalizations.of(context)!.follow.capitalize(),
+                onPressed: () {},
+              ),
+              LandinaTextButton(
+                title: AppLocalizations.of(context)!.contact.capitalize(),
+                onPressed: () {},
+              ),
+            ],
+          ),
         ],
       ),
     );
