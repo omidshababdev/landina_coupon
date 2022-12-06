@@ -83,7 +83,6 @@ class BrandPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 10),
                   Text(
                     AppLocalizations.of(context)!.brandName,
                     style: TextStyle(

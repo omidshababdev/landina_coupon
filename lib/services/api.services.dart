@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../ui/pages/profile/profile.dart';
-
 class ApiService {
   final endPointUrl = "http://localhost:8000/";
 
