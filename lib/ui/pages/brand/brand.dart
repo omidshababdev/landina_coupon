@@ -112,15 +112,18 @@ class BrandPage extends StatelessWidget {
               color: const Color(0xff3B3B3B).withOpacity(0.8),
             ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           ButtonBarSuper(
+            lineSpacing: 15,
+            wrapType: WrapType.balanced,
+            wrapFit: WrapFit.divided,
             children: [
               LandinaTextButton(
                 title: AppLocalizations.of(context)!.follow.capitalize(),
                 onPressed: () {},
               ),
               LandinaTextButton(
-                title: AppLocalizations.of(context)!.contact.capitalize(),
+                title: AppLocalizations.of(context)!.website.capitalize(),
                 onPressed: () {},
               ),
             ],

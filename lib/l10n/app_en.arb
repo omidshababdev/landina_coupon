@@ -30,6 +30,6 @@
   "emailPageDescription": "Please enter a valid email address for your account.",
   "passPageDescription": "Please enter an strong password for your account.",
   "goToTheNextLevel": "go to the next level",
-  "forgetPassPageDescription": "go to the next level",
+  "forgetPassPageDescription": "Please enter your email address to retrieve your password.",
   "sendRecoveryEmail": "Send a recovery email"
 }
