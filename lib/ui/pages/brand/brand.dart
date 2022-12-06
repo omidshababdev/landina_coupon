@@ -39,6 +39,7 @@ class BrandPage extends StatelessWidget {
         children: [
           Wrap(
             spacing: 15,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Container(
                 width: 80,
@@ -56,10 +57,10 @@ class BrandPage extends StatelessWidget {
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Wrap(
-                      spacing: 5,
+                      spacing: 8,
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         Text(
                           AppLocalizations.of(context)!.appName,
