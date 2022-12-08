@@ -61,7 +61,7 @@ class Coupon extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed('/brand');
+                    Get.toNamed("/brand");
                   },
                   child: Container(
                     width: 50,
