@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
@@ -9,6 +10,8 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:get/get.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -31,14 +34,7 @@ class HomePage extends StatelessWidget {
             title: AppLocalizations.of(context)!.appName,
             rightIcon: IconlyLight.category,
             rightIconOnPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return CategoriesPage();
-                  },
-                ),
-              );
+              Get.toNamed("/login");
             },
             leftIcon: IconlyLight.profile,
             leftIconOnPressed: () async {

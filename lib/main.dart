@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
+import 'package:get/get.dart';
+import 'package:landina_coupon/ui/pages/login/login.dart';
 
 import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:quick_actions/quick_actions.dart';
@@ -73,7 +75,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
     Locale myLocale = window.locale;
     PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
 
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Landina Coupon',
       theme: ThemeData(
@@ -117,7 +119,12 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       ),
       themeMode: ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
+      locale: Get.deviceLocale,
       supportedLocales: AppLocalizations.supportedLocales,
+      initialRoute: "/",
+      getPages: [
+        GetPage(name: "/login", page: () => const LoginPage()),
+      ],
       home: const HomePage(),
     );
   }
