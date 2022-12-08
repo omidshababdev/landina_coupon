@@ -128,6 +128,27 @@ class BrandPage extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: 20),
+          Expanded(
+            child: Center(
+              child: Container(
+                height: 500,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.appName,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );

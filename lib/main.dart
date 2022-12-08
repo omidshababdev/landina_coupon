@@ -102,6 +102,17 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
+        fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          toolbarHeight: 65,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            fontFamily: "Estedad",
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+
         /* dark theme settings */
       ),
       themeMode: ThemeMode.light,

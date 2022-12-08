@@ -7,7 +7,7 @@ import 'package:landina_coupon/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  final endPointUrl = "https://703e-83-122-77-210.ngrok.io/";
+  final endPointUrl = "https://9236-83-122-77-210.ngrok.io/";
 
   // Login User Future
   Future<void> loginUser(

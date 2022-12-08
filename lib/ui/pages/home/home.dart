@@ -51,13 +51,13 @@ class HomePage extends StatelessWidget {
               userEmail == null && userPassword == null
                   ? loginModal(context)
                   : {
+                      Config.client.loginUser(userEmail, userPassword),
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => ProfilePage(),
                         ),
                       ),
-                      Config.client.loginUser(userEmail, userPassword)
                     };
             },
           ),
