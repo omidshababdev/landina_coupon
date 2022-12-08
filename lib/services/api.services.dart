@@ -45,7 +45,7 @@ class ApiService {
     );
 
     if (response.statusCode == 200) {
-      print("Correct");
+      print("UserInfo Correct");
       return UserModel();
     }
   }

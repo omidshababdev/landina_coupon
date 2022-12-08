@@ -19,8 +19,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  ApiService client = ApiService();
-
   @override
   void initState() {
     super.initState();
@@ -45,18 +43,20 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       body: FutureBuilder(
-        future: client.userInfo(),
+        future: Config.client.userInfo(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            // return Text(snapshot.data!.name);
-            UserModel? userInfo = snapshot.data;
-            print(userInfo?.user?.name);
-          } else if (snapshot.hasError) {
-            return Text('${snapshot.error}');
-          }
+          UserModel? myInfo = snapshot.data;
+          if (snapshot.hasError)
+            return Center(child: Text("Error"));
+          else if (!snapshot.hasData)
+            return Center(child: Text("Loading..."));
+          else
+            return Center(
+              child: Text("${myInfo?.user?.name}"),
+            );
           return const Center(
             child: CircularProgressIndicator(
-              color: Color(0xff3B3B3B),
+              color: Colors.black,
             ),
           );
         },
