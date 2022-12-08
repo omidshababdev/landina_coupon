@@ -6,6 +6,11 @@ import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
+// String Extension for Capitalize
+import 'package:landina_coupon/ui/extensions/string.extension.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -28,7 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: "حساب کاربری",
+          title: AppLocalizations.of(context)!.account.capitalize(),
           rightIcon: IconlyLight.logout,
           rightIconOnPressed: () {
             aboutModal(context);
@@ -44,9 +49,8 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             // return Text(snapshot.data!.name);
-            UserModel userInfo = snapshot.data;
-            // print(userInfo.user!.email);
-            print("True");
+            UserModel? userInfo = snapshot.data;
+            print(userInfo?.user?.name);
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }

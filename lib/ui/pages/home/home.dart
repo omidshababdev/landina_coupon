@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/components/modals/filter.modal.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
@@ -42,19 +43,22 @@ class HomePage extends StatelessWidget {
             leftIcon: IconlyLight.profile,
             leftIconOnPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              var userEmail = prefs.getString("email");
-              var userPassword = prefs.getString("password");
+              String userEmail = prefs.getString("email").toString();
+              String userPassword = prefs.getString("password").toString();
               print(userEmail);
               print(userPassword);
 
               userEmail == null && userPassword == null
                   ? loginModal(context)
-                  : Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProfilePage(),
+                  : {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfilePage(),
+                        ),
                       ),
-                    );
+                      Config.client.loginUser(userEmail, userPassword)
+                    };
             },
           ),
         ),

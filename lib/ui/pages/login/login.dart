@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/services/api.services.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
 
 import 'package:landina_coupon/ui/pages/login/forget/forget.dart';
+import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/pages/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -21,7 +23,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool? _passwordVisible;
-  ApiService client = ApiService();
+
   TextEditingController emailUsernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -113,13 +115,24 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
                     title: AppLocalizations.of(context)!.loginToAccount,
-                    onPressed: () {
+                    onPressed: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      String userEmail = prefs.getString("email").toString();
+                      String userPassword =
+                          prefs.getString("password").toString();
                       setState(() {
-                        client.loginUser(
-                          emailUsernameController,
-                          passwordController,
+                        Config.client.loginUser(
+                          userEmail,
+                          userPassword,
                         );
                       });
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfilePage(),
+                        ),
+                      );
                     },
                   ),
                 ),

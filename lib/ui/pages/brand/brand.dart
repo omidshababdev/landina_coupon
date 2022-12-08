@@ -3,13 +3,12 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 class BrandPage extends StatelessWidget {
   const BrandPage({super.key});
