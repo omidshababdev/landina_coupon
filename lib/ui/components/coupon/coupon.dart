@@ -11,6 +11,8 @@ import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'package:get/get.dart';
+
 class Coupon extends StatelessWidget {
   final String title;
   final String brand;
@@ -59,12 +61,7 @@ class Coupon extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BrandPage(),
-                      ),
-                    );
+                    Get.toNamed('/brand');
                   },
                   child: Container(
                     width: 50,
