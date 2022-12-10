@@ -6,9 +6,9 @@ import 'package:landina_coupon/ui/pages/brand/brand.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:get/get.dart';
-import 'package:landina_coupon/ui/pages/login/login.dart';
+import 'package:landina_coupon/ui/pages/account/login/login.dart';
 
-import 'package:landina_coupon/ui/pages/profile/profile.dart';
+import 'package:landina_coupon/ui/pages/account/profile/profile.dart';
 import 'package:quick_actions/quick_actions.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

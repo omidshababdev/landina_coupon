@@ -1,7 +1,7 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:landina_coupon/ui/pages/login/login.dart';
-import 'package:landina_coupon/ui/pages/register/email/email.dart';
+import 'package:landina_coupon/ui/pages/account/login/login.dart';
+import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
