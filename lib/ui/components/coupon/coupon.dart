@@ -145,7 +145,6 @@ class Coupon extends StatelessWidget {
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontWeight: FontWeight.w500,
                 fontSize: 14,
                 height: 2,
                 color: const Color(0xff3B3B3B).withOpacity(0.5),

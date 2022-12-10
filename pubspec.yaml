@@ -10,6 +10,7 @@ environment:
 
 dependencies:
   assorted_layout_widgets: ^7.0.0
+  connectivity_plus: ^3.0.2
   cupertino_icons: ^1.0.2
   figma_squircle: ^0.5.3
   flutter:
@@ -96,3 +97,4 @@ flutter:
   assets:
     - assets/fonts/
     - assets/svg/
+    - assets/images/

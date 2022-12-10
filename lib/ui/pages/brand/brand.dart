@@ -37,81 +37,86 @@ class BrandPage extends StatelessWidget {
           parent: ClampingScrollPhysics(),
         ),
         children: [
-          Wrap(
-            spacing: 15,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            children: [
-              Container(
-                width: 80,
-                height: 80,
-                decoration: ShapeDecoration(
-                  color: const Color(0xffF1F1F1),
-                  shape: SmoothRectangleBorder(
-                    borderRadius: SmoothBorderRadius(
-                      cornerRadius: 18,
-                      cornerSmoothing: 0.5,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Wrap(
+                  spacing: 15,
+                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    Wrap(
-                      spacing: 8,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.appName,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                    Container(
+                      width: 80,
+                      height: 80,
+                      decoration: ShapeDecoration(
+                        color: const Color(0xffF1F1F1),
+                        shape: SmoothRectangleBorder(
+                          borderRadius: SmoothBorderRadius(
+                            cornerRadius: 18,
+                            cornerSmoothing: 0.5,
                           ),
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 2,
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Wrap(
+                            spacing: 8,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                AppLocalizations.of(context)!.appName,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                  vertical: 2,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F1F1),
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                child: Text(
+                                  AppLocalizations.of(context)!.brand,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: const Color(0xff3B3B3B)
+                                        .withOpacity(0.5),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          decoration: BoxDecoration(
-                            color: const Color(0xffF1F1F1),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          child: Text(
-                            AppLocalizations.of(context)!.brand,
+                          Text(
+                            AppLocalizations.of(context)!.brandName,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                              color: const Color(0xff3B3B3B).withOpacity(0.5),
+                              color: const Color(0xff3B3B3B).withOpacity(0.8),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      AppLocalizations.of(context)!.brandName,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff3B3B3B).withOpacity(0.8),
+                        ],
                       ),
                     ),
                   ],
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Text(
-            AppLocalizations.of(context)!.loginPageDescription +
-                AppLocalizations.of(context)!.loginPageDescription +
-                AppLocalizations.of(context)!.loginPageDescription,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              height: 2,
-              color: const Color(0xff3B3B3B).withOpacity(0.8),
+                const SizedBox(height: 20),
+                Text(
+                  AppLocalizations.of(context)!.loginPageDescription,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    height: 2,
+                    color: const Color(0xff3B3B3B).withOpacity(0.8),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 20),
@@ -128,16 +133,37 @@ class BrandPage extends StatelessWidget {
                 title: AppLocalizations.of(context)!.website.capitalize(),
                 onPressed: () {},
               ),
+              LandinaTextButton(
+                title: AppLocalizations.of(context)!.website.capitalize(),
+                onPressed: () {},
+              ),
+              LandinaTextButton(
+                title: AppLocalizations.of(context)!.website.capitalize(),
+                onPressed: () {},
+              ),
+              LandinaTextButton(
+                title: AppLocalizations.of(context)!.website.capitalize(),
+                onPressed: () {},
+              ),
             ],
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                SizedBox(height: 15),
+              children: [
+                Image.asset(
+                  "assets/images/not_found.png",
+                  width: 250,
+                ),
+                const SizedBox(height: 25),
                 Text(
                   "هنوز هیچ کوپنی اینجا نیست!",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xff3B3B3B).withOpacity(0.9),
+                  ),
                 ),
               ],
             ),
