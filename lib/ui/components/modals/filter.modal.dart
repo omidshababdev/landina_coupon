@@ -47,7 +47,31 @@ void filterModal(BuildContext context) {
                   ),
                 ),
                 const SizedBox(height: 30),
-                Categories(title: "جدیدترین ها"),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 10,
+                  children: [
+                    ...List.generate(
+                      6,
+                      (index) => Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 5),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                            width: 1,
+                            color: const Color(0xffF1F1F1),
+                          ),
+                        ),
+                        child: Text(
+                          "جدیدترین ها",
+                          style: const TextStyle(
+                              fontSize: 13, fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 30),
                 LandinaTextButton(
                   title: "تغییرات فیلتر رو اعمال کن",

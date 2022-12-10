@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
 import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/components/modals/filter.modal.dart';
-import 'package:landina_coupon/ui/pages/categories/categories.dart';
-import 'package:landina_coupon/ui/pages/profile/profile.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -46,7 +42,7 @@ class HomePage extends StatelessWidget {
 
               userEmail == null && userPassword == null
                   ? loginModal(context)
-                  : Get.toNamed("/login");
+                  : Get.toNamed("/profile");
             },
           ),
         ),
