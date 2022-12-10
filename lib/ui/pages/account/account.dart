@@ -1,6 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -11,8 +10,8 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class BrandPage extends StatelessWidget {
-  const BrandPage({super.key});
+class AccountPage extends StatelessWidget {
+  const AccountPage({super.key});
 
   @override
   Widget build(BuildContext context) {

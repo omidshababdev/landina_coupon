@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
-import 'package:landina_coupon/ui/pages/brand/brand.dart';
+import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/web/web.page.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';

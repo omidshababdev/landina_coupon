@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:landina_coupon/ui/pages/brand/brand.dart';
+import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:get/get.dart';
