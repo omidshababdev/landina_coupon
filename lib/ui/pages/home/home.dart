@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
             title: AppLocalizations.of(context)!.appName,
             rightIcon: IconlyLight.category,
             rightIconOnPressed: () {
-              Get.toNamed("/login");
+              Get.toNamed("/categories");
             },
             leftIcon: IconlyLight.profile,
             leftIconOnPressed: () async {
@@ -46,15 +46,7 @@ class HomePage extends StatelessWidget {
 
               userEmail == null && userPassword == null
                   ? loginModal(context)
-                  : {
-                      Config.client.loginUser(userEmail, userPassword),
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfilePage(),
-                        ),
-                      ),
-                    };
+                  : Get.toNamed("/login");
             },
           ),
         ),

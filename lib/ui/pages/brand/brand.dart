@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -81,6 +82,7 @@ class BrandPage extends StatelessWidget {
                             AppLocalizations.of(context)!.brand,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
+                              fontSize: 12,
                               color: const Color(0xff3B3B3B).withOpacity(0.5),
                             ),
                           ),
@@ -127,6 +129,18 @@ class BrandPage extends StatelessWidget {
                 onPressed: () {},
               ),
             ],
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                SizedBox(height: 15),
+                Text(
+                  "هنوز هیچ کوپنی اینجا نیست!",
+                ),
+              ],
+            ),
           ),
         ],
       ),
