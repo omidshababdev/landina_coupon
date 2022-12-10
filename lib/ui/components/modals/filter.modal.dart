@@ -1,5 +1,6 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:landina_coupon/ui/components/categories/categories.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 void filterModal(BuildContext context) {
@@ -45,6 +46,8 @@ void filterModal(BuildContext context) {
                     height: 2,
                   ),
                 ),
+                const SizedBox(height: 30),
+                Categories(title: "جدیدترین ها"),
                 const SizedBox(height: 30),
                 LandinaTextButton(
                   title: "تغییرات فیلتر رو اعمال کن",
