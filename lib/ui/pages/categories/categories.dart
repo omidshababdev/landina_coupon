@@ -47,7 +47,7 @@ class CategoriesPage extends StatelessWidget {
               children: [
                 ...List.generate(
                   6,
-                  (index) => Category(
+                  (index) => const Category(
                     title: "جدیدترین ها",
                   ),
                 ),
