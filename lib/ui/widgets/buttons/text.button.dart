@@ -38,6 +38,11 @@ class LandinaTextButton extends StatelessWidget {
             ),
       child: TextButton(
         onPressed: onPressed,
+        style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ))),
         child: Text(
           title,
           maxLines: 1,

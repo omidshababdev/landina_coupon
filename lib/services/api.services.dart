@@ -1,13 +1,11 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/models/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiService {
-  final endPointUrl = "https://9236-83-122-77-210.ngrok.io/";
+  final endPointUrl = "https://localhost:8000/";
 
   // Login User Future
   Future<void> loginUser(

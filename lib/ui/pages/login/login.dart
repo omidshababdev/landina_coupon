@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/instance_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
@@ -10,6 +11,8 @@ import 'package:landina_coupon/ui/pages/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+
+import 'package:get/get.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -116,23 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: LandinaTextButton(
                     title: AppLocalizations.of(context)!.loginToAccount,
                     onPressed: () async {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      String userEmail = prefs.getString("email").toString();
-                      String userPassword =
-                          prefs.getString("password").toString();
-                      setState(() {
-                        Config.client.loginUser(
-                          userEmail,
-                          userPassword,
-                        );
-                      });
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfilePage(),
-                        ),
-                      );
+                      Get.offNamed("/profile");
                     },
                   ),
                 ),

@@ -125,6 +125,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       initialRoute: "/",
       getPages: [
         GetPage(name: "/login", page: () => const LoginPage()),
+        GetPage(name: "/profile", page: () => const ProfilePage()),
         GetPage(name: "/brand", page: () => const BrandPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
       ],
