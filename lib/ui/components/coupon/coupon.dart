@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
-import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
-import 'package:landina_coupon/ui/pages/web/web.page.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 
@@ -25,8 +23,6 @@ class Coupon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool brandName = true;
-
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -61,7 +57,7 @@ class Coupon extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed("/brand");
+                    Get.toNamed("/account");
                   },
                   child: Container(
                     width: 50,
@@ -90,27 +86,20 @@ class Coupon extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         ),
                       ),
-                      brandName == true
-                          ? GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const WebPage(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                brand,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            )
-                          : Container(),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed("/account");
+                        },
+                        child: Text(
+                          brand,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
