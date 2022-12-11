@@ -50,7 +50,11 @@ class _HomePageState extends State<HomePage> {
               Config.box.read("email") == null &&
                       Config.box.read("pass") == null
                   ? loginModal(context)
-                  : Get.toNamed("/profile");
+                  : {
+                      Config.client.loginUser(
+                          Config.box.read("email"), Config.box.read("pass")),
+                      Get.toNamed("/profile"),
+                    };
             },
           ),
         ),

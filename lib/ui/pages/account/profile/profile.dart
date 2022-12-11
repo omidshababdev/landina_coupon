@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
@@ -25,6 +26,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+    setState(() {
+      Config.client.userInfo();
+    });
   }
 
   @override
@@ -47,7 +51,10 @@ class _ProfilePageState extends State<ProfilePage> {
       body: FutureBuilder(
         future: Config.client.userInfo(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
+          User? user = UserModel().user;
+          if (snapshot.connectionState == ConnectionState.active ||
+              snapshot.connectionState == ConnectionState.done) {
+            print(snapshot.connectionState);
             return ListView(
               key: const PageStorageKey<String>('profile'),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -78,52 +85,50 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                           ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Wrap(
-                                  spacing: 8,
-                                  crossAxisAlignment: WrapCrossAlignment.center,
-                                  children: [
-                                    Text(
-                                      AppLocalizations.of(context)!.appName,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18,
-                                      ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Wrap(
+                                spacing: 8,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(context)!.appName,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
                                     ),
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 8,
-                                        vertical: 2,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xffF1F1F1),
-                                        borderRadius: BorderRadius.circular(50),
-                                      ),
-                                      child: Text(
-                                        AppLocalizations.of(context)!.brand,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: const Color(0xff3B3B3B)
-                                              .withOpacity(0.5),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  AppLocalizations.of(context)!.brandName,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    color: const Color(0xff3B3B3B)
-                                        .withOpacity(0.8),
                                   ),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 8,
+                                      vertical: 2,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffF1F1F1),
+                                      borderRadius: BorderRadius.circular(50),
+                                    ),
+                                    child: Text(
+                                      AppLocalizations.of(context)!.brand,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: const Color(0xff3B3B3B)
+                                            .withOpacity(0.5),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Text(
+                                AppLocalizations.of(context)!.brandName,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  color:
+                                      const Color(0xff3B3B3B).withOpacity(0.8),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
@@ -147,7 +152,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     LandinaTextButton(
                       title: AppLocalizations.of(context)!.follow.capitalize(),
-                      onPressed: () {},
+                      onPressed: () async {
+                        print("${user?.email}");
+                      },
                     ),
                     LandinaTextButton(
                       title: AppLocalizations.of(context)!.website.capitalize(),
@@ -191,39 +198,38 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             );
-          }
-          return ListView(
-            key: const PageStorageKey<String>('profile'),
-            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-            shrinkWrap: true,
-            physics: const BouncingScrollPhysics(
-              parent: ClampingScrollPhysics(),
-            ),
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Wrap(
-                      spacing: 15,
-                      crossAxisAlignment: WrapCrossAlignment.center,
-                      children: [
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xffF1F1F1),
-                            shape: SmoothRectangleBorder(
-                              borderRadius: SmoothBorderRadius(
-                                cornerRadius: 18,
-                                cornerSmoothing: 0.5,
+          } else if (snapshot.connectionState == ConnectionState.waiting ||
+              snapshot.connectionState == ConnectionState.none) {
+            return ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(
+                parent: ClampingScrollPhysics(),
+              ),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Wrap(
+                        spacing: 15,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xffF1F1F1),
+                              shape: SmoothRectangleBorder(
+                                borderRadius: SmoothBorderRadius(
+                                  cornerRadius: 18,
+                                  cornerSmoothing: 0.5,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Column(
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
@@ -245,75 +251,196 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ],
                           ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: 15,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF1F1F1),
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      height: 15,
-                      decoration: BoxDecoration(
-                        color: const Color(0xffF1F1F1),
-                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      const SizedBox(height: 15),
+                      Container(
+                        height: 15,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF1F1F1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  height: 200,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffF1F1F1),
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 20,
+                        cornerSmoothing: 0.5,
                       ),
                     ),
-                    const SizedBox(height: 15),
-                    Container(
-                      height: 15,
-                      decoration: BoxDecoration(
-                        color: const Color(0xffF1F1F1),
-                        borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  height: 200,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffF1F1F1),
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 20,
+                        cornerSmoothing: 0.5,
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                height: 200,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                decoration: ShapeDecoration(
-                  color: const Color(0xffF1F1F1),
-                  shape: SmoothRectangleBorder(
-                    borderRadius: SmoothBorderRadius(
-                      cornerRadius: 20,
-                      cornerSmoothing: 0.5,
+                const SizedBox(height: 20),
+                Container(
+                  height: 200,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffF1F1F1),
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 20,
+                        cornerSmoothing: 0.5,
+                      ),
                     ),
                   ),
                 ),
+              ],
+            );
+          } else {
+            print(snapshot.connectionState);
+            return ListView(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(
+                parent: ClampingScrollPhysics(),
               ),
-              const SizedBox(height: 20),
-              Container(
-                height: 200,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                decoration: ShapeDecoration(
-                  color: const Color(0xffF1F1F1),
-                  shape: SmoothRectangleBorder(
-                    borderRadius: SmoothBorderRadius(
-                      cornerRadius: 20,
-                      cornerSmoothing: 0.5,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Wrap(
+                        spacing: 15,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Container(
+                            width: 80,
+                            height: 80,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xffF1F1F1),
+                              shape: SmoothRectangleBorder(
+                                borderRadius: SmoothBorderRadius(
+                                  cornerRadius: 18,
+                                  cornerSmoothing: 0.5,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 100,
+                                height: 15,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F1F1),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              const SizedBox(height: 15),
+                              Container(
+                                width: 150,
+                                height: 15,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F1F1),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        height: 15,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF1F1F1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      Container(
+                        height: 15,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF1F1F1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  height: 200,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffF1F1F1),
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 20,
+                        cornerSmoothing: 0.5,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 20),
-              Container(
-                height: 200,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                decoration: ShapeDecoration(
-                  color: const Color(0xffF1F1F1),
-                  shape: SmoothRectangleBorder(
-                    borderRadius: SmoothBorderRadius(
-                      cornerRadius: 20,
-                      cornerSmoothing: 0.5,
+                const SizedBox(height: 20),
+                Container(
+                  height: 200,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffF1F1F1),
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 20,
+                        cornerSmoothing: 0.5,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          );
+                const SizedBox(height: 20),
+                Container(
+                  height: 200,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xffF1F1F1),
+                    shape: SmoothRectangleBorder(
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 20,
+                        cornerSmoothing: 0.5,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }
         },
       ),
     );

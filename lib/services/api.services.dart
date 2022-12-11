@@ -30,12 +30,15 @@ class ApiService {
       Config.box.write("email", email);
       Config.box.write("pass", password);
 
+      print(Config.box.read("email"));
+      print(Config.box.read("pass"));
+
       Get.offNamed("/profile");
 
       print(response.statusCode);
     } else {
       print("Wrong");
-      Get.defaultDialog(title: response.statusCode.toString());
+      Get.snackbar(response.statusCode.toString(), response.body);
       print(response.statusCode);
     }
   }
@@ -50,6 +53,12 @@ class ApiService {
 
     if (response.statusCode == 200) {
       print("UserInfo Correct");
+
+      loginUser(Config.box.read("email"), Config.box.read("pass"));
+
+      print(Config.box.read("email"));
+      print(Config.box.read("pass"));
+
       return UserModel();
     }
   }
