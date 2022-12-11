@@ -2,6 +2,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -119,10 +120,7 @@ class Coupon extends StatelessWidget {
                       onPressed: () {
                         loginModal(context);
                       },
-                      icon: SvgPicture.asset(
-                        "assets/svg/reorder-two-outline.svg",
-                        color: const Color(0xff3B3B3B).withOpacity(0.5),
-                      ),
+                      icon: const Icon(Ionicons.reorder_two),
                     ),
                   ),
                 ),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/instance_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/modals/about.modal.dart';
 import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
 
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
-import 'package:landina_coupon/ui/pages/account/profile/profile.dart';
 import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -15,7 +13,6 @@ import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -119,7 +116,9 @@ class _LoginPageState extends State<LoginPage> {
                   child: LandinaTextButton(
                     title: AppLocalizations.of(context)!.loginToAccount,
                     onPressed: () async {
-                      Get.offNamed("/profile");
+                      await Config.client.loginUser(
+                          emailUsernameController.text,
+                          passwordController.text);
                     },
                   ),
                 ),
@@ -131,14 +130,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const ForgetPage();
-                              },
-                            ),
-                          );
+                          Get.toNamed("/forget");
                         },
                         child: Text(
                           AppLocalizations.of(context)!.forgetPass,

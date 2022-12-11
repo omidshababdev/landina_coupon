@@ -2,7 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
+import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:get/get.dart';
@@ -19,6 +22,8 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  await GetStorage.init();
 
   runApp(
     const LandinaCoupon(),
@@ -125,6 +130,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       initialRoute: "/",
       getPages: [
         GetPage(name: "/login", page: () => const LoginPage()),
+        GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => const ProfilePage()),
         GetPage(name: "/account", page: () => const AccountPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),

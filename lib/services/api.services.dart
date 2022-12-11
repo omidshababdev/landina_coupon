@@ -1,11 +1,15 @@
 import 'dart:convert';
 
+import 'package:get/instance_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:get/get.dart';
 
 class ApiService {
-  final endPointUrl = "https://localhost:8000/";
+  final endPointUrl = "http://localhost:8000/";
 
   // Login User Future
   Future<void> loginUser(
@@ -23,13 +27,15 @@ class ApiService {
     if (response.statusCode == 200) {
       print("Correct");
 
-      SharedPreferences pref = await SharedPreferences.getInstance();
-      pref.setString("email", email);
-      pref.setString("password", password);
+      Config.box.write("email", email);
+      Config.box.write("pass", password);
+
+      Get.offNamed("/profile");
 
       print(response.statusCode);
     } else {
       print("Wrong");
+      Get.defaultDialog(title: response.statusCode.toString());
       print(response.statusCode);
     }
   }

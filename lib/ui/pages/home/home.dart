@@ -1,21 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/components/modals/filter.modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:get/get.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    ApiService client = ApiService();
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -33,14 +46,9 @@ class HomePage extends StatelessWidget {
               Get.toNamed("/categories");
             },
             leftIcon: IconlyLight.profile,
-            leftIconOnPressed: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              String userEmail = prefs.getString("email").toString();
-              String userPassword = prefs.getString("password").toString();
-              print(userEmail);
-              print(userPassword);
-
-              userEmail == null && userPassword == null
+            leftIconOnPressed: () {
+              Config.box.read("email") == null &&
+                      Config.box.read("pass") == null
                   ? loginModal(context)
                   : Get.toNamed("/profile");
             },
