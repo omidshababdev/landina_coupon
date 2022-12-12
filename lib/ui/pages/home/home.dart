@@ -4,9 +4,9 @@ import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
-import 'package:landina_coupon/ui/components/modals/filter.modal.dart';
+import 'package:landina_coupon/ui/components/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/components/modals/login.modal.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 import 'package:get/get.dart';
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
             leftIconOnPressed: () {
               Config.box.read("email") == null &&
                       Config.box.read("pass") == null
-                  ? loginModal(context)
+                  ? landinaModal(Text("data"))
                   : {
                       Config.client.loginUser(
                           Config.box.read("email"), Config.box.read("pass")),
@@ -79,7 +79,63 @@ class _HomePageState extends State<HomePage> {
                   prefixIconOnPressed: () {},
                   suffixIcon: IconlyLight.filter,
                   suffixIconOnPressed: () {
-                    filterModal(context);
+                    landinaModal(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "فیلتر مورد نظرت رو انتخاب کن",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: const Color(0xff3B3B3B).withOpacity(0.5),
+                              height: 2,
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          Wrap(
+                            spacing: 8,
+                            runSpacing: 10,
+                            children: [
+                              ...List.generate(
+                                6,
+                                (index) => Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8, vertical: 5),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xffF1F1F1),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "جدیدترین ها",
+                                    style: const TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 30),
+                          LandinaTextButton(
+                            title: "تغییرات فیلتر رو اعمال کن",
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   obscureText: false,
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/ui/components/modals/forget.modal.dart';
+import 'package:landina_coupon/ui/components/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -59,7 +59,7 @@ class ForgetPage extends StatelessWidget {
                         AppLocalizations.of(context)!.emailAddress.capitalize(),
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
-                      forgetModal(context);
+                      landinaModal(Text("data"));
                     },
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},

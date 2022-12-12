@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/ui/components/modals/about.modal.dart';
-import 'package:landina_coupon/ui/components/modals/email.modal.dart';
+import 'package:landina_coupon/ui/components/modals/modal.dart';
 import 'package:landina_coupon/ui/pages/account/register/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -32,7 +31,7 @@ class EmailPage extends StatelessWidget {
             title: AppLocalizations.of(context)!.emailAddress.capitalize(),
             rightIcon: IconlyLight.info_circle,
             rightIconOnPressed: () {
-              aboutModal(context);
+              landinaModal(Text("data"));
             },
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {
@@ -66,7 +65,7 @@ class EmailPage extends StatelessWidget {
                         AppLocalizations.of(context)!.emailAddress.capitalize(),
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
-                      emailModal(context);
+                      landinaModal(Text("data"));
                     },
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},

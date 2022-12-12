@@ -1,12 +1,11 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.dart';
-import 'package:landina_coupon/ui/components/modals/about.modal.dart';
+import 'package:landina_coupon/ui/components/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize
@@ -40,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
           title: AppLocalizations.of(context)!.account.capitalize(),
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
-            aboutModal(context);
+            landinaModal(Text("data"));
           },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {

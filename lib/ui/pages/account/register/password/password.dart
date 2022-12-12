@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
-import 'package:landina_coupon/ui/components/modals/about.modal.dart';
+import 'package:landina_coupon/ui/components/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -43,7 +43,7 @@ class _PasswordPageState extends State<PasswordPage> {
             title: AppLocalizations.of(context)!.password.capitalize(),
             rightIcon: IconlyLight.info_circle,
             rightIconOnPressed: () {
-              aboutModal(context);
+              landinaModal(Text("data"));
             },
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {

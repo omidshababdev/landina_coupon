@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/ui/components/modals/about.modal.dart';
-import 'package:landina_coupon/ui/components/modals/email_username.modal.dart';
+import 'package:landina_coupon/ui/components/modals/modal.dart';
 
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
@@ -49,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
             title: AppLocalizations.of(context)!.loginToAccount,
             rightIcon: IconlyLight.info_circle,
             rightIconOnPressed: () {
-              aboutModal(context);
+              landinaModal(Text("data"));
             },
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {
@@ -83,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: AppLocalizations.of(context)!.landinaID,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
-                      emailUsernameModal(context);
+                      landinaModal(Text("data"));
                     },
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},

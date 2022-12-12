@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
+import 'package:landina_coupon/ui/components/modals/modal.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/components/modals/login.modal.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -36,7 +36,7 @@ class Coupon extends StatelessWidget {
         );
       },
       onLongPress: () {
-        loginModal(context);
+        landinaModal(Text("data"));
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -118,7 +118,7 @@ class Coupon extends StatelessWidget {
                   child: Center(
                     child: IconButton(
                       onPressed: () {
-                        loginModal(context);
+                        landinaModal(Text("data"));
                       },
                       icon: const Icon(Ionicons.reorder_two),
                     ),
