@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
@@ -80,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
                     hintText: AppLocalizations.of(context)!.landinaID,
-                    suffixIcon: IconlyLight.info_circle,
+                    suffixIcon: Ionicons.reorder_two,
                     suffixIconOnPressed: () {
                       landinaModal(Text("data"));
                     },

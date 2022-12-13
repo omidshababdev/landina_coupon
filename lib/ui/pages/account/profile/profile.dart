@@ -43,7 +43,25 @@ class _ProfilePageState extends State<ProfilePage> {
           title: AppLocalizations.of(context)!.account.capitalize(),
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
-            landinaModal(Text("data"));
+            landinaModal(
+              Wrap(
+                runSpacing: 15,
+                children: [
+                  LandinaTextButton(
+                    title: AppLocalizations.of(context)!.categories,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  LandinaTextButton(
+                    title: "About ${AppLocalizations.of(context)!.appName}",
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            );
           },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
@@ -159,7 +177,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: () {}),
                     LandinaTextButton(
                       title: AppLocalizations.of(context)!.website.capitalize(),
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed("/website");
+                      },
                     ),
                   ],
                 ),

@@ -6,12 +6,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
+import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:get/get.dart';
 import 'package:landina_coupon/ui/pages/account/login/login.dart';
 
 import 'package:landina_coupon/ui/pages/account/profile/profile.dart';
+import 'package:landina_coupon/ui/pages/web/web.page.dart';
 import 'package:quick_actions/quick_actions.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -130,10 +132,12 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       initialRoute: "/",
       getPages: [
         GetPage(name: "/login", page: () => const LoginPage()),
+        GetPage(name: "/signUp", page: () => const EmailPage()),
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => const ProfilePage()),
         GetPage(name: "/account", page: () => const AccountPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
+        GetPage(name: "/website", page: () => const WebPage()),
       ],
       home: const HomePage(),
     );
