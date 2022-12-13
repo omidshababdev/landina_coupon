@@ -20,12 +20,14 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  late bool isFollowed = false;
+  bool isFollowed = true;
   @override
   void initState() {
     super.initState();
-    isFollowed = false;
-    setState(() {});
+
+    setState(() {
+      isFollowed = true;
+    });
   }
 
   @override
@@ -34,7 +36,7 @@ class _AccountPageState extends State<AccountPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: AppLocalizations.of(context)!.brand.capitalize(),
+          title: AppLocalizations.of(context)!.account.capitalize(),
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,

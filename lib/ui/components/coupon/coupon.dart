@@ -117,7 +117,8 @@ class Coupon extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {
                         landinaModal(
-                          Column(
+                          Wrap(
+                            runSpacing: 15,
                             children: [
                               LandinaTextButton(
                                 title: AppLocalizations.of(context)!.brandName,
@@ -125,7 +126,6 @@ class Coupon extends StatelessWidget {
                                   Navigator.pop(context);
                                 },
                               ),
-                              const SizedBox(height: 15),
                               LandinaTextButton(
                                 title: "ورود به حساب",
                                 onPressed: () {
