@@ -1,9 +1,11 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/constants/translation.dart';
 import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -26,7 +28,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    isFollowed = true;
+    isFollowed = false;
     setState(() {
       Config.client.userInfo();
     });
@@ -152,26 +154,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   wrapFit: WrapFit.divided,
                   children: [
                     LandinaTextButton(
-                      title: AppLocalizations.of(context)!.follow.capitalize(),
-                      onPressed: () {},
-                    ),
-                    LandinaTextButton(
-                      title: AppLocalizations.of(context)!.follow.capitalize(),
-                      backgroundColor: isFollowed == true ? true : false,
-                      onPressed: () {
-                        setState(() {
-                          isFollowed = !isFollowed;
-                        });
-                      },
-                    ),
-                    LandinaTextButton(
-                      title: AppLocalizations.of(context)!.website.capitalize(),
-                      onPressed: () {},
-                    ),
-                    LandinaTextButton(
-                      title: AppLocalizations.of(context)!.website.capitalize(),
-                      onPressed: () {},
-                    ),
+                        title:
+                            AppLocalizations.of(context)!.follow.capitalize(),
+                        onPressed: () {}),
                     LandinaTextButton(
                       title: AppLocalizations.of(context)!.website.capitalize(),
                       onPressed: () {},

@@ -49,7 +49,18 @@ class _HomePageState extends State<HomePage> {
             leftIconOnPressed: () {
               Config.box.read("email") == null &&
                       Config.box.read("pass") == null
-                  ? landinaModal(Text("data"))
+                  ? landinaModal(Column(
+                      children: [
+                        LandinaTextButton(
+                          title: AppLocalizations.of(context)!.loginToAccount,
+                          onPressed: () {},
+                        ),
+                        LandinaTextButton(
+                          title: AppLocalizations.of(context)!.loginToAccount,
+                          onPressed: () {},
+                        ),
+                      ],
+                    ))
                   : {
                       Config.client.loginUser(
                           Config.box.read("email"), Config.box.read("pass")),

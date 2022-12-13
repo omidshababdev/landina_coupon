@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -41,7 +42,7 @@ class _PasswordPageState extends State<PasswordPage> {
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
             title: AppLocalizations.of(context)!.password.capitalize(),
-            rightIcon: IconlyLight.info_circle,
+            rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"));
             },
