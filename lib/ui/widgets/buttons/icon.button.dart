@@ -11,11 +11,21 @@ class LandinaIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: onPressed,
-      icon: Icon(
-        icon,
-        color: const Color(0xff3b3b3b).withOpacity(0.5),
+    return Container(
+      width: 50,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1,
+          color: const Color.fromARGB(10, 0, 0, 0),
+        ),
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: IconButton(
+        onPressed: onPressed,
+        icon: Icon(
+          icon,
+          color: const Color(0xff3b3b3b).withOpacity(0.5),
+        ),
       ),
     );
   }

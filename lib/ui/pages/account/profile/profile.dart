@@ -5,7 +5,7 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.dart';
-import 'package:landina_coupon/ui/components/modals/modal.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize
@@ -22,9 +22,11 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  late bool isFollowed;
   @override
   void initState() {
     super.initState();
+    isFollowed = true;
     setState(() {
       Config.client.userInfo();
     });
@@ -151,13 +153,16 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     LandinaTextButton(
                       title: AppLocalizations.of(context)!.follow.capitalize(),
-                      onPressed: () async {
-                        print("${user?.email}");
-                      },
+                      onPressed: () {},
                     ),
                     LandinaTextButton(
-                      title: AppLocalizations.of(context)!.website.capitalize(),
-                      onPressed: () {},
+                      title: AppLocalizations.of(context)!.follow.capitalize(),
+                      backgroundColor: isFollowed == true ? true : false,
+                      onPressed: () {
+                        setState(() {
+                          isFollowed = !isFollowed;
+                        });
+                      },
                     ),
                     LandinaTextButton(
                       title: AppLocalizations.of(context)!.website.capitalize(),

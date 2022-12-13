@@ -1,10 +1,8 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:landina_coupon/ui/components/modals/copyCoupon.modal.dart';
-import 'package:landina_coupon/ui/components/modals/modal.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
@@ -118,7 +116,25 @@ class Coupon extends StatelessWidget {
                   child: Center(
                     child: IconButton(
                       onPressed: () {
-                        landinaModal(Text("data"));
+                        landinaModal(
+                          Column(
+                            children: [
+                              LandinaTextButton(
+                                title: AppLocalizations.of(context)!.brandName,
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              const SizedBox(height: 15),
+                              LandinaTextButton(
+                                title: "ورود به حساب",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       icon: const Icon(Ionicons.reorder_two),
                     ),
@@ -142,9 +158,37 @@ class Coupon extends StatelessWidget {
               title: AppLocalizations.of(context)!.copyCouponCode,
               backgroundColor: false,
               onPressed: () {
-                copyCouponModal(context);
+                landinaModal(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "کوپن کپی شد!",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: const Color(0xff3B3B3B).withOpacity(0.5),
+                          height: 2,
+                        ),
+                      ),
+                      const SizedBox(height: 30),
+                      LandinaTextButton(
+                        title: "ثبت نظر",
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
+                );
                 Clipboard.setData(
-                  const ClipboardData(text: "salambehamegi"),
+                  const ClipboardData(text: "Coupon code"),
                 );
               },
             ),

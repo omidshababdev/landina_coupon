@@ -4,7 +4,7 @@ import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
-import 'package:landina_coupon/ui/components/modals/modal.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';

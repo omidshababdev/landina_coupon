@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/ui/components/modals/modal.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
