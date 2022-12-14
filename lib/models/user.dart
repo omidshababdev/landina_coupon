@@ -1,31 +1,31 @@
 class UserModel {
-  String? Id;
-  String? username;
-  String? email;
-  String? password;
-  String? profilePicture;
-  String? coverPicture;
-  bool? isAdmin;
+  final String id;
+  final String username;
+  final String email;
+  final String password;
+  final String profilePicture;
+  final String coverPicture;
+  final bool isAdmin;
 
   UserModel({
-    Id,
-    username,
-    email,
-    password,
-    profilePicture,
-    coverPicture,
-    isAdmin,
+    required this.id,
+    required this.username,
+    required this.email,
+    required this.password,
+    required this.profilePicture,
+    required this.coverPicture,
+    required this.isAdmin,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      Id: json['_id'],
-      username: json['username'],
-      email: json['email'],
-      password: json['password'],
-      profilePicture: json['profilePicture'],
-      coverPicture: json['coverPicture'],
-      isAdmin: json['isAdmin'],
+      id: json['id'] as String,
+      username: json['username'] as String,
+      email: json['email'] as String,
+      password: json['password'] as String,
+      profilePicture: json['profilePicture'] as String,
+      coverPicture: json['coverPicture'] as String,
+      isAdmin: json['isAdmin'] as bool,
     );
   }
 }

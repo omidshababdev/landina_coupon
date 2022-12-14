@@ -72,7 +72,6 @@ class _ProfilePageState extends State<ProfilePage> {
       body: FutureBuilder(
         future: Config.client.userInfo(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          UserModel? user = UserModel();
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
             print(snapshot.connectionState);
@@ -114,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
                                   Text(
-                                    "email is: ${user.email}",
+                                    "email is: ",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,

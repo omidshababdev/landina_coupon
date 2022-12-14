@@ -59,7 +59,7 @@ class ApiService {
       print(Config.box.read("email"));
       print(Config.box.read("pass"));
 
-      return UserModel();
+      UserModel.fromJson(jsonDecode(response.body));
     }
   }
 }
