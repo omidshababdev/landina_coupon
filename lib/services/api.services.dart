@@ -9,7 +9,7 @@ import 'package:landina_coupon/models/user.dart';
 import 'package:get/get.dart';
 
 class ApiService {
-  final endPointUrl = "http://localhost:8000/";
+  final endPointUrl = "https://landina-account.iran.liara.run/";
 
   // Login User Future
   Future<void> loginUser(
@@ -17,7 +17,7 @@ class ApiService {
     String password,
   ) async {
     final response = await http.post(
-      Uri.parse('${endPointUrl}auth/login'),
+      Uri.parse('${endPointUrl}api/auth/login'),
       headers: {
         "Content-type": "application/json",
       },

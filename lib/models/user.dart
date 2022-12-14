@@ -1,36 +1,31 @@
 class UserModel {
-  String? status;
-  User? user;
+  String? Id;
+  String? username;
+  String? email;
+  String? password;
+  String? profilePicture;
+  String? coverPicture;
+  bool? isAdmin;
 
-  UserModel({status, user});
+  UserModel({
+    Id,
+    username,
+    email,
+    password,
+    profilePicture,
+    coverPicture,
+    isAdmin,
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-        status: json['status'],
-        user: json['user'] != null ? User.fromJson(json['user']) : null);
-  }
-}
-
-class User {
-  String? name;
-  String? email;
-  String? photo;
-  String? role;
-  String? createdAt;
-  String? updatedAt;
-  String? id;
-
-  User({name, email, photo, role, createdAt, updatedAt, id});
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      name: json['name'],
+      Id: json['_id'],
+      username: json['username'],
       email: json['email'],
-      photo: json['photo'],
-      role: json['role'],
-      createdAt: json['created_at'],
-      updatedAt: json['updated_at'],
-      id: json['id'],
+      password: json['password'],
+      profilePicture: json['profilePicture'],
+      coverPicture: json['coverPicture'],
+      isAdmin: json['isAdmin'],
     );
   }
 }
