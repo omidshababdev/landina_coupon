@@ -56,6 +56,7 @@ class _HomePageState extends State<HomePage> {
                       title: AppLocalizations.of(context)!.categories,
                       onPressed: () {
                         Navigator.pop(context);
+                        Get.toNamed("/categories");
                       },
                     ),
                     LandinaTextButton(
