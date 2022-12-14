@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class User {
   final String id;
   final String name;
@@ -5,7 +7,7 @@ class User {
   final String email;
   final String password;
   final String profilePicture;
-  final bool isAdmin;
+  final String accountType;
 
   User({
     required this.id,
@@ -14,18 +16,32 @@ class User {
     required this.email,
     required this.password,
     required this.profilePicture,
-    required this.isAdmin,
+    required this.accountType,
   });
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'username': username,
+      'email': email,
+      'password': password,
+      'profilePicture': profilePicture,
+      'accountType': accountType,
+    };
+  }
+
+  factory User.fromJson(Map<String, dynamic> map) {
     return User(
-      id: json['id'] as String,
-      name: json['name'] as String,
-      username: json['username'] as String,
-      email: json['email'] as String,
-      password: json['password'] as String,
-      profilePicture: json['profilePicture'] as String,
-      isAdmin: json['isAdmin'] as bool,
+      id: map['_id'] ?? ' ',
+      name: map['name'] ?? ' ',
+      username: map['username'] ?? ' ',
+      email: map['email'] ?? ' ',
+      password: map['password'] ?? ' ',
+      profilePicture: map['profilePicture'] ?? ' ',
+      accountType: map['accountType'] ?? ' ',
     );
   }
+
+  String toJson() => json.encode(toMap());
 }
