@@ -43,7 +43,7 @@ class ApiService {
     }
   }
 
-  Future<UserModel?> userInfo() async {
+  Future<User?> userInfo() async {
     final response = await http.get(
       Uri.parse('${endPointUrl}users/me'),
       headers: {
@@ -59,7 +59,7 @@ class ApiService {
       print(Config.box.read("email"));
       print(Config.box.read("pass"));
 
-      UserModel.fromJson(jsonDecode(response.body));
+      User.fromJson(jsonDecode(response.body));
     }
   }
 }
