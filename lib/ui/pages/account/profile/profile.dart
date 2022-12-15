@@ -38,17 +38,32 @@ class _ProfilePageState extends State<ProfilePage> {
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
             landinaModal(
-              Wrap(
-                runSpacing: 15,
+              ButtonBarSuper(
+                lineSpacing: 15,
+                wrapType: WrapType.balanced,
+                wrapFit: WrapFit.divided,
                 children: [
                   LandinaTextButton(
-                    title: AppLocalizations.of(context)!.categories,
+                    title: "تنظیمات اپلیکیشن",
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
                   LandinaTextButton(
-                    title: "About ${AppLocalizations.of(context)!.appName}",
+                    title: "درباره ${AppLocalizations.of(context)!.appName}",
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  LandinaTextButton(
+                    title: "اشتراک گذاری پروفایل",
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  LandinaTextButton(
+                    title: "می خوام از حسابم خارج بشم",
+                    backgroundColor: true,
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -112,7 +127,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       fontSize: 18,
                                     ),
                                   ),
-                                  snapshot.data!.accountType == 'company'
+                                  snapshot.data!.accountType == 'Company'
                                       ? Container(
                                           padding: const EdgeInsets.symmetric(
                                             horizontal: 8,
@@ -191,7 +206,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     LandinaTextButton(
                       title: 'ویرایش اطلاعات',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed("/account-settings");
+                      },
                     ),
                     LandinaTextButton(
                       title: 'لینک های من',

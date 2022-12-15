@@ -37,6 +37,9 @@ class Coupon extends StatelessWidget {
         landinaModal(Text("data"));
       },
       child: Container(
+        constraints: const BoxConstraints(
+          maxWidth: 325,
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         decoration: ShapeDecoration(
           color: Colors.white,
@@ -121,13 +124,14 @@ class Coupon extends StatelessWidget {
                             runSpacing: 15,
                             children: [
                               LandinaTextButton(
-                                title: AppLocalizations.of(context)!.brandName,
+                                title: "گزارش خطا",
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
                               ),
                               LandinaTextButton(
-                                title: "ورود به حساب",
+                                title: "می خوام ذخیرش کنم",
+                                backgroundColor: true,
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },

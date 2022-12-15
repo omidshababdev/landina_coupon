@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
+import 'package:landina_coupon/ui/pages/account/settings/settings.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:get/get.dart';
@@ -135,6 +136,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => const ProfilePage()),
         GetPage(name: "/account", page: () => const AccountPage()),
+        GetPage(
+            name: "/account-settings", page: () => const AccountSettingsPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
         GetPage(name: "/website", page: () => const WebPage()),
       ],
