@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconly/iconly.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
-import 'package:landina_coupon/ui/pages/account/login/login.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -46,28 +43,9 @@ class _HomePageState extends State<HomePage> {
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
             title: AppLocalizations.of(context)!.appName,
-            rightIcon: Ionicons.reorder_two,
+            rightIcon: IconlyLight.category,
             rightIconOnPressed: () {
-              landinaModal(
-                Wrap(
-                  runSpacing: 15,
-                  children: [
-                    LandinaTextButton(
-                      title: AppLocalizations.of(context)!.categories,
-                      onPressed: () {
-                        Navigator.pop(context);
-                        Get.toNamed("/categories");
-                      },
-                    ),
-                    LandinaTextButton(
-                      title: "About ${AppLocalizations.of(context)!.appName}",
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-              );
+              Get.toNamed('/categories');
             },
             leftIcon: IconlyLight.profile,
             leftIconOnPressed: () {

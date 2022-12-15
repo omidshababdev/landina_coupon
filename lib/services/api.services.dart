@@ -18,10 +18,11 @@ class ApiService {
     try {
       User user = User(
         id: ' ',
-        name: ' ',
+        name: 'نام و نام خانوادگی',
         username: username,
         email: email,
         password: password,
+        bio: 'اطلاعاتی که می تونه به افراد بازدیدکننده از پرفایلت کمک کنه',
         profilePicture: ' ',
         accountType: 'Personal',
       );

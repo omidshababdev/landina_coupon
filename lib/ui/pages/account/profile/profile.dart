@@ -112,31 +112,55 @@ class _ProfilePageState extends State<ProfilePage> {
                                       fontSize: 18,
                                     ),
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffF1F1F1),
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Text(
-                                      snapshot.data!.accountType,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 12,
-                                        color: const Color(0xff3B3B3B)
-                                            .withOpacity(0.5),
-                                      ),
-                                    ),
-                                  ),
+                                  snapshot.data!.accountType == 'company'
+                                      ? Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8,
+                                            vertical: 2,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xffF1F1F1),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          child: Text(
+                                            snapshot.data!.accountType,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 12,
+                                              color: const Color(0xff3B3B3B)
+                                                  .withOpacity(0.5),
+                                            ),
+                                          ),
+                                        )
+                                      : Container(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8,
+                                            vertical: 2,
+                                          ),
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xffF1F1F1),
+                                            borderRadius:
+                                                BorderRadius.circular(50),
+                                          ),
+                                          child: Text(
+                                            snapshot.data!.accountType,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 12,
+                                              color: const Color(0xff3B3B3B)
+                                                  .withOpacity(0.5),
+                                            ),
+                                          ),
+                                        )
                                 ],
                               ),
+                              const SizedBox(height: 5),
                               Text(
-                                snapshot.data!.name,
+                                snapshot.data!.username,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
+                                  fontFamily: "Poppins",
                                   color:
                                       const Color(0xff3B3B3B).withOpacity(0.8),
                                 ),
@@ -147,7 +171,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        snapshot.data!.name,
+                        snapshot.data!.bio,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           height: 2,
@@ -164,11 +190,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   wrapFit: WrapFit.divided,
                   children: [
                     LandinaTextButton(
-                        title:
-                            AppLocalizations.of(context)!.follow.capitalize(),
-                        onPressed: () {}),
+                      title: 'ویرایش اطلاعات',
+                      onPressed: () {},
+                    ),
                     LandinaTextButton(
-                      title: AppLocalizations.of(context)!.website.capitalize(),
+                      title: 'لینک های من',
                       onPressed: () {
                         Get.toNamed("/website");
                       },
