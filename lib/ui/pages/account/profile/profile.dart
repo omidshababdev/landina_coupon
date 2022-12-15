@@ -134,7 +134,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ],
                               ),
                               Text(
-                                snapshot.data!.email,
+                                snapshot.data!.name,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color:
@@ -147,7 +147,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        snapshot.data!.email,
+                        snapshot.data!.name,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           height: 2,
