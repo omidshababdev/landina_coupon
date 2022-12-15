@@ -40,53 +40,48 @@ class ApiService {
   }
 
   // Login User Future
-  Future<void> loginUser(
-    String email,
-    String password,
-  ) async {
-    try {
-      http.Response res = await http.post(
-        Uri.parse('${endPointUrl}api/auth/login'),
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: json.encode({
-          'email': email,
-          'password': password,
-        }),
-      );
+  Future<User> loginUser(String email, String password) async {
+    final res = await http.post(
+      Uri.parse('${endPointUrl}api/auth/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+      }),
+    );
 
-      if (res.statusCode == 200) {
-        Config.box.write("email", email);
-        Config.box.write("pass", password);
+    if (res.statusCode == 200) {
+      Config.box.write("email", email);
+      Config.box.write("pass", password);
 
-        Get.offNamed("/profile");
-        print(res.body);
-      } else {
-        Get.snackbar(res.statusCode.toString(), res.body);
-      }
-    } catch (e) {
-      Get.snackbar("An Error", e.toString());
+      Config.box.write("userId", "6399fd67ba7ab3128989057e");
+
+      Get.offNamed("/profile");
+      return User.fromJson(jsonDecode(res.body));
+    } else {
+      throw Exception('Failed to Login.');
     }
   }
 
-  Future<User?> userInfo() async {
-    final response = await http.get(
-      Uri.parse('${endPointUrl}users/me'),
-      headers: {
-        "Content-type": "application/json",
+  // Get a User
+  Future<User> getUser(String userId) async {
+    final res = await http.get(
+      Uri.parse('${endPointUrl}api/users/${userId}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
       },
     );
 
-    if (response.statusCode == 200) {
-      print("UserInfo Correct");
-
-      loginUser(Config.box.read("email"), Config.box.read("pass"));
-
-      print(Config.box.read("email"));
-      print(Config.box.read("pass"));
-
-      User.fromJson(jsonDecode(response.body));
+    if (res.statusCode == 200) {
+      // If the server did return a 200 OK response,
+      // then parse the JSON.
+      return User.fromJson(jsonDecode(res.body));
+    } else {
+      // If the server did not return a 200 OK response,
+      // then throw an exception.
+      throw Exception('Failed to get user!');
     }
   }
 }

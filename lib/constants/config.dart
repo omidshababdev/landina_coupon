@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/services/api.services.dart';
 
 class Config {
@@ -9,4 +10,6 @@ class Config {
   static ApiService client = ApiService();
 
   static GetStorage box = GetStorage();
+
+  static Future<User>? myInfo;
 }

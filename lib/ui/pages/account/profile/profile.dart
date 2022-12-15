@@ -5,7 +5,6 @@ import 'package:get/route_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/constants/translation.dart';
 import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -24,14 +23,9 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  late bool isFollowed;
   @override
   void initState() {
     super.initState();
-    isFollowed = false;
-    setState(() {
-      Config.client.userInfo();
-    });
   }
 
   @override
@@ -69,12 +63,11 @@ class _ProfilePageState extends State<ProfilePage> {
           },
         ),
       ),
-      body: FutureBuilder(
-        future: Config.client.userInfo(),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
+      body: FutureBuilder<User>(
+        future: Config.myInfo,
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
-            print(snapshot.connectionState);
             return ListView(
               key: const PageStorageKey<String>('profile'),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -113,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
                                   Text(
-                                    "email is: ",
+                                    snapshot.data!.name,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
@@ -129,7 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Text(
-                                      AppLocalizations.of(context)!.brand,
+                                      snapshot.data!.accountType,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
@@ -141,7 +134,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ],
                               ),
                               Text(
-                                AppLocalizations.of(context)!.brandName,
+                                snapshot.data!.email,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color:
@@ -154,7 +147,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        AppLocalizations.of(context)!.loginPageDescription,
+                        snapshot.data!.email,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           height: 2,
