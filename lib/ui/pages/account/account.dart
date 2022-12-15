@@ -36,7 +36,7 @@ class _AccountPageState extends State<AccountPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: AppLocalizations.of(context)!.account.capitalize(),
+          title: AppLocalizations.of(context)!.brandName.capitalize(),
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,
