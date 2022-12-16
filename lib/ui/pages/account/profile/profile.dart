@@ -6,6 +6,7 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.dart';
+import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
@@ -244,124 +245,11 @@ class _ProfilePageState extends State<ProfilePage> {
             );
           } else if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.connectionState == ConnectionState.none) {
-            return ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(
-                parent: ClampingScrollPhysics(),
+            return Center(
+              child: LandinaIconButton(
+                icon: Ionicons.reload,
+                onPressed: () {},
               ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Wrap(
-                        spacing: 15,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            decoration: ShapeDecoration(
-                              color: const Color(0xffF1F1F1),
-                              shape: SmoothRectangleBorder(
-                                borderRadius: SmoothBorderRadius(
-                                  cornerRadius: 18,
-                                  cornerSmoothing: 0.5,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 15,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                              const SizedBox(height: 15),
-                              Container(
-                                width: 150,
-                                height: 15,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      Container(
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      const SizedBox(height: 15),
-                      Container(
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 200,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
-                    shape: SmoothRectangleBorder(
-                      borderRadius: SmoothBorderRadius(
-                        cornerRadius: 20,
-                        cornerSmoothing: 0.5,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 200,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
-                    shape: SmoothRectangleBorder(
-                      borderRadius: SmoothBorderRadius(
-                        cornerRadius: 20,
-                        cornerSmoothing: 0.5,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 200,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
-                    shape: SmoothRectangleBorder(
-                      borderRadius: SmoothBorderRadius(
-                        cornerRadius: 20,
-                        cornerSmoothing: 0.5,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
             );
           } else {
             print(snapshot.connectionState);
