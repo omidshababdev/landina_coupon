@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   : {
                       setState(() {
-                        Config.myInfo = Config.client.loginUser(
+                        Config.userInfo = Config.client.loginUser(
                             Config.box.read("email"), Config.box.read("pass"));
                       }),
                       Get.toNamed("/profile"),
