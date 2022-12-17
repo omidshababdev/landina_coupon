@@ -8,6 +8,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -250,11 +251,21 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
+                          final couponInfo = snapshot.data![index];
                           return Coupon(
-                            userId: snapshot.data![index].userId,
-                            title: snapshot.data![index].name,
-                            description: snapshot.data![index].desc,
-                            couponCode: snapshot.data![index].code,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      CouponPage(couponInfo: couponInfo),
+                                ),
+                              );
+                            },
+                            userId: couponInfo.userId,
+                            title: couponInfo.name,
+                            description: couponInfo.desc,
+                            couponCode: couponInfo.code,
                           );
                         },
                         separatorBuilder: (context, index) =>

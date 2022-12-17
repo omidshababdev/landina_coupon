@@ -69,7 +69,7 @@ class ApiService {
   // Get a User
   Future<UserModel> getUser(String userId) async {
     final res = await http.get(
-      Uri.parse('${endPointUrl}api/users/${userId}'),
+      Uri.parse('${endPointUrl}api/users/$userId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

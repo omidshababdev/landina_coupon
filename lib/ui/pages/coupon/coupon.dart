@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:landina_coupon/models/coupon.dart';
+import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize
@@ -8,7 +10,8 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CouponPage extends StatelessWidget {
-  const CouponPage({super.key});
+  final CouponModel couponInfo;
+  const CouponPage({super.key, required this.couponInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +26,11 @@ class CouponPage extends StatelessWidget {
           leftIconOnPressed: () {
             Navigator.pop(context);
           },
+        ),
+      ),
+      body: Center(
+        child: Text(
+          couponInfo.name,
         ),
       ),
     );

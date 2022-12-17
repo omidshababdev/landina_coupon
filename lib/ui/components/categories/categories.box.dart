@@ -20,7 +20,8 @@ class CategoriesBox extends StatelessWidget {
         children: [
           ...List.generate(
             8,
-            (index) => const Coupon(
+            (index) => Coupon(
+              onTap: () {},
               userId: "",
               title: "عنوان تخفیف موجود",
               description:

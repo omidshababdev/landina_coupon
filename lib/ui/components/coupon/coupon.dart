@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.dart';
+import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -17,6 +18,7 @@ class Coupon extends StatefulWidget {
   final String title;
   final String description;
   final String couponCode;
+  final VoidCallback onTap;
 
   const Coupon({
     super.key,
@@ -24,6 +26,7 @@ class Coupon extends StatefulWidget {
     required this.title,
     required this.description,
     required this.couponCode,
+    required this.onTap,
   });
 
   @override
@@ -42,16 +45,7 @@ class _CouponState extends State<Coupon> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) {
-              return const CouponPage();
-            },
-          ),
-        );
-      },
+      onTap: widget.onTap,
       onLongPress: () {
         landinaModal(Text("data"));
       },
@@ -76,60 +70,153 @@ class _CouponState extends State<Coupon> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Get.toNamed("/account");
+                FutureBuilder<UserModel>(
+                  future: Config.userInfo,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done ||
+                        snapshot.connectionState == ConnectionState.active) {
+                      return Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Get.toNamed("/account");
+                            },
+                            child: Container(
+                              width: 50,
+                              height: 50,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xffF1F1F1),
+                                shape: SmoothRectangleBorder(
+                                  borderRadius: SmoothBorderRadius(
+                                    cornerRadius: 10,
+                                    cornerSmoothing: 0.5,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                snapshot.data!.name,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.toNamed("/account");
+                                },
+                                child: Text(
+                                  snapshot.data!.username,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14,
+                                    color: Color(0xff3B3B3B),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    } else if (snapshot.connectionState ==
+                            ConnectionState.waiting ||
+                        snapshot.connectionState == ConnectionState.none) {
+                      return Wrap(
+                        spacing: 15,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xffF1F1F1),
+                              shape: SmoothRectangleBorder(
+                                borderRadius: SmoothBorderRadius(
+                                  cornerRadius: 10,
+                                  cornerSmoothing: 0.5,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 80,
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F1F1),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Container(
+                                width: 100,
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F1F1),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Wrap(
+                        spacing: 15,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: ShapeDecoration(
+                              color: const Color(0xffF1F1F1),
+                              shape: SmoothRectangleBorder(
+                                borderRadius: SmoothBorderRadius(
+                                  cornerRadius: 10,
+                                  cornerSmoothing: 0.5,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 80,
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F1F1),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Container(
+                                width: 100,
+                                height: 10,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffF1F1F1),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    }
                   },
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: ShapeDecoration(
-                      color: const Color(0xffF1F1F1),
-                      shape: SmoothRectangleBorder(
-                        borderRadius: SmoothBorderRadius(
-                          cornerRadius: 10,
-                          cornerSmoothing: 0.5,
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
                 const SizedBox(width: 10),
-                // FutureBuilder<UserModel>(
-                //   future: Config.userInfo,
-                //   builder: (context, snapshot) {
-                //     return Expanded(
-                //       child: Column(
-                //         crossAxisAlignment: CrossAxisAlignment.start,
-                //         children: [
-                //           Text(
-                //             'name',
-                //             maxLines: 1,
-                //             overflow: TextOverflow.ellipsis,
-                //             style: const TextStyle(
-                //               fontWeight: FontWeight.w600,
-                //             ),
-                //           ),
-                //           GestureDetector(
-                //             onTap: () {
-                //               Get.toNamed("/account");
-                //             },
-                //             child: Text(
-                //               'username',
-                //               maxLines: 1,
-                //               overflow: TextOverflow.ellipsis,
-                //               style: const TextStyle(
-                //                 fontWeight: FontWeight.w400,
-                //                 fontSize: 14,
-                //               ),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     );
-                //   },
-                // ),
-                // const SizedBox(width: 10),
                 Container(
                   width: 50,
                   height: 50,
