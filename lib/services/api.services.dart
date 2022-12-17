@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
 
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ class ApiService {
     required String password,
   }) async {
     try {
-      User user = User(
+      UserModel user = UserModel(
         id: ' ',
         name: 'نام و نام خانوادگی',
         username: username,
@@ -34,14 +35,13 @@ class ApiService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      print(res.statusCode);
     } catch (e) {
       //
     }
   }
 
   // Login User Future
-  Future<User> loginUser(String email, String password) async {
+  Future<UserModel> loginUser(String email, String password) async {
     final res = await http.post(
       Uri.parse('${endPointUrl}api/auth/login'),
       headers: <String, String>{
@@ -60,14 +60,14 @@ class ApiService {
       Config.box.write("userId", "6399fd67ba7ab3128989057e");
 
       Get.offNamed("/profile");
-      return User.fromJson(jsonDecode(res.body));
+      return UserModel.fromJson(jsonDecode(res.body));
     } else {
       throw Exception('Failed to Login.');
     }
   }
 
   // Get a User
-  Future<User> getUser(String userId) async {
+  Future<UserModel> getUser(String userId) async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/users/${userId}'),
       headers: <String, String>{
@@ -78,11 +78,27 @@ class ApiService {
     if (res.statusCode == 200) {
       // If the server did return a 200 OK response,
       // then parse the JSON.
-      return User.fromJson(jsonDecode(res.body));
+      return UserModel.fromJson(jsonDecode(res.body));
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
       throw Exception('Failed to get user!');
+    }
+  }
+
+  // Timeline Coupons
+  Future<CouponModel> timelineCoupons(String userId) async {
+    final res = await http.get(
+      Uri.parse('${endPointUrl}api/coupons/timeline/all'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (res.statusCode == 200) {
+      return CouponModel.fromJson(jsonDecode(res.body));
+    } else {
+      throw Exception('Failed to Login.');
     }
   }
 }

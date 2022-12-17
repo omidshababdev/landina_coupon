@@ -11,5 +11,5 @@ class Config {
 
   static GetStorage box = GetStorage();
 
-  static Future<User>? userInfo;
+  static Future<UserModel>? userInfo;
 }

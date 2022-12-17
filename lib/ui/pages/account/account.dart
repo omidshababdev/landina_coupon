@@ -48,7 +48,7 @@ class _AccountPageState extends State<AccountPage> {
           },
         ),
       ),
-      body: FutureBuilder<User>(
+      body: FutureBuilder<UserModel>(
         future: Config.userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||

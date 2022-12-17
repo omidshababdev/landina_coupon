@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class User {
+class UserModel {
   final String id;
   final String name;
   final String username;
@@ -10,7 +10,7 @@ class User {
   final String profilePicture;
   final String accountType;
 
-  User({
+  UserModel({
     required this.id,
     required this.name,
     required this.username,
@@ -34,8 +34,8 @@ class User {
     };
   }
 
-  factory User.fromJson(Map<String, dynamic> map) {
-    return User(
+  factory UserModel.fromJson(Map<String, dynamic> map) {
+    return UserModel(
       id: map['_id'] ?? ' ',
       name: map['name'] ?? ' ',
       username: map['username'] ?? ' ',
