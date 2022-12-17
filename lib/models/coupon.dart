@@ -7,6 +7,7 @@ class CouponModel {
   final String name;
   final String desc;
   final Array likes;
+  final Array links;
   final String location;
 
   CouponModel({
@@ -15,6 +16,7 @@ class CouponModel {
     required this.name,
     required this.desc,
     required this.likes,
+    required this.links,
     required this.location,
   });
 
@@ -25,6 +27,7 @@ class CouponModel {
       'name': name,
       'desc': desc,
       'likes': likes,
+      'links': links,
       'location': location,
     };
   }
@@ -36,6 +39,7 @@ class CouponModel {
       name: map['name'] ?? ' ',
       desc: map['desc'] ?? ' ',
       likes: map['likes'] ?? ' ',
+      links: map['links'] ?? ' ',
       location: map['location'] ?? ' ',
     );
   }
