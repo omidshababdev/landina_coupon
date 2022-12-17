@@ -87,7 +87,7 @@ class ApiService {
   }
 
   // Timeline Coupons
-  Future<CouponModel> timelineCoupons(String userId) async {
+  Future<List<CouponModel>> timelineCoupons() async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/coupons/timeline/all'),
       headers: <String, String>{
@@ -96,9 +96,10 @@ class ApiService {
     );
 
     if (res.statusCode == 200) {
-      return CouponModel.fromJson(jsonDecode(res.body));
+      List jsonResponse = json.decode(res.body);
+      return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else {
-      throw Exception('Failed to Login.');
+      throw Exception('Failed to get coupons.');
     }
   }
 }

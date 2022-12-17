@@ -15,6 +15,7 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -186,10 +187,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Text(
+                      ReadMoreText(
                         snapshot.data!.bio,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                        trimLines: 2,
+                        trimMode: TrimMode.Line,
+                        trimCollapsedText: 'بیشتر',
+                        trimExpandedText: '',
+                        moreStyle: TextStyle(
+                          height: 2,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xff3B3B3B).withOpacity(1),
+                        ),
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           height: 2,

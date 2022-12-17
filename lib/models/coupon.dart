@@ -6,8 +6,6 @@ class CouponModel {
   final String userId;
   final String name;
   final String desc;
-  final Array likes;
-  final Array links;
   final String location;
 
   CouponModel({
@@ -15,22 +13,8 @@ class CouponModel {
     required this.userId,
     required this.name,
     required this.desc,
-    required this.likes,
-    required this.links,
     required this.location,
   });
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'userId': userId,
-      'name': name,
-      'desc': desc,
-      'likes': likes,
-      'links': links,
-      'location': location,
-    };
-  }
 
   factory CouponModel.fromJson(Map<String, dynamic> map) {
     return CouponModel(
@@ -38,11 +22,7 @@ class CouponModel {
       userId: map['userId'] ?? ' ',
       name: map['name'] ?? ' ',
       desc: map['desc'] ?? ' ',
-      likes: map['likes'] ?? ' ',
-      links: map['links'] ?? ' ',
       location: map['location'] ?? ' ',
     );
   }
-
-  String toJson() => json.encode(toMap());
 }

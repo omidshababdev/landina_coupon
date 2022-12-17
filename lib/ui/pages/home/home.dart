@@ -1,8 +1,12 @@
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
+import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -30,7 +34,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    ApiService client = ApiService();
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -167,25 +170,103 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Expanded(
-              child: ListView.separated(
-                key: const PageStorageKey<String>('home'),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics(),
-                ),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Coupon(
-                    title: AppLocalizations.of(context)!.couponTextTitle,
-                    brand: AppLocalizations.of(context)!.brandName,
-                    description:
-                        AppLocalizations.of(context)!.couponDescription,
-                  );
+              child: FutureBuilder<List<CouponModel>>(
+                future: Config.client.timelineCoupons(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done ||
+                      snapshot.connectionState == ConnectionState.active) {
+                    return ListView.separated(
+                      key: const PageStorageKey<String>('home'),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 20),
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics(),
+                      ),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return Coupon(
+                          title: snapshot.data![index].name,
+                          brand: AppLocalizations.of(context)!.brandName,
+                          description:
+                              AppLocalizations.of(context)!.couponDescription,
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 15),
+                    );
+                  } else if (snapshot.connectionState ==
+                      ConnectionState.waiting) {
+                    return ListView.separated(
+                      key: const PageStorageKey<String>('home'),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 20),
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics(),
+                      ),
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 200,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 20),
+                          decoration: ShapeDecoration(
+                            color: const Color(0xffF1F1F1),
+                            shape: SmoothRectangleBorder(
+                              borderRadius: SmoothBorderRadius(
+                                cornerRadius: 20,
+                                cornerSmoothing: 0.5,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 15),
+                    );
+                  } else if (snapshot.connectionState == ConnectionState.none) {
+                    return Center(
+                      child: LandinaIconButton(
+                        icon: Ionicons.reload,
+                        onPressed: () {
+                          setState(() {
+                            // Reload Page
+                          });
+                        },
+                      ),
+                    );
+                  } else {
+                    return ListView.separated(
+                      key: const PageStorageKey<String>('home'),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 20),
+                      shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics(),
+                      ),
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 200,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 20),
+                          decoration: ShapeDecoration(
+                            color: const Color(0xffF1F1F1),
+                            shape: SmoothRectangleBorder(
+                              borderRadius: SmoothBorderRadius(
+                                cornerRadius: 20,
+                                cornerSmoothing: 0.5,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 15),
+                    );
+                  }
                 },
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 15),
               ),
             ),
           ],
