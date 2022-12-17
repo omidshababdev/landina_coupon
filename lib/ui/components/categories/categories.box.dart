@@ -21,8 +21,8 @@ class CategoriesBox extends StatelessWidget {
           ...List.generate(
             8,
             (index) => const Coupon(
+              userId: "",
               title: "عنوان تخفیف موجود",
-              brand: "نام برند",
               description:
                   "توضیحات کوپن که اینجا قرار میگیره میگه قرار جیکار کنه!",
               couponCode: "couponCode",

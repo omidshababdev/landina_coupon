@@ -190,8 +190,8 @@ class _HomePageState extends State<HomePage> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         return Coupon(
+                          userId: snapshot.data![index].userId,
                           title: snapshot.data![index].name,
-                          brand: snapshot.data![index].userId,
                           description: snapshot.data![index].desc,
                           couponCode: snapshot.data![index].code,
                         );

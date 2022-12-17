@@ -5,7 +5,9 @@ import 'package:get/route_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
+import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -28,6 +30,10 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+    setState(() {
+      Config.couponInfo =
+          Config.client.getUserCoupon(Config.box.read("userId"));
+    });
   }
 
   @override
@@ -87,14 +93,14 @@ class _ProfilePageState extends State<ProfilePage> {
               snapshot.connectionState == ConnectionState.done) {
             return ListView(
               key: const PageStorageKey<String>('profile'),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 20),
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(
                 parent: ClampingScrollPhysics(),
               ),
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -208,46 +214,77 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                ButtonBarSuper(
-                  lineSpacing: 15,
-                  wrapType: WrapType.balanced,
-                  wrapFit: WrapFit.divided,
-                  children: [
-                    LandinaTextButton(
-                      title: 'ویرایش اطلاعات',
-                      onPressed: () {
-                        Get.toNamed("/account-settings");
-                      },
-                    ),
-                    LandinaTextButton(
-                      title: 'لینک های من',
-                      onPressed: () {
-                        Get.toNamed("/website");
-                      },
-                    ),
-                  ],
-                ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ButtonBarSuper(
+                    lineSpacing: 15,
+                    wrapType: WrapType.balanced,
+                    wrapFit: WrapFit.divided,
                     children: [
-                      Image.asset(
-                        "assets/images/not_found.png",
-                        width: 250,
+                      LandinaTextButton(
+                        title: 'ویرایش اطلاعات',
+                        onPressed: () {
+                          Get.toNamed("/account-settings");
+                        },
                       ),
-                      const SizedBox(height: 25),
-                      Text(
-                        "هنوز هیچ کوپنی اینجا نیست!",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xff3B3B3B).withOpacity(0.9),
-                        ),
+                      LandinaTextButton(
+                        title: 'لینک های من',
+                        onPressed: () {
+                          Get.toNamed("/website");
+                        },
                       ),
                     ],
                   ),
+                ),
+                FutureBuilder<List<CouponModel>>(
+                  future: Config.couponInfo,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData != false) {
+                      return ListView.separated(
+                        key: const PageStorageKey<String>('home'),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 20),
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(
+                          parent: ClampingScrollPhysics(),
+                        ),
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          return Coupon(
+                            userId: snapshot.data![index].userId,
+                            title: snapshot.data![index].name,
+                            description: snapshot.data![index].desc,
+                            couponCode: snapshot.data![index].code,
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 15),
+                      );
+                    } else {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 50),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/images/not_found.png",
+                              width: 250,
+                            ),
+                            const SizedBox(height: 25),
+                            Text(
+                              "هنوز هیچ کوپنی اینجا نیست!",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff3B3B3B).withOpacity(0.9),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  },
                 ),
               ],
             );

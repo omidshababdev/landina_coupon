@@ -2,6 +2,8 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -10,17 +12,32 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:get/get.dart';
 
-class Coupon extends StatelessWidget {
+class Coupon extends StatefulWidget {
+  final String userId;
   final String title;
-  final String brand;
   final String description;
   final String couponCode;
-  const Coupon(
-      {super.key,
-      required this.title,
-      required this.brand,
-      required this.description,
-      required this.couponCode});
+
+  const Coupon({
+    super.key,
+    required this.userId,
+    required this.title,
+    required this.description,
+    required this.couponCode,
+  });
+
+  @override
+  State<Coupon> createState() => _CouponState();
+}
+
+class _CouponState extends State<Coupon> {
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      Config.userInfo = Config.client.getUser(widget.userId);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,36 +95,41 @@ class Coupon extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed("/account");
-                        },
-                        child: Text(
-                          brand,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 10),
+                // FutureBuilder<UserModel>(
+                //   future: Config.userInfo,
+                //   builder: (context, snapshot) {
+                //     return Expanded(
+                //       child: Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: [
+                //           Text(
+                //             'name',
+                //             maxLines: 1,
+                //             overflow: TextOverflow.ellipsis,
+                //             style: const TextStyle(
+                //               fontWeight: FontWeight.w600,
+                //             ),
+                //           ),
+                //           GestureDetector(
+                //             onTap: () {
+                //               Get.toNamed("/account");
+                //             },
+                //             child: Text(
+                //               'username',
+                //               maxLines: 1,
+                //               overflow: TextOverflow.ellipsis,
+                //               style: const TextStyle(
+                //                 fontWeight: FontWeight.w400,
+                //                 fontSize: 14,
+                //               ),
+                //             ),
+                //           ),
+                //         ],
+                //       ),
+                //     );
+                //   },
+                // ),
+                // const SizedBox(width: 10),
                 Container(
                   width: 50,
                   height: 50,
@@ -148,16 +170,31 @@ class Coupon extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
-            Text(
-              description,
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                fontSize: 14,
-                height: 2,
-                color: const Color(0xff3B3B3B).withOpacity(0.5),
-              ),
+            const SizedBox(height: 15),
+            Wrap(
+              children: [
+                Text(
+                  widget.title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 16,
+                    height: 2,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xff3B3B3B).withOpacity(1),
+                  ),
+                ),
+                Text(
+                  widget.description,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 14,
+                    height: 2,
+                    color: const Color(0xff3B3B3B).withOpacity(0.5),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 30),
             LandinaTextButton(
@@ -194,7 +231,7 @@ class Coupon extends StatelessWidget {
                   ),
                 );
                 Clipboard.setData(
-                  ClipboardData(text: couponCode),
+                  ClipboardData(text: widget.couponCode),
                 );
               },
             ),
