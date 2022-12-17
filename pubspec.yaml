@@ -28,6 +28,7 @@ dependencies:
   json_annotation: ^4.7.0
   path_provider: ^2.0.11
   quick_actions: ^1.0.1
+  readmore: ^2.2.0
   rxdart: ^0.27.7
   share_plus: ^6.3.0
   timezone: ^0.9.0
