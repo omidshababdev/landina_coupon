@@ -29,8 +29,18 @@ class CouponPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Text(
-          couponInfo.name,
+        child: Column(
+          children: [
+            Text(
+              couponInfo.name,
+            ),
+            Text(
+              couponInfo.desc,
+            ),
+            Text(
+              couponInfo.location,
+            ),
+          ],
         ),
       ),
     );
