@@ -80,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       body: FutureBuilder<User>(
-        future: Config.myInfo,
+        future: Config.userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
