@@ -25,6 +25,7 @@ class CategoriesBox extends StatelessWidget {
               brand: "نام برند",
               description:
                   "توضیحات کوپن که اینجا قرار میگیره میگه قرار جیکار کنه!",
+              couponCode: "couponCode",
             ),
           ),
         ],

@@ -4,6 +4,7 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.dart';
+import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
@@ -30,6 +31,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    setState(() {
+      Config.couponInfo = Config.client.timelineCoupons();
+    });
   }
 
   @override
@@ -171,7 +175,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder<List<CouponModel>>(
-                future: Config.client.timelineCoupons(),
+                future: Config.couponInfo,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {
@@ -187,8 +191,9 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context, index) {
                         return Coupon(
                           title: snapshot.data![index].name,
-                          brand: AppLocalizations.of(context)!.brandName,
+                          brand: snapshot.data![index].userId,
                           description: snapshot.data![index].desc,
+                          couponCode: snapshot.data![index].code,
                         );
                       },
                       separatorBuilder: (context, index) =>

@@ -14,5 +14,5 @@ class Config {
 
   static Future<UserModel>? userInfo;
 
-  static late Future<CouponModel>? couponInfo;
+  static Future<List<CouponModel>>? couponInfo;
 }

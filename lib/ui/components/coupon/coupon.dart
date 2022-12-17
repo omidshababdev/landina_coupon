@@ -14,11 +14,13 @@ class Coupon extends StatelessWidget {
   final String title;
   final String brand;
   final String description;
+  final String couponCode;
   const Coupon(
       {super.key,
       required this.title,
       required this.brand,
-      required this.description});
+      required this.description,
+      required this.couponCode});
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +194,7 @@ class Coupon extends StatelessWidget {
                   ),
                 );
                 Clipboard.setData(
-                  const ClipboardData(text: "Coupon code"),
+                  ClipboardData(text: couponCode),
                 );
               },
             ),
