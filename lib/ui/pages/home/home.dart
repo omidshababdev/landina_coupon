@@ -188,8 +188,7 @@ class _HomePageState extends State<HomePage> {
                         return Coupon(
                           title: snapshot.data![index].name,
                           brand: AppLocalizations.of(context)!.brandName,
-                          description:
-                              AppLocalizations.of(context)!.couponDescription,
+                          description: snapshot.data![index].desc,
                         );
                       },
                       separatorBuilder: (context, index) =>
