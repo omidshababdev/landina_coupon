@@ -72,13 +72,20 @@ class _CouponState extends State<Coupon> {
                 FutureBuilder<UserModel>(
                   future: Config.userInfo,
                   builder: (context, snapshot) {
+                    final userInfo = snapshot.data;
                     if (snapshot.connectionState == ConnectionState.done ||
                         snapshot.connectionState == ConnectionState.active) {
                       return Row(
                         children: [
                           GestureDetector(
                             onTap: () {
-                              // Navigator.push(context, MaterialPageRoute(builder: (context) => AccountPage(userInfo: Config.client.getUser(widget.userId),)))
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      AccountPage(userInfo: userInfo),
+                                ),
+                              );
                             },
                             child: Container(
                               width: 50,

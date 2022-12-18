@@ -38,7 +38,7 @@ class _CouponPageState extends State<CouponPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: AppLocalizations.of(context)!.coupon,
+          title: AppLocalizations.of(context)!.coupon.capitalizeFirst,
           rightIcon: IconlyLight.category,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,

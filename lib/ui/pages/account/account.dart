@@ -92,7 +92,7 @@ class _AccountPageState extends State<AccountPage> {
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
                                   Text(
-                                    AppLocalizations.of(context)!.appName,
+                                    widget.userInfo!.name,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
@@ -108,7 +108,7 @@ class _AccountPageState extends State<AccountPage> {
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Text(
-                                      AppLocalizations.of(context)!.brand,
+                                      widget.userInfo!.accountType,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
@@ -120,8 +120,9 @@ class _AccountPageState extends State<AccountPage> {
                                 ],
                               ),
                               Text(
-                                AppLocalizations.of(context)!.brandName,
+                                widget.userInfo!.username,
                                 style: TextStyle(
+                                  fontFamily: "Poppins",
                                   fontWeight: FontWeight.w400,
                                   color:
                                       const Color(0xff3B3B3B).withOpacity(0.8),
@@ -133,7 +134,7 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                       const SizedBox(height: 20),
                       Text(
-                        AppLocalizations.of(context)!.loginPageDescription,
+                        widget.userInfo!.bio,
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           height: 2,
