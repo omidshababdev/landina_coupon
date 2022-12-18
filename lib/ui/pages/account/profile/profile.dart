@@ -34,8 +34,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
     setState(() {
       Config.inProfile = true;
-      Config.couponInfo =
-          Config.client.getUserCoupon(Config.box.read("userId"));
+
+      Config.couponInfo = Config.client.getUserCoupon(Config.box.read("myId"));
     });
   }
 
@@ -92,6 +92,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: FutureBuilder<UserModel>(
         future: Config.userInfo,
         builder: (context, snapshot) {
+          Config.box.write("myId", snapshot.data?.id);
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
             return ListView(
@@ -245,7 +246,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData != false) {
                       return ListView.separated(
-                        key: const PageStorageKey<String>('home'),
+                        key: const PageStorageKey<String>('profile'),
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(

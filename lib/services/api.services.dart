@@ -57,7 +57,7 @@ class ApiService {
       Config.box.write("email", email);
       Config.box.write("pass", password);
 
-      Config.box.write("userId", "6399fd67ba7ab3128989057e");
+      Config.loggedIn = true;
 
       Get.offNamed("/profile");
       return UserModel.fromJson(jsonDecode(res.body));

@@ -16,9 +16,6 @@ import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 import 'package:get/get.dart';
 
-// String Extension for Capitalize
-import 'package:landina_coupon/ui/extensions/string.extension.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,7 +29,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Config.couponInfo = Config.client.timelineCoupons();
+    setState(() {
+      Config.couponInfo = Config.client.timelineCoupons();
+    });
   }
 
   @override
