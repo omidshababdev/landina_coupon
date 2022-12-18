@@ -4,9 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.dart';
-import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
+import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
-import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -79,7 +78,7 @@ class _CouponState extends State<Coupon> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.toNamed("/account");
+                              // Navigator.push(context, MaterialPageRoute(builder: (context) => AccountPage(userInfo: Config.client.getUser(widget.userId),)))
                             },
                             child: Container(
                               width: 50,

@@ -32,9 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      Config.couponInfo = Config.client.timelineCoupons();
-    });
+    Config.couponInfo = Config.client.timelineCoupons();
   }
 
   @override

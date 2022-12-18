@@ -136,7 +136,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/signUp", page: () => const EmailPage()),
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => const ProfilePage()),
-        GetPage(name: "/account", page: () => const AccountPage()),
+        GetPage(name: "/account", page: () => AccountPage()),
         GetPage(
             name: "/account-settings", page: () => const AccountSettingsPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
