@@ -57,27 +57,19 @@ class _CouponPageState extends State<CouponPage> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Wrap(
-              spacing: 5,
-              runSpacing: 10,
-              crossAxisAlignment: WrapCrossAlignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   widget.couponInfo.name,
                   style: TextStyle(
                     fontSize: 16,
+                    height: 2,
                     fontWeight: FontWeight.w600,
                     color: const Color(0xff3B3B3B).withOpacity(1),
                   ),
                 ),
-                Text(
-                  widget.couponInfo.location,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    color: const Color(0xff3B3B3B).withOpacity(0.5),
-                  ),
-                ),
+                const SizedBox(height: 15),
                 ReadMoreText(
                   widget.couponInfo.desc,
                   trimLines: 3,
@@ -97,13 +89,15 @@ class _CouponPageState extends State<CouponPage> {
                     color: const Color(0xff3B3B3B).withOpacity(0.8),
                   ),
                 ),
-                const SizedBox(height: 5),
+                const SizedBox(height: 25),
                 FutureBuilder<UserModel>(
                   future: Config.userInfo,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.done ||
                         snapshot.connectionState == ConnectionState.active) {
-                      return Row(
+                      return Wrap(
+                        spacing: 15,
+                        crossAxisAlignment: WrapCrossAlignment.start,
                         children: [
                           GestureDetector(
                             onTap: () {
@@ -123,7 +117,6 @@ class _CouponPageState extends State<CouponPage> {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 10),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
