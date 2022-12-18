@@ -31,7 +31,9 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
+
     setState(() {
+      Config.inProfile = true;
       Config.couponInfo =
           Config.client.getUserCoupon(Config.box.read("userId"));
     });

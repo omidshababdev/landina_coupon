@@ -259,6 +259,8 @@ class _CouponState extends State<Coupon> {
             ),
             const SizedBox(height: 15),
             Wrap(
+              spacing: 5,
+              runSpacing: 5,
               children: [
                 Text(
                   widget.title,
@@ -267,13 +269,13 @@ class _CouponState extends State<Coupon> {
                   style: TextStyle(
                     fontSize: 16,
                     height: 2,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                     color: const Color(0xff3B3B3B).withOpacity(1),
                   ),
                 ),
                 Text(
                   widget.description,
-                  maxLines: 3,
+                  maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 14,
