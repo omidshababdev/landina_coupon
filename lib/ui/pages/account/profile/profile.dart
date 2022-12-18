@@ -18,6 +18,7 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -29,6 +30,9 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   Future<List<CouponModel>>? couponInfo;
+
+  TextEditingController nameController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -133,11 +137,67 @@ class _ProfilePageState extends State<ProfilePage> {
                                 spacing: 8,
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
-                                  Text(
-                                    snapshot.data!.name,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
+                                  GestureDetector(
+                                    onTap: () {
+                                      landinaModal(
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "ویرایش نام حساب کاربری",
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(1),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 5),
+                                            Text(
+                                              "توی فیلد زیر اسمی رو که میخوای صفحت به اون تغییر کنه رو وارد کن ...",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(0.8),
+                                              ),
+                                            ),
+                                            const SizedBox(height: 25),
+                                            LandinaTextField(
+                                              hintText: "نام حساب کاربری",
+                                              textfieldController:
+                                                  nameController,
+                                              prefixIcon: IconlyLight.paper,
+                                              prefixIconOnPressed: () {},
+                                              suffixIcon:
+                                                  IconlyLight.info_circle,
+                                              suffixIconOnPressed: () {},
+                                              obscureText: false,
+                                              enabled: true,
+                                            ),
+                                            const SizedBox(height: 15),
+                                            LandinaTextButton(
+                                              title: "تغییر نام حساب کاربری",
+                                              onPressed: () async {
+                                                await Config.client.updateUser(
+                                                  Config.box.read("myId"),
+                                                  "name",
+                                                  nameController.text,
+                                                );
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
+                                    child: Text(
+                                      snapshot.data!.name,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
                                     ),
                                   ),
                                   snapshot.data!.accountType == 'Company'
@@ -227,7 +287,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     wrapFit: WrapFit.divided,
                     children: [
                       LandinaTextButton(
-                        title: 'ویرایش اطلاعات',
+                        title: 'اطلاعات تماس',
                         onPressed: () {
                           Get.toNamed("/account-settings");
                         },

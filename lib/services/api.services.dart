@@ -40,7 +40,7 @@ class ApiService {
     }
   }
 
-  // Login User Future
+  // Login User
   Future<UserModel> loginUser(String email, String password) async {
     final res = await http.post(
       Uri.parse('${endPointUrl}api/auth/login'),
@@ -68,6 +68,29 @@ class ApiService {
       return userModel;
     } else {
       throw Exception('Failed to Login.');
+    }
+  }
+
+  // Update User
+  Future<void> updateUser(
+      String userId, String updatePart, String updateValue) async {
+    final res = await http.put(
+      Uri.parse('${endPointUrl}api/users/$userId'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'userId': userId,
+        updatePart: updateValue,
+      }),
+    );
+
+    if (res.statusCode == 200) {
+      Get.snackbar('تغییر نام کاربری موفقیت آمیز بود',
+          'حالا می تونی با خیال راحت ازش استفاده کنی!');
+    } else {
+      Get.snackbar('تغییر نام کاربری موفقیت آمیز نبود :(',
+          'لطفا دوباره امتحان کن. اگه بازم نتونستی حتما بهمون خبر بده!');
     }
   }
 
