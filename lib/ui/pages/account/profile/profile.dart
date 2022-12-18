@@ -239,14 +239,14 @@ class _ProfilePageState extends State<ProfilePage> {
                     ],
                   ),
                 ),
+                const SizedBox(height: 25),
                 FutureBuilder<List<CouponModel>>(
                   future: Config.couponInfo,
                   builder: (context, snapshot) {
                     if (snapshot.hasData != false) {
                       return ListView.separated(
                         key: const PageStorageKey<String>('home'),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(
                           parent: ClampingScrollPhysics(),
