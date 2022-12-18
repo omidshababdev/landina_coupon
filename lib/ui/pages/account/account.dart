@@ -16,7 +16,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 class AccountPage extends StatefulWidget {
-  const AccountPage({super.key});
+  UserModel? userInfo;
+  AccountPage({super.key, this.userInfo});
 
   @override
   State<AccountPage> createState() => _AccountPageState();
