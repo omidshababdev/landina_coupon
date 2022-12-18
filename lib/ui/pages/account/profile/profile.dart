@@ -35,7 +35,10 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       Config.inProfile = true;
 
-      Config.couponInfo = Config.client.getUserCoupon(Config.box.read("myId"));
+      setState(() {
+        Config.couponInfo =
+            Config.client.getUserCoupon(Config.box.read("myId"));
+      });
     });
   }
 

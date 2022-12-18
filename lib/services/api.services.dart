@@ -97,6 +97,7 @@ class ApiService {
 
     if (res.statusCode == 200) {
       List jsonResponse = json.decode(res.body);
+
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else {
       throw Exception('Failed to get coupons.');

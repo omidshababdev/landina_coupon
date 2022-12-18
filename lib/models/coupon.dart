@@ -1,10 +1,10 @@
 class CouponModel {
-  final String id;
-  final String userId;
-  final String name;
-  final String desc;
-  final String code;
-  final String location;
+  String id;
+  String userId;
+  String name;
+  String desc;
+  String code;
+  String location;
 
   CouponModel({
     required this.id,
