@@ -28,6 +28,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  Future<List<CouponModel>>? couponInfo;
   @override
   void initState() {
     super.initState();
@@ -36,8 +37,7 @@ class _ProfilePageState extends State<ProfilePage> {
       Config.inProfile = true;
 
       setState(() {
-        Config.couponInfo =
-            Config.client.getUserCoupon(Config.box.read("myId"));
+        couponInfo = Config.client.getUserCoupon(Config.box.read("myId"));
       });
     });
   }
@@ -95,11 +95,9 @@ class _ProfilePageState extends State<ProfilePage> {
       body: FutureBuilder<UserModel>(
         future: Config.userInfo,
         builder: (context, snapshot) {
-          Config.box.write("myId", snapshot.data?.id);
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
             return ListView(
-              key: const PageStorageKey<String>('profile'),
               padding: const EdgeInsets.symmetric(vertical: 20),
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(
@@ -245,11 +243,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 25),
                 FutureBuilder<List<CouponModel>>(
-                  future: Config.couponInfo,
+                  future: couponInfo,
                   builder: (context, snapshot) {
                     if (snapshot.hasData != false) {
                       return ListView.separated(
-                        key: const PageStorageKey<String>('profile'),
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(

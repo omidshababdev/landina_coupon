@@ -26,11 +26,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Future<List<CouponModel>>? couponInfo;
   @override
   void initState() {
     super.initState();
     setState(() {
-      Config.couponInfo = Config.client.timelineCoupons();
+      couponInfo = Config.client.timelineCoupons(Config.box.read("myId"));
     });
   }
 
@@ -173,7 +174,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder<List<CouponModel>>(
-                future: Config.couponInfo,
+                future: couponInfo,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {
@@ -210,7 +211,6 @@ class _HomePageState extends State<HomePage> {
                   } else if (snapshot.connectionState ==
                       ConnectionState.waiting) {
                     return ListView.separated(
-                      key: const PageStorageKey<String>('home'),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 20),
                       shrinkWrap: true,
@@ -250,7 +250,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   } else {
                     return ListView.separated(
-                      key: const PageStorageKey<String>('home'),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 15, vertical: 20),
                       shrinkWrap: true,

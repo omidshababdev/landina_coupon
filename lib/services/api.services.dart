@@ -60,7 +60,12 @@ class ApiService {
       Config.loggedIn = true;
 
       Get.offNamed("/profile");
-      return UserModel.fromJson(jsonDecode(res.body));
+
+      final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
+
+      Config.box.write("myId", userModel.id);
+
+      return userModel;
     } else {
       throw Exception('Failed to Login.');
     }
@@ -86,7 +91,7 @@ class ApiService {
     }
   }
 
-  // Timeline Coupons
+  // Get User Coupons
   Future<List<CouponModel>> getUserCoupon(String userId) async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/users/$userId/coupons'),
@@ -105,9 +110,9 @@ class ApiService {
   }
 
   // Timeline Coupons
-  Future<List<CouponModel>> timelineCoupons() async {
+  Future<List<CouponModel>> timelineCoupons(String userId) async {
     final res = await http.get(
-      Uri.parse('${endPointUrl}api/coupons/timeline/all'),
+      Uri.parse('${endPointUrl}api/coupons/$userId/timeline'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
