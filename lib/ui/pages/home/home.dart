@@ -20,8 +20,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomePage extends StatefulWidget {
   UserModel? user;
   Future? userInfo;
-  Future? allCoupons;
-  Future? timelineCoupons;
 
   HomePage({super.key});
 
@@ -33,12 +31,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
-    setState(() {
-      widget.allCoupons = Config.client.allCoupons();
-      widget.timelineCoupons =
-          Config.client.timelineCoupons(Config.box.read("myId"));
-    });
   }
 
   @override
@@ -180,13 +172,13 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: Config.loggedIn != false
-                    ? widget.timelineCoupons
-                    : widget.allCoupons,
+                future: Config.loggedIn != true
+                    ? Config.client.allCoupons()
+                    : Config.client.timelineCoupons(Config.box.read("myId")),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {
-                    if (snapshot.hasData != true) {
+                    if (snapshot.hasData) {
                       return ListView.separated(
                         key: const PageStorageKey<String>('home'),
                         padding: const EdgeInsets.symmetric(
@@ -195,9 +187,9 @@ class _HomePageState extends State<HomePage> {
                         physics: const BouncingScrollPhysics(
                           parent: AlwaysScrollableScrollPhysics(),
                         ),
-                        itemCount: snapshot.data?.length ?? 0,
+                        itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {
-                          final couponInfo = snapshot.data?[index];
+                          final couponInfo = snapshot.data![index];
                           return Coupon(
                             userId: couponInfo.userId,
                             title: couponInfo.name,
@@ -216,6 +208,12 @@ class _HomePageState extends State<HomePage> {
                         },
                         separatorBuilder: (context, index) =>
                             const SizedBox(height: 15),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                          "اینجا یک خطایی وجود داره!",
+                        ),
                       );
                     } else {
                       return Container(

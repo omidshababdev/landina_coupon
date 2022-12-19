@@ -23,7 +23,7 @@ import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
   Future? couponInfo;
-  Future<UserModel>? userInfo;
+  Future? userInfo;
   ProfilePage({super.key});
 
   @override
@@ -128,7 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
           },
         ),
       ),
-      body: FutureBuilder<UserModel>(
+      body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
@@ -444,18 +444,18 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 25),
                 FutureBuilder(
-                  future: widget.couponInfo,
+                  future: Config.client.getUserCoupon(Config.box.read("myId")),
                   builder: (context, snapshot) {
-                    if (snapshot.hasData != true) {
+                    if (snapshot.hasData) {
                       return ListView.separated(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(
                           parent: ClampingScrollPhysics(),
                         ),
-                        itemCount: snapshot.data?.length ?? 0,
+                        itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {
-                          final couponInfo = snapshot.data?[index];
+                          final couponInfo = snapshot.data![index];
                           return Coupon(
                             onTap: () {
                               Navigator.push(
@@ -466,10 +466,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               );
                             },
-                            userId: Config.box.read("myId"),
-                            title: couponInfo?.name,
-                            description: couponInfo?.desc,
-                            couponCode: couponInfo?.code,
+                            userId: couponInfo.id,
+                            title: couponInfo.name,
+                            description: couponInfo.desc,
+                            couponCode: couponInfo.code,
                           );
                         },
                         separatorBuilder: (context, index) =>
