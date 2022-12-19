@@ -36,14 +36,14 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> map) {
     return UserModel(
-      id: map['_id'],
-      name: map['name'],
-      username: map['username'],
-      email: map['email'],
-      password: map['password'],
-      bio: map['bio'],
-      profilePicture: map['profilePicture'],
-      accountType: map['accountType'],
+      id: map['_id'] ?? ' ',
+      name: map['name'] ?? ' ',
+      username: map['username'] ?? ' ',
+      email: map['email'] ?? ' ',
+      password: map['password'] ?? ' ',
+      bio: map['bio'] ?? ' ',
+      profilePicture: map['profilePicture'] ?? ' ',
+      accountType: map['accountType'] ?? ' ',
     );
   }
 

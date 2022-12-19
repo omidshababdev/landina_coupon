@@ -149,4 +149,21 @@ class ApiService {
       throw Exception('Failed to get coupons.');
     }
   }
+
+  // Get All Coupons
+  Future<List<CouponModel>> allCoupons() async {
+    final res = await http.get(
+      Uri.parse('${endPointUrl}api/coupons/all'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (res.statusCode == 200) {
+      List jsonResponse = json.decode(res.body);
+      return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
+    } else {
+      throw Exception('Failed to get coupons.');
+    }
+  }
 }

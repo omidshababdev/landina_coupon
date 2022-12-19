@@ -34,8 +34,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     setState(() {
-      widget.couponInfo =
-          Config.client.timelineCoupons(Config.box.read("myId"));
+      widget.couponInfo = Config.loggedIn == true
+          ? Config.client.timelineCoupons(Config.box.read("myId"))
+          : Config.client.allCoupons();
     });
   }
 

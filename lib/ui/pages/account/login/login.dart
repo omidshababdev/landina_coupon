@@ -4,7 +4,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
-import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -99,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
                     hintText: AppLocalizations.of(context)!.landinaID,
+                    maxLines: 1,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
                       landinaModal(Text("data"));
@@ -114,6 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
                     hintText: AppLocalizations.of(context)!.password,
+                    maxLines: 1,
                     suffixIcon: _passwordVisible == false
                         ? IconlyLight.show
                         : IconlyLight.hide,
@@ -135,8 +136,9 @@ class _LoginPageState extends State<LoginPage> {
                     title: AppLocalizations.of(context)!.loginToAccount,
                     onPressed: () async {
                       await Config.client.loginUser(
-                          emailUsernameController.text,
-                          passwordController.text);
+                        emailUsernameController.text,
+                        passwordController.text,
+                      );
                     },
                   ),
                 ),

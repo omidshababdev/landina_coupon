@@ -81,13 +81,15 @@ class _CouponState extends State<Coupon> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      AccountPage(user: userInfo),
-                                ),
-                              );
+                              userInfo!.id == Config.box.read("myId")
+                                  ? Get.toNamed("/profile")
+                                  : Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            AccountPage(user: userInfo),
+                                      ),
+                                    );
                             },
                             child: Container(
                               width: 50,
@@ -109,13 +111,15 @@ class _CouponState extends State<Coupon> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          AccountPage(user: userInfo),
-                                    ),
-                                  );
+                                  userInfo!.id == Config.box.read("myId")
+                                      ? Get.toNamed("/profile")
+                                      : Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                AccountPage(user: userInfo),
+                                          ),
+                                        );
                                 },
                                 child: Text(
                                   snapshot.data!.name,
