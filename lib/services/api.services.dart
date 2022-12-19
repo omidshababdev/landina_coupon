@@ -42,7 +42,7 @@ class ApiService {
   }
 
   // Login User
-  Future<UserModel> loginUser(String email, String password) async {
+  Future loginUser(String email, String password) async {
     final res = await http.post(
       Uri.parse('${endPointUrl}api/auth/login'),
       headers: <String, String>{

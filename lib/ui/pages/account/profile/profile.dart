@@ -217,6 +217,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   "name",
                                                   nameController.text,
                                                 );
+                                                Navigator.pop(context);
                                               },
                                             ),
                                           ],
@@ -322,6 +323,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                               "username",
                                               usernameController.text,
                                             );
+                                            Navigator.pop(context);
                                           },
                                         ),
                                       ],
@@ -389,6 +391,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       "bio",
                                       bioController.text,
                                     );
+                                    Navigator.pop(context);
                                   },
                                 ),
                               ],
@@ -443,16 +446,16 @@ class _ProfilePageState extends State<ProfilePage> {
                 FutureBuilder(
                   future: widget.couponInfo,
                   builder: (context, snapshot) {
-                    if (snapshot.hasData != false) {
+                    if (snapshot.hasData != true) {
                       return ListView.separated(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(
                           parent: ClampingScrollPhysics(),
                         ),
-                        itemCount: snapshot.data!.length,
+                        itemCount: snapshot.data?.length ?? 0,
                         itemBuilder: (context, index) {
-                          final couponInfo = snapshot.data![index];
+                          final couponInfo = snapshot.data?[index];
                           return Coupon(
                             onTap: () {
                               Navigator.push(
@@ -464,9 +467,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               );
                             },
                             userId: Config.box.read("myId"),
-                            title: couponInfo.name,
-                            description: couponInfo.desc,
-                            couponCode: couponInfo.code,
+                            title: couponInfo?.name,
+                            description: couponInfo?.desc,
+                            couponCode: couponInfo?.code,
                           );
                         },
                         separatorBuilder: (context, index) =>

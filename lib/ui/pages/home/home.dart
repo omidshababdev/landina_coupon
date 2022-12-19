@@ -19,7 +19,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
   UserModel? user;
-  Future<UserModel>? userInfo;
+  Future? userInfo;
   Future? allCoupons;
   Future? timelineCoupons;
 
