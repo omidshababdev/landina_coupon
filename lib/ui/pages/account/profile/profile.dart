@@ -32,6 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Future<List<CouponModel>>? couponInfo;
 
   TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
 
   @override
   void initState() {
@@ -95,13 +96,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 wrapFit: WrapFit.divided,
                 children: [
                   LandinaTextButton(
-                    title: "تنظیمات اپلیکیشن",
+                    title: "تنظیمات",
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
                   LandinaTextButton(
-                    title: "درباره ${AppLocalizations.of(context)!.appName}",
+                    title: "تماس با پشتیبانی",
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -277,13 +278,68 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ],
                               ),
                               const SizedBox(height: 5),
-                              Text(
-                                snapshot.data!.username,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontFamily: "Poppins",
-                                  color:
-                                      const Color(0xff3B3B3B).withOpacity(0.8),
+                              GestureDetector(
+                                onTap: () {
+                                  landinaModal(
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "ویرایش نام کاربری",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xff3B3B3B)
+                                                .withOpacity(1),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "توی فیلد زیر نام کاربری که می خوای داشته باشی رو وارد کن. حواست باشه که باید انگلیسی و بدون فاصله باشه.",
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                            color: const Color(0xff3B3B3B)
+                                                .withOpacity(0.8),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 25),
+                                        LandinaTextField(
+                                          hintText: "نام حساب کاربری",
+                                          textfieldController:
+                                              usernameController,
+                                          prefixIcon: IconlyLight.paper,
+                                          prefixIconOnPressed: () {},
+                                          suffixIcon: IconlyLight.info_circle,
+                                          suffixIconOnPressed: () {},
+                                          obscureText: false,
+                                          enabled: true,
+                                        ),
+                                        const SizedBox(height: 15),
+                                        LandinaTextButton(
+                                          title: "تغییر نام کاربری",
+                                          onPressed: () async {
+                                            await Config.client.updateUser(
+                                              Config.box.read("myId"),
+                                              "username",
+                                              usernameController.text,
+                                            );
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  snapshot.data!.username,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: "Poppins",
+                                    color: const Color(0xff3B3B3B)
+                                        .withOpacity(0.8),
+                                  ),
                                 ),
                               ),
                             ],
