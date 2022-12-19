@@ -139,18 +139,21 @@ class ApiService {
   Future timelineCoupons(String userId) async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/coupons/$userId/timeline'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
 
     if (res.statusCode == 200) {
-      List jsonResponse = json.decode(res.body);
+      List jsonResponse = await json.decode(res.body);
+      print(res.statusCode);
+      print(res.body);
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else if (res.statusCode == 404) {
+      print(res.statusCode);
+      print(res.body);
       return jsonDecode(res.body);
     } else {
-      throw Exception('Failed to get coupons.');
+      print(res.statusCode);
+      print(res.body);
+      return jsonDecode(res.body);
     }
   }
 

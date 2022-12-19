@@ -180,7 +180,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: Config.loggedIn != true
+                future: Config.loggedIn != false
                     ? widget.timelineCoupons
                     : widget.allCoupons,
                 builder: (context, snapshot) {
@@ -195,9 +195,9 @@ class _HomePageState extends State<HomePage> {
                         physics: const BouncingScrollPhysics(
                           parent: AlwaysScrollableScrollPhysics(),
                         ),
-                        itemCount: snapshot.data!.length,
+                        itemCount: snapshot.data?.length ?? 0,
                         itemBuilder: (context, index) {
-                          final couponInfo = snapshot.data![index];
+                          final couponInfo = snapshot.data?[index];
                           return Coupon(
                             userId: couponInfo.userId,
                             title: couponInfo.name,
