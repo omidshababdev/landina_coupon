@@ -20,8 +20,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomePage extends StatefulWidget {
   UserModel? user;
   Future<UserModel>? userInfo;
-  Future<List<CouponModel>>? allCoupons;
-  Future<List<CouponModel>>? timelineCoupons;
+  Future? allCoupons;
+  Future? timelineCoupons;
 
   HomePage({super.key});
 
@@ -179,7 +179,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Expanded(
-              child: FutureBuilder<List<CouponModel>>(
+              child: FutureBuilder(
                 future: Config.loggedIn != true
                     ? widget.timelineCoupons
                     : widget.allCoupons,

@@ -19,7 +19,7 @@ class Coupon extends StatefulWidget {
   final String couponCode;
   final VoidCallback onTap;
 
-  Future<UserModel>? userInfo;
+  Future? userInfo;
 
   Coupon({
     super.key,
@@ -71,7 +71,7 @@ class _CouponState extends State<Coupon> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FutureBuilder<UserModel>(
+                FutureBuilder(
                   future: widget.userInfo,
                   builder: (context, snapshot) {
                     final userInfo = snapshot.data;

@@ -15,7 +15,7 @@ class CouponModel {
     required this.location,
   });
 
-  factory CouponModel.fromJson(Map<String, dynamic> map) {
+  factory CouponModel.fromJson(Map map) {
     return CouponModel(
       id: map['_id'] ?? ' ',
       userId: map['userId'] ?? ' ',

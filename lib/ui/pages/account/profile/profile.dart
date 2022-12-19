@@ -22,7 +22,7 @@ import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
-  Future<List<CouponModel>>? couponInfo;
+  Future? couponInfo;
   Future<UserModel>? userInfo;
   ProfilePage({super.key});
 
@@ -440,7 +440,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
                 const SizedBox(height: 25),
-                FutureBuilder<List<CouponModel>>(
+                FutureBuilder(
                   future: widget.couponInfo,
                   builder: (context, snapshot) {
                     if (snapshot.hasData != false) {
@@ -463,7 +463,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               );
                             },
-                            userId: couponInfo.userId,
+                            userId: Config.box.read("myId"),
                             title: couponInfo.name,
                             description: couponInfo.desc,
                             couponCode: couponInfo.code,

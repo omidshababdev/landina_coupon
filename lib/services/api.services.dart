@@ -116,7 +116,7 @@ class ApiService {
   }
 
   // Get User Coupons
-  Future<List<CouponModel>> getUserCoupon(String userId) async {
+  Future getUserCoupon(String userId) async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/users/$userId/coupons'),
       headers: <String, String>{
@@ -128,13 +128,15 @@ class ApiService {
       List jsonResponse = json.decode(res.body);
 
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
+    } else if (res.statusCode == 404) {
+      return jsonDecode(res.body);
     } else {
       throw Exception('Failed to get coupons.');
     }
   }
 
   // Timeline Coupons
-  Future<List<CouponModel>> timelineCoupons(String userId) async {
+  Future timelineCoupons(String userId) async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/coupons/$userId/timeline'),
       headers: <String, String>{
@@ -145,13 +147,15 @@ class ApiService {
     if (res.statusCode == 200) {
       List jsonResponse = json.decode(res.body);
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
+    } else if (res.statusCode == 404) {
+      return jsonDecode(res.body);
     } else {
       throw Exception('Failed to get coupons.');
     }
   }
 
   // Get All Coupons
-  Future<List<CouponModel>> allCoupons() async {
+  Future allCoupons() async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/coupons/all/coupons'),
       headers: <String, String>{
@@ -162,6 +166,8 @@ class ApiService {
     if (res.statusCode == 200) {
       List jsonResponse = json.decode(res.body);
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
+    } else if (res.statusCode == 404) {
+      return jsonDecode(res.body);
     } else {
       throw Exception('Failed to get coupons.');
     }
