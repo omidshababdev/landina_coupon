@@ -69,6 +69,11 @@ class _LinksPageState extends State<LinksPage> {
           },
         ),
       ),
+      body: const Center(
+        child: Text(
+          "بزودی این قسمت فعال خواهد شد. منتظرش باشید.",
+        ),
+      ),
     );
   }
 }

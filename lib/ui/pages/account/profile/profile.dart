@@ -40,8 +40,6 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
 
     setState(() {
-      Config.inProfile = true;
-
       widget.userInfo = Config.client.getUser(Config.box.read("myId"));
       widget.couponInfo = Config.client.getUserCoupon(Config.box.read("myId"));
     });

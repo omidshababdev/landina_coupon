@@ -20,7 +20,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomePage extends StatefulWidget {
   UserModel? user;
   Future<UserModel>? userInfo;
-  Future<List<CouponModel>>? couponInfo;
+  Future<List<CouponModel>>? allCoupons;
+  Future<List<CouponModel>>? timelineCoupons;
 
   HomePage({super.key});
 
@@ -34,9 +35,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     setState(() {
-      widget.couponInfo = Config.loggedIn == true
-          ? Config.client.timelineCoupons(Config.box.read("myId"))
-          : Config.client.allCoupons();
+      widget.allCoupons = Config.client.allCoupons();
+      widget.timelineCoupons =
+          Config.client.timelineCoupons(Config.box.read("myId"));
     });
   }
 
@@ -179,7 +180,9 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder<List<CouponModel>>(
-                future: widget.couponInfo,
+                future: Config.loggedIn != true
+                    ? widget.timelineCoupons
+                    : widget.allCoupons,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {
