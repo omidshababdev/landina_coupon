@@ -19,7 +19,9 @@ class Coupon extends StatefulWidget {
   final String couponCode;
   final VoidCallback onTap;
 
-  const Coupon({
+  Future<UserModel>? userInfo;
+
+  Coupon({
     super.key,
     required this.userId,
     required this.title,
@@ -37,7 +39,7 @@ class _CouponState extends State<Coupon> {
   void initState() {
     super.initState();
     setState(() {
-      Config.userInfo = Config.client.getUser(widget.userId);
+      widget.userInfo = Config.client.getUser(widget.userId);
     });
   }
 
@@ -70,7 +72,7 @@ class _CouponState extends State<Coupon> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FutureBuilder<UserModel>(
-                  future: Config.userInfo,
+                  future: widget.userInfo,
                   builder: (context, snapshot) {
                     final userInfo = snapshot.data;
                     if (snapshot.connectionState == ConnectionState.done ||
@@ -83,7 +85,7 @@ class _CouponState extends State<Coupon> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      AccountPage(userInfo: userInfo),
+                                      AccountPage(user: userInfo),
                                 ),
                               );
                             },
@@ -105,17 +107,36 @@ class _CouponState extends State<Coupon> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                snapshot.data!.name,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w600,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          AccountPage(user: userInfo),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  snapshot.data!.name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Get.toNamed("/account");
+                                  userInfo!.id == Config.box.read("myId")
+                                      ? Get.toNamed("/profile")
+                                      : Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                AccountPage(user: userInfo),
+                                          ),
+                                        );
                                 },
                                 child: Text(
                                   snapshot.data!.username,

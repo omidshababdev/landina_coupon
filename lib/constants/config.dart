@@ -11,6 +11,4 @@ class Config {
   static ApiService client = ApiService();
 
   static GetStorage box = GetStorage();
-
-  static Future<UserModel>? userInfo;
 }

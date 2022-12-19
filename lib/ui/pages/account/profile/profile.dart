@@ -22,15 +22,15 @@ import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  Future<List<CouponModel>>? couponInfo;
+  Future<UserModel>? userInfo;
+  ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  Future<List<CouponModel>>? couponInfo;
-
   TextEditingController nameController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
@@ -42,9 +42,8 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       Config.inProfile = true;
 
-      setState(() {
-        couponInfo = Config.client.getUserCoupon(Config.box.read("myId"));
-      });
+      widget.userInfo = Config.client.getUser(Config.box.read("myId"));
+      widget.couponInfo = Config.client.getUserCoupon(Config.box.read("myId"));
     });
   }
 
@@ -127,12 +126,12 @@ class _ProfilePageState extends State<ProfilePage> {
           },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
         ),
       ),
       body: FutureBuilder<UserModel>(
-        future: Config.userInfo,
+        future: widget.userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
@@ -445,7 +444,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 25),
                 FutureBuilder<List<CouponModel>>(
-                  future: couponInfo,
+                  future: widget.couponInfo,
                   builder: (context, snapshot) {
                     if (snapshot.hasData != false) {
                       return ListView.separated(

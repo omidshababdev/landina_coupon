@@ -14,10 +14,14 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:readmore/readmore.dart';
 
 class AccountPage extends StatefulWidget {
-  UserModel? userInfo;
-  AccountPage({super.key, this.userInfo});
+  UserModel? user;
+
+  Future<UserModel>? userInfo;
+
+  AccountPage({super.key, this.user});
 
   @override
   State<AccountPage> createState() => _AccountPageState();
@@ -31,6 +35,8 @@ class _AccountPageState extends State<AccountPage> {
 
     setState(() {
       isFollowed = true;
+
+      widget.userInfo = Config.client.getUser(widget.user!.id);
     });
   }
 
@@ -50,7 +56,7 @@ class _AccountPageState extends State<AccountPage> {
         ),
       ),
       body: FutureBuilder<UserModel>(
-        future: Config.userInfo,
+        future: widget.userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
@@ -92,7 +98,7 @@ class _AccountPageState extends State<AccountPage> {
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
                                   Text(
-                                    widget.userInfo!.name,
+                                    widget.user!.name,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
@@ -108,7 +114,7 @@ class _AccountPageState extends State<AccountPage> {
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Text(
-                                      widget.userInfo!.accountType,
+                                      widget.user!.accountType,
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
@@ -120,7 +126,7 @@ class _AccountPageState extends State<AccountPage> {
                                 ],
                               ),
                               Text(
-                                widget.userInfo!.username,
+                                widget.user!.username,
                                 style: TextStyle(
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w400,
@@ -133,8 +139,17 @@ class _AccountPageState extends State<AccountPage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Text(
-                        widget.userInfo!.bio,
+                      ReadMoreText(
+                        widget.user!.bio,
+                        trimLines: 2,
+                        trimMode: TrimMode.Line,
+                        trimCollapsedText: 'بیشتر',
+                        trimExpandedText: '',
+                        moreStyle: TextStyle(
+                          height: 2,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xff3B3B3B).withOpacity(1),
+                        ),
                         style: TextStyle(
                           fontWeight: FontWeight.w400,
                           height: 2,
@@ -175,7 +190,11 @@ class _AccountPageState extends State<AccountPage> {
                       },
                     ),
                     LandinaTextButton(
-                      title: AppLocalizations.of(context)!.website.capitalize(),
+                      title: 'لینک ها',
+                      onPressed: () {},
+                    ),
+                    LandinaTextButton(
+                      title: 'اطلاعات تماس',
                       onPressed: () {},
                     ),
                   ],

@@ -5,7 +5,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
-import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
@@ -19,19 +18,24 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  UserModel? user;
+  Future<UserModel>? userInfo;
+  Future<List<CouponModel>>? couponInfo;
+
+  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  Future<List<CouponModel>>? couponInfo;
   @override
   void initState() {
     super.initState();
+
     setState(() {
-      couponInfo = Config.client.timelineCoupons(Config.box.read("myId"));
+      widget.couponInfo =
+          Config.client.timelineCoupons(Config.box.read("myId"));
     });
   }
 
@@ -81,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                     )
                   : {
                       setState(() {
-                        Config.userInfo = Config.client.loginUser(
+                        widget.userInfo = Config.client.loginUser(
                             Config.box.read("email"), Config.box.read("pass"));
                       }),
                       Get.toNamed("/profile"),
@@ -174,7 +178,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder<List<CouponModel>>(
-                future: couponInfo,
+                future: widget.couponInfo,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {

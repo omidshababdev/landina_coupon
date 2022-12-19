@@ -17,8 +17,11 @@ import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:readmore/readmore.dart';
 
 class CouponPage extends StatefulWidget {
+  UserModel? user;
+  Future<UserModel>? userInfo;
+
   final CouponModel couponInfo;
-  const CouponPage({super.key, required this.couponInfo});
+  CouponPage({super.key, required this.couponInfo});
 
   @override
   State<CouponPage> createState() => _CouponPageState();
@@ -28,8 +31,9 @@ class _CouponPageState extends State<CouponPage> {
   @override
   void initState() {
     super.initState();
+
     setState(() {
-      Config.userInfo = Config.client.getUser(widget.couponInfo.userId);
+      widget.userInfo = Config.client.getUser(widget.couponInfo.userId);
     });
   }
 
@@ -102,7 +106,7 @@ class _CouponPageState extends State<CouponPage> {
                     children: [
                       Expanded(
                         child: FutureBuilder<UserModel>(
-                          future: Config.userInfo,
+                          future: widget.userInfo,
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                     ConnectionState.done ||

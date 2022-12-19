@@ -1,9 +1,9 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:ui';
 
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LandinaTextField extends StatefulWidget {
   String? hintText;
@@ -13,7 +13,7 @@ class LandinaTextField extends StatefulWidget {
   VoidCallback? prefixIconOnPressed;
   bool? obscureText;
   TextEditingController? textfieldController;
-  int? maxLines;
+  int? maxLines = 1;
   bool? enabled;
 
   LandinaTextField({
