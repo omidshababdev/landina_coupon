@@ -13,6 +13,7 @@ class LandinaTextField extends StatefulWidget {
   VoidCallback? prefixIconOnPressed;
   bool? obscureText;
   TextEditingController? textfieldController;
+  int? minLines = 1;
   int? maxLines = 1;
   bool? enabled;
 
@@ -25,6 +26,7 @@ class LandinaTextField extends StatefulWidget {
     this.prefixIconOnPressed,
     this.obscureText,
     this.textfieldController,
+    this.minLines,
     this.maxLines,
     this.enabled,
   }) : super(key: key);
@@ -69,6 +71,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
         obscureText: widget.obscureText!,
+        minLines: widget.minLines,
         maxLines: widget.maxLines,
         enabled: widget.enabled,
         decoration: InputDecoration(

@@ -186,36 +186,61 @@ class _HomePageState extends State<HomePage> {
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {
-                    return ListView.separated(
-                      key: const PageStorageKey<String>('home'),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 20),
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(
-                        parent: AlwaysScrollableScrollPhysics(),
-                      ),
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        final couponInfo = snapshot.data![index];
-                        return Coupon(
-                          userId: couponInfo.userId,
-                          title: couponInfo.name,
-                          description: couponInfo.desc,
-                          couponCode: couponInfo.code,
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    CouponPage(couponInfo: couponInfo),
+                    if (snapshot.hasData != true) {
+                      return ListView.separated(
+                        key: const PageStorageKey<String>('home'),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 20),
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics(),
+                        ),
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          final couponInfo = snapshot.data![index];
+                          return Coupon(
+                            userId: couponInfo.userId,
+                            title: couponInfo.name,
+                            description: couponInfo.desc,
+                            couponCode: couponInfo.code,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      CouponPage(couponInfo: couponInfo),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 15),
+                      );
+                    } else {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 50),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/images/not_found.png",
+                              width: 250,
+                            ),
+                            const SizedBox(height: 25),
+                            Text(
+                              "هنوز هیچ کوپنی اینجا نیست!",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff3B3B3B).withOpacity(0.9),
                               ),
-                            );
-                          },
-                        );
-                      },
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(height: 15),
-                    );
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   } else if (snapshot.connectionState ==
                       ConnectionState.waiting) {
                     return ListView.separated(

@@ -73,8 +73,8 @@ class ApiService {
   }
 
   // Update User
-  Future<void> updateUser(
-      String userId, String updatePart, String updateValue) async {
+  Future<void> updateUser(String updatePart, String updateValue) async {
+    final String userId = Config.box.read("myId");
     final res = await http.put(
       Uri.parse('${endPointUrl}api/users/$userId'),
       headers: <String, String>{
@@ -82,15 +82,15 @@ class ApiService {
       },
       body: jsonEncode(<String, String>{
         'userId': userId,
-        updatePart: updateValue,
+        updatePart: "$updateValue",
       }),
     );
 
     if (res.statusCode == 200) {
-      Get.snackbar('تغییر نام کاربری موفقیت آمیز بود',
+      Get.snackbar('تغییر ${updatePart} موفقیت آمیز بود',
           'حالا می تونی با خیال راحت ازش استفاده کنی!');
     } else {
-      Get.snackbar('تغییر نام کاربری موفقیت آمیز نبود :(',
+      Get.snackbar('تغییر ${updatePart} موفقیت آمیز نبود :(',
           'لطفا دوباره امتحان کن. اگه بازم نتونستی حتما بهمون خبر بده!');
     }
   }

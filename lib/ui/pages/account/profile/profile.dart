@@ -198,6 +198,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                             const SizedBox(height: 25),
                                             LandinaTextField(
                                               hintText: "نام حساب کاربری",
+                                              maxLines: 1,
                                               textfieldController:
                                                   nameController,
                                               prefixIcon: IconlyLight.paper,
@@ -213,11 +214,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                               title: "تغییر نام حساب کاربری",
                                               onPressed: () async {
                                                 await Config.client.updateUser(
-                                                  Config.box.read("myId"),
                                                   "name",
                                                   nameController.text,
                                                 );
-                                                Navigator.pop(context);
                                               },
                                             ),
                                           ],
@@ -305,6 +304,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         const SizedBox(height: 25),
                                         LandinaTextField(
                                           hintText: "نام کاربری",
+                                          maxLines: 1,
                                           textfieldController:
                                               usernameController,
                                           prefixIcon: IconlyLight.paper,
@@ -319,11 +319,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                           title: "تغییر نام کاربری",
                                           onPressed: () async {
                                             await Config.client.updateUser(
-                                              Config.box.read("myId"),
                                               "username",
                                               usernameController.text,
                                             );
-                                            Navigator.pop(context);
                                           },
                                         ),
                                       ],
@@ -373,7 +371,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 const SizedBox(height: 25),
                                 LandinaTextField(
                                   hintText: "توضیحات حساب",
-                                  textfieldController: usernameController,
+                                  minLines: 1,
+                                  maxLines: 3,
+                                  textfieldController: bioController,
                                   prefixIcon: IconlyLight.paper,
                                   prefixIconOnPressed: () {},
                                   suffixIcon: IconlyLight.info_circle,
@@ -386,7 +386,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                   title: "تغییر توضیحات حساب",
                                   onPressed: () async {
                                     await Config.client.updateUser(
-                                      Config.box.read("myId"),
                                       "bio",
                                       bioController.text,
                                     );
