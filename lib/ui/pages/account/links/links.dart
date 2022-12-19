@@ -11,17 +11,21 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+class LinksPage extends StatefulWidget {
+  const LinksPage({super.key});
 
+  @override
+  State<LinksPage> createState() => _LinksPageState();
+}
+
+class _LinksPageState extends State<LinksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title:
-              "تنظیمات ${AppLocalizations.of(context)!.account.capitalize()}",
+          title: "لینک های حساب",
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
             landinaModal(
@@ -31,13 +35,19 @@ class SettingsPage extends StatelessWidget {
                 wrapFit: WrapFit.divided,
                 children: [
                   LandinaTextButton(
-                    title: "تنظیمات اپلیکیشن",
+                    title: "تنظیمات",
                     onPressed: () {
                       Navigator.pop(context);
                     },
                   ),
                   LandinaTextButton(
-                    title: "درباره ${AppLocalizations.of(context)!.appName}",
+                    title: "تماس با پشتیبانی",
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  LandinaTextButton(
+                    title: "اشتراک گذاری پروفایل",
                     onPressed: () {
                       Navigator.pop(context);
                     },

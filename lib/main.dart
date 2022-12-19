@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
+import 'package:landina_coupon/ui/pages/account/links/links.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
 import 'package:landina_coupon/ui/pages/account/settings/settings.dart';
@@ -14,7 +15,6 @@ import 'package:landina_coupon/ui/pages/account/login/login.dart';
 
 import 'package:landina_coupon/ui/pages/account/profile/profile.dart';
 import 'package:landina_coupon/ui/pages/web/web.page.dart';
-import 'package:quick_actions/quick_actions.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -42,40 +42,9 @@ class LandinaCoupon extends StatefulWidget {
 class _LandinaCouponState extends State<LandinaCoupon> {
   VoidCallback rebuildOnLocaleChange() => () => setState(() {});
 
-  QuickActions quickActions = const QuickActions();
-
-  Map quickActionsReturns = {
-    'homePage': const HomePage(),
-    'categories': const CategoriesPage(),
-    'profile': const ProfilePage(),
-  };
-
   @override
   void initState() {
     super.initState();
-
-    quickActions.initialize((type) {
-      return _navigate(quickActionsReturns[type]);
-    });
-
-    quickActions.setShortcutItems(<ShortcutItem>[
-      const ShortcutItem(
-        type: "homePage",
-        localizedTitle: "کوپن ها",
-      ),
-      const ShortcutItem(
-        type: "categories",
-        localizedTitle: "دسته بندی ها",
-      ),
-      const ShortcutItem(
-        type: "profile",
-        localizedTitle: "حساب کاربری",
-      ),
-    ]);
-  }
-
-  void _navigate(Widget screen) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
   }
 
   @override
@@ -136,8 +105,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => const ProfilePage()),
         GetPage(name: "/account", page: () => AccountPage()),
-        GetPage(
-            name: "/account-settings", page: () => const AccountSettingsPage()),
+        GetPage(name: "/settings", page: () => const SettingsPage()),
+        GetPage(name: "/links", page: () => const LinksPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
         GetPage(name: "/website", page: () => const WebPage()),
       ],

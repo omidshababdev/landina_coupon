@@ -33,6 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   TextEditingController nameController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
+  TextEditingController bioController = TextEditingController();
 
   @override
   void initState() {
@@ -306,7 +307,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         const SizedBox(height: 25),
                                         LandinaTextField(
-                                          hintText: "نام حساب کاربری",
+                                          hintText: "نام کاربری",
                                           textfieldController:
                                               usernameController,
                                           prefixIcon: IconlyLight.paper,
@@ -347,21 +348,73 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      ReadMoreText(
-                        snapshot.data!.bio,
-                        trimLines: 2,
-                        trimMode: TrimMode.Line,
-                        trimCollapsedText: 'بیشتر',
-                        trimExpandedText: '',
-                        moreStyle: TextStyle(
-                          height: 2,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff3B3B3B).withOpacity(1),
-                        ),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          height: 2,
-                          color: const Color(0xff3B3B3B).withOpacity(0.8),
+                      GestureDetector(
+                        onTap: () {
+                          landinaModal(
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "ویرایش توضیحات حساب",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color:
+                                        const Color(0xff3B3B3B).withOpacity(1),
+                                  ),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  "توی فیلد زیر توضیحاتی که می خوای داشته باشی رو وارد کن..",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff3B3B3B)
+                                        .withOpacity(0.8),
+                                  ),
+                                ),
+                                const SizedBox(height: 25),
+                                LandinaTextField(
+                                  hintText: "توضیحات حساب",
+                                  textfieldController: usernameController,
+                                  prefixIcon: IconlyLight.paper,
+                                  prefixIconOnPressed: () {},
+                                  suffixIcon: IconlyLight.info_circle,
+                                  suffixIconOnPressed: () {},
+                                  obscureText: false,
+                                  enabled: true,
+                                ),
+                                const SizedBox(height: 15),
+                                LandinaTextButton(
+                                  title: "تغییر توضیحات حساب",
+                                  onPressed: () async {
+                                    await Config.client.updateUser(
+                                      Config.box.read("myId"),
+                                      "bio",
+                                      bioController.text,
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                        child: ReadMoreText(
+                          snapshot.data!.bio,
+                          trimLines: 2,
+                          trimMode: TrimMode.Line,
+                          trimCollapsedText: 'بیشتر',
+                          trimExpandedText: '',
+                          moreStyle: TextStyle(
+                            height: 2,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xff3B3B3B).withOpacity(1),
+                          ),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            height: 2,
+                            color: const Color(0xff3B3B3B).withOpacity(0.8),
+                          ),
                         ),
                       ),
                     ],
@@ -378,13 +431,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       LandinaTextButton(
                         title: 'اطلاعات تماس',
                         onPressed: () {
-                          Get.toNamed("/account-settings");
+                          Get.toNamed("/settings");
                         },
                       ),
                       LandinaTextButton(
                         title: 'لینک های من',
                         onPressed: () {
-                          Get.toNamed("/website");
+                          Get.toNamed("/links");
                         },
                       ),
                     ],
