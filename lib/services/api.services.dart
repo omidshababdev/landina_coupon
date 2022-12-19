@@ -153,7 +153,7 @@ class ApiService {
   // Get All Coupons
   Future<List<CouponModel>> allCoupons() async {
     final res = await http.get(
-      Uri.parse('${endPointUrl}api/coupons/all'),
+      Uri.parse('${endPointUrl}api/coupons/all/coupons'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
