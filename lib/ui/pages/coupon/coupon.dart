@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -12,6 +13,7 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:readmore/readmore.dart';
 
 class CouponPage extends StatefulWidget {
@@ -290,7 +292,40 @@ class _CouponPageState extends State<CouponPage> {
                   LandinaTextButton(
                     title: AppLocalizations.of(context)!.copyCouponCode,
                     backgroundColor: true,
-                    onPressed: () {},
+                    onPressed: () {
+                      landinaModal(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "کوپن کپی شد!",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: const Color(0xff3B3B3B).withOpacity(0.5),
+                                height: 2,
+                              ),
+                            ),
+                            const SizedBox(height: 30),
+                            LandinaTextButton(
+                              title: "ثبت نظر",
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                      Clipboard.setData(
+                        ClipboardData(text: widget.couponInfo.code),
+                      );
+                    },
                   ),
                 ],
               ),

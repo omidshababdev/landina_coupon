@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class LandinaAppbar extends StatefulWidget {
   String? title;
+  VoidCallback? titleOnTap;
   IconData? leftIcon;
   VoidCallback? leftIconOnPressed;
   IconData? rightIcon;
@@ -12,6 +13,7 @@ class LandinaAppbar extends StatefulWidget {
   LandinaAppbar(
       {super.key,
       this.title,
+      this.titleOnTap,
       this.leftIcon,
       this.rightIcon,
       this.leftIconOnPressed,
@@ -51,12 +53,15 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
           ),
         ),
       ),
-      title: Text(
-        widget.title!,
-        style: TextStyle(
-          fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
-          color: const Color.fromARGB(255, 51, 51, 51),
-          fontSize: 18,
+      title: GestureDetector(
+        onTap: widget.titleOnTap,
+        child: Text(
+          widget.title!,
+          style: TextStyle(
+            fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
+            color: const Color.fromARGB(255, 51, 51, 51),
+            fontSize: 18,
+          ),
         ),
       ),
       actions: [

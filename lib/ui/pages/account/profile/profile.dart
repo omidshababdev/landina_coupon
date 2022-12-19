@@ -53,6 +53,39 @@ class _ProfilePageState extends State<ProfilePage> {
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
           title: AppLocalizations.of(context)!.account.capitalize(),
+          titleOnTap: () {
+            landinaModal(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "حساب های من",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xff3B3B3B).withOpacity(1),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    "بزودی امکان ورود به چند حساب رو اضافه می کنیم. فعلا با همین حسابت حال کن :)",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xff3B3B3B).withOpacity(0.8),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  LandinaTextButton(
+                    title: "خیلی خوب",
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            );
+          },
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
             landinaModal(
