@@ -9,6 +9,7 @@ import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
 import 'package:landina_coupon/ui/pages/account/settings/settings.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
+import 'package:landina_coupon/ui/pages/coupon/new/new.coupon.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:get/get.dart';
 import 'package:landina_coupon/ui/pages/account/login/login.dart';
@@ -78,6 +79,13 @@ class _LandinaCouponState extends State<LandinaCoupon> {
             statusBarBrightness: Brightness.light, // For iOS (dark icons)
           ),
         ),
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Color(0xff0F172A),
+          elevation: 0,
+          focusElevation: 0,
+          hoverElevation: 0,
+          highlightElevation: 0,
+        ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -108,7 +116,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/links", page: () => const LinksPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
-        GetPage(name: "/website", page: () => const WebPage()),
+        GetPage(name: "/coupon/new", page: () => const NewCouponPage()),
       ],
       home: HomePage(),
     );
