@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
+import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
@@ -103,6 +104,29 @@ class _NewCouponPageState extends State<NewCouponPage> {
             Get.back();
           },
         ),
+      ),
+      body: FutureBuilder(
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active ||
+              snapshot.connectionState == ConnectionState.done) {
+            return Center();
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center();
+          } else if (snapshot.connectionState == ConnectionState.none) {
+            return Center(
+              child: LandinaIconButton(
+                icon: Ionicons.reload,
+                onPressed: () {
+                  setState(() {
+                    // Reload Page
+                  });
+                },
+              ),
+            );
+          } else {
+            return Center();
+          }
+        },
       ),
     );
   }

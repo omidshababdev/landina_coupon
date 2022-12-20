@@ -212,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                     } else if (snapshot.hasError) {
                       return Center(
                         child: Text(
-                          "اینجا یک خطایی وجود داره!",
+                          "${snapshot.error}",
                         ),
                       );
                     } else {
