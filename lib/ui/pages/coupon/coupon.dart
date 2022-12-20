@@ -17,7 +17,7 @@ import 'package:readmore/readmore.dart';
 
 class CouponPage extends StatefulWidget {
   UserModel? user;
-  Future<UserModel>? userInfo;
+  Future? userInfo;
 
   final CouponModel couponInfo;
   CouponPage({super.key, required this.couponInfo});
@@ -104,7 +104,7 @@ class _CouponPageState extends State<CouponPage> {
                   Row(
                     children: [
                       Expanded(
-                        child: FutureBuilder<UserModel>(
+                        child: FutureBuilder(
                           future: widget.userInfo,
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==

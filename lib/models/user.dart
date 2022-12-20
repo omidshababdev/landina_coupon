@@ -34,7 +34,7 @@ class UserModel {
     };
   }
 
-  factory UserModel.fromJson(Map<String, dynamic> map) {
+  factory UserModel.fromJson(Map map) {
     return UserModel(
       id: map['_id'] ?? ' ',
       name: map['name'] ?? ' ',
@@ -46,6 +46,4 @@ class UserModel {
       accountType: map['accountType'] ?? ' ',
     );
   }
-
-  String toJson() => json.encode(toMap());
 }

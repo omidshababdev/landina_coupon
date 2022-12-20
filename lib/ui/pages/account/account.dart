@@ -19,7 +19,7 @@ import 'package:readmore/readmore.dart';
 class AccountPage extends StatefulWidget {
   UserModel? user;
 
-  Future<UserModel>? userInfo;
+  Future? userInfo;
 
   AccountPage({super.key, this.user});
 
@@ -55,7 +55,7 @@ class _AccountPageState extends State<AccountPage> {
           },
         ),
       ),
-      body: FutureBuilder<UserModel>(
+      body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||

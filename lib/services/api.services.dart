@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.dart';
@@ -31,7 +30,6 @@ class ApiService {
 
       http.Response res = await http.post(
         Uri.parse('${endPointUrl}api/auth/register'),
-        body: user.toJson(),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
@@ -96,12 +94,9 @@ class ApiService {
   }
 
   // Get a User
-  Future<UserModel> getUser(String userId) async {
+  Future getUser(String userId) async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/users/$userId'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
 
     if (res.statusCode == 200) {
@@ -111,7 +106,7 @@ class ApiService {
     } else {
       // If the server did not return a 200 OK response,
       // then throw an exception.
-      throw Exception('Failed to get user!');
+      return res.body;
     }
   }
 
@@ -126,9 +121,6 @@ class ApiService {
 
     if (res.statusCode == 200) {
       List jsonResponse = json.decode(res.body);
-
-      print(res.statusCode);
-      print(res.body);
 
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else if (res.statusCode == 404) {
@@ -148,7 +140,6 @@ class ApiService {
     );
 
     if (res.statusCode == 200) {
-      print("timeline coupons");
       List jsonResponse = await json.decode(res.body);
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else if (res.statusCode == 404) {
@@ -168,7 +159,6 @@ class ApiService {
     );
 
     if (res.statusCode == 200) {
-      print("all coupons");
       List jsonResponse = json.decode(res.body);
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else if (res.statusCode == 404) {
