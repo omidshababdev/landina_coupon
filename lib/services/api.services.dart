@@ -40,21 +40,21 @@ class ApiService {
   }
 
   // Login User
-  Future loginUser(String email, String password) async {
+  Future loginUser(String username, String password) async {
     final res = await http.post(
       Uri.parse('${endPointUrl}api/auth/login'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-        'email': email,
+        'username': username,
         'password': password,
       }),
     );
 
     if (res.statusCode == 200) {
-      Config.box.write("email", email);
-      Config.box.write("pass", password);
+      Config.box.write("username", username);
+      Config.box.write("password", password);
 
       Config.loggedIn = true;
 

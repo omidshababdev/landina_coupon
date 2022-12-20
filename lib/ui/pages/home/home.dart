@@ -71,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                                 AppLocalizations.of(context)!.createAnAccount,
                             onPressed: () {
                               Navigator.pop(context);
-                              Get.toNamed("/signUp");
+                              Get.toNamed("/signUp/username");
                             },
                           ),
                         ],
@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: Config.loggedIn != false
+                future: Config.loggedIn != true
                     ? Config.client.allCoupons()
                     : Config.client.timelineCoupons(Config.box.read("myId")),
                 builder: (context, snapshot) {

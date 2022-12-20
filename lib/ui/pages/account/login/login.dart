@@ -4,7 +4,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
-import 'package:landina_coupon/ui/pages/account/register/email/email.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -23,7 +22,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool? _passwordVisible;
 
-  TextEditingController emailUsernameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
@@ -106,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},
                     obscureText: false,
-                    textfieldController: emailUsernameController,
+                    textfieldController: usernameController,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -136,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                     title: AppLocalizations.of(context)!.loginToAccount,
                     onPressed: () async {
                       await Config.client.loginUser(
-                        emailUsernameController.text,
+                        usernameController.text,
                         passwordController.text,
                       );
                     },
@@ -171,15 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.pop(context);
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const EmailPage();
-                              },
-                            ),
-                          );
+                          Get.offNamed("/signUp/username");
                         },
                         child: Text(
                           AppLocalizations.of(context)!.createAnAccount,

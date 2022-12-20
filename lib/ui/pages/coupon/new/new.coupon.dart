@@ -109,7 +109,7 @@ class _NewCouponPageState extends State<NewCouponPage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
-            return Center();
+            return ListView();
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return Center();
           } else if (snapshot.connectionState == ConnectionState.none) {

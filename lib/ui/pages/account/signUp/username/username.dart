@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
-import 'package:landina_coupon/ui/pages/account/register/password/password.dart';
+import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -13,8 +13,8 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 // Internationalization and localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class EmailPage extends StatelessWidget {
-  const EmailPage({super.key});
+class UsernamePage extends StatelessWidget {
+  const UsernamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class EmailPage extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.emailAddress.capitalize(),
+            title: 'نام کاربری',
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"));
