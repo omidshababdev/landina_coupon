@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
+import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
 import 'package:landina_coupon/ui/pages/account/links/links.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/email/email.dart';
@@ -13,11 +15,8 @@ import 'package:landina_coupon/ui/pages/account/signUp/username/username.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/coupon/new/new.coupon.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
-import 'package:get/get.dart';
 import 'package:landina_coupon/ui/pages/account/login/login.dart';
-
 import 'package:landina_coupon/ui/pages/account/profile/profile.dart';
-import 'package:landina_coupon/ui/pages/web/web.page.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -118,6 +117,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/profile", page: () => ProfilePage()),
         GetPage(name: "/account", page: () => AccountPage()),
         GetPage(name: "/settings", page: () => const SettingsPage()),
+        GetPage(name: "/contacts", page: () => const ContactsPage()),
         GetPage(name: "/links", page: () => const LinksPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
         GetPage(name: "/coupon/new", page: () => const NewCouponPage()),

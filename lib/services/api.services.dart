@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.dart';
@@ -175,6 +176,9 @@ class ApiService {
 
     if (res.statusCode == 200) {
       Get.back();
+
+      Get.defaultDialog(
+          content: Text("data"), textCancel: "cancel", textConfirm: "confirm");
 
       Get.snackbar("کوپن با موفقیت ایجاد شد",
           "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.");

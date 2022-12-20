@@ -268,10 +268,57 @@ class _CouponState extends State<Coupon> {
                               if (widget.userId == Config.box.read("myId"))
                                 LandinaTextButton(
                                   title: "حذف کوپن",
-                                  onPressed: () async {
-                                    Navigator.pop(context);
-                                    await Config.client.deleteCoupon(
-                                      widget.couponId.toString(),
+                                  onPressed: () {
+                                    landinaModal(
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text(
+                                            "کوپن کپی شد!",
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                          Text(
+                                            "مطمئنی؟ میخوای حذفش کنی؟",
+                                            style: TextStyle(
+                                              fontSize: 13,
+                                              color: const Color(0xff3B3B3B)
+                                                  .withOpacity(0.5),
+                                              height: 2,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 30),
+                                          ButtonBarSuper(
+                                            lineSpacing: 15,
+                                            wrapType: WrapType.balanced,
+                                            wrapFit: WrapFit.proportional,
+                                            children: [
+                                              LandinaTextButton(
+                                                title: "حذفش کن",
+                                                backgroundColor: true,
+                                                onPressed: () async {
+                                                  Navigator.pop(context);
+                                                  Navigator.pop(context);
+                                                  await Config.client
+                                                      .deleteCoupon(
+                                                    widget.couponId.toString(),
+                                                  );
+                                                },
+                                              ),
+                                              LandinaTextButton(
+                                                title: "نه نمی خواد",
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  Navigator.pop(context);
+                                                },
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     );
                                   },
                                 ),

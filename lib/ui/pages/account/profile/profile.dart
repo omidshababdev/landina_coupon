@@ -232,47 +232,53 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ),
                                   ),
-                                  snapshot.data!.accountType == 'Company'
-                                      ? Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 8,
-                                            vertical: 2,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xffF1F1F1),
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                          ),
-                                          child: Text(
-                                            snapshot.data!.accountType,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: const Color(0xff3B3B3B)
-                                                  .withOpacity(0.5),
+                                  GestureDetector(
+                                    onTap: () {
+                                      landinaModal(Text("نوع حساب"));
+                                    },
+                                    child: snapshot.data!.accountType ==
+                                            'Company'
+                                        ? Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 2,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xffF1F1F1),
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            child: Text(
+                                              snapshot.data!.accountType,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(0.5),
+                                              ),
+                                            ),
+                                          )
+                                        : Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 2,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xffF1F1F1),
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            child: Text(
+                                              snapshot.data!.accountType,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(0.5),
+                                              ),
                                             ),
                                           ),
-                                        )
-                                      : Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 8,
-                                            vertical: 2,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xffF1F1F1),
-                                            borderRadius:
-                                                BorderRadius.circular(50),
-                                          ),
-                                          child: Text(
-                                            snapshot.data!.accountType,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 12,
-                                              color: const Color(0xff3B3B3B)
-                                                  .withOpacity(0.5),
-                                            ),
-                                          ),
-                                        )
+                                  )
                                 ],
                               ),
                               const SizedBox(height: 5),
@@ -430,7 +436,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       LandinaTextButton(
                         title: 'اطلاعات تماس',
                         onPressed: () {
-                          Get.toNamed("/settings");
+                          Get.toNamed("/contacts");
                         },
                       ),
                       LandinaTextButton(
