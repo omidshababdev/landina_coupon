@@ -52,26 +52,30 @@ class ApiService {
       }),
     );
 
-    if (res.statusCode == 200) {
-      Config.box.write("username", username);
-      Config.box.write("password", password);
+    try {
+      if (res.statusCode == 200) {
+        Config.box.write("username", username);
+        Config.box.write("password", password);
 
-      Config.loggedIn = true;
+        Config.loggedIn = true;
 
-      Get.offNamed("/profile");
+        Get.offNamed("/profile");
 
-      final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
+        final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
 
-      Config.box.write("myId", userModel.id);
+        Config.box.write("myId", userModel.id);
 
-      return userModel;
-    } else {
-      throw Exception('Failed to Login.');
+        return userModel;
+      } else {
+        return "Failed to Login.";
+      }
+    } catch (err) {
+      return err;
     }
   }
 
   // Update User
-  Future<void> updateUser(String updatePart, String updateValue) async {
+  Future updateUser(String updatePart, String updateValue) async {
     final String userId = Config.box.read("myId");
     final res = await http.put(
       Uri.parse('${endPointUrl}api/users/$userId'),
@@ -144,6 +148,40 @@ class ApiService {
       return null;
     } else {
       throw Exception('Failed to get coupons.');
+    }
+  }
+
+  // Create a Coupon
+  Future createCoupon(String username, String password) async {
+    final res = await http.post(
+      Uri.parse('${endPointUrl}api/coupons'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'userId': Config.box.read("myId"),
+        'name': password,
+        'code': password,
+        'category': password,
+        'desc': password,
+      }),
+    );
+
+    if (res.statusCode == 200) {
+      Config.box.write("username", username);
+      Config.box.write("password", password);
+
+      Config.loggedIn = true;
+
+      Get.offNamed("/profile");
+
+      final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
+
+      Config.box.write("myId", userModel.id);
+
+      return userModel;
+    } else {
+      throw Exception('Failed to Login.');
     }
   }
 

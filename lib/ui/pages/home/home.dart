@@ -80,7 +80,8 @@ class _HomePageState extends State<HomePage> {
                   : {
                       setState(() {
                         widget.userInfo = Config.client.loginUser(
-                            Config.box.read("email"), Config.box.read("pass"));
+                            Config.box.read("username"),
+                            Config.box.read("pass"));
                       }),
                       Get.toNamed("/profile"),
                     };
