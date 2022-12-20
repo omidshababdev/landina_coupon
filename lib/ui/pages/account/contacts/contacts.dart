@@ -41,66 +41,30 @@ class _ContactsPageState extends State<ContactsPage> {
             },
           ),
         ),
-        body: const Center(
-          child: Text(
-            "بزودی این قسمت فعال خواهد شد. منتظرش باشید.",
+        body: Center(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/hand_shake.png",
+                  width: 250,
+                ),
+                const SizedBox(height: 25),
+                Text(
+                  "بهت قول میدیم بزودی این صفحه رو میسازیم!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0xff3B3B3B).withOpacity(0.9),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-        // ListView(
-        //   key: const PageStorageKey<String>('contacts'),
-        //   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        //   shrinkWrap: true,
-        //   physics: const BouncingScrollPhysics(
-        //     parent: AlwaysScrollableScrollPhysics(),
-        //   ),
-        //   children: [
-        //     SizedBox(
-        //       width: 200,
-        //       height: 200,
-        //       child: CircleAvatar(
-        //         backgroundColor: const Color(0xffF1F1F1),
-        //         foregroundColor: const Color(0xff3B3B3B).withOpacity(1),
-        //         child: const Icon(
-        //           IconlyLight.user_1,
-        //           size: 150,
-        //         ),
-        //       ),
-        //     ),
-        //     const SizedBox(height: 30),
-        //     Container(
-        //       margin: const EdgeInsets.symmetric(horizontal: 15),
-        //       child: Column(
-        //         crossAxisAlignment: CrossAxisAlignment.start,
-        //         children: [
-        //           Text(
-        //             "شماره های همراه",
-        //             style: TextStyle(
-        //               fontSize: 16,
-        //               fontWeight: FontWeight.w500,
-        //               color: const Color(0xff3B3B3B).withOpacity(1),
-        //             ),
-        //           ),
-        //           const SizedBox(height: 15),
-        //           GestureDetector(
-        //             onTap: () {
-        //               if (Config.box.read("myId") != false) {
-        //                 landinaModal(Text("data"));
-        //               }
-        //             },
-        //             child: LandinaTextField(
-        //               hintText: "۰۹۹۳۴۹۰۱۹۱۳",
-        //               maxLines: 1,
-        //               suffixIcon: IconlyLight.arrow_left_2,
-        //               prefixIcon: CupertinoIcons.phone,
-        //               prefixIconOnPressed: () {},
-        //               enabled: false,
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
