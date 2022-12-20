@@ -145,7 +145,7 @@ class ApiService {
     } else if (res.statusCode == 404) {
       return jsonDecode(res.body);
     } else {
-      throw Exception('Failed to get coupons.');
+      return res.body;
     }
   }
 

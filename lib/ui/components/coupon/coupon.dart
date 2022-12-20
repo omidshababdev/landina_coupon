@@ -19,8 +19,6 @@ class Coupon extends StatefulWidget {
   final String couponCode;
   final VoidCallback onTap;
 
-  Future? userInfo;
-
   Coupon({
     super.key,
     required this.userId,
@@ -38,9 +36,6 @@ class _CouponState extends State<Coupon> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      widget.userInfo = Config.client.getUser(widget.userId);
-    });
   }
 
   @override
@@ -72,7 +67,7 @@ class _CouponState extends State<Coupon> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FutureBuilder(
-                  future: widget.userInfo,
+                  future: Config.client.getUser(widget.userId),
                   builder: (context, snapshot) {
                     final userInfo = snapshot.data;
                     if (snapshot.connectionState == ConnectionState.done ||

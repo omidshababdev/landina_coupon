@@ -466,7 +466,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               );
                             },
-                            userId: couponInfo.id,
+                            userId: couponInfo.userId,
                             title: couponInfo.name,
                             description: couponInfo.desc,
                             couponCode: couponInfo.code,
