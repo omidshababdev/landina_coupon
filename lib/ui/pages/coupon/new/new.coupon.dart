@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -13,6 +14,7 @@ import 'package:get/get.dart';
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class NewCouponPage extends StatefulWidget {
   const NewCouponPage({super.key});
@@ -22,6 +24,10 @@ class NewCouponPage extends StatefulWidget {
 }
 
 class _NewCouponPageState extends State<NewCouponPage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController codeController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+  TextEditingController descController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,10 +112,37 @@ class _NewCouponPageState extends State<NewCouponPage> {
         ),
       ),
       body: FutureBuilder(
+        future: Config.client.createCoupon(
+          nameController.text,
+          codeController.text,
+          categoryController.text,
+          descController.text,
+        ),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
-            return ListView();
+            return ListView(
+              key: const PageStorageKey<String>('new'),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics(),
+              ),
+              children: [
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 15),
+                  child: LandinaTextField(
+                    hintText: 'عنوان کوپن',
+                    maxLines: 1,
+                    suffixIcon: IconlyLight.info_circle,
+                    suffixIconOnPressed: () {},
+                    prefixIcon: IconlyLight.paper,
+                    prefixIconOnPressed: () {},
+                    textfieldController: nameController,
+                  ),
+                ),
+              ],
+            );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return Center();
           } else if (snapshot.connectionState == ConnectionState.none) {

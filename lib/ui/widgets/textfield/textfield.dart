@@ -70,7 +70,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
         controller: widget.textfieldController,
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
-        obscureText: widget.obscureText!,
+        obscureText: widget.obscureText ?? false,
         minLines: widget.minLines,
         maxLines: widget.maxLines,
         enabled: widget.enabled,

@@ -152,7 +152,8 @@ class ApiService {
   }
 
   // Create a Coupon
-  Future createCoupon(String username, String password) async {
+  Future createCoupon(
+      String name, String code, String category, String desc) async {
     final res = await http.post(
       Uri.parse('${endPointUrl}api/coupons'),
       headers: <String, String>{
@@ -160,28 +161,21 @@ class ApiService {
       },
       body: jsonEncode(<String, String>{
         'userId': Config.box.read("myId"),
-        'name': password,
-        'code': password,
-        'category': password,
-        'desc': password,
+        'name': name,
+        'code': code,
+        'category': category,
+        'desc': desc,
       }),
     );
 
     if (res.statusCode == 200) {
-      Config.box.write("username", username);
-      Config.box.write("password", password);
-
-      Config.loggedIn = true;
-
-      Get.offNamed("/profile");
+      Get.back();
 
       final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
 
-      Config.box.write("myId", userModel.id);
-
       return userModel;
     } else {
-      throw Exception('Failed to Login.');
+      return "Failed to Login.";
     }
   }
 

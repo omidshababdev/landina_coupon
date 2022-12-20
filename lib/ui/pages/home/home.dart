@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
@@ -81,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                       setState(() {
                         widget.userInfo = Config.client.loginUser(
                             Config.box.read("username"),
-                            Config.box.read("pass"));
+                            Config.box.read("password"));
                       }),
                       Get.toNamed("/profile"),
                     };
