@@ -1,3 +1,4 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +14,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 
 class Coupon extends StatefulWidget {
+  String? couponId;
   String? userId;
   String? title;
   String? description;
@@ -21,6 +23,7 @@ class Coupon extends StatefulWidget {
 
   Coupon({
     super.key,
+    this.couponId,
     this.userId,
     this.title,
     this.description,
@@ -257,9 +260,21 @@ class _CouponState extends State<Coupon> {
                     child: IconButton(
                       onPressed: () {
                         landinaModal(
-                          Wrap(
-                            runSpacing: 15,
+                          ButtonBarSuper(
+                            lineSpacing: 15,
+                            wrapType: WrapType.balanced,
+                            wrapFit: WrapFit.divided,
                             children: [
+                              if (widget.userId == Config.box.read("myId"))
+                                LandinaTextButton(
+                                  title: "حذف کوپن",
+                                  onPressed: () async {
+                                    Navigator.pop(context);
+                                    await Config.client.deleteCoupon(
+                                      widget.couponId.toString(),
+                                    );
+                                  },
+                                ),
                               LandinaTextButton(
                                 title: "گزارش خطا",
                                 onPressed: () {

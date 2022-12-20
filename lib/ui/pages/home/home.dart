@@ -191,6 +191,7 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder: (context, index) {
                           final couponInfo = snapshot.data![index];
                           return Coupon(
+                            couponId: couponInfo.id,
                             userId: couponInfo.userId,
                             title: couponInfo.name,
                             description: couponInfo.desc,

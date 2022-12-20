@@ -171,11 +171,30 @@ class ApiService {
     if (res.statusCode == 200) {
       Get.back();
 
-      final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
-
-      return userModel;
+      Get.snackbar("کوپن با موفقیت ایجاد شد",
+          "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.");
     } else {
       return "Failed to Login.";
+    }
+  }
+
+  // Delete a Coupon
+  Future deleteCoupon(String couponId) async {
+    final res = await http.delete(
+      Uri.parse('${endPointUrl}api/coupons/$couponId'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'userId': Config.box.read("myId"),
+      }),
+    );
+
+    if (res.statusCode == 200) {
+      Get.snackbar("کوپن با موفقیت حذف شد",
+          "هر وقت خواستی می تونی دوباره یک کوپن جدید بسازی ...");
+    } else {
+      Get.snackbar("حذف کوپن انجام نشد!", "باید دوباره امتحان کنی.");
     }
   }
 
