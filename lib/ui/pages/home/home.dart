@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: Config.loggedIn != true
+                future: Config.loggedIn != false
                     ? Config.client.allCoupons()
                     : Config.client.timelineCoupons(Config.box.read("myId")),
                 builder: (context, snapshot) {

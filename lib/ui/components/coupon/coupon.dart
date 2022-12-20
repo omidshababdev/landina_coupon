@@ -13,19 +13,19 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
 
 class Coupon extends StatefulWidget {
-  final String userId;
-  final String title;
-  final String description;
-  final String couponCode;
-  final VoidCallback onTap;
+  String? userId;
+  String? title;
+  String? description;
+  String? couponCode;
+  VoidCallback? onTap;
 
   Coupon({
     super.key,
-    required this.userId,
-    required this.title,
-    required this.description,
-    required this.couponCode,
-    required this.onTap,
+    this.userId,
+    this.title,
+    this.description,
+    this.couponCode,
+    this.onTap,
   });
 
   @override
@@ -67,7 +67,7 @@ class _CouponState extends State<Coupon> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FutureBuilder(
-                  future: Config.client.getUser(widget.userId),
+                  future: Config.client.getUser('${widget.userId}'),
                   builder: (context, snapshot) {
                     final userInfo = snapshot.data;
                     if (snapshot.connectionState == ConnectionState.done ||
@@ -289,7 +289,7 @@ class _CouponState extends State<Coupon> {
               runSpacing: 5,
               children: [
                 Text(
-                  widget.title,
+                  '${widget.title}',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -300,7 +300,7 @@ class _CouponState extends State<Coupon> {
                   ),
                 ),
                 Text(
-                  widget.description,
+                  '${widget.description}',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(

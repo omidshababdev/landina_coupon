@@ -15,14 +15,14 @@ class CouponModel {
     required this.location,
   });
 
-  factory CouponModel.fromJson(Map map) {
+  factory CouponModel.fromJson(Map<String, dynamic> map) {
     return CouponModel(
-      id: map['_id'] ?? ' ',
-      userId: map['userId'] ?? ' ',
-      name: map['name'] ?? ' ',
-      desc: map['desc'] ?? ' ',
-      code: map['code'] ?? ' ',
-      location: map['location'] ?? ' ',
+      id: map['_id'],
+      userId: map['userId'],
+      name: map['name'],
+      desc: map['desc'],
+      code: map['code'],
+      location: map['location'],
     );
   }
 }

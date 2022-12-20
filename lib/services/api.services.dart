@@ -114,9 +114,6 @@ class ApiService {
   Future getUserCoupon(String userId) async {
     final res = await http.get(
       Uri.parse('${endPointUrl}api/users/$userId/coupons'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
 
     if (res.statusCode == 200) {
@@ -124,7 +121,7 @@ class ApiService {
 
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else if (res.statusCode == 404) {
-      return jsonDecode(res.body);
+      return null;
     } else {
       throw Exception('Failed to get coupons.');
     }
@@ -141,11 +138,12 @@ class ApiService {
 
     if (res.statusCode == 200) {
       List jsonResponse = await json.decode(res.body);
+
       return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
     } else if (res.statusCode == 404) {
-      return jsonDecode(res.body);
+      return null;
     } else {
-      return res.body;
+      throw Exception('Failed to get coupons.');
     }
   }
 
@@ -160,9 +158,12 @@ class ApiService {
 
     if (res.statusCode == 200) {
       List jsonResponse = json.decode(res.body);
-      return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
+
+      return jsonResponse
+          .map<CouponModel>((job) => CouponModel.fromJson(job))
+          .toList();
     } else if (res.statusCode == 404) {
-      return jsonDecode(res.body);
+      return null;
     } else {
       throw Exception('Failed to get coupons.');
     }
