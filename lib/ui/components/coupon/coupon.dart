@@ -271,26 +271,15 @@ class _CouponState extends State<Coupon> {
                                   onPressed: () {
                                     landinaModal(
                                       Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
                                         children: [
                                           const Text(
-                                            "کوپن کپی شد!",
+                                            "واقعا میخوای حذفش کنی؟",
                                             style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 18,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
-                                          Text(
-                                            "مطمئنی؟ میخوای حذفش کنی؟",
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              color: const Color(0xff3B3B3B)
-                                                  .withOpacity(0.5),
-                                              height: 2,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 30),
+                                          const SizedBox(height: 20),
                                           ButtonBarSuper(
                                             lineSpacing: 15,
                                             wrapType: WrapType.balanced,

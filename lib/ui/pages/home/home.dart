@@ -185,7 +185,7 @@ class _HomePageState extends State<HomePage> {
                             horizontal: 15, vertical: 20),
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(
-                          parent: AlwaysScrollableScrollPhysics(),
+                          parent: ClampingScrollPhysics(),
                         ),
                         itemCount: snapshot.data.length,
                         itemBuilder: (context, index) {

@@ -177,9 +177,6 @@ class ApiService {
     if (res.statusCode == 200) {
       Get.back();
 
-      Get.defaultDialog(
-          content: Text("data"), textCancel: "cancel", textConfirm: "confirm");
-
       Get.snackbar("کوپن با موفقیت ایجاد شد",
           "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.");
     } else {

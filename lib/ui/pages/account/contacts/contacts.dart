@@ -41,56 +41,66 @@ class _ContactsPageState extends State<ContactsPage> {
             },
           ),
         ),
-        body: ListView(
-          key: const PageStorageKey<String>('contacts'),
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
+        body: const Center(
+          child: Text(
+            "بزودی این قسمت فعال خواهد شد. منتظرش باشید.",
           ),
-          children: [
-            SizedBox(
-              width: 200,
-              height: 200,
-              child: CircleAvatar(
-                backgroundColor: const Color(0xffF1F1F1),
-                foregroundColor: const Color(0xff3B3B3B).withOpacity(1),
-                child: const Icon(
-                  IconlyLight.user_1,
-                  size: 150,
-                ),
-              ),
-            ),
-            const SizedBox(height: 30),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "شماره همراهی که می خوای همه ببینن",
-                  ),
-                  const SizedBox(height: 15),
-                  GestureDetector(
-                    onTap: () {
-                      if (Config.box.read("myId") != false) {
-                        landinaModal(Text("data"));
-                      }
-                    },
-                    child: LandinaTextField(
-                      hintText: 'شماره همراه',
-                      maxLines: 1,
-                      suffixIcon: IconlyLight.arrow_left_2,
-                      prefixIcon: CupertinoIcons.phone,
-                      prefixIconOnPressed: () {},
-                      enabled: false,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
         ),
+        // ListView(
+        //   key: const PageStorageKey<String>('contacts'),
+        //   padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        //   shrinkWrap: true,
+        //   physics: const BouncingScrollPhysics(
+        //     parent: AlwaysScrollableScrollPhysics(),
+        //   ),
+        //   children: [
+        //     SizedBox(
+        //       width: 200,
+        //       height: 200,
+        //       child: CircleAvatar(
+        //         backgroundColor: const Color(0xffF1F1F1),
+        //         foregroundColor: const Color(0xff3B3B3B).withOpacity(1),
+        //         child: const Icon(
+        //           IconlyLight.user_1,
+        //           size: 150,
+        //         ),
+        //       ),
+        //     ),
+        //     const SizedBox(height: 30),
+        //     Container(
+        //       margin: const EdgeInsets.symmetric(horizontal: 15),
+        //       child: Column(
+        //         crossAxisAlignment: CrossAxisAlignment.start,
+        //         children: [
+        //           Text(
+        //             "شماره های همراه",
+        //             style: TextStyle(
+        //               fontSize: 16,
+        //               fontWeight: FontWeight.w500,
+        //               color: const Color(0xff3B3B3B).withOpacity(1),
+        //             ),
+        //           ),
+        //           const SizedBox(height: 15),
+        //           GestureDetector(
+        //             onTap: () {
+        //               if (Config.box.read("myId") != false) {
+        //                 landinaModal(Text("data"));
+        //               }
+        //             },
+        //             child: LandinaTextField(
+        //               hintText: "۰۹۹۳۴۹۰۱۹۱۳",
+        //               maxLines: 1,
+        //               suffixIcon: IconlyLight.arrow_left_2,
+        //               prefixIcon: CupertinoIcons.phone,
+        //               prefixIconOnPressed: () {},
+        //               enabled: false,
+        //             ),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // ),
       ),
     );
   }
