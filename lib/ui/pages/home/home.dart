@@ -52,8 +52,8 @@ class _HomePageState extends State<HomePage> {
             },
             leftIcon: IconlyLight.profile,
             leftIconOnPressed: () {
-              Config.box.read("email") == null &&
-                      Config.box.read("pass") == null
+              Config.box.read("username") == null &&
+                      Config.box.read("password") == null
                   ? landinaModal(
                       Column(
                         children: [

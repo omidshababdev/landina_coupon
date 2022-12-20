@@ -284,9 +284,8 @@ class _CouponState extends State<Coupon> {
               ],
             ),
             const SizedBox(height: 15),
-            Wrap(
-              spacing: 5,
-              runSpacing: 5,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   '${widget.title}',
@@ -299,6 +298,7 @@ class _CouponState extends State<Coupon> {
                     color: const Color(0xff3B3B3B).withOpacity(1),
                   ),
                 ),
+                const SizedBox(height: 5),
                 Text(
                   '${widget.description}',
                   maxLines: 2,
