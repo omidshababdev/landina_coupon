@@ -129,7 +129,7 @@ class _NewCouponPageState extends State<NewCouponPage> {
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics(),
+            parent: ClampingScrollPhysics(),
           ),
           children: [
             ButtonBarSuper(
