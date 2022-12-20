@@ -35,6 +35,10 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
 
+  Future pickImage() async {
+    // await Imagepick
+  }
+
   @override
   void initState() {
     super.initState();
@@ -149,15 +153,47 @@ class _ProfilePageState extends State<ProfilePage> {
                         spacing: 15,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            decoration: ShapeDecoration(
-                              color: const Color(0xffF1F1F1),
-                              shape: SmoothRectangleBorder(
-                                borderRadius: SmoothBorderRadius(
-                                  cornerRadius: 18,
-                                  cornerSmoothing: 0.5,
+                          GestureDetector(
+                            onTap: () {
+                              landinaModal(
+                                ButtonBarSuper(
+                                  lineSpacing: 15,
+                                  wrapType: WrapType.balanced,
+                                  wrapFit: WrapFit.divided,
+                                  children: [
+                                    LandinaTextButton(
+                                      title: "استفاده از دوربین",
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    LandinaTextButton(
+                                      title: "انتخاب از گالری",
+                                      backgroundColor: true,
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        pickImage();
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 80,
+                              height: 80,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xffF1F1F1),
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                      snapshot.data!.profilePicture),
+                                  fit: BoxFit.contain,
+                                ),
+                                shape: SmoothRectangleBorder(
+                                  borderRadius: SmoothBorderRadius(
+                                    cornerRadius: 18,
+                                    cornerSmoothing: 0.5,
+                                  ),
                                 ),
                               ),
                             ),
