@@ -43,6 +43,7 @@ class _ContactsPageState extends State<ContactsPage> {
         ),
         body: Center(
           child: Container(
+            width: 325,
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
