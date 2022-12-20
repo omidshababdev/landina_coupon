@@ -41,6 +41,8 @@ class ApiService {
 
   // Login User
   Future loginUser(String username, String password) async {
+    await Future.delayed(const Duration(milliseconds: 4000));
+
     final res = await http.post(
       Uri.parse('${endPointUrl}api/auth/login'),
       headers: <String, String>{
@@ -76,6 +78,7 @@ class ApiService {
 
   // Update User
   Future updateUser(String updatePart, String updateValue) async {
+    await Future.delayed(const Duration(milliseconds: 4000));
     final String userId = Config.box.read("myId");
     final res = await http.put(
       Uri.parse('${endPointUrl}api/users/$userId'),
@@ -99,6 +102,8 @@ class ApiService {
 
   // Get a User
   Future getUser(String userId) async {
+    await Future.delayed(const Duration(milliseconds: 4000));
+
     final res = await http.get(
       Uri.parse('${endPointUrl}api/users/$userId'),
     );
@@ -200,6 +205,8 @@ class ApiService {
 
   // Get All Coupons
   Future allCoupons() async {
+    await Future.delayed(const Duration(milliseconds: 4000));
+
     final res = await http.get(
       Uri.parse('${endPointUrl}api/coupons/all/coupons'),
       headers: <String, String>{

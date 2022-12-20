@@ -763,7 +763,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Get.toNamed("/coupon/new");
         },
         child: const Icon(
-          Ionicons.add_outline,
+          IconlyBroken.plus,
         ),
       ),
     );
