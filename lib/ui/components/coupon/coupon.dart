@@ -295,6 +295,9 @@ class _CouponState extends State<Coupon> {
                                                       .deleteCoupon(
                                                     widget.couponId.toString(),
                                                   );
+                                                  setState(() {
+                                                    //
+                                                  });
                                                 },
                                               ),
                                               LandinaTextButton(
