@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.dart';
@@ -64,13 +63,6 @@ class ApiService {
         Config.loggedIn = true;
 
         Get.offNamed("/profile");
-
-        NotificationApi.showNotification(
-          title: "به لندینا کوپن خوش آمدی!",
-          body:
-              "حالا می تونی کوپن جدید ایجاد و از امکانات فوق العاده حسابت استفاده کنی",
-          payload: "login_notif",
-        );
 
         final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
 

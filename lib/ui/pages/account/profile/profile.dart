@@ -41,6 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController bioController = TextEditingController();
 
   File? image;
+  bool? isLoading;
 
   Future pickImage(ImageSource source) async {
     try {
@@ -122,14 +123,18 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   LandinaTextButton(
                     title: "تماس با پشتیبانی",
-                    onPressed: () {
-                      Navigator.pop(context);
-                      NotificationApi.showNotification(
-                        title: "به لندینا کوپن خوش آمدی!",
-                        body:
-                            "حالا می تونی کوپن جدید ایجاد و از امکانات فوق العاده حسابت استفاده کنی",
-                        payload: "login_notif",
+                    onPressed: () async {
+                      if (isLoading == false) return;
+                      setState(() {
+                        isLoading = true;
+                      });
+                      await Future.delayed(
+                        const Duration(seconds: 5),
                       );
+                      setState(() {
+                        isLoading = false;
+                      });
+                      Navigator.pop(context);
                     },
                   ),
                   LandinaTextButton(

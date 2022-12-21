@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:instabug_flutter/instabug_flutter.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
 import 'package:landina_coupon/ui/pages/account/links/links.dart';

@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 class LandinaTextButton extends StatelessWidget {
   final String title;
+  bool? isLoading = false;
   bool? backgroundColor = true;
   final VoidCallback onPressed;
   LandinaTextButton({
     Key? key,
     required this.title,
+    this.isLoading,
     this.backgroundColor,
     required this.onPressed,
   }) : super(key: key);
@@ -43,20 +45,29 @@ class LandinaTextButton extends StatelessWidget {
                 RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ))),
-        child: Text(
-          title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: backgroundColor == true
-              ? const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                )
-              : const TextStyle(
-                  color: Color(0xff3B3B3B),
-                  fontWeight: FontWeight.w600,
+        child: isLoading == true
+            ? SizedBox(
+                height: 25,
+                width: 25,
+                child: CircularProgressIndicator(
+                  color: const Color(0xff0F172A).withOpacity(0.5),
+                  strokeWidth: 1,
                 ),
-        ),
+              )
+            : Text(
+                title,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: backgroundColor == true
+                    ? const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      )
+                    : const TextStyle(
+                        color: Color(0xff3B3B3B),
+                        fontWeight: FontWeight.w600,
+                      ),
+              ),
       ),
     );
   }

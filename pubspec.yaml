@@ -34,7 +34,6 @@ dependencies:
   url_launcher: ^6.1.7
   webview_flutter: ^3.0.4
   image_picker: ^0.8.6
-  instabug_flutter: ^11.5.0
 
 dev_dependencies:
   build_runner: ^2.3.2
