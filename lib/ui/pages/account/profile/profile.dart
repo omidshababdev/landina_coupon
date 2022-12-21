@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconly/iconly.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 
@@ -35,8 +39,20 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
 
+  File? image;
+
   Future pickImage() async {
-    // await Imagepick
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() {
+        this.image = imageTemporary;
+      });
+    } on PlatformException catch (err) {
+      return "ای وای نتونستیم عکس رو بگیریم: $err";
+    }
   }
 
   @override
