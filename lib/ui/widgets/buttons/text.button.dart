@@ -50,7 +50,9 @@ class LandinaTextButton extends StatelessWidget {
                 height: 25,
                 width: 25,
                 child: CircularProgressIndicator(
-                  color: const Color(0xff0F172A).withOpacity(0.5),
+                  color: backgroundColor != true
+                      ? const Color(0xff0F172A).withOpacity(0.5)
+                      : Colors.white,
                   strokeWidth: 1,
                 ),
               )

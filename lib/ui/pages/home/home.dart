@@ -286,10 +286,11 @@ class _HomePageState extends State<HomePage> {
                         icon: Ionicons.reload,
                         onPressed: () async {
                           Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      super.widget));
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    super.widget),
+                          );
                         },
                       ),
                     );
