@@ -153,7 +153,7 @@ class ApiService {
     } else if (res.statusCode == 404) {
       return null;
     } else {
-      throw Exception('Failed to get coupons.');
+      return "Failed to get coupons.";
     }
   }
 

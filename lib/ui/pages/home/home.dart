@@ -179,9 +179,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: Config.loggedIn != true
-                    ? widget.allCoupons
-                    : widget.timelineCoupons,
+                future: widget.allCoupons,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {
