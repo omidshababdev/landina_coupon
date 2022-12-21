@@ -1,3 +1,0 @@
-void loading(bool isLoading) {
-  //
-}

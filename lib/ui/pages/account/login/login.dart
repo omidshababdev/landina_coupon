@@ -21,6 +21,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool? _passwordVisible;
+  bool? isLoading = false;
 
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -133,7 +134,17 @@ class _LoginPageState extends State<LoginPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
                     title: AppLocalizations.of(context)!.loginToAccount,
+                    isLoading: isLoading,
                     onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+                      await Future.delayed(const Duration(seconds: 5), () {
+                        setState(() {
+                          isLoading = false;
+                          Get.back();
+                        });
+                      });
                       await Config.client.loginUser(
                         usernameController.text,
                         passwordController.text,
