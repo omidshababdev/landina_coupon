@@ -29,6 +29,8 @@ class _NewCouponPageState extends State<NewCouponPage> {
   TextEditingController categoryController = TextEditingController();
   TextEditingController descController = TextEditingController();
 
+  bool? isLoading = false;
+
   @override
   void initState() {
     super.initState();
@@ -186,7 +188,17 @@ class _NewCouponPageState extends State<NewCouponPage> {
             child: LandinaTextButton(
               title: 'ایجاد کوپن جدید',
               backgroundColor: true,
+              isLoading: isLoading,
               onPressed: () async {
+                setState(() {
+                  isLoading = true;
+                });
+                await Future.delayed(const Duration(seconds: 5), () {
+                  setState(() {
+                    isLoading = false;
+                    Navigator.pop(context);
+                  });
+                });
                 await Config.client.createCoupon(
                   nameController.text,
                   codeController.text,

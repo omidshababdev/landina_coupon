@@ -29,6 +29,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  void updateUI() {
+    setState(() {
+      //You can also make changes to your state here.
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -278,10 +284,12 @@ class _HomePageState extends State<HomePage> {
                     return Center(
                       child: LandinaIconButton(
                         icon: Ionicons.reload,
-                        onPressed: () {
-                          setState(() {
-                            // Reload Page
-                          });
+                        onPressed: () async {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      super.widget));
                         },
                       ),
                     );

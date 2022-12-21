@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class LandinaTextButton extends StatelessWidget {
   final String title;
-  bool? isLoading = false;
+  bool? isLoading = true;
   bool? backgroundColor = true;
   final VoidCallback onPressed;
   LandinaTextButton({

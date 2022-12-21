@@ -41,7 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController bioController = TextEditingController();
 
   File? image;
-  bool? isLoading;
+  bool? isLoading = false;
 
   Future pickImage(ImageSource source) async {
     try {
@@ -123,18 +123,17 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   LandinaTextButton(
                     title: "تماس با پشتیبانی",
+                    isLoading: isLoading,
                     onPressed: () async {
-                      if (isLoading == false) return;
                       setState(() {
                         isLoading = true;
                       });
-                      await Future.delayed(
-                        const Duration(seconds: 5),
-                      );
-                      setState(() {
-                        isLoading = false;
+                      await Future.delayed(const Duration(seconds: 5), () {
+                        setState(() {
+                          isLoading = false;
+                          Navigator.pop(context);
+                        });
                       });
-                      Navigator.pop(context);
                     },
                   ),
                   LandinaTextButton(
@@ -700,9 +699,10 @@ class _ProfilePageState extends State<ProfilePage> {
               child: LandinaIconButton(
                 icon: Ionicons.reload,
                 onPressed: () {
-                  setState(() {
-                    // Reload Page
-                  });
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => super.widget));
                 },
               ),
             );
