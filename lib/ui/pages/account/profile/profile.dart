@@ -41,9 +41,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   File? image;
 
-  Future pickImage() async {
+  Future pickImage(ImageSource source) async {
     try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final image = await ImagePicker().pickImage(source: source);
       if (image == null) return;
 
       final imageTemporary = File(image.path);
@@ -181,6 +181,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       title: "استفاده از دوربین",
                                       onPressed: () {
                                         Navigator.pop(context);
+                                        pickImage(ImageSource.camera);
                                       },
                                     ),
                                     LandinaTextButton(
@@ -188,7 +189,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       backgroundColor: true,
                                       onPressed: () {
                                         Navigator.pop(context);
-                                        pickImage();
+                                        pickImage(ImageSource.gallery);
                                       },
                                     ),
                                   ],
