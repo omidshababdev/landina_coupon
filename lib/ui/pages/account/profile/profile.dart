@@ -10,6 +10,7 @@ import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
@@ -123,6 +124,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     title: "تماس با پشتیبانی",
                     onPressed: () {
                       Navigator.pop(context);
+                      NotificationApi.showNotification(
+                        title: "به لندینا کوپن خوش آمدی!",
+                        body:
+                            "حالا می تونی کوپن جدید ایجاد و از امکانات فوق العاده حسابت استفاده کنی",
+                        payload: "login_notif",
+                      );
                     },
                   ),
                   LandinaTextButton(

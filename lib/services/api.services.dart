@@ -7,6 +7,7 @@ import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
 
 import 'package:get/get.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 
 class ApiService {
   final endPointUrl = "https://landina-account.iran.liara.run/";
@@ -63,6 +64,13 @@ class ApiService {
         Config.loggedIn = true;
 
         Get.offNamed("/profile");
+
+        NotificationApi.showNotification(
+          title: "به لندینا کوپن خوش آمدی!",
+          body:
+              "حالا می تونی کوپن جدید ایجاد و از امکانات فوق العاده حسابت استفاده کنی",
+          payload: "login_notif",
+        );
 
         final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
 
