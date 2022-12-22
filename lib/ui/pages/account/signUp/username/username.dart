@@ -7,6 +7,7 @@ import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:get/get.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
@@ -14,8 +15,15 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 // Internationalization and localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class UsernamePage extends StatelessWidget {
+class UsernamePage extends StatefulWidget {
   const UsernamePage({super.key});
+
+  @override
+  State<UsernamePage> createState() => _UsernamePageState();
+}
+
+class _UsernamePageState extends State<UsernamePage> {
+  bool? isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +62,7 @@ class UsernamePage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    AppLocalizations.of(context)!
-                        .emailPageDescription
-                        .capitalize(),
+                    AppLocalizations.of(context)!.emailPageDescription,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -64,14 +70,13 @@ class UsernamePage extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
                     maxLines: 1,
-                    hintText:
-                        AppLocalizations.of(context)!.username.capitalize(),
+                    hintText: AppLocalizations.of(context)!.username,
                     suffixIcon: IconlyLight.info_circle,
                     textfieldController: Config.usernameController,
                     suffixIconOnPressed: () {
                       landinaModal(
                         Text(
-                          AppLocalizations.of(context)!.username.capitalize(),
+                          AppLocalizations.of(context)!.username,
                         ),
                       );
                     },
@@ -84,18 +89,19 @@ class UsernamePage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: AppLocalizations.of(context)!
-                        .goToTheNextLevel
-                        .capitalize(),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const PasswordPage();
-                          },
-                        ),
-                      );
+                    title: AppLocalizations.of(context)!.goToTheNextLevel,
+                    isLoading: isLoading,
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      await Future.delayed(const Duration(seconds: 5), () {
+                        setState(() {
+                          isLoading = false;
+                        });
+                      });
+                      Get.toNamed("/signUp/email");
                     },
                   ),
                 ),

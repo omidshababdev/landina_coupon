@@ -21,6 +21,7 @@ class PasswordPage extends StatefulWidget {
 
 class _PasswordPageState extends State<PasswordPage> {
   bool? _passwordVisible;
+  bool? isLoading = false;
 
   @override
   void initState() {
@@ -97,7 +98,18 @@ class _PasswordPageState extends State<PasswordPage> {
                     title: AppLocalizations.of(context)!
                         .goToTheNextLevel
                         .capitalize(),
-                    onPressed: () {},
+                    isLoading: isLoading,
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      await Future.delayed(const Duration(seconds: 5), () {
+                        setState(() {
+                          isLoading = false;
+                        });
+                      });
+                    },
                   ),
                 ),
               ],

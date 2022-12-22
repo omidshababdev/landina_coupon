@@ -6,6 +6,7 @@ import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:get/get.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
@@ -13,9 +14,15 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 // Internationalization and localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class EmailPage extends StatelessWidget {
+class EmailPage extends StatefulWidget {
   const EmailPage({super.key});
 
+  @override
+  State<EmailPage> createState() => _EmailPageState();
+}
+
+class _EmailPageState extends State<EmailPage> {
+  bool? isLoading = false;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,7 +36,7 @@ class EmailPage extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.emailAddress.capitalize(),
+            title: AppLocalizations.of(context)!.emailAddress,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"));
@@ -53,9 +60,7 @@ class EmailPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    AppLocalizations.of(context)!
-                        .emailPageDescription
-                        .capitalize(),
+                    AppLocalizations.of(context)!.emailPageDescription,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -63,8 +68,7 @@ class EmailPage extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
                     maxLines: 1,
-                    hintText:
-                        AppLocalizations.of(context)!.emailAddress.capitalize(),
+                    hintText: AppLocalizations.of(context)!.emailAddress,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
                       landinaModal(Text("data"));
@@ -78,18 +82,19 @@ class EmailPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: AppLocalizations.of(context)!
-                        .goToTheNextLevel
-                        .capitalize(),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return const PasswordPage();
-                          },
-                        ),
-                      );
+                    title: AppLocalizations.of(context)!.goToTheNextLevel,
+                    isLoading: isLoading,
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      await Future.delayed(const Duration(seconds: 5), () {
+                        setState(() {
+                          isLoading = false;
+                        });
+                      });
+                      Get.toNamed("/signUp/password");
                     },
                   ),
                 ),

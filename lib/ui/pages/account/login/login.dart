@@ -142,7 +142,6 @@ class _LoginPageState extends State<LoginPage> {
                       await Future.delayed(const Duration(seconds: 5), () {
                         setState(() {
                           isLoading = false;
-                          Get.back();
                         });
                       });
                       await Config.client.loginUser(
