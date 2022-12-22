@@ -33,29 +33,22 @@ class ApiService {
         Config.box.write("email", email);
         Config.box.write("password", password);
 
-        print(res.statusCode);
-        print(res.body);
-
         Config.loggedIn = true;
+
+        final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
+        Config.box.write("myId", userModel.id);
 
         Get.offAll(HomePage());
         Get.toNamed('/profile');
 
-        final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
-
-        Config.box.write("myId", userModel.id);
-
         return userModel;
       } else {
-        print(res.statusCode);
-        print(res.body);
-
+        Get.snackbar(res.statusCode.toString(), res.body.toString());
         return "Failed to Register.";
       }
     } catch (err) {
-      print(res.statusCode);
-      print(res.body);
-
+      print(err);
+      Get.snackbar("Failed to Register", "$err");
       return err;
     }
   }

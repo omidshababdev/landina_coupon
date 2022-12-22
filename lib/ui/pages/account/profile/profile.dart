@@ -146,7 +146,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     title: "می خوام از حسابم خارج بشم",
                     backgroundColor: true,
                     onPressed: () {
+                      Config.box.remove("username");
+                      Config.box.remove("email");
+                      Config.box.remove("password");
+
+                      setState(() {
+                        Config.loggedIn = false;
+                      });
+
                       Navigator.pop(context);
+
+                      Get.back();
                     },
                   ),
                 ],
