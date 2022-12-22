@@ -111,10 +111,15 @@ class _PasswordPageState extends State<PasswordPage> {
                           isLoading = false;
                         });
                       });
+
+                      print(Config.usernameController.text);
+                      print(Config.emailController.text);
+                      print(Config.passwordController.text);
+
                       Config.client.signUpUser(
-                        username: Config.usernameController.text,
-                        email: Config.emailController.text,
-                        password: Config.passwordController.text,
+                        Config.usernameController.text,
+                        Config.emailController.text,
+                        Config.passwordController.text,
                       );
                     },
                   ),

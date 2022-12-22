@@ -7,40 +7,62 @@ import 'package:landina_coupon/models/user.dart';
 
 import 'package:get/get.dart';
 import 'package:landina_coupon/services/notification.services.dart';
+import 'package:landina_coupon/ui/pages/home/home.dart';
 
 class ApiService {
   final endPointUrl = "https://landina-account.iran.liara.run/";
 
   // SignUp User
-  Future<void> signUpUser({
-    required String username,
-    required String email,
-    required String password,
-  }) async {
-    try {
-      UserModel user = UserModel(
-        name: 'نام و نام خانوادگی',
-        username: username,
-        email: email,
-        password: password,
-        bio: 'اطلاعاتی که می تونه به افراد بازدیدکننده از پرفایلت کمک کنه',
-        accountType: 'Personal',
-      );
+  Future signUpUser(String username, String email, String password) async {
+    await Future.delayed(const Duration(seconds: 5));
 
-      http.Response res = await http.post(
-        Uri.parse('${endPointUrl}api/auth/register'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
-      );
-    } catch (e) {
-      //
+    http.Response res =
+        await http.post(Uri.parse('${endPointUrl}api/auth/register'),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode(<String, String>{
+              'username': username,
+              'email': email,
+              'password': password,
+            }));
+
+    try {
+      if (res.statusCode == 200) {
+        Config.box.write("username", username);
+        Config.box.write("email", email);
+        Config.box.write("password", password);
+
+        print(res.statusCode);
+        print(res.body);
+
+        Config.loggedIn = true;
+
+        Get.offAll(HomePage());
+        Get.toNamed('/profile');
+
+        final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
+
+        Config.box.write("myId", userModel.id);
+
+        return userModel;
+      } else {
+        print(res.statusCode);
+        print(res.body);
+
+        return "Failed to Register.";
+      }
+    } catch (err) {
+      print(res.statusCode);
+      print(res.body);
+
+      return err;
     }
   }
 
   // Login User
   Future loginUser(String username, String password) async {
-    await Future.delayed(const Duration(milliseconds: 4000));
+    await Future.delayed(const Duration(seconds: 5));
 
     final res = await http.post(
       Uri.parse('${endPointUrl}api/auth/login'),
