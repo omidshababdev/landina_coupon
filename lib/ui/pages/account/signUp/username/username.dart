@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -62,11 +63,17 @@ class UsernamePage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
+                    maxLines: 1,
                     hintText:
-                        AppLocalizations.of(context)!.emailAddress.capitalize(),
+                        AppLocalizations.of(context)!.username.capitalize(),
                     suffixIcon: IconlyLight.info_circle,
+                    textfieldController: Config.usernameController,
                     suffixIconOnPressed: () {
-                      landinaModal(Text("data"));
+                      landinaModal(
+                        Text(
+                          AppLocalizations.of(context)!.username.capitalize(),
+                        ),
+                      );
                     },
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},

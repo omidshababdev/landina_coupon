@@ -62,6 +62,7 @@ class EmailPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
+                    maxLines: 1,
                     hintText:
                         AppLocalizations.of(context)!.emailAddress.capitalize(),
                     suffixIcon: IconlyLight.info_circle,

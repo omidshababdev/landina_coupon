@@ -74,6 +74,7 @@ class _PasswordPageState extends State<PasswordPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
+                    maxLines: 1,
                     hintText:
                         AppLocalizations.of(context)!.password.capitalize(),
                     suffixIcon: _passwordVisible == false
