@@ -286,7 +286,19 @@ class _ProfilePageState extends State<ProfilePage> {
                                             const SizedBox(height: 15),
                                             LandinaTextButton(
                                               title: "تغییر نام حساب کاربری",
+                                              isLoading: isLoading,
                                               onPressed: () async {
+                                                setState(() {
+                                                  isLoading = true;
+                                                });
+
+                                                await Future.delayed(
+                                                    const Duration(seconds: 5),
+                                                    () {
+                                                  setState(() {
+                                                    isLoading = false;
+                                                  });
+                                                });
                                                 await Config.client.updateUser(
                                                   "name",
                                                   nameController.text,
