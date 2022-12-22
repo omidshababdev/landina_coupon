@@ -1,24 +1,22 @@
-import 'dart:convert';
-
 class UserModel {
-  final String id;
-  final String name;
-  final String username;
-  final String email;
-  final String password;
-  final String bio;
-  final String profilePicture;
-  final String accountType;
+  String? id;
+  String? name;
+  String? username;
+  String? email;
+  String? password;
+  String? bio;
+  String? profilePicture;
+  String? accountType;
 
   UserModel({
-    required this.id,
-    required this.name,
-    required this.username,
-    required this.email,
-    required this.password,
-    required this.bio,
-    required this.profilePicture,
-    required this.accountType,
+    this.id,
+    this.name,
+    this.username,
+    this.email,
+    this.password,
+    this.bio,
+    this.profilePicture,
+    this.accountType,
   });
 
   Map<String, dynamic> toMap() {

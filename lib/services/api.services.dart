@@ -19,13 +19,11 @@ class ApiService {
   }) async {
     try {
       UserModel user = UserModel(
-        id: ' ',
         name: 'نام و نام خانوادگی',
         username: username,
         email: email,
         password: password,
         bio: 'اطلاعاتی که می تونه به افراد بازدیدکننده از پرفایلت کمک کنه',
-        profilePicture: ' ',
         accountType: 'Personal',
       );
 
@@ -102,7 +100,7 @@ class ApiService {
   }
 
   // Get a User
-  Future getUser(String userId) async {
+  Future getUser(String? userId) async {
     await Future.delayed(const Duration(milliseconds: 4000));
 
     final res = await http.get(

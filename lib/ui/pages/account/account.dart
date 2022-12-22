@@ -98,7 +98,7 @@ class _AccountPageState extends State<AccountPage> {
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 children: [
                                   Text(
-                                    widget.user!.name,
+                                    "${widget.user!.name}",
                                     style: const TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
@@ -114,7 +114,7 @@ class _AccountPageState extends State<AccountPage> {
                                       borderRadius: BorderRadius.circular(50),
                                     ),
                                     child: Text(
-                                      widget.user!.accountType,
+                                      "${widget.user!.accountType}",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w400,
                                         fontSize: 12,
@@ -126,7 +126,7 @@ class _AccountPageState extends State<AccountPage> {
                                 ],
                               ),
                               Text(
-                                widget.user!.username,
+                                "${widget.user!.username}",
                                 style: TextStyle(
                                   fontFamily: "Poppins",
                                   fontWeight: FontWeight.w400,
@@ -140,7 +140,7 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                       const SizedBox(height: 20),
                       ReadMoreText(
-                        widget.user!.bio,
+                        "${widget.user!.bio}",
                         trimLines: 2,
                         trimMode: TrimMode.Line,
                         trimCollapsedText: 'بیشتر',

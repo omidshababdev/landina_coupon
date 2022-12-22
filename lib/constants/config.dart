@@ -14,4 +14,17 @@ class Config {
   static ApiService client = ApiService();
 
   static GetStorage box = GetStorage();
+
+  static validateEmail(String? value) {
+    String pattern =
+        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
+        r"{0,253}[a-zA-Z0-9])?)*$";
+    RegExp regex = RegExp(pattern);
+    if (value == null || value.isEmpty || !regex.hasMatch(value)) {
+      return 'لطفا یک آدرس ایمیل معتبر وارد کن';
+    } else {
+      return null;
+    }
+  }
 }
