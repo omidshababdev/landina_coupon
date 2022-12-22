@@ -107,20 +107,16 @@ class _PasswordPageState extends State<PasswordPage> {
                       });
 
                       await Future.delayed(const Duration(seconds: 5), () {
+                        Config.client.signUpUser(
+                          Config.usernameController.text,
+                          Config.emailController.text,
+                          Config.passwordController.text,
+                        );
+
                         setState(() {
                           isLoading = false;
                         });
                       });
-
-                      print(Config.usernameController.text);
-                      print(Config.emailController.text);
-                      print(Config.passwordController.text);
-
-                      Config.client.signUpUser(
-                        Config.usernameController.text,
-                        Config.emailController.text,
-                        Config.passwordController.text,
-                      );
                     },
                   ),
                 ),

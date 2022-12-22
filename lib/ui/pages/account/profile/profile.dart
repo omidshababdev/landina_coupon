@@ -128,6 +128,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       setState(() {
                         isLoading = true;
                       });
+
                       await Future.delayed(const Duration(seconds: 5), () {
                         setState(() {
                           isLoading = false;

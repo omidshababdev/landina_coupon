@@ -139,15 +139,18 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {
                         isLoading = true;
                       });
-                      await Future.delayed(const Duration(seconds: 5), () {
+
+                      await Future.delayed(const Duration(seconds: 3),
+                          () async {
+                        await Config.client.loginUser(
+                          usernameController.text,
+                          passwordController.text,
+                        );
+
                         setState(() {
                           isLoading = false;
                         });
                       });
-                      await Config.client.loginUser(
-                        usernameController.text,
-                        passwordController.text,
-                      );
                     },
                   ),
                 ),

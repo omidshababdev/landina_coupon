@@ -25,32 +25,30 @@ class ApiService {
               'password': password,
             }));
 
-    await Future.delayed(const Duration(seconds: 5), () {
-      try {
-        if (res.statusCode == 200) {
-          Config.box.write("username", username);
-          Config.box.write("email", email);
-          Config.box.write("password", password);
+    try {
+      if (res.statusCode == 200) {
+        Config.box.write("username", username);
+        Config.box.write("email", email);
+        Config.box.write("password", password);
 
-          Config.loggedIn = true;
+        Config.loggedIn = true;
 
-          final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
-          Config.box.write("myId", userModel.id);
+        final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
+        Config.box.write("myId", userModel.id);
 
-          Get.offAll(HomePage());
-          Get.toNamed('/profile');
+        Get.offAll(HomePage());
+        Get.toNamed('/profile');
 
-          return userModel;
-        } else {
-          Get.snackbar(res.statusCode.toString(), res.body.toString());
-          return "Failed to Register.";
-        }
-      } catch (err) {
-        print(err);
-        Get.snackbar("Failed to Register", "$err");
-        return err;
+        return userModel;
+      } else {
+        Get.snackbar(res.statusCode.toString(), res.body.toString());
+        return "Failed to Register.";
       }
-    });
+    } catch (err) {
+      print(err);
+      Get.snackbar("Failed to Register", "$err");
+      return err;
+    }
   }
 
   // Login User
