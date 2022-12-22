@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
@@ -7,6 +8,8 @@ class Config {
   Config._();
   static bool loggedIn = false;
   static bool inProfile = false;
+
+  static TextEditingController usernameController = TextEditingController();
 
   static ApiService client = ApiService();
 

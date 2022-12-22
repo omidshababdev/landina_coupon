@@ -3,6 +3,7 @@
   "profile": "profile",
   "account": "account",
   "landinaID": "Landina ID",
+  "username": "username",
   "email": "email",
   "emailAddress": "email address",
   "password": "password",
