@@ -485,7 +485,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           );
                         },
                         child: ReadMoreText(
-                          "${snapshot.data!.bio} با کلیک روی این قسمت می تونی تغییرش بدی و هر چی می خوای رو وارد کنی. در ضمن هیچ محدودیتی هم نداری!",
+                          snapshot.data!.bio,
                           trimLines: 2,
                           trimMode: TrimMode.Line,
                           trimCollapsedText: 'بیشتر',
