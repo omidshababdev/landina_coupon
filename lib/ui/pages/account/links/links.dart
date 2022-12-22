@@ -27,42 +27,7 @@ class _LinksPageState extends State<LinksPage> {
         child: LandinaAppbar(
           title: "لینک های حساب",
           rightIcon: Ionicons.reorder_two,
-          rightIconOnPressed: () {
-            landinaModal(
-              ButtonBarSuper(
-                lineSpacing: 15,
-                wrapType: WrapType.balanced,
-                wrapFit: WrapFit.divided,
-                children: [
-                  LandinaTextButton(
-                    title: "تنظیمات",
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "تماس با پشتیبانی",
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "اشتراک گذاری پروفایل",
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "می خوام از حسابم خارج بشم",
-                    backgroundColor: true,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-            );
-          },
+          rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
             Navigator.pop(context);

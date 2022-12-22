@@ -66,55 +66,51 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
           ),
         ),
       ),
-      child: Form(
-        autovalidateMode: AutovalidateMode.always,
-        child: TextFormField(
-          validator: widget.validator,
-          controller: widget.textfieldController,
-          style: const TextStyle(fontSize: 15),
-          cursorColor: const Color(0xff3B3B3B),
-          obscureText: widget.obscureText ?? false,
-          minLines: widget.minLines,
-          maxLines: widget.maxLines,
-          enabled: widget.enabled,
-          decoration: InputDecoration(
-            hintText: widget.hintText,
-            contentPadding: const EdgeInsets.symmetric(vertical: 10),
-            hintStyle: const TextStyle(
-              fontSize: 15,
-              height: 2,
+      child: TextField(
+        controller: widget.textfieldController,
+        style: const TextStyle(fontSize: 15),
+        cursorColor: const Color(0xff3B3B3B),
+        obscureText: widget.obscureText ?? false,
+        minLines: widget.minLines,
+        maxLines: widget.maxLines,
+        enabled: widget.enabled,
+        decoration: InputDecoration(
+          hintText: widget.hintText,
+          contentPadding: const EdgeInsets.symmetric(vertical: 10),
+          hintStyle: const TextStyle(
+            fontSize: 15,
+            height: 2,
+          ),
+          focusColor: Colors.black,
+          border: InputBorder.none,
+          prefixIcon: IconButton(
+            onPressed: widget.prefixIconOnPressed,
+            icon: Icon(
+              widget.prefixIcon,
+              color: const Color(0xff3b3b3b).withOpacity(0.5),
             ),
-            focusColor: Colors.black,
-            border: InputBorder.none,
-            prefixIcon: IconButton(
-              onPressed: widget.prefixIconOnPressed,
-              icon: Icon(
-                widget.prefixIcon,
-                color: const Color(0xff3b3b3b).withOpacity(0.5),
-              ),
-            ),
-            suffixIcon: Container(
-              decoration: BoxDecoration(
-                border: myLocale.languageCode == "en"
-                    ? const Border(
-                        left: BorderSide(
-                          width: 1,
-                          color: Color(0xffF1F1F1),
-                        ),
-                      )
-                    : const Border(
-                        right: BorderSide(
-                          width: 1,
-                          color: Color(0xffF1F1F1),
-                        ),
+          ),
+          suffixIcon: Container(
+            decoration: BoxDecoration(
+              border: myLocale.languageCode == "en"
+                  ? const Border(
+                      left: BorderSide(
+                        width: 1,
+                        color: Color(0xffF1F1F1),
                       ),
-              ),
-              child: IconButton(
-                onPressed: widget.suffixIconOnPressed,
-                icon: Icon(
-                  widget.suffixIcon,
-                  color: const Color(0xff3b3b3b).withOpacity(0.5),
-                ),
+                    )
+                  : const Border(
+                      right: BorderSide(
+                        width: 1,
+                        color: Color(0xffF1F1F1),
+                      ),
+                    ),
+            ),
+            child: IconButton(
+              onPressed: widget.suffixIconOnPressed,
+              icon: Icon(
+                widget.suffixIcon,
+                color: const Color(0xff3b3b3b).withOpacity(0.5),
               ),
             ),
           ),
