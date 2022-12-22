@@ -29,6 +29,7 @@ import 'package:readmore/readmore.dart';
 class ProfilePage extends StatefulWidget {
   Future? couponInfo;
   Future? userInfo;
+  String? accountType = 'personal';
   ProfilePage({super.key});
 
   @override
@@ -172,6 +173,9 @@ class _ProfilePageState extends State<ProfilePage> {
       body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
+          widget.accountType = snapshot.data.accountType == 'personal'
+              ? AppLocalizations.of(context)!.personal.capitalize()
+              : AppLocalizations.of(context)!.business.capitalize();
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
             return ListView(
@@ -308,50 +312,33 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      landinaModal(Text("نوع حساب"));
+                                      landinaModal(
+                                        Text(
+                                          AppLocalizations.of(context)!
+                                              .accountType
+                                              .capitalize(),
+                                        ),
+                                      );
                                     },
-                                    child: snapshot.data!.accountType ==
-                                            'Company'
-                                        ? Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 8,
-                                              vertical: 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xffF1F1F1),
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                            ),
-                                            child: Text(
-                                              snapshot.data!.accountType,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: const Color(0xff3B3B3B)
-                                                    .withOpacity(0.5),
-                                              ),
-                                            ),
-                                          )
-                                        : Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 8,
-                                              vertical: 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xffF1F1F1),
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                            ),
-                                            child: Text(
-                                              snapshot.data!.accountType,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: const Color(0xff3B3B3B)
-                                                    .withOpacity(0.5),
-                                              ),
-                                            ),
-                                          ),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                        vertical: 2,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xffF1F1F1),
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: Text(
+                                        "${widget.accountType}",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 12,
+                                          color: const Color(0xff3B3B3B)
+                                              .withOpacity(0.5),
+                                        ),
+                                      ),
+                                    ),
                                   )
                                 ],
                               ),
@@ -479,7 +466,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           );
                         },
                         child: ReadMoreText(
-                          snapshot.data!.bio,
+                          "${snapshot.data!.bio}",
                           trimLines: 2,
                           trimMode: TrimMode.Line,
                           trimCollapsedText: 'بیشتر',

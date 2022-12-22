@@ -68,7 +68,6 @@ class _EmailPageState extends State<EmailPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    validator: (value) => Config.validateEmail(value),
                     textfieldController: Config.emailController,
                     maxLines: 1,
                     hintText: AppLocalizations.of(context)!.emailAddress,

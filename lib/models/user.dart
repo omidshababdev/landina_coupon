@@ -35,13 +35,13 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> map) {
     return UserModel(
       id: map['_id'] ?? ' ',
-      name: map['name'] ?? ' ',
-      username: map['username'] ?? ' ',
-      email: map['email'] ?? ' ',
-      password: map['password'] ?? ' ',
-      bio: map['bio'] ?? ' ',
+      name: map['name'] ?? 'نام و نام خانوادگی',
+      username: map['username'] ?? 'username',
+      email: map['email'] ?? 'ایمیل',
+      password: map['password'] ?? 'رمز عبور',
+      bio: map['bio'] ?? 'توضیحات صفحه اینجا نمایش داده میشن.',
       profilePicture: map['profilePicture'] ?? ' ',
-      accountType: map['accountType'] ?? ' ',
+      accountType: map['accountType'] ?? 'شخصی',
     );
   }
 }
