@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -67,6 +68,7 @@ class _EmailPageState extends State<EmailPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
+                    textfieldController: Config.emailController,
                     maxLines: 1,
                     hintText: AppLocalizations.of(context)!.emailAddress,
                     suffixIcon: IconlyLight.info_circle,
