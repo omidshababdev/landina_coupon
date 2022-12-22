@@ -58,12 +58,76 @@ class SettingsPage extends StatelessWidget {
           },
         ),
       ),
-      body: ListView(children: [
-        ListTile(
-          title: const Text("حذف حساب کاربری"),
-          onTap: () {},
-        )
-      ]),
+      body: ListView(
+        children: [
+          ListTile(
+            title: const Text(
+              "اعلان ها",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff3B3B3B),
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              "حریم خصوصی",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff3B3B3B),
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              "راهنمایی",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff3B3B3B),
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              "درباره",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff3B3B3B),
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              "طرح زمینه",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff3B3B3B),
+              ),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const Text(
+              "حذف حساب کاربری",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Color(0xff3B3B3B),
+              ),
+            ),
+            onTap: () {},
+          ),
+        ],
+      ),
     );
   }
 }

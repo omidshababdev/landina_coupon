@@ -8,6 +8,7 @@ import 'package:landina_coupon/models/user.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:get/get.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
@@ -46,7 +47,7 @@ class _AccountPageState extends State<AccountPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: AppLocalizations.of(context)!.brandName.capitalize(),
+          title: AppLocalizations.of(context)!.brandName.capitalizeFirst,
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,
@@ -167,8 +168,8 @@ class _AccountPageState extends State<AccountPage> {
                   children: [
                     LandinaTextButton(
                       title: isFollowed != false
-                          ? AppLocalizations.of(context)!.follow.capitalize()
-                          : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
+                          ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
+                          : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
                       backgroundColor: isFollowed != false ? true : false,
                       onPressed: () {
                         setState(() {
@@ -191,11 +192,15 @@ class _AccountPageState extends State<AccountPage> {
                     ),
                     LandinaTextButton(
                       title: 'لینک ها',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed("/links");
+                      },
                     ),
                     LandinaTextButton(
                       title: 'اطلاعات تماس',
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed("/contacts");
+                      },
                     ),
                   ],
                 ),
@@ -350,6 +355,11 @@ class _AccountPageState extends State<AccountPage> {
                 onPressed: () {
                   setState(() {
                     // Reload Page
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => super.widget),
+                    );
                   });
                 },
               ),
