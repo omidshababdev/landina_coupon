@@ -119,6 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     title: "تنظیمات",
                     onPressed: () {
                       Navigator.pop(context);
+                      Get.toNamed("/settings");
                     },
                   ),
                   LandinaTextButton(
@@ -135,12 +136,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           Navigator.pop(context);
                         });
                       });
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "اشتراک گذاری پروفایل",
-                    onPressed: () {
-                      Navigator.pop(context);
                     },
                   ),
                   LandinaTextButton(

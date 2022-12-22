@@ -20,8 +20,7 @@ class SettingsPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title:
-              "تنظیمات ${AppLocalizations.of(context)!.account.capitalize()}",
+          title: "تنظیمات",
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
             landinaModal(
@@ -59,6 +58,12 @@ class SettingsPage extends StatelessWidget {
           },
         ),
       ),
+      body: ListView(children: [
+        ListTile(
+          title: const Text("حذف حساب کاربری"),
+          onTap: () {},
+        )
+      ]),
     );
   }
 }
