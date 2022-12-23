@@ -43,6 +43,8 @@ class _ProfilePageState extends State<ProfilePage> {
   File? image;
   bool? isLoading = false;
 
+  Future? userInfo = Config.client.getUser(Config.box.read("myId"));
+
   Future pickImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
@@ -241,6 +243,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
+                                      setState(() {
+                                        nameController.text =
+                                            snapshot.data!.name;
+                                      });
                                       landinaModal(
                                         Column(
                                           crossAxisAlignment:
@@ -372,6 +378,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               const SizedBox(height: 5),
                               GestureDetector(
                                 onTap: () {
+                                  setState(() {
+                                    usernameController.text =
+                                        snapshot.data!.username;
+                                  });
                                   landinaModal(
                                     Column(
                                       crossAxisAlignment:
@@ -441,6 +451,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       const SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
+                          setState(() {
+                            bioController.text = snapshot.data!.bio;
+                          });
                           landinaModal(
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
