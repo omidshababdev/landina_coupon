@@ -5,10 +5,16 @@ import 'package:iconly/iconly.dart';
 class LandinaListTile extends StatelessWidget {
   String? title;
   String? subtitle;
+  VoidCallback? onTap;
   Widget? leading;
 
-  LandinaListTile({Key? key, this.title, this.subtitle, this.leading})
-      : super(key: key);
+  LandinaListTile({
+    Key? key,
+    this.title,
+    this.subtitle,
+    this.onTap,
+    this.leading,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +53,11 @@ class LandinaListTile extends StatelessWidget {
           "$subtitle",
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 13,
           ),
         ),
-        onTap: () {},
+        onTap: onTap,
       ),
     );
   }
