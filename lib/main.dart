@@ -18,9 +18,12 @@ import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:landina_coupon/ui/pages/account/login/login.dart';
 import 'package:landina_coupon/ui/pages/account/profile/profile.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-Future<void> main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -28,6 +31,10 @@ Future<void> main() async {
   ]);
 
   await GetStorage.init();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(
     const LandinaCoupon(),

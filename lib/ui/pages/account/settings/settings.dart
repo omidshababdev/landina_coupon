@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
@@ -89,6 +90,47 @@ class SettingsPage extends StatelessWidget {
             leading: const Icon(CupertinoIcons.pencil_outline),
           ),
           LandinaListTile(
+            onTap: () {
+              landinaModal(
+                Column(
+                  children: [
+                    const Text(
+                      "واقعا میخوای حذفش کنی؟",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    ButtonBarSuper(
+                      lineSpacing: 15,
+                      wrapType: WrapType.balanced,
+                      wrapFit: WrapFit.proportional,
+                      children: [
+                        LandinaTextButton(
+                          title: "حذفش کن",
+                          backgroundColor: true,
+                          onPressed: () async {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                            await Config.client.deleteUser(
+                              Config.box.read("myId"),
+                            );
+                          },
+                        ),
+                        LandinaTextButton(
+                          title: "نه نمی خواد",
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              );
+            },
             title: "حذف حساب کاربری",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",

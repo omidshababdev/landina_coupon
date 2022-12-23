@@ -6,7 +6,6 @@ import 'package:landina_coupon/models/coupon.dart';
 import 'package:landina_coupon/models/user.dart';
 
 import 'package:get/get.dart';
-import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
 class ApiService {
@@ -53,8 +52,6 @@ class ApiService {
 
   // Login User
   Future loginUser(String username, String password) async {
-    await Future.delayed(const Duration(seconds: 5));
-
     final res = await http.post(
       Uri.parse('${endPointUrl}api/auth/login'),
       headers: <String, String>{
@@ -79,11 +76,16 @@ class ApiService {
 
         Config.box.write("myId", userModel.id);
 
+        Get.snackbar("ورود با موفقیت انجام شد",
+            "حالا خیلی راحت می تونی ازش استفاده کنی");
+
         return userModel;
       } else {
+        Get.snackbar("ورود با موفقیت انجام نشد", "واقعا متاسفیم :(");
         return "Failed to Login.";
       }
     } catch (err) {
+      Get.snackbar("یک خطایی رخ داده", err.toString());
       return err;
     }
   }
@@ -150,7 +152,37 @@ class ApiService {
 
   // Delete User
   Future deleteUser(String userId) async {
-    final res = await http.get(Uri.parse('${endPointUrl}api/users/'));
+    final res = await http.delete(
+      Uri.parse('${endPointUrl}api/users/$userId'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'userId': userId,
+      }),
+    );
+
+    try {
+      if (res.statusCode == 200) {
+        Config.box.remove("username");
+        Config.box.remove("email");
+        Config.box.remove("password");
+
+        Config.loggedIn = false;
+
+        Config.box.remove("myId");
+
+        Get.snackbar("حساب کاربری با موفقیت حذف شد",
+            "هر وقت خواستی می تونی دوباره یک حساب جدید بسازی ...");
+
+        Get.offAll(HomePage());
+        Get.toNamed('/home');
+      } else {
+        return "Failed to delete account";
+      }
+    } catch (err) {
+      return err;
+    }
   }
 
   // Timeline Coupons
@@ -212,11 +244,15 @@ class ApiService {
       }),
     );
 
-    if (res.statusCode == 200) {
-      Get.snackbar("کوپن با موفقیت حذف شد",
-          "هر وقت خواستی می تونی دوباره یک کوپن جدید بسازی ...");
-    } else {
-      Get.snackbar("حذف کوپن انجام نشد!", "باید دوباره امتحان کنی.");
+    try {
+      if (res.statusCode == 200) {
+        Get.snackbar("کوپن با موفقیت حذف شد",
+            "هر وقت خواستی می تونی دوباره یک کوپن جدید بسازی ...");
+      } else {
+        Get.snackbar("حذف کوپن انجام نشد!", "باید دوباره امتحان کنی.");
+      }
+    } catch (err) {
+      return err;
     }
   }
 

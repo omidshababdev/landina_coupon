@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "629123764170",
+    "project_id": "landina-coupon",
+    "storage_bucket": "landina-coupon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629123764170:android:0dca1456888717f0240933",
+        "android_client_info": {
+          "package_name": "com.example.landina_coupon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629123764170-dhcovtp0b5olsiqoh2bqnf9lc3m3b7f4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5qNPea4gG2xypAPpT8jv3aoLBEUjir0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629123764170-dhcovtp0b5olsiqoh2bqnf9lc3m3b7f4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "629123764170-lcjmmo6u2s9n5oteiqi732apksmnqf6t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.landinaCoupon"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
