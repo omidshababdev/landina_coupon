@@ -148,6 +148,11 @@ class ApiService {
     }
   }
 
+  // Delete User
+  Future deleteUser(String userId) async {
+    final res = await http.get(Uri.parse('${endPointUrl}api/users/'));
+  }
+
   // Timeline Coupons
   Future timelineCoupons(String userId) async {
     final res = await http.get(

@@ -63,12 +63,14 @@ class SettingsPage extends StatelessWidget {
       body: ListView(
         children: [
           LandinaListTile(
+            onTap: () {},
             title: "اعلان ها",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(IconlyLight.notification),
           ),
           LandinaListTile(
+            onTap: () {},
             title: "راهنمایی",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",

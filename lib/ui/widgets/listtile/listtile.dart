@@ -1,6 +1,4 @@
-import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
 
 class LandinaListTile extends StatelessWidget {
   String? title;
