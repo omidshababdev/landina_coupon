@@ -1,9 +1,11 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 // String Extension for Capitalize
@@ -60,71 +62,35 @@ class SettingsPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          ListTile(
-            title: const Text(
-              "اعلان ها",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff3B3B3B),
-              ),
-            ),
-            onTap: () {},
+          LandinaListTile(
+            title: "اعلان ها",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(IconlyLight.notification),
           ),
-          ListTile(
-            title: const Text(
-              "حریم خصوصی",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff3B3B3B),
-              ),
-            ),
-            onTap: () {},
+          LandinaListTile(
+            title: "راهنمایی",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(Ionicons.help),
           ),
-          ListTile(
-            title: const Text(
-              "راهنمایی",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff3B3B3B),
-              ),
-            ),
-            onTap: () {},
+          LandinaListTile(
+            title: "درباره",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(IconlyLight.info_circle),
           ),
-          ListTile(
-            title: const Text(
-              "درباره",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff3B3B3B),
-              ),
-            ),
-            onTap: () {},
+          LandinaListTile(
+            title: "طرح زمینه",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(CupertinoIcons.pencil_outline),
           ),
-          ListTile(
-            title: const Text(
-              "طرح زمینه",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff3B3B3B),
-              ),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: const Text(
-              "حذف حساب کاربری",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: Color(0xff3B3B3B),
-              ),
-            ),
-            onTap: () {},
+          LandinaListTile(
+            title: "حذف حساب کاربری",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(IconlyLight.delete),
           ),
         ],
       ),

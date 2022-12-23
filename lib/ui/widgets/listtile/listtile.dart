@@ -1,72 +1,57 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 
 class LandinaListTile extends StatelessWidget {
-  final String title;
-  IconData? leadingIcon;
-  IconData? trailingIcon;
-  VoidCallback? leadingIconOnPressed;
-  VoidCallback? trailingIconOnPressed;
+  String? title;
+  String? subtitle;
+  Widget? leading;
 
-  LandinaListTile({
-    Key? key,
-    required this.title,
-    this.leadingIcon,
-    this.trailingIcon,
-    this.leadingIconOnPressed,
-    this.trailingIconOnPressed,
-  }) : super(key: key);
+  LandinaListTile({Key? key, this.title, this.subtitle, this.leading})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: const Color(0xffF1F1F1)),
-        borderRadius: const SmoothBorderRadius.only(
-          topLeft: SmoothRadius(
-            cornerRadius: 12,
-            cornerSmoothing: 0.5,
-          ),
-          topRight: SmoothRadius(
-            cornerRadius: 12,
-            cornerSmoothing: 0.5,
-          ),
-          bottomLeft: SmoothRadius(
-            cornerRadius: 12,
-            cornerSmoothing: 0.5,
-          ),
-          bottomRight: SmoothRadius(
-            cornerRadius: 12,
-            cornerSmoothing: 0.5,
+      decoration: const BoxDecoration(
+        border: Border.symmetric(
+          horizontal: BorderSide(
+            width: 0.5,
+            color: Color(0xffF1F1F1),
           ),
         ),
       ),
       child: ListTile(
-        minLeadingWidth: 0,
-        leading: Container(
-          width: 30,
-          child: IconButton(
-            onPressed: leadingIconOnPressed,
-            icon: Icon(
-              leadingIcon,
-              color: const Color(0xff3b3b3b).withOpacity(0.5),
-            ),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+        leading: AspectRatio(
+          aspectRatio: 1 / 1,
+          child: CircleAvatar(
+            backgroundColor: const Color(0xffF1F1F1),
+            foregroundColor: const Color(0xff3B3B3B),
+            child: leading,
           ),
         ),
+        focusColor: const Color(0xfff1f1f1),
         title: Text(
-          title,
+          "$title",
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
           style: const TextStyle(
             fontSize: 15,
+            fontWeight: FontWeight.w500,
+            color: Color(0xff3B3B3B),
           ),
         ),
-        trailing: IconButton(
-          onPressed: trailingIconOnPressed,
-          icon: Icon(
-            trailingIcon,
-            color: const Color(0xff3b3b3b).withOpacity(0.5),
+        subtitle: Text(
+          "$subtitle",
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+          style: TextStyle(
+            fontSize: 13,
           ),
         ),
+        onTap: () {},
       ),
     );
   }
