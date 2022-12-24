@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class UserModel {
   String? id;
   String? name;
@@ -6,6 +8,8 @@ class UserModel {
   String? password;
   String? bio;
   String? profilePicture;
+  Array? followers;
+  Array? followings;
   String? accountType;
 
   UserModel({
@@ -16,6 +20,8 @@ class UserModel {
     this.password,
     this.bio,
     this.profilePicture,
+    this.followers,
+    this.followings,
     this.accountType,
   });
 
@@ -28,6 +34,8 @@ class UserModel {
       'password': password,
       'bio': bio,
       'profilePicture': profilePicture,
+      'followers': followers,
+      'followings': followings,
       'accountType': accountType,
     };
   }
@@ -40,7 +48,9 @@ class UserModel {
       email: map['email'] ?? 'ایمیل',
       password: map['password'] ?? 'رمز عبور',
       bio: map['bio'] ?? 'توضیحات صفحه اینجا نمایش داده میشن.',
-      profilePicture: map['profilePicture'] ?? ' ',
+      profilePicture: map['profilePicture'],
+      followers: map['followers'],
+      followings: map['followings'],
       accountType: map['accountType'] ?? 'شخصی',
     );
   }

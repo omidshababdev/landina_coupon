@@ -122,14 +122,18 @@ class ApiService {
       Uri.parse('${endPointUrl}api/users/$userId'),
     );
 
-    if (res.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return UserModel.fromJson(jsonDecode(res.body));
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      return res.body;
+    try {
+      if (res.statusCode == 200) {
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
+        return UserModel.fromJson(jsonDecode(res.body));
+      } else {
+        // If the server did not return a 200 OK response,
+        // then throw an exception.
+        return res.body;
+      }
+    } catch (err) {
+      return err;
     }
   }
 
@@ -222,13 +226,17 @@ class ApiService {
       }),
     );
 
-    if (res.statusCode == 200) {
-      Get.back();
+    try {
+      if (res.statusCode == 200) {
+        Get.back();
 
-      Get.snackbar("کوپن با موفقیت ایجاد شد",
-          "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.");
-    } else {
-      return "Failed to Login.";
+        Get.snackbar("کوپن با موفقیت ایجاد شد",
+            "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.");
+      } else {
+        return "Failed to Login.";
+      }
+    } catch (err) {
+      return err;
     }
   }
 
