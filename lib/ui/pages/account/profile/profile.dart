@@ -222,7 +222,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 color: const Color(0xffF1F1F1),
                                 image: DecorationImage(
                                   image: NetworkImage(
-                                      snapshot.data!.profilePicture),
+                                    snapshot.data!.profilePicture,
+                                  ),
                                   fit: BoxFit.contain,
                                 ),
                                 shape: SmoothRectangleBorder(
