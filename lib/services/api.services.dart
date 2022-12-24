@@ -30,10 +30,10 @@ class ApiService {
         Config.box.write("email", email);
         Config.box.write("password", password);
 
-        Config.loggedIn = true;
-
         final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
         Config.box.write("myId", userModel.id);
+
+        Config.loggedIn = true;
 
         Get.offAll(HomePage());
         Get.toNamed('/profile');
@@ -143,14 +143,18 @@ class ApiService {
       Uri.parse('${endPointUrl}api/users/$userId/coupons'),
     );
 
-    if (res.statusCode == 200) {
-      List jsonResponse = json.decode(res.body);
+    try {
+      if (res.statusCode == 200) {
+        List jsonResponse = json.decode(res.body);
 
-      return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
-    } else if (res.statusCode == 404) {
-      return null;
-    } else {
-      throw Exception('Failed to get coupons.');
+        return jsonResponse.map((job) => CouponModel.fromJson(job)).toList();
+      } else if (res.statusCode == 404) {
+        return null;
+      } else {
+        return 'Failed to get coupons.';
+      }
+    } catch (err) {
+      return err;
     }
   }
 
@@ -233,7 +237,7 @@ class ApiService {
         Get.snackbar("کوپن با موفقیت ایجاد شد",
             "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.");
       } else {
-        return "Failed to Login.";
+        return "Failed to create coupon.";
       }
     } catch (err) {
       return err;
