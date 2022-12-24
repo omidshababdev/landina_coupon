@@ -48,7 +48,7 @@ class UserModel {
       email: map['email'] ?? 'ایمیل',
       password: map['password'] ?? 'رمز عبور',
       bio: map['bio'] ?? 'توضیحات صفحه اینجا نمایش داده میشن.',
-      profilePicture: map['profilePicture'] ?? ' ',
+      profilePicture: map['profilePicture'],
       followers: map['followers'],
       followings: map['followings'],
       accountType: map['accountType'] ?? 'شخصی',

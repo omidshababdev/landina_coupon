@@ -186,6 +186,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Wrap(
                         spacing: 15,
+                        runSpacing: 15,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           GestureDetector(
