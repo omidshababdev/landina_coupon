@@ -122,7 +122,6 @@ class SettingsPage extends StatelessWidget {
                           title: "نه نمی خواد",
                           onPressed: () {
                             Navigator.pop(context);
-                            Navigator.pop(context);
                           },
                         ),
                       ],
