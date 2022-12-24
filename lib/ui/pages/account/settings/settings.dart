@@ -62,6 +62,10 @@ class SettingsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(
+          parent: ClampingScrollPhysics(),
+        ),
         children: [
           LandinaListTile(
             onTap: () {},
