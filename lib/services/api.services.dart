@@ -279,16 +279,20 @@ class ApiService {
       },
     );
 
-    if (res.statusCode == 200) {
-      List jsonResponse = json.decode(res.body);
+    try {
+      if (res.statusCode == 200) {
+        List jsonResponse = json.decode(res.body);
 
-      return jsonResponse
-          .map<CouponModel>((job) => CouponModel.fromJson(job))
-          .toList();
-    } else if (res.statusCode == 404) {
-      return null;
-    } else {
-      throw Exception('Failed to get coupons.');
+        return jsonResponse
+            .map<CouponModel>((job) => CouponModel.fromJson(job))
+            .toList();
+      } else if (res.statusCode == 404) {
+        return null;
+      } else {
+        return 'Failed to get coupons.';
+      }
+    } catch (err) {
+      return err;
     }
   }
 }
