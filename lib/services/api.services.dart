@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
 class ApiService {
-  final endPointUrl = "https://landina-account.iran.liara.run/";
+  final endPointUrl = "http://localhost:8800/";
 
   // SignUp User
   Future signUpUser(String username, String email, String password) async {
@@ -53,7 +53,7 @@ class ApiService {
   // Login User
   Future loginUser(String username, String password) async {
     final res = await http.post(
-      Uri.parse('${endPointUrl}api/auth/login'),
+      Uri.parse('${endPointUrl}auth/login'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -119,7 +119,7 @@ class ApiService {
     await Future.delayed(const Duration(milliseconds: 4000));
 
     final res = await http.get(
-      Uri.parse('${endPointUrl}api/users/$userId'),
+      Uri.parse('${endPointUrl}users/$userId'),
     );
 
     try {
@@ -140,7 +140,7 @@ class ApiService {
   // Get User Coupons
   Future getUserCoupon(String userId) async {
     final res = await http.get(
-      Uri.parse('${endPointUrl}api/users/$userId/coupons'),
+      Uri.parse('${endPointUrl}users/$userId/coupons'),
     );
 
     try {
@@ -273,7 +273,7 @@ class ApiService {
     await Future.delayed(const Duration(milliseconds: 4000));
 
     final res = await http.get(
-      Uri.parse('${endPointUrl}api/coupons/all/coupons'),
+      Uri.parse('${endPointUrl}coupons'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
