@@ -117,6 +117,7 @@ class _HomePageState extends State<HomePage> {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: LandinaTextField(
                   hintText: AppLocalizations.of(context)!.searchField,
+                  maxLines: 1,
                   prefixIcon: IconlyLight.search,
                   prefixIconOnPressed: () {},
                   suffixIcon: IconlyLight.filter,
