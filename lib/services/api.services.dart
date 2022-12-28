@@ -54,9 +54,6 @@ class ApiService {
   Future loginUser(String username, String password) async {
     final res = await http.post(
       Uri.parse('${endPointUrl}auth/login'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
       body: jsonEncode(<String, String>{
         'username': username,
         'password': password,
