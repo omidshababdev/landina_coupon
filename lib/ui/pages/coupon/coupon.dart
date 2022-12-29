@@ -16,7 +16,6 @@ import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:readmore/readmore.dart';
 
 class CouponPage extends StatefulWidget {
-  UserModel? user;
   Future? userInfo;
 
   final CouponModel couponInfo;
