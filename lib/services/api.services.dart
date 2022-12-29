@@ -71,16 +71,10 @@ class ApiService {
 
         Get.offNamed("/profile");
 
-        print(res.statusCode);
-        print(res.body);
-
         final LoginModel loginModel = LoginModel.fromJson(jsonDecode(res.body));
 
         Config.box.write("myToken", loginModel.token);
         Config.box.write("myId", loginModel.user!.id);
-
-        Get.snackbar("ورود با موفقیت انجام شد",
-            "حالا خیلی راحت می تونی ازش استفاده کنی");
 
         return loginModel;
       } else {
@@ -115,9 +109,6 @@ class ApiService {
         Get.snackbar('تغییر $updatePart} موفقیت آمیز بود',
             'حالا می تونی با خیال راحت ازش استفاده کنی!');
       } else {
-        print('$updatePart, $updateValue');
-        print(res.statusCode);
-        print(res.body);
         Get.snackbar('تغییر $updatePart موفقیت آمیز نبود :(',
             'لطفا دوباره امتحان کن. اگه بازم نتونستی حتما بهمون خبر بده!');
       }
