@@ -6,8 +6,9 @@ class UserModel {
   String? password;
   String? bio;
   String? profilePicture;
-  // Array? followers;
-  // Array? followings;
+  List? followers;
+  List? followings;
+  List? links;
   String? accountType;
 
   UserModel({
@@ -18,8 +19,9 @@ class UserModel {
     this.password,
     this.bio,
     this.profilePicture,
-    // this.followers,
-    // this.followings,
+    this.followers,
+    this.followings,
+    this.links,
     this.accountType,
   });
 
@@ -32,8 +34,9 @@ class UserModel {
       'password': password,
       'bio': bio,
       'profilePicture': profilePicture,
-      // 'followers': followers,
-      // 'followings': followings,
+      'followers': followers,
+      'followings': followings,
+      'links': links,
       'accountType': accountType,
     };
   }
@@ -47,8 +50,9 @@ class UserModel {
       password: map['password'] ?? 'رمز عبور',
       bio: map['bio'] ?? 'توضیحات صفحه اینجا نمایش داده میشن.',
       profilePicture: map['profilePicture'],
-      // followers: map['followers'],
-      // followings: map['followings'],
+      followers: map['followers'] ?? 'دنبال کننده ها اینجا نمایش داده میشن',
+      followings: map['followings'] ?? 'دنبال شونده ها اینجا نمایش داده میشن',
+      links: map['links'] ?? 'لینک ها اینجا نمایش داده میشن',
       accountType: map['accountType'] ?? 'شخصی',
     );
   }

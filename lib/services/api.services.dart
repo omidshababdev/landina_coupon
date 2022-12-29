@@ -106,7 +106,7 @@ class ApiService {
 
     try {
       if (res.statusCode == 200) {
-        Get.snackbar('تغییر $updatePart} موفقیت آمیز بود',
+        Get.snackbar('تغییر $updatePart موفقیت آمیز بود',
             'حالا می تونی با خیال راحت ازش استفاده کنی!');
       } else {
         Get.snackbar('تغییر $updatePart موفقیت آمیز نبود :(',
