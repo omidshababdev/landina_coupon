@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/models/coupon.dart';
-import 'package:landina_coupon/models/user.dart';
+import 'package:landina_coupon/models/coupon.model.dart';
+import 'package:landina_coupon/models/login.model.dart';
+import 'package:landina_coupon/models/user.model.dart';
 
 import 'package:get/get.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
@@ -54,7 +55,7 @@ class ApiService {
   Future loginUser(String username, String password) async {
     final res = await http.post(
       Uri.parse('${endPointUrl}auth/login'),
-      body: jsonEncode(<String, String>{
+      body: jsonEncode({
         'username': username,
         'password': password,
       }),
@@ -69,14 +70,15 @@ class ApiService {
 
         Get.offNamed("/profile");
 
-        final UserModel userModel = UserModel.fromJson(jsonDecode(res.body));
+        final LoginModel loginModel = LoginModel.fromJson(jsonDecode(res.body));
 
-        Config.box.write("myId", userModel.id);
+        Config.box.write("myToken", loginModel.token);
+        Config.box.write("myId", loginModel.user!.id);
 
         Get.snackbar("ورود با موفقیت انجام شد",
             "حالا خیلی راحت می تونی ازش استفاده کنی");
 
-        return userModel;
+        return loginModel;
       } else {
         Get.snackbar("ورود با موفقیت انجام نشد", "واقعا متاسفیم :(");
         return "Failed to Login.";
