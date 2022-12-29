@@ -164,7 +164,7 @@ class ApiService {
   // Delete User
   Future deleteUser(String userId) async {
     final res = await http.delete(
-      Uri.parse('${Config.baseUrl}api/users/$userId'),
+      Uri.parse('${Config.baseUrl}users/$userId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -199,7 +199,7 @@ class ApiService {
   // Timeline Coupons
   Future timelineCoupons(String userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}api/coupons/$userId/timeline'),
+      Uri.parse('${Config.baseUrl}coupons/$userId/timeline'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -220,7 +220,7 @@ class ApiService {
   Future createCoupon(
       String name, String code, String category, String desc) async {
     final res = await http.post(
-      Uri.parse('${Config.baseUrl}api/coupons'),
+      Uri.parse('${Config.baseUrl}coupons'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -250,7 +250,7 @@ class ApiService {
   // Delete a Coupon
   Future deleteCoupon(String couponId) async {
     final res = await http.delete(
-      Uri.parse('${Config.baseUrl}api/coupons/$couponId'),
+      Uri.parse('${Config.baseUrl}coupons/$couponId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
