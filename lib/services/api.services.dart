@@ -10,12 +10,10 @@ import 'package:get/get.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
 class ApiService {
-  final endPointUrl = "http://localhost:8800/";
-
   // SignUp User
   Future signUpUser(String username, String email, String password) async {
     http.Response res =
-        await http.post(Uri.parse('${endPointUrl}api/auth/register'),
+        await http.post(Uri.parse('${Config.baseUrl}auth/register'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },
@@ -54,7 +52,10 @@ class ApiService {
   // Login User
   Future loginUser(String username, String password) async {
     final res = await http.post(
-      Uri.parse('${endPointUrl}auth/login'),
+      Uri.parse('${Config.baseUrl}auth/login'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
       body: jsonEncode({
         'username': username,
         'password': password,
@@ -70,6 +71,9 @@ class ApiService {
 
         Get.offNamed("/profile");
 
+        print(res.statusCode);
+        print(res.body);
+
         final LoginModel loginModel = LoginModel.fromJson(jsonDecode(res.body));
 
         Config.box.write("myToken", loginModel.token);
@@ -81,6 +85,7 @@ class ApiService {
         return loginModel;
       } else {
         Get.snackbar("ورود با موفقیت انجام نشد", "واقعا متاسفیم :(");
+
         return "Failed to Login.";
       }
     } catch (err) {
@@ -93,23 +98,31 @@ class ApiService {
   Future updateUser(String updatePart, String updateValue) async {
     await Future.delayed(const Duration(milliseconds: 4000));
     final String userId = Config.box.read("myId");
+    final String userToken = Config.box.read("myToken");
     final res = await http.put(
-      Uri.parse('${endPointUrl}api/users/$userId'),
+      Uri.parse('${Config.baseUrl}users/$userId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': userToken
       },
       body: jsonEncode(<String, String>{
-        'userId': userId,
         updatePart: "$updateValue",
       }),
     );
 
-    if (res.statusCode == 200) {
-      Get.snackbar('تغییر ${updatePart} موفقیت آمیز بود',
-          'حالا می تونی با خیال راحت ازش استفاده کنی!');
-    } else {
-      Get.snackbar('تغییر ${updatePart} موفقیت آمیز نبود :(',
-          'لطفا دوباره امتحان کن. اگه بازم نتونستی حتما بهمون خبر بده!');
+    try {
+      if (res.statusCode == 200) {
+        Get.snackbar('تغییر $updatePart} موفقیت آمیز بود',
+            'حالا می تونی با خیال راحت ازش استفاده کنی!');
+      } else {
+        print('$updatePart, $updateValue');
+        print(res.statusCode);
+        print(res.body);
+        Get.snackbar('تغییر $updatePart موفقیت آمیز نبود :(',
+            'لطفا دوباره امتحان کن. اگه بازم نتونستی حتما بهمون خبر بده!');
+      }
+    } catch (err) {
+      return err;
     }
   }
 
@@ -118,7 +131,7 @@ class ApiService {
     await Future.delayed(const Duration(milliseconds: 4000));
 
     final res = await http.get(
-      Uri.parse('${endPointUrl}users/$userId'),
+      Uri.parse('${Config.baseUrl}users/$userId'),
     );
 
     try {
@@ -139,7 +152,7 @@ class ApiService {
   // Get User Coupons
   Future getUserCoupon(String userId) async {
     final res = await http.get(
-      Uri.parse('${endPointUrl}users/$userId/coupons'),
+      Uri.parse('${Config.baseUrl}users/$userId/coupons'),
     );
 
     try {
@@ -160,7 +173,7 @@ class ApiService {
   // Delete User
   Future deleteUser(String userId) async {
     final res = await http.delete(
-      Uri.parse('${endPointUrl}api/users/$userId'),
+      Uri.parse('${Config.baseUrl}api/users/$userId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -195,7 +208,7 @@ class ApiService {
   // Timeline Coupons
   Future timelineCoupons(String userId) async {
     final res = await http.get(
-      Uri.parse('${endPointUrl}api/coupons/$userId/timeline'),
+      Uri.parse('${Config.baseUrl}api/coupons/$userId/timeline'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -216,7 +229,7 @@ class ApiService {
   Future createCoupon(
       String name, String code, String category, String desc) async {
     final res = await http.post(
-      Uri.parse('${endPointUrl}api/coupons'),
+      Uri.parse('${Config.baseUrl}api/coupons'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -246,7 +259,7 @@ class ApiService {
   // Delete a Coupon
   Future deleteCoupon(String couponId) async {
     final res = await http.delete(
-      Uri.parse('${endPointUrl}api/coupons/$couponId'),
+      Uri.parse('${Config.baseUrl}api/coupons/$couponId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -272,7 +285,7 @@ class ApiService {
     await Future.delayed(const Duration(milliseconds: 4000));
 
     final res = await http.get(
-      Uri.parse('${endPointUrl}coupons'),
+      Uri.parse('${Config.baseUrl}coupons'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
