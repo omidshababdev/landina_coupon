@@ -530,10 +530,28 @@ class _ProfilePageState extends State<ProfilePage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: ButtonBarSuper(
-                    lineSpacing: 15,
+                    lineSpacing: 10,
                     wrapType: WrapType.balanced,
                     wrapFit: WrapFit.divided,
                     children: [
+                      LandinaTextButton(
+                        title: 'دنبال کننده ها',
+                        onPressed: () {
+                          Get.toNamed("/followers");
+                        },
+                      ),
+                      LandinaTextButton(
+                        title: 'تنظیمات',
+                        onPressed: () {
+                          Get.toNamed("/links");
+                        },
+                      ),
+                      LandinaTextButton(
+                        title: 'پیام دادن',
+                        onPressed: () {
+                          Get.toNamed("/links");
+                        },
+                      ),
                       LandinaTextButton(
                         title: 'اطلاعات تماس',
                         onPressed: () {

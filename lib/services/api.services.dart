@@ -298,4 +298,31 @@ class ApiService {
       return err;
     }
   }
+
+  // Get User Followers
+  Future getUserFollowers(String? userId) async {
+    await Future.delayed(const Duration(milliseconds: 4000));
+
+    final res = await http.get(
+      Uri.parse('${Config.baseUrl}users/$userId/followers'),
+    );
+
+    try {
+      if (res.statusCode == 200) {
+        List jsonResponse = json.decode(res.body);
+
+        print(jsonResponse);
+
+        return jsonResponse
+            .map<UserModel>((job) => UserModel.fromJson(job))
+            .toList();
+      } else if (res.statusCode == 404) {
+        return null;
+      } else {
+        return 'Failed to get coupons.';
+      }
+    } catch (err) {
+      return err;
+    }
+  }
 }
