@@ -52,22 +52,21 @@ class _LinksPageState extends State<LinksPage> {
       body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
+          final user = snapshot.data;
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
               return ListView.separated(
-                key: const PageStorageKey<String>('home'),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                key: PageStorageKey<String>('{$user.name}Links'),
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(
                   parent: ClampingScrollPhysics(),
                 ),
                 itemCount: 1,
                 itemBuilder: (context, index) {
-                  final user = snapshot.data![index];
                   return LandinaListTile(
-                    title: "$user.links",
+                    title: "$user.followers",
+                    subtitle: "$user.followings",
                   );
                 },
                 separatorBuilder: (context, index) =>
@@ -104,30 +103,60 @@ class _LinksPageState extends State<LinksPage> {
               );
             }
           } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            return ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
+                parent: ClampingScrollPhysics(),
               ),
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Container(
-                  height: 200,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
-                    shape: SmoothRectangleBorder(
-                      borderRadius: SmoothBorderRadius(
-                        cornerRadius: 20,
-                        cornerSmoothing: 0.5,
+                  decoration: const BoxDecoration(
+                    border: Border.symmetric(
+                      horizontal: BorderSide(
+                        width: 0.5,
+                        color: Color(0xffF1F1F1),
+                      ),
+                    ),
+                  ),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 25),
+                    leading: const AspectRatio(
+                      aspectRatio: 1 / 1,
+                      child: CircleAvatar(
+                        backgroundColor: Color(0xffF1F1F1),
+                        foregroundColor: Color(0xff3B3B3B),
+                      ),
+                    ),
+                    focusColor: const Color(0xfff1f1f1),
+                    title: Container(
+                      width: 50,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xffF1F1F1),
+                      ),
+                    ),
+                    subtitle: Container(
+                      width: 100,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xffF1F1F1),
+                      ),
+                    ),
+                    trailing: Container(
+                      width: 40,
+                      height: 25,
+                      decoration: BoxDecoration(
+                        color: const Color(0xffF1F1F1),
+                        borderRadius: BorderRadius.circular(50),
                       ),
                     ),
                   ),
                 );
               },
-              separatorBuilder: (context, index) => const SizedBox(height: 15),
             );
           } else if (snapshot.connectionState == ConnectionState.none) {
             return Center(
@@ -143,30 +172,52 @@ class _LinksPageState extends State<LinksPage> {
               ),
             );
           } else {
-            return ListView.separated(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            return ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics(),
+                parent: ClampingScrollPhysics(),
               ),
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Container(
-                  height: 200,
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
-                    shape: SmoothRectangleBorder(
-                      borderRadius: SmoothBorderRadius(
-                        cornerRadius: 20,
-                        cornerSmoothing: 0.5,
+                  decoration: const BoxDecoration(
+                    border: Border.symmetric(
+                      horizontal: BorderSide(
+                        width: 0.5,
+                        color: Color(0xffF1F1F1),
+                      ),
+                    ),
+                  ),
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 25),
+                    leading: const AspectRatio(
+                      aspectRatio: 1 / 1,
+                      child: CircleAvatar(
+                        backgroundColor: Color(0xffF1F1F1),
+                        foregroundColor: Color(0xff3B3B3B),
+                      ),
+                    ),
+                    focusColor: const Color(0xfff1f1f1),
+                    title: Container(
+                      width: 100,
+                      height: 15,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xffF1F1F1),
+                      ),
+                    ),
+                    subtitle: Container(
+                      width: 150,
+                      height: 15,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xffF1F1F1),
                       ),
                     ),
                   ),
                 );
               },
-              separatorBuilder: (context, index) => const SizedBox(height: 15),
             );
           }
         },

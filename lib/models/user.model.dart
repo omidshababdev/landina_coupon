@@ -8,7 +8,7 @@ class UserModel {
   String? profilePicture;
   List? followers;
   List? followings;
-  List? links;
+  // List? links;
   String? accountType;
 
   UserModel({
@@ -21,7 +21,7 @@ class UserModel {
     this.profilePicture,
     this.followers,
     this.followings,
-    this.links,
+    // this.links,
     this.accountType,
   });
 
@@ -36,7 +36,7 @@ class UserModel {
       'profilePicture': profilePicture,
       'followers': followers,
       'followings': followings,
-      'links': links,
+      // 'links': links,
       'accountType': accountType,
     };
   }
@@ -52,7 +52,7 @@ class UserModel {
       profilePicture: map['profilePicture'],
       followers: map['followers'] ?? 'دنبال کننده ها اینجا نمایش داده میشن',
       followings: map['followings'] ?? 'دنبال شونده ها اینجا نمایش داده میشن',
-      links: map['links'] ?? 'لینک ها اینجا نمایش داده میشن',
+      // links: map['links'] ?? 'لینک ها اینجا نمایش داده میشن',
       accountType: map['accountType'] ?? 'شخصی',
     );
   }
