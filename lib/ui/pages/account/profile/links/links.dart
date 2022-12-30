@@ -26,11 +26,13 @@ class LinksPage extends StatefulWidget {
 }
 
 class _LinksPageState extends State<LinksPage> {
+  bool active = true;
   @override
   void initState() {
     super.initState();
 
     setState(() {
+      active = true;
       widget.userInfo =
           Config.client.getUserFollowings(Config.box.read("myId"));
     });
@@ -106,12 +108,14 @@ class _LinksPageState extends State<LinksPage> {
                           fontSize: 13,
                         ),
                       ),
-                      trailing: Container(
-                        width: 40,
-                        height: 25,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
-                          borderRadius: BorderRadius.circular(50),
+                      trailing: Transform.scale(
+                        scale: 0.8,
+                        child: CupertinoSwitch(
+                          value: active,
+                          activeColor: const Color(0xff3B3B3B),
+                          onChanged: (value) => setState(
+                            () => active = value,
+                          ),
                         ),
                       ),
                     ),

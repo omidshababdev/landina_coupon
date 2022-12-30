@@ -14,6 +14,7 @@ class LandinaTextField extends StatefulWidget {
   int? minLines = 1;
   int? maxLines = 1;
   bool? enabled;
+  Function(String?)? onChanged;
   String? Function(String?)? validator;
 
   LandinaTextField({
@@ -28,6 +29,7 @@ class LandinaTextField extends StatefulWidget {
     this.minLines,
     this.maxLines,
     this.enabled,
+    this.onChanged,
     this.validator,
   }) : super(key: key);
 
@@ -68,6 +70,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
       ),
       child: TextField(
         controller: widget.textfieldController,
+        onChanged: widget.onChanged,
         style: const TextStyle(fontSize: 15),
         cursorColor: const Color(0xff3B3B3B),
         obscureText: widget.obscureText ?? false,

@@ -116,6 +116,9 @@ class _HomePageState extends State<HomePage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: LandinaTextField(
+                  onChanged: (p0) {
+                    searchCoupons;
+                  },
                   hintText: AppLocalizations.of(context)!.searchField,
                   maxLines: 1,
                   prefixIcon: IconlyLight.search,
@@ -331,5 +334,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void searchCoupons(String query) {
+    //
   }
 }
