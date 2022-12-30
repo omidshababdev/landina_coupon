@@ -541,13 +541,13 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                       ),
                       LandinaTextButton(
-                        title: 'تنظیمات',
+                        title: 'دنبال شونده ها',
                         onPressed: () {
-                          Get.toNamed("/links");
+                          Get.toNamed("/followers");
                         },
                       ),
                       LandinaTextButton(
-                        title: 'پیام دادن',
+                        title: 'تنظیمات',
                         onPressed: () {
                           Get.toNamed("/links");
                         },

@@ -311,7 +311,28 @@ class ApiService {
       if (res.statusCode == 200) {
         List jsonResponse = json.decode(res.body);
 
-        print(jsonResponse);
+        return jsonResponse
+            .map<UserModel>((job) => UserModel.fromJson(job))
+            .toList();
+      } else if (res.statusCode == 404) {
+        return null;
+      } else {
+        return 'Failed to get coupons.';
+      }
+    } catch (err) {
+      return err;
+    }
+  }
+
+  // Get User Followers
+  Future getUserFollowings(String? userId) async {
+    final res = await http.get(
+      Uri.parse('${Config.baseUrl}users/$userId/followings'),
+    );
+
+    try {
+      if (res.statusCode == 200) {
+        List jsonResponse = json.decode(res.body);
 
         return jsonResponse
             .map<UserModel>((job) => UserModel.fromJson(job))
