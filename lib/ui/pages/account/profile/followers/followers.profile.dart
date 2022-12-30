@@ -125,26 +125,28 @@ class _LinksPageState extends State<FollowersPage> {
                 ),
               );
             } else {
-              return Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/not_found.png",
-                      width: 250,
-                    ),
-                    const SizedBox(height: 25),
-                    Text(
-                      "هنوز هیچ کوپنی اینجا نیست!",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff3B3B3B).withOpacity(0.9),
+              return Center(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/not_found.png",
+                        width: 250,
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 25),
+                      Text(
+                        "هنوز هیچ کوپنی اینجا نیست!",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xff3B3B3B).withOpacity(0.9),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }
