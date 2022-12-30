@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
-import 'package:landina_coupon/ui/pages/account/profile/followers/followers.dart';
+import 'package:landina_coupon/ui/pages/account/profile/followers/followers.profile.dart';
 import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/email/email.dart';

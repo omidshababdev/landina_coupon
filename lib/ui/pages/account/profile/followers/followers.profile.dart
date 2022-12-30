@@ -10,6 +10,7 @@ import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 
 class FollowersPage extends StatefulWidget {
@@ -101,11 +102,16 @@ class _LinksPageState extends State<FollowersPage> {
                         ),
                       ),
                       trailing: Container(
-                        width: 40,
-                        height: 25,
+                        width: 100,
+                        height: 50,
                         decoration: BoxDecoration(
                           color: const Color(0xffF1F1F1),
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: LandinaTextButton(
+                          title: "دنبال نکردن",
+                          backgroundColor: true,
+                          onPressed: () {},
                         ),
                       ),
                     ),
@@ -187,11 +193,11 @@ class _LinksPageState extends State<FollowersPage> {
                       ),
                     ),
                     trailing: Container(
-                      width: 40,
-                      height: 25,
+                      width: 100,
+                      height: 50,
                       decoration: BoxDecoration(
                         color: const Color(0xffF1F1F1),
-                        borderRadius: BorderRadius.circular(50),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
