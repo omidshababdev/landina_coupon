@@ -1,19 +1,16 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:figma_squircle/figma_squircle.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 
 class FollowersPage extends StatefulWidget {
   Future? userInfo;
@@ -64,9 +61,54 @@ class _LinksPageState extends State<FollowersPage> {
                 ),
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
-                  return LandinaListTile(
-                    title: "${user[index].name}",
-                    subtitle: "${user[index].bio}",
+                  return Container(
+                    decoration: const BoxDecoration(
+                      border: Border.symmetric(
+                        horizontal: BorderSide(
+                          width: 0.5,
+                          color: Color(0xffF1F1F1),
+                        ),
+                      ),
+                    ),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 25),
+                      leading: const AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: CircleAvatar(
+                          backgroundColor: Color(0xffF1F1F1),
+                          foregroundColor: Color(0xff3B3B3B),
+                        ),
+                      ),
+                      focusColor: const Color(0xfff1f1f1),
+                      title: Text(
+                        "${snapshot.data[index].name}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff3B3B3B),
+                        ),
+                      ),
+                      subtitle: Text(
+                        "${snapshot.data[index].username}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: const TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 13,
+                        ),
+                      ),
+                      trailing: Container(
+                        width: 40,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF1F1F1),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      ),
+                    ),
                   );
                 },
               );

@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
@@ -30,7 +31,8 @@ class _LinksPageState extends State<LinksPage> {
     super.initState();
 
     setState(() {
-      widget.userInfo = Config.client.getUser(Config.box.read("myId"));
+      widget.userInfo =
+          Config.client.getUserFollowings(Config.box.read("myId"));
     });
   }
 
@@ -56,21 +58,65 @@ class _LinksPageState extends State<LinksPage> {
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return ListView.separated(
+              return ListView.builder(
                 key: PageStorageKey<String>('{$user.name}Links'),
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(
                   parent: ClampingScrollPhysics(),
                 ),
-                itemCount: 1,
+                itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
-                  return LandinaListTile(
-                    title: "$user.followers",
-                    subtitle: "$user.followings",
+                  return Container(
+                    decoration: const BoxDecoration(
+                      border: Border.symmetric(
+                        horizontal: BorderSide(
+                          width: 0.5,
+                          color: Color(0xffF1F1F1),
+                        ),
+                      ),
+                    ),
+                    child: ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 25),
+                      leading: const AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: CircleAvatar(
+                          backgroundColor: Color(0xffF1F1F1),
+                          foregroundColor: Color(0xff3B3B3B),
+                          child: Icon(CupertinoIcons.link),
+                        ),
+                      ),
+                      focusColor: const Color(0xfff1f1f1),
+                      title: Text(
+                        "${snapshot.data[index].name}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff3B3B3B),
+                        ),
+                      ),
+                      subtitle: Text(
+                        "${snapshot.data[index].username}",
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: const TextStyle(
+                          fontFamily: "Poppins",
+                          fontSize: 13,
+                        ),
+                      ),
+                      trailing: Container(
+                        width: 40,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffF1F1F1),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      ),
+                    ),
                   );
                 },
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 15),
               );
             } else if (snapshot.hasError) {
               return Center(
@@ -79,26 +125,29 @@ class _LinksPageState extends State<LinksPage> {
                 ),
               );
             } else {
-              return Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/not_found.png",
-                      width: 250,
-                    ),
-                    const SizedBox(height: 25),
-                    Text(
-                      "هنوز هیچ کوپنی اینجا نیست!",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0xff3B3B3B).withOpacity(0.9),
+              return Center(
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/not_found.png",
+                        width: 250,
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 25),
+                      Text(
+                        "هنوز هیچ لینکی اینجا نیست!",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: const Color(0xff3B3B3B).withOpacity(0.9),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }
@@ -127,6 +176,7 @@ class _LinksPageState extends State<LinksPage> {
                       child: CircleAvatar(
                         backgroundColor: Color(0xffF1F1F1),
                         foregroundColor: Color(0xff3B3B3B),
+                        child: Icon(CupertinoIcons.link),
                       ),
                     ),
                     focusColor: const Color(0xfff1f1f1),
