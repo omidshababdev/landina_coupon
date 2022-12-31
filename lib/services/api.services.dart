@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
-import 'dart:js';
 
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
