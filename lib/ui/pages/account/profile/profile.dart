@@ -323,10 +323,25 @@ class _ProfilePageState extends State<ProfilePage> {
                                   GestureDetector(
                                     onTap: () {
                                       landinaModal(
-                                        Text(
-                                          AppLocalizations.of(context)!
-                                              .accountType
-                                              .capitalize(),
+                                        ButtonBarSuper(
+                                          lineSpacing: 15,
+                                          wrapType: WrapType.balanced,
+                                          wrapFit: WrapFit.divided,
+                                          children: [
+                                            LandinaTextButton(
+                                              title: "شخصی",
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                            LandinaTextButton(
+                                              title: "کسب و کار",
+                                              backgroundColor: true,
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                          ],
                                         ),
                                       );
                                     },
@@ -548,7 +563,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         },
                       ),
                       LandinaTextButton(
-                        title: 'تنظیمات',
+                        title: 'پیام ها',
                         onPressed: () {
                           Get.toNamed("/links");
                         },

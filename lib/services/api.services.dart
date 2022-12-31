@@ -221,8 +221,9 @@ class ApiService {
       String name, String code, String category, String desc) async {
     final res = await http.post(
       Uri.parse('${Config.baseUrl}coupons'),
-      headers: <String, String>{
+      headers: {
         'Content-Type': 'application/json; charset=UTF-8',
+        "Authorization": Config.box.read("myToken")
       },
       body: jsonEncode(<String, String>{
         'userId': Config.box.read("myId"),
