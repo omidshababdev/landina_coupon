@@ -1,13 +1,12 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 import 'package:get/get.dart';
 
-landinaModal(Widget child) {
+Future landinaModal(Widget child) {
   return Get.bottomSheet(
     StatefulBuilder(
-      builder: (BuildContext context, setState) {
+      builder: (context, setState) {
         return Wrap(
           children: [
             Container(

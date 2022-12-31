@@ -299,13 +299,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     () {
                                                   setState(() {
                                                     isLoading = false;
+                                                    Navigator.pop(context);
                                                   });
                                                 });
                                                 await Config.client.updateUser(
                                                   "name",
                                                   nameController.text,
                                                 );
-                                                Navigator.pop(context);
                                               },
                                             ),
                                           ],
@@ -498,6 +498,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       "bio",
                                       bioController.text,
                                     );
+                                    setState(() {});
                                     Navigator.pop(context);
                                   },
                                 ),
