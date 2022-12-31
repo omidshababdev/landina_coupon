@@ -180,7 +180,6 @@ class _LinksPageState extends State<LinksPage> {
                       child: CircleAvatar(
                         backgroundColor: Color(0xffF1F1F1),
                         foregroundColor: Color(0xff3B3B3B),
-                        child: Icon(CupertinoIcons.link),
                       ),
                     ),
                     focusColor: const Color(0xfff1f1f1),
