@@ -26,15 +26,14 @@ class LinksPage extends StatefulWidget {
 }
 
 class _LinksPageState extends State<LinksPage> {
-  bool active = true;
+  List active = [false, false];
+
   @override
   void initState() {
     super.initState();
 
     setState(() {
-      active = true;
-      widget.userInfo =
-          Config.client.getUserFollowings(Config.box.read("myId"));
+      widget.userInfo = Config.client.getUserLinks(Config.box.read("myId"));
     });
   }
 
@@ -100,7 +99,7 @@ class _LinksPageState extends State<LinksPage> {
                         ),
                       ),
                       subtitle: Text(
-                        "${snapshot.data[index].username}",
+                        "${snapshot.data[index].link}",
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: const TextStyle(
@@ -111,10 +110,12 @@ class _LinksPageState extends State<LinksPage> {
                       trailing: Transform.scale(
                         scale: 0.8,
                         child: CupertinoSwitch(
-                          value: active,
+                          value: snapshot.data[index].active,
                           activeColor: const Color(0xff3B3B3B),
                           onChanged: (value) => setState(
-                            () => active = value,
+                            () {
+                              snapshot.data[index].active = value;
+                            },
                           ),
                         ),
                       ),

@@ -63,7 +63,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     setState(() {
       widget.userInfo = Config.client.getUser(Config.box.read("myId"));
-      widget.couponInfo = Config.client.getUserCoupon(Config.box.read("myId"));
+      widget.couponInfo = Config.client.getUserCoupons(Config.box.read("myId"));
     });
   }
 
@@ -585,7 +585,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 const SizedBox(height: 25),
                 FutureBuilder(
-                  future: Config.client.getUserCoupon(Config.box.read("myId")),
+                  future: Config.client.getUserCoupons(Config.box.read("myId")),
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return ListView.separated(

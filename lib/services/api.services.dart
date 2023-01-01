@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.model.dart';
+import 'package:landina_coupon/models/link.model.dart';
 import 'package:landina_coupon/models/login.model.dart';
 import 'package:landina_coupon/models/user.model.dart';
 
@@ -141,7 +142,7 @@ class ApiService {
   }
 
   // Get User Coupons
-  Future getUserCoupon(String userId) async {
+  Future getUserCoupons(String userId) async {
     final res = await http.get(
       Uri.parse('${Config.baseUrl}users/$userId/coupons'),
     );
@@ -155,6 +156,27 @@ class ApiService {
         return null;
       } else {
         return 'Failed to get coupons.';
+      }
+    } catch (err) {
+      return err;
+    }
+  }
+
+  // Get User Links
+  Future getUserLinks(String userId) async {
+    final res = await http.get(
+      Uri.parse('${Config.baseUrl}users/$userId/links'),
+    );
+
+    try {
+      if (res.statusCode == 200) {
+        List jsonResponse = json.decode(res.body);
+
+        return jsonResponse.map((job) => LinkModel.fromJson(job)).toList();
+      } else if (res.statusCode == 404) {
+        return null;
+      } else {
+        return 'Failed to get links.';
       }
     } catch (err) {
       return err;

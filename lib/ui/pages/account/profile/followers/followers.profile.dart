@@ -110,7 +110,7 @@ class _LinksPageState extends State<FollowersPage> {
                         ),
                         child: LandinaTextButton(
                           title: "دنبال نکردن",
-                          backgroundColor: true,
+                          backgroundColor: false,
                           onPressed: () {},
                         ),
                       ),
