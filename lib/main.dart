@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/ui/pages/account/account.dart';
+import 'package:landina_coupon/ui/pages/account/chats/chats.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
 import 'package:landina_coupon/ui/pages/account/profile/followers/followers.profile.dart';
 import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
@@ -139,6 +140,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/contacts", page: () => const ContactsPage()),
+        GetPage(name: "/chats", page: () => const ChatsPage()),
         GetPage(name: "/links", page: () => LinksPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
         GetPage(name: "/coupon/new", page: () => const NewCouponPage()),

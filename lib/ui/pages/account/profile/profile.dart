@@ -565,7 +565,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       LandinaTextButton(
                         title: 'پیام ها',
                         onPressed: () {
-                          Get.toNamed("/links");
+                          Get.toNamed("/chats");
                         },
                       ),
                       LandinaTextButton(
