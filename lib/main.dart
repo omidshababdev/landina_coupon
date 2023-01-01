@@ -138,6 +138,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/profile", page: () => ProfilePage()),
         GetPage(name: "/account", page: () => AccountPage()),
         GetPage(name: "/followers", page: () => FollowersPage()),
+        GetPage(name: "/followings", page: () => FollowersPage()),
+        GetPage(name: "/guide", page: () => FollowersPage()),
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/contacts", page: () => const ContactsPage()),
         GetPage(name: "/chats", page: () => const ChatsPage()),
