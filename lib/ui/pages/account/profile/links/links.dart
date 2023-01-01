@@ -1,5 +1,3 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
@@ -7,9 +5,6 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
@@ -26,8 +21,6 @@ class LinksPage extends StatefulWidget {
 }
 
 class _LinksPageState extends State<LinksPage> {
-  List active = [false, false];
-
   @override
   void initState() {
     super.initState();
@@ -77,6 +70,17 @@ class _LinksPageState extends State<LinksPage> {
                       ),
                     ),
                     child: ListTile(
+                      onTap: () {
+                        setState(() {
+                          snapshot.data[index].active =
+                              !snapshot.data[index].active;
+                          Config.client.updateLink(
+                            snapshot.data[index].id,
+                            "active",
+                            snapshot.data[index].active.toString(),
+                          );
+                        });
+                      },
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 25),
                       leading: const AspectRatio(
