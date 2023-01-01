@@ -183,6 +183,23 @@ class ApiService {
     }
   }
 
+// Update Link
+  Future updateLink(
+      String linkId, String updatePart, String updateValue) async {
+    final String userToken = Config.box.read("myToken");
+    final res = await http.put(
+      Uri.parse('${Config.baseUrl}links/$linkId'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': userToken
+      },
+      body: jsonEncode({
+        "userId": Config.box.read("myId"),
+        updatePart: "$updateValue",
+      }),
+    );
+  }
+
   // Delete User
   Future deleteUser(String userId) async {
     final res = await http.delete(

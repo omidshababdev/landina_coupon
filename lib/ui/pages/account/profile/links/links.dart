@@ -115,6 +115,11 @@ class _LinksPageState extends State<LinksPage> {
                           onChanged: (value) => setState(
                             () {
                               snapshot.data[index].active = value;
+                              Config.client.updateLink(
+                                snapshot.data[index].id,
+                                "active",
+                                value.toString(),
+                              );
                             },
                           ),
                         ),
