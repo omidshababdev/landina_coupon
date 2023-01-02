@@ -1,3 +1,4 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
@@ -10,6 +11,8 @@ import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 class LinksPage extends StatefulWidget {
   Future? userInfo;
@@ -38,7 +41,39 @@ class _LinksPageState extends State<LinksPage> {
         child: LandinaAppbar(
           title: "لینک های حساب",
           rightIcon: Ionicons.reorder_two,
-          rightIconOnPressed: () {},
+          rightIconOnPressed: () {
+            landinaModal(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "درباره لینک های من",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xff3B3B3B).withOpacity(1),
+                    ),
+                  ),
+                  const SizedBox(height: 5),
+                  Text(
+                    "در این صفحه می توانید لینک های خود را مشاهده ویرایش فعال / غیرفعال و یا حذف کنید. برای اضافه کردن لینک های جدید و کردن لینک های طولانی به اپلیکیشن لندینا لینک مراجعه کنید.",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xff3B3B3B).withOpacity(0.8),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  LandinaTextButton(
+                    title: "اضافه کردن لینک جدید",
+                    onPressed: () async {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ),
+            );
+          },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
             Navigator.pop(context);
@@ -80,6 +115,48 @@ class _LinksPageState extends State<LinksPage> {
                             snapshot.data[index].active.toString(),
                           );
                         });
+                      },
+                      onLongPress: () {
+                        landinaModal(
+                          ButtonBarSuper(
+                            lineSpacing: 15,
+                            wrapType: WrapType.balanced,
+                            wrapFit: WrapFit.divided,
+                            children: [
+                              LandinaTextButton(
+                                title: "مشاهده لینک",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              LandinaTextButton(
+                                title: "ویرایش اطلاعات",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              LandinaTextButton(
+                                title: "کپی کردن",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              LandinaTextButton(
+                                title: "به اشتراک گذاری",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              LandinaTextButton(
+                                title: "حذف لینک",
+                                backgroundColor: true,
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 25),
