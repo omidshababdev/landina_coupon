@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 
@@ -12,9 +13,11 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 class FollowersPage extends StatefulWidget {
   Future? userInfo;
+  bool isFollowed = true;
 
   FollowersPage({super.key});
 
@@ -23,6 +26,7 @@ class FollowersPage extends StatefulWidget {
 }
 
 class _LinksPageState extends State<FollowersPage> {
+  bool isFollowed = true;
   @override
   void initState() {
     super.initState();
@@ -50,12 +54,12 @@ class _LinksPageState extends State<FollowersPage> {
       body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
-          final user = snapshot.data;
+          final userInfo = snapshot.data;
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
               return ListView.builder(
-                key: PageStorageKey<String>('{$user.name}followers'),
+                key: PageStorageKey<String>('{$userInfo.name}followers'),
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(
                   parent: ClampingScrollPhysics(),
@@ -72,6 +76,15 @@ class _LinksPageState extends State<FollowersPage> {
                       ),
                     ),
                     child: ListTile(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                AccountPage(user: userInfo[index]),
+                          ),
+                        );
+                      },
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 25),
                       leading: const AspectRatio(
@@ -109,9 +122,30 @@ class _LinksPageState extends State<FollowersPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: LandinaTextButton(
-                          title: "دنبال نکردن",
-                          backgroundColor: false,
-                          onPressed: () {},
+                          title: isFollowed != true
+                              ? AppLocalizations.of(context)!
+                                  .follow
+                                  .capitalize()
+                              : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
+                          backgroundColor: isFollowed != true ? true : false,
+                          onPressed: () {
+                            setState(() {
+                              isFollowed != true
+                                  ? isFollowed = !isFollowed
+                                  : landinaModal(
+                                      LandinaTextButton(
+                                        title:
+                                            "Un${AppLocalizations.of(context)!.follow}",
+                                        onPressed: () {
+                                          setState(() {
+                                            isFollowed = !isFollowed;
+                                            Navigator.pop(context);
+                                          });
+                                        },
+                                      ),
+                                    );
+                            });
+                          },
                         ),
                       ),
                     ),

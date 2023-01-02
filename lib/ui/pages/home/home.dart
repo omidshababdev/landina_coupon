@@ -227,8 +227,16 @@ class _HomePageState extends State<HomePage> {
                       );
                     } else if (snapshot.hasError) {
                       return Center(
-                        child: Text(
-                          "${snapshot.error}",
+                        child: LandinaIconButton(
+                          icon: Ionicons.reload,
+                          onPressed: () async {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      super.widget),
+                            );
+                          },
                         ),
                       );
                     } else {

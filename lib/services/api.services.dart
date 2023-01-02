@@ -91,16 +91,15 @@ class ApiService {
 
   // Update User
   Future updateUser(String updatePart, String updateValue) async {
-    await Future.delayed(const Duration(milliseconds: 4000));
     final String userId = Config.box.read("myId");
     final String userToken = Config.box.read("myToken");
     final res = await http.put(
       Uri.parse('${Config.baseUrl}users/$userId'),
-      headers: <String, String>{
+      headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': userToken
       },
-      body: jsonEncode(<String, String>{
+      body: jsonEncode({
         updatePart: "$updateValue",
       }),
     );
@@ -285,6 +284,43 @@ class ApiService {
     } catch (err) {
       return err;
     }
+  }
+
+  // Follow User
+  Future followUser(String id) async {
+    final String userId = Config.box.read("myId");
+    final String userToken = Config.box.read("myToken");
+    final res = await http.put(
+      Uri.parse('${Config.baseUrl}users/$userId/follow/$id'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': userToken
+      },
+    );
+    print(res.statusCode);
+  }
+
+  // Unfollow User
+  Future unfollowUser(String id) async {
+    final String userId = Config.box.read("myId");
+    final String userToken = Config.box.read("myToken");
+    final res = await http.put(
+      Uri.parse('${Config.baseUrl}users/$userId/unfollow/$id'),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': userToken
+      },
+    );
+    print(res.statusCode);
+  }
+
+// Get Followed User
+  getFollowedUser(String userId, String id) async {
+    final res = await http.get(
+      Uri.parse('${Config.baseUrl}users/$userId/followed/$id'),
+    );
+
+    print(res.statusCode);
   }
 
   // Delete a Coupon

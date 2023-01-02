@@ -22,6 +22,10 @@ class AccountPage extends StatefulWidget {
 
   Future? userInfo;
 
+  Future? isFollowed;
+  Future? unfollow;
+  Future? follow;
+
   AccountPage({super.key, this.user});
 
   @override
@@ -29,14 +33,11 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
-  bool isFollowed = true;
   @override
   void initState() {
     super.initState();
 
     setState(() {
-      isFollowed = true;
-
       widget.userInfo = Config.client.getUser(widget.user!.id);
     });
   }
@@ -167,21 +168,33 @@ class _AccountPageState extends State<AccountPage> {
                   wrapFit: WrapFit.divided,
                   children: [
                     LandinaTextButton(
-                      title: isFollowed != false
+                      title: Config.client.getFollowedUser(
+                                  Config.box.read("myId"),
+                                  widget.user!.id.toString()) !=
+                              true
                           ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
                           : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
-                      backgroundColor: isFollowed != false ? true : false,
+                      backgroundColor: Config.client.getFollowedUser(
+                                  Config.box.read("myId"),
+                                  widget.user!.id.toString()) !=
+                              true
+                          ? true
+                          : false,
                       onPressed: () {
                         setState(() {
-                          isFollowed != false
-                              ? isFollowed = !isFollowed
+                          Config.client.getFollowedUser(Config.box.read("myId"),
+                                      widget.user!.id.toString()) !=
+                                  true
+                              ? Config.client
+                                  .followUser(widget.user!.id.toString())
                               : landinaModal(
                                   LandinaTextButton(
                                     title:
                                         "Un${AppLocalizations.of(context)!.follow}",
                                     onPressed: () {
                                       setState(() {
-                                        isFollowed = true;
+                                        Config.client.unfollowUser(
+                                            widget.user!.id.toString());
                                         Navigator.pop(context);
                                       });
                                     },
