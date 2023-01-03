@@ -9,6 +9,7 @@ import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/chats.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
 import 'package:landina_coupon/ui/pages/account/profile/followers/followers.profile.dart';
+import 'package:landina_coupon/ui/pages/account/profile/followings/followings.profile.dart';
 import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/email/email.dart';
@@ -138,7 +139,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/profile", page: () => ProfilePage()),
         GetPage(name: "/account", page: () => AccountPage()),
         GetPage(name: "/followers", page: () => FollowersPage()),
-        GetPage(name: "/followings", page: () => FollowersPage()),
+        GetPage(name: "/followings", page: () => FollowingsPage()),
         GetPage(name: "/guide", page: () => FollowersPage()),
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/contacts", page: () => const ContactsPage()),

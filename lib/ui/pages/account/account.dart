@@ -22,7 +22,7 @@ class AccountPage extends StatefulWidget {
 
   Future? userInfo;
 
-  Future? isFollowed;
+  Future<bool>? isFollowed;
   Future? unfollow;
   Future? follow;
 
@@ -37,8 +37,10 @@ class _AccountPageState extends State<AccountPage> {
   void initState() {
     super.initState();
 
-    setState(() {
+    setState(() async {
       widget.userInfo = Config.client.getUser(widget.user!.id);
+      widget.isFollowed = Config.client
+          .getFollowedUser(Config.box.read("myId"), widget.user!.id.toString());
     });
   }
 
@@ -60,6 +62,7 @@ class _AccountPageState extends State<AccountPage> {
       body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
+          print(widget.isFollowed);
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
             return ListView(
@@ -168,23 +171,16 @@ class _AccountPageState extends State<AccountPage> {
                   wrapFit: WrapFit.divided,
                   children: [
                     LandinaTextButton(
-                      title: Config.client.getFollowedUser(
-                                  Config.box.read("myId"),
-                                  widget.user!.id.toString()) !=
-                              true
+                      title: widget.isFollowed != Future<bool>.value(true)
                           ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
                           : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
-                      backgroundColor: Config.client.getFollowedUser(
-                                  Config.box.read("myId"),
-                                  widget.user!.id.toString()) !=
-                              true
-                          ? true
-                          : false,
+                      backgroundColor:
+                          widget.isFollowed != Future<bool>.value(true)
+                              ? true
+                              : false,
                       onPressed: () {
                         setState(() {
-                          Config.client.getFollowedUser(Config.box.read("myId"),
-                                      widget.user!.id.toString()) !=
-                                  true
+                          widget.follow != Future<bool>.value(true)
                               ? Config.client
                                   .followUser(widget.user!.id.toString())
                               : landinaModal(

@@ -559,7 +559,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       LandinaTextButton(
                         title: 'دنبال شونده ها',
                         onPressed: () {
-                          Get.toNamed("/followers");
+                          Get.toNamed("/followings");
                         },
                       ),
                       LandinaTextButton(

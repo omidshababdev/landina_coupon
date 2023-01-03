@@ -297,7 +297,7 @@ class ApiService {
         'Authorization': userToken
       },
     );
-    print(res.statusCode);
+    print(res.body);
   }
 
   // Unfollow User
@@ -311,16 +311,19 @@ class ApiService {
         'Authorization': userToken
       },
     );
-    print(res.statusCode);
+    print(res.body);
   }
 
 // Get Followed User
-  getFollowedUser(String userId, String id) async {
+  Future<bool> getFollowedUser(String userId, String id) async {
     final res = await http.get(
       Uri.parse('${Config.baseUrl}users/$userId/followed/$id'),
     );
-
-    print(res.statusCode);
+    if (res.statusCode == 200) {
+      return Future<bool>.value(true);
+    } else {
+      return Future<bool>.value(false);
+    }
   }
 
   // Delete a Coupon
