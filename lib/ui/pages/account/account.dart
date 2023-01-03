@@ -22,7 +22,6 @@ class AccountPage extends StatefulWidget {
 
   Future? userInfo;
 
-  Future<bool>? isFollowed;
   Future? unfollow;
   Future? follow;
 
@@ -37,10 +36,8 @@ class _AccountPageState extends State<AccountPage> {
   void initState() {
     super.initState();
 
-    setState(() async {
+    setState(() {
       widget.userInfo = Config.client.getUser(widget.user!.id);
-      widget.isFollowed = Config.client
-          .getFollowedUser(Config.box.read("myId"), widget.user!.id.toString());
     });
   }
 
@@ -62,7 +59,9 @@ class _AccountPageState extends State<AccountPage> {
       body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
-          print(widget.isFollowed);
+          Future<bool> isFollowed = Config.client.getFollowedUser(
+              Config.box.read("myId"), widget.user!.id.toString());
+          print(isFollowed);
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
             return ListView(
@@ -171,16 +170,14 @@ class _AccountPageState extends State<AccountPage> {
                   wrapFit: WrapFit.divided,
                   children: [
                     LandinaTextButton(
-                      title: widget.isFollowed != Future<bool>.value(true)
+                      title: isFollowed != Future<bool>.value(true)
                           ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
                           : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
                       backgroundColor:
-                          widget.isFollowed != Future<bool>.value(true)
-                              ? true
-                              : false,
+                          isFollowed != Future<bool>.value(true) ? true : false,
                       onPressed: () {
                         setState(() {
-                          widget.follow != Future<bool>.value(true)
+                          isFollowed != Future<bool>.value(true)
                               ? Config.client
                                   .followUser(widget.user!.id.toString())
                               : landinaModal(
