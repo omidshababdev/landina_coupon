@@ -65,10 +65,12 @@ class _LinksPageState extends State<FollowersPage> {
                 ),
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
-                  var isFollowed = List.filled(
+                  final isFollowed = List.filled(
                       snapshot.data.length,
                       Config.client.getFollowedUser(Config.box.read("myId"),
                           snapshot.data[index]!.id.toString()));
+
+                  print(isFollowed.runtimeType);
 
                   return Container(
                     decoration: const BoxDecoration(

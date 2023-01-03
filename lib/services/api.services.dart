@@ -119,8 +119,6 @@ class ApiService {
 
   // Get a User
   Future getUser(String? userId) async {
-    await Future.delayed(const Duration(milliseconds: 4000));
-
     final res = await http.get(
       Uri.parse('${Config.baseUrl}users/$userId'),
     );
@@ -352,8 +350,6 @@ class ApiService {
 
   // Get All Coupons
   Future allCoupons() async {
-    await Future.delayed(const Duration(milliseconds: 4000));
-
     final res = await http.get(
       Uri.parse('${Config.baseUrl}coupons'),
       headers: <String, String>{
@@ -380,8 +376,6 @@ class ApiService {
 
   // Get User Followers
   Future getUserFollowers(String? userId) async {
-    await Future.delayed(const Duration(milliseconds: 4000));
-
     final res = await http.get(
       Uri.parse('${Config.baseUrl}users/$userId/followers'),
     );
