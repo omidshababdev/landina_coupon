@@ -183,6 +183,7 @@ class _AccountPageState extends State<AccountPage> {
                               ? {
                                   Config.client
                                       .followUser(widget.user!.id.toString()),
+                                  setState(() {}),
                                   isFollowed = true,
                                 }
                               : landinaModal(
@@ -194,6 +195,7 @@ class _AccountPageState extends State<AccountPage> {
                                         Config.client.unfollowUser(
                                             widget.user!.id.toString());
                                         isFollowed = false;
+                                        setState(() {});
                                         Navigator.pop(context);
                                       });
                                     },

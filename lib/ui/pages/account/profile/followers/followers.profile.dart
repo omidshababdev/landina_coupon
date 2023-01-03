@@ -17,7 +17,6 @@ import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 class FollowersPage extends StatefulWidget {
   Future? userInfo;
-  bool isFollowed = true;
 
   FollowersPage({super.key});
 
@@ -26,7 +25,6 @@ class FollowersPage extends StatefulWidget {
 }
 
 class _LinksPageState extends State<FollowersPage> {
-  bool isFollowed = true;
   @override
   void initState() {
     super.initState();
@@ -55,6 +53,7 @@ class _LinksPageState extends State<FollowersPage> {
         future: widget.userInfo,
         builder: (context, snapshot) {
           final userInfo = snapshot.data;
+
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
@@ -66,6 +65,11 @@ class _LinksPageState extends State<FollowersPage> {
                 ),
                 itemCount: snapshot.data.length,
                 itemBuilder: (context, index) {
+                  var isFollowed = List.filled(
+                      snapshot.data.length,
+                      Config.client.getFollowedUser(Config.box.read("myId"),
+                          snapshot.data[index]!.id.toString()));
+
                   return Container(
                     decoration: const BoxDecoration(
                       border: Border.symmetric(
@@ -122,23 +126,32 @@ class _LinksPageState extends State<FollowersPage> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: LandinaTextButton(
-                          title: isFollowed != true
+                          title: isFollowed[index] != true
                               ? AppLocalizations.of(context)!
                                   .follow
                                   .capitalize()
                               : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
-                          backgroundColor: isFollowed != true ? true : false,
+                          backgroundColor:
+                              isFollowed[index] != true ? true : false,
                           onPressed: () {
                             setState(() {
-                              isFollowed != true
-                                  ? isFollowed = !isFollowed
+                              isFollowed[index] != Future.value(true)
+                                  ? {
+                                      Config.client.followUser(
+                                          snapshot.data[index]!.id.toString()),
+                                      isFollowed[index] = Future.value(true),
+                                    }
                                   : landinaModal(
                                       LandinaTextButton(
                                         title:
                                             "Un${AppLocalizations.of(context)!.follow}",
                                         onPressed: () {
                                           setState(() {
-                                            isFollowed = !isFollowed;
+                                            Config.client.unfollowUser(snapshot
+                                                .data[index]!.id
+                                                .toString());
+                                            isFollowed[index] =
+                                                Future.value(true);
                                             Navigator.pop(context);
                                           });
                                         },
