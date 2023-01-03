@@ -320,9 +320,9 @@ class ApiService {
       Uri.parse('${Config.baseUrl}users/$userId/followed/$id'),
     );
     if (res.statusCode == 200) {
-      return Future<bool>.value(true);
+      return true;
     } else {
-      return Future<bool>.value(false);
+      return false;
     }
   }
 

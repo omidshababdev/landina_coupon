@@ -32,12 +32,17 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  bool? isFollowed;
   @override
   void initState() {
     super.initState();
 
     setState(() {
       widget.userInfo = Config.client.getUser(widget.user!.id);
+
+      Config.client
+          .getFollowedUser(Config.box.read("myId"), widget.user!.id.toString())
+          .then((value) => print(isFollowed = value));
     });
   }
 
@@ -59,11 +64,9 @@ class _AccountPageState extends State<AccountPage> {
       body: FutureBuilder(
         future: widget.userInfo,
         builder: (context, snapshot) {
-          Future<bool> isFollowed = Config.client.getFollowedUser(
-              Config.box.read("myId"), widget.user!.id.toString());
-          print(isFollowed);
           if (snapshot.connectionState == ConnectionState.active ||
-              snapshot.connectionState == ConnectionState.done) {
+              snapshot.connectionState == ConnectionState.done ||
+              snapshot.hasData) {
             return ListView(
               key: const PageStorageKey<String>('profile'),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -170,16 +173,18 @@ class _AccountPageState extends State<AccountPage> {
                   wrapFit: WrapFit.divided,
                   children: [
                     LandinaTextButton(
-                      title: isFollowed != Future<bool>.value(true)
+                      title: isFollowed != true
                           ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
                           : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
-                      backgroundColor:
-                          isFollowed != Future<bool>.value(true) ? true : false,
+                      backgroundColor: isFollowed != true ? true : false,
                       onPressed: () {
                         setState(() {
-                          isFollowed != Future<bool>.value(true)
-                              ? Config.client
-                                  .followUser(widget.user!.id.toString())
+                          isFollowed != true
+                              ? {
+                                  Config.client
+                                      .followUser(widget.user!.id.toString()),
+                                  isFollowed = true,
+                                }
                               : landinaModal(
                                   LandinaTextButton(
                                     title:
@@ -188,6 +193,7 @@ class _AccountPageState extends State<AccountPage> {
                                       setState(() {
                                         Config.client.unfollowUser(
                                             widget.user!.id.toString());
+                                        isFollowed = false;
                                         Navigator.pop(context);
                                       });
                                     },
