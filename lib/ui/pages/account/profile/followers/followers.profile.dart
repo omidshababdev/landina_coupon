@@ -187,7 +187,7 @@ class _LinksPageState extends State<FollowersPage> {
                       ),
                       const SizedBox(height: 25),
                       Text(
-                        "هنوز هیچ کوپنی اینجا نیست!",
+                        "هنوز هیچ کسی اینجا نیست!",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
