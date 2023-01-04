@@ -3,7 +3,7 @@ class LinkModel {
   String userId;
   String name;
   String desc;
-  String link;
+  String address;
   bool active;
 
   LinkModel({
@@ -11,7 +11,7 @@ class LinkModel {
     required this.userId,
     required this.name,
     required this.desc,
-    required this.link,
+    required this.address,
     required this.active,
   });
 
@@ -21,7 +21,7 @@ class LinkModel {
       userId: map['userId'],
       name: map['name'],
       desc: map['desc'],
-      link: map['link'],
+      address: map['address'],
       active: map['active'],
     );
   }

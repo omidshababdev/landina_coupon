@@ -180,7 +180,7 @@ class _LinksPageState extends State<LinksPage> {
                         ),
                       ),
                       subtitle: Text(
-                        "${snapshot.data[index].link}",
+                        "${snapshot.data[index].address}",
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: const TextStyle(
