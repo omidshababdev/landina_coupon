@@ -83,7 +83,9 @@ class _HomePageState extends State<HomePage> {
                                 AppLocalizations.of(context)!.createAnAccount,
                             onPressed: () {
                               Navigator.pop(context);
-                              Get.toNamed("/signUp/username");
+                              setState(() {
+                                Get.toNamed("/signUp/username");
+                              });
                             },
                           ),
                         ],

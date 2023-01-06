@@ -235,6 +235,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                     height: 80,
                                     decoration: ShapeDecoration(
                                       color: const Color(0xffF1F1F1),
+                                      image: DecorationImage(
+                                        image: snapshot.data!.image,
+                                        fit: BoxFit.cover,
+                                      ),
                                       shape: SmoothRectangleBorder(
                                         borderRadius: SmoothBorderRadius(
                                           cornerRadius: 18,
