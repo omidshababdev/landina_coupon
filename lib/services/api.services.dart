@@ -10,7 +10,7 @@ import 'package:landina_coupon/models/user.model.dart';
 import 'package:get/get.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
-class ApiService {
+class ApiServices {
   // SignUp User
   Future signUpUser(String username, String email, String password) async {
     http.Response res =

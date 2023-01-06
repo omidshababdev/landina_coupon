@@ -5,12 +5,14 @@ import 'package:figma_squircle/figma_squircle.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/account/profile/profile.get.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
@@ -38,25 +40,11 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
 
-  File? image;
+  final profileGet = ProfileGet();
+
   bool? isLoading = false;
 
   Future? userInfo = Config.client.getUser(Config.box.read("myId"));
-
-  Future pickImage(ImageSource source) async {
-    try {
-      final image = await ImagePicker().pickImage(
-          source: source, imageQuality: 60, maxHeight: 300, maxWidth: 300);
-      if (image == null) return;
-
-      final imageTemporary = File(image.path);
-      setState(() {
-        this.image = imageTemporary;
-      });
-    } on PlatformException catch (err) {
-      return "ای وای نتونستیم عکس رو بگیریم: $err";
-    }
-  }
 
   @override
   void initState() {
@@ -200,7 +188,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                       title: "استفاده از دوربین",
                                       onPressed: () {
                                         Navigator.pop(context);
-                                        pickImage(ImageSource.camera);
+
+                                        profileGet
+                                            .uploadImage(ImageSource.camera);
                                       },
                                     ),
                                     LandinaTextButton(
@@ -208,32 +198,50 @@ class _ProfilePageState extends State<ProfilePage> {
                                       backgroundColor: true,
                                       onPressed: () {
                                         Navigator.pop(context);
-                                        pickImage(ImageSource.gallery);
+
+                                        profileGet
+                                            .uploadImage(ImageSource.gallery);
                                       },
                                     ),
                                   ],
                                 ),
                               );
                             },
-                            child: Container(
-                              width: 80,
-                              height: 80,
-                              decoration: ShapeDecoration(
-                                color: const Color(0xffF1F1F1),
-                                // image: DecorationImage(
-                                //   image: NetworkImage(
-                                //     snapshot.data!.profilePicture,
-                                //   ),
-                                //   fit: BoxFit.contain,
-                                // ),
-                                shape: SmoothRectangleBorder(
-                                  borderRadius: SmoothBorderRadius(
-                                    cornerRadius: 18,
-                                    cornerSmoothing: 0.5,
-                                  ),
-                                ),
-                              ),
-                            ),
+                            child: Obx(() => profileGet.profileImage.value !=
+                                        null &&
+                                    profileGet.profileImage.value!.path != ''
+                                ? Container(
+                                    width: 80,
+                                    height: 80,
+                                    decoration: ShapeDecoration(
+                                      color: const Color(0xffF1F1F1),
+                                      image: DecorationImage(
+                                        image: FileImage(
+                                          profileGet.profileImage.value!,
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                      shape: SmoothRectangleBorder(
+                                        borderRadius: SmoothBorderRadius(
+                                          cornerRadius: 18,
+                                          cornerSmoothing: 0.5,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    width: 80,
+                                    height: 80,
+                                    decoration: ShapeDecoration(
+                                      color: const Color(0xffF1F1F1),
+                                      shape: SmoothRectangleBorder(
+                                        borderRadius: SmoothBorderRadius(
+                                          cornerRadius: 18,
+                                          cornerSmoothing: 0.5,
+                                        ),
+                                      ),
+                                    ),
+                                  )),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
