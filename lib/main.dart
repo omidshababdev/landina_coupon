@@ -13,14 +13,14 @@ import 'package:landina_coupon/ui/pages/account/profile/followings/followings.pr
 import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/email/email.dart';
-import 'package:landina_coupon/ui/pages/account/settings/settings.dart';
+import 'package:landina_coupon/ui/pages/account/settings/view.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/username/username.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/coupon/new/new.coupon.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:landina_coupon/ui/pages/account/login/login.dart';
-import 'package:landina_coupon/ui/pages/account/profile/profile.dart';
+import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';

@@ -45,7 +45,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future pickImage(ImageSource source) async {
     try {
-      final image = await ImagePicker().pickImage(source: source);
+      final image =
+          await ImagePicker().pickImage(source: source, imageQuality: 60);
       if (image == null) return;
 
       final imageTemporary = File(image.path);
