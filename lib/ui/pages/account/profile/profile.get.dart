@@ -14,6 +14,8 @@ class ProfileGet extends GetxController {
     try {
       final XFile? pickedFile = await imagePicker.pickImage(
         source: source,
+        maxWidth: 300,
+        maxHeight: 300,
       );
 
       if (pickedFile != null) {

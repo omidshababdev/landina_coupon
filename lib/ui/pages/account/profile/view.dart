@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 
 import 'package:flutter/material.dart';
@@ -238,6 +239,49 @@ class _ProfilePageState extends State<ProfilePage> {
                                         borderRadius: SmoothBorderRadius(
                                           cornerRadius: 18,
                                           cornerSmoothing: 0.5,
+                                        ),
+                                      ),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: SmoothBorderRadius(
+                                        cornerRadius: 18,
+                                        cornerSmoothing: 0.5,
+                                      ),
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            '${Config.baseUrl}users/image/${Config.box.read("myId")}',
+                                        imageBuilder:
+                                            (context, imageProvider) =>
+                                                Container(
+                                          width: 80,
+                                          height: 80,
+                                          decoration: ShapeDecoration(
+                                            color: const Color(0xffF1F1F1),
+                                            image: DecorationImage(
+                                              image: imageProvider,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            shape: SmoothRectangleBorder(
+                                              borderRadius: SmoothBorderRadius(
+                                                cornerRadius: 18,
+                                                cornerSmoothing: 0.5,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        errorWidget: (context, url, error) =>
+                                            Container(
+                                          width: 80,
+                                          height: 80,
+                                          decoration: ShapeDecoration(
+                                            color: const Color(0xffF1F1F1),
+                                            shape: SmoothRectangleBorder(
+                                              borderRadius: SmoothBorderRadius(
+                                                cornerRadius: 18,
+                                                cornerSmoothing: 0.5,
+                                              ),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
