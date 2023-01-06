@@ -208,88 +208,48 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               );
                             },
-                            child: Obx(() => profileGet.profileImage.value !=
-                                        null &&
-                                    profileGet.profileImage.value!.path != ''
-                                ? Container(
-                                    width: 80,
-                                    height: 80,
-                                    decoration: ShapeDecoration(
-                                      color: const Color(0xffF1F1F1),
-                                      image: DecorationImage(
-                                        image: FileImage(
-                                          profileGet.profileImage.value!,
+                            child: Obx(
+                              () => profileGet.profileImage.value != null &&
+                                      profileGet.profileImage.value!.path != ''
+                                  ? Container(
+                                      width: 80,
+                                      height: 80,
+                                      decoration: ShapeDecoration(
+                                        color: const Color(0xffF1F1F1),
+                                        image: DecorationImage(
+                                          image: FileImage(
+                                            profileGet.profileImage.value!,
+                                          ),
+                                          fit: BoxFit.cover,
                                         ),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      shape: SmoothRectangleBorder(
-                                        borderRadius: SmoothBorderRadius(
-                                          cornerRadius: 18,
-                                          cornerSmoothing: 0.5,
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                : Container(
-                                    width: 80,
-                                    height: 80,
-                                    decoration: ShapeDecoration(
-                                      color: const Color(0xffF1F1F1),
-                                      image: DecorationImage(
-                                        image: snapshot.data!.image,
-                                        fit: BoxFit.cover,
-                                      ),
-                                      shape: SmoothRectangleBorder(
-                                        borderRadius: SmoothBorderRadius(
-                                          cornerRadius: 18,
-                                          cornerSmoothing: 0.5,
-                                        ),
-                                      ),
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: SmoothBorderRadius(
-                                        cornerRadius: 18,
-                                        cornerSmoothing: 0.5,
-                                      ),
-                                      child: CachedNetworkImage(
-                                        imageUrl:
-                                            '${Config.baseUrl}users/image/${Config.box.read("myId")}',
-                                        imageBuilder:
-                                            (context, imageProvider) =>
-                                                Container(
-                                          width: 80,
-                                          height: 80,
-                                          decoration: ShapeDecoration(
-                                            color: const Color(0xffF1F1F1),
-                                            image: DecorationImage(
-                                              image: imageProvider,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            shape: SmoothRectangleBorder(
-                                              borderRadius: SmoothBorderRadius(
-                                                cornerRadius: 18,
-                                                cornerSmoothing: 0.5,
-                                              ),
-                                            ),
+                                        shape: SmoothRectangleBorder(
+                                          borderRadius: SmoothBorderRadius(
+                                            cornerRadius: 18,
+                                            cornerSmoothing: 0.5,
                                           ),
                                         ),
-                                        errorWidget: (context, url, error) =>
-                                            Container(
-                                          width: 80,
-                                          height: 80,
-                                          decoration: ShapeDecoration(
-                                            color: const Color(0xffF1F1F1),
-                                            shape: SmoothRectangleBorder(
-                                              borderRadius: SmoothBorderRadius(
-                                                cornerRadius: 18,
-                                                cornerSmoothing: 0.5,
-                                              ),
-                                            ),
+                                      ),
+                                    )
+                                  : Container(
+                                      width: 80,
+                                      height: 80,
+                                      decoration: ShapeDecoration(
+                                        color: const Color(0xffF1F1F1),
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                            snapshot.data!.image,
+                                          ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                        shape: SmoothRectangleBorder(
+                                          borderRadius: SmoothBorderRadius(
+                                            cornerRadius: 18,
+                                            cornerSmoothing: 0.5,
                                           ),
                                         ),
                                       ),
                                     ),
-                                  )),
+                            ),
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
