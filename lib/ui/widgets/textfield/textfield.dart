@@ -14,7 +14,7 @@ class LandinaTextField extends StatefulWidget {
   int? minLines = 1;
   int? maxLines = 1;
   bool? enabled;
-  Function(String?)? onChanged;
+  ValueChanged? onChanged;
   String? Function(String?)? validator;
 
   LandinaTextField({

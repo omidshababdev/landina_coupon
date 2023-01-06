@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.model.dart';
@@ -348,30 +349,19 @@ class ApiServices {
     }
   }
 
-  // Get All Coupons
-  Future allCoupons() async {
+  // Search Coupons
+  static Future<List<CouponModel>> searchCoupons(String query) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}coupons'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+      Uri.parse('${Config.baseUrl}coupons/$query'),
     );
 
-    try {
-      if (res.statusCode == 200) {
-        List jsonResponse = json.decode(res.body);
+    if (res.statusCode == 200) {
+      final List coupons = json.decode(res.body);
 
-        return jsonResponse
-            .map<CouponModel>((job) => CouponModel.fromJson(job))
-            .toList();
-      } else if (res.statusCode == 404) {
-        return null;
-      } else {
-        return 'Failed to get coupons.';
-      }
-    } catch (err) {
-      return err;
+      return coupons.map((json) => CouponModel.fromJson(json)).toList();
     }
+
+    return searchCoupons(" ");
   }
 
   // Get User Followers

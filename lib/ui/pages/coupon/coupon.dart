@@ -6,6 +6,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.model.dart';
 import 'package:landina_coupon/models/user.model.dart';
+import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
 
@@ -106,47 +107,102 @@ class _CouponPageState extends State<CouponPage> {
                         child: FutureBuilder(
                           future: widget.userInfo,
                           builder: (context, snapshot) {
+                            final userInfo = snapshot.data;
                             if (snapshot.connectionState ==
                                     ConnectionState.done ||
                                 snapshot.connectionState ==
                                     ConnectionState.active) {
-                              return Wrap(
-                                spacing: 15,
-                                crossAxisAlignment: WrapCrossAlignment.start,
+                              return Row(
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Get.toNamed("/account");
+                                      userInfo!.id == Config.box.read("myId")
+                                          ? Get.toNamed("/profile")
+                                          : Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AccountPage(user: userInfo),
+                                              ),
+                                            );
                                     },
-                                    child: Container(
-                                      width: 50,
-                                      height: 50,
-                                      decoration: ShapeDecoration(
-                                        color: const Color(0xffF1F1F1),
-                                        shape: SmoothRectangleBorder(
-                                          borderRadius: SmoothBorderRadius(
-                                            cornerRadius: 10,
-                                            cornerSmoothing: 0.5,
+                                    child: snapshot.data.image != null
+                                        ? Container(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: ShapeDecoration(
+                                              color: const Color(0xffF1F1F1),
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  "${Config.baseUrl}users/image/${snapshot.data!.id}",
+                                                ),
+                                                fit: BoxFit.cover,
+                                              ),
+                                              shape: SmoothRectangleBorder(
+                                                borderRadius:
+                                                    SmoothBorderRadius(
+                                                  cornerRadius: 10,
+                                                  cornerSmoothing: 0.5,
+                                                ),
+                                              ),
+                                            ),
+                                          )
+                                        : Container(
+                                            width: 50,
+                                            height: 50,
+                                            decoration: ShapeDecoration(
+                                              color: const Color(0xffF1F1F1),
+                                              shape: SmoothRectangleBorder(
+                                                borderRadius:
+                                                    SmoothBorderRadius(
+                                                  cornerRadius: 10,
+                                                  cornerSmoothing: 0.5,
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
-                                      ),
-                                    ),
                                   ),
+                                  const SizedBox(width: 10),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        snapshot.data!.name,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w600,
+                                      GestureDetector(
+                                        onTap: () {
+                                          userInfo!.id ==
+                                                  Config.box.read("myId")
+                                              ? Get.toNamed("/profile")
+                                              : Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AccountPage(
+                                                            user: userInfo),
+                                                  ),
+                                                );
+                                        },
+                                        child: Text(
+                                          snapshot.data!.name,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                          ),
                                         ),
                                       ),
                                       GestureDetector(
                                         onTap: () {
-                                          Get.toNamed("/account");
+                                          userInfo!.id ==
+                                                  Config.box.read("myId")
+                                              ? Get.toNamed("/profile")
+                                              : Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AccountPage(
+                                                            user: userInfo),
+                                                  ),
+                                                );
                                         },
                                         child: Text(
                                           snapshot.data!.username,

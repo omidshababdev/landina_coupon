@@ -49,7 +49,7 @@ class UserModel {
       id: map['_id'],
       name: map['name'] ?? 'نام و نام خانوادگی',
       username: map['username'] ?? 'username',
-      image: map['image'] ?? "assets/images/landina-logo.png",
+      image: map['image'],
       email: map['email'] ?? 'ایمیل',
       password: map['password'] ?? 'رمز عبور',
       bio: map['bio'] ?? 'توضیحات صفحه اینجا نمایش داده میشن.',

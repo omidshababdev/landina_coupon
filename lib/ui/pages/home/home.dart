@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/models/coupon.model.dart';
 import 'package:landina_coupon/models/user.model.dart';
+import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
@@ -19,8 +21,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HomePage extends StatefulWidget {
   UserModel? user;
   Future? userInfo;
-  Future? allCoupons;
-  Future? timelineCoupons;
 
   HomePage({super.key});
 
@@ -29,19 +29,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  void updateUI() {
-    setState(() {
-      //You can also make changes to your state here.
-    });
-  }
+  TextEditingController searchController = TextEditingController();
+  List<CouponModel> coupons = [];
+  String query = '';
 
   @override
   void initState() {
     super.initState();
+
+    init();
+  }
+
+  Future init() async {
+    final coupons = await ApiServices.searchCoupons(query);
+
     setState(() {
-      widget.allCoupons = Config.client.allCoupons();
-      widget.timelineCoupons =
-          Config.client.timelineCoupons(Config.box.read("myId"));
+      this.coupons = coupons;
     });
   }
 
@@ -118,9 +121,10 @@ class _HomePageState extends State<HomePage> {
                 margin:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                 child: LandinaTextField(
-                  onChanged: (p0) {
-                    searchCoupons;
+                  onChanged: (value) {
+                    searchCoupons(searchController.text);
                   },
+                  textfieldController: searchController,
                   hintText: AppLocalizations.of(context)!.searchField,
                   maxLines: 1,
                   prefixIcon: IconlyLight.search,
@@ -164,9 +168,9 @@ class _HomePageState extends State<HomePage> {
                                       color: const Color(0xffF1F1F1),
                                     ),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     "جدیدترین ها",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontSize: 13,
                                         fontWeight: FontWeight.w500),
                                   ),
@@ -191,7 +195,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: widget.allCoupons,
+                future: ApiServices.searchCoupons(query),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done ||
                       snapshot.connectionState == ConnectionState.active) {
@@ -204,9 +208,9 @@ class _HomePageState extends State<HomePage> {
                         physics: const BouncingScrollPhysics(
                           parent: ClampingScrollPhysics(),
                         ),
-                        itemCount: snapshot.data.length,
+                        itemCount: coupons.length,
                         itemBuilder: (context, index) {
-                          final couponInfo = snapshot.data![index];
+                          final couponInfo = coupons[index];
                           return Coupon(
                             couponId: couponInfo.id,
                             userId: couponInfo.userId,
@@ -346,7 +350,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void searchCoupons(String query) {
-    //
+  Future searchCoupons(String query) async {
+    final coupons = await ApiServices.searchCoupons(query);
+
+    if (!mounted) return;
+
+    setState(() {
+      this.query = query;
+      this.coupons = coupons;
+    });
   }
 }

@@ -89,19 +89,39 @@ class _CouponState extends State<Coupon> {
                                       ),
                                     );
                             },
-                            child: Container(
-                              width: 50,
-                              height: 50,
-                              decoration: ShapeDecoration(
-                                color: const Color(0xffF1F1F1),
-                                shape: SmoothRectangleBorder(
-                                  borderRadius: SmoothBorderRadius(
-                                    cornerRadius: 10,
-                                    cornerSmoothing: 0.5,
+                            child: snapshot.data!.image != null
+                                ? Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: ShapeDecoration(
+                                      color: const Color(0xffF1F1F1),
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          "${Config.baseUrl}users/image/${snapshot.data!.id}",
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ),
+                                      shape: SmoothRectangleBorder(
+                                        borderRadius: SmoothBorderRadius(
+                                          cornerRadius: 10,
+                                          cornerSmoothing: 0.5,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: ShapeDecoration(
+                                      color: const Color(0xffF1F1F1),
+                                      shape: SmoothRectangleBorder(
+                                        borderRadius: SmoothBorderRadius(
+                                          cornerRadius: 10,
+                                          cornerSmoothing: 0.5,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
                           ),
                           const SizedBox(width: 10),
                           Column(
