@@ -67,6 +67,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
   @override
   void initState() {
     super.initState();
+
     // Instabug.start('526221477a496ef5b199095f54c9b198',
     //     [Instabug.invocationEvent.shake, InvocationEvent.screenshot]);
   }

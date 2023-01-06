@@ -76,18 +76,27 @@ class SettingsPage extends StatelessWidget {
           ),
           LandinaListTile(
             onTap: () {},
+            title: "تنظیم پروکسی",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(CupertinoIcons.shield),
+          ),
+          LandinaListTile(
+            onTap: () {},
             title: "راهنمایی",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(Ionicons.help),
           ),
           LandinaListTile(
+            onTap: () {},
             title: "درباره",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(IconlyLight.info_circle),
           ),
           LandinaListTile(
+            onTap: () {},
             title: "طرح زمینه",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
