@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/services/api.services.dart';
-import 'package:landina_coupon/services/base.service.dart';
 import 'package:landina_coupon/services/upload.services.dart';
 
 class Config {
@@ -13,8 +12,8 @@ class Config {
   static TextEditingController emailController = TextEditingController();
   static TextEditingController passwordController = TextEditingController();
 
-  static String baseUrl = "http://localhost:8800/";
-  // static String baseUrl = "https://landina-account.onrender.com/";
+  // static String baseUrl = "http://localhost:8800/";
+  static String baseUrl = "https://landina-account.onrender.com/";
 
   static ApiServices client = ApiServices();
   static UploadServices upload = UploadServices();
