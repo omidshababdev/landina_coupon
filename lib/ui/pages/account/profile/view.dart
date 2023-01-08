@@ -241,22 +241,24 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                       )
                                     : snapshot.data!.image != null
-                                        ? Container(
-                                            width: 80,
-                                            height: 80,
-                                            decoration: ShapeDecoration(
-                                              color: const Color(0xffF1F1F1),
-                                              image: DecorationImage(
-                                                image: NetworkImage(
-                                                  "${Config.baseUrl}users/image/${Config.box.read("myId")}",
+                                        ? Obx(
+                                            () => Container(
+                                              width: 80,
+                                              height: 80,
+                                              decoration: ShapeDecoration(
+                                                color: const Color(0xffF1F1F1),
+                                                image: DecorationImage(
+                                                  image: NetworkImage(
+                                                    "${Config.baseUrl}users/image/${Config.box.read("myId")}",
+                                                  ),
+                                                  fit: BoxFit.cover,
                                                 ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                              shape: SmoothRectangleBorder(
-                                                borderRadius:
-                                                    SmoothBorderRadius(
-                                                  cornerRadius: 18,
-                                                  cornerSmoothing: 0.5,
+                                                shape: SmoothRectangleBorder(
+                                                  borderRadius:
+                                                      SmoothBorderRadius(
+                                                    cornerRadius: 18,
+                                                    cornerSmoothing: 0.5,
+                                                  ),
                                                 ),
                                               ),
                                             ),
