@@ -610,7 +610,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       wrapFit: WrapFit.divided,
                       children: [
                         LandinaTextButton(
-                          title: 'دنبال کننده ها',
+                          title: 'آمار و ارقام',
                           onPressed: () {
                             Get.toNamed("/followers");
                           },

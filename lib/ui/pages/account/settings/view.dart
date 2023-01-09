@@ -128,6 +128,13 @@ class _SettingsPageState extends State<SettingsPage> {
             leading: const Icon(IconlyLight.notification),
           ),
           LandinaListTile(
+            onTap: () {},
+            title: "آمار صفحه",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(IconlyLight.activity),
+          ),
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/proxy");
             },
@@ -157,7 +164,7 @@ class _SettingsPageState extends State<SettingsPage> {
             title: "زبان برنامه",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
-            leading: const Icon(CupertinoIcons.layers),
+            leading: const Icon(IconlyLight.paper_negative),
           ),
           LandinaListTile(
             onTap: () {
