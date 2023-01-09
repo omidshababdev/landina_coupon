@@ -22,6 +22,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.2.0"
+  animated_theme_switcher:
+    dependency: "direct main"
+    description:
+      name: animated_theme_switcher
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.7"
   archive:
     dependency: transitive
     description:
@@ -232,6 +239,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.0.3"
+  firebase_analytics:
+    dependency: "direct main"
+    description:
+      name: firebase_analytics
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "10.1.0"
+  firebase_analytics_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_analytics_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.3.17"
+  firebase_analytics_web:
+    dependency: transitive
+    description:
+      name: firebase_analytics_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.5.1+8"
   firebase_core:
     dependency: "direct main"
     description:
@@ -490,6 +518,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
+  liquid_pull_to_refresh:
+    dependency: "direct main"
+    description:
+      name: liquid_pull_to_refresh
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   logging:
     dependency: transitive
     description:
@@ -740,6 +775,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
+  syncfusion_flutter_barcodes:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_barcodes
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "20.4.42"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "20.4.42"
   term_glyph:
     dependency: transitive
     description:

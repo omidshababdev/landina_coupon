@@ -1,11 +1,15 @@
 import 'dart:ui';
 
+/* PACKAGES */
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
+/* ROUTES */
 import 'package:landina_coupon/ui/pages/account/account.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/chats.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
@@ -23,6 +27,7 @@ import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:landina_coupon/ui/pages/account/login/login.dart';
 import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 
+/* LOCALIZATIONS */
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future main() async {
@@ -42,6 +47,8 @@ Future main() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
+
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   await GetStorage.init();
 
