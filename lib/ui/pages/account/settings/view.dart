@@ -8,6 +8,7 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:get/get.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
@@ -75,8 +76,10 @@ class SettingsPage extends StatelessWidget {
             leading: const Icon(IconlyLight.notification),
           ),
           LandinaListTile(
-            onTap: () {},
-            title: "تنظیم پروکسی",
+            onTap: () {
+              Get.toNamed("/proxy");
+            },
+            title: "پروکسی",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(CupertinoIcons.shield),
@@ -96,11 +99,22 @@ class SettingsPage extends StatelessWidget {
             leading: const Icon(IconlyLight.info_circle),
           ),
           LandinaListTile(
-            onTap: () {},
+            onTap: () {
+              landinaModal(Container());
+            },
             title: "طرح زمینه",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(CupertinoIcons.pencil_outline),
+          ),
+          LandinaListTile(
+            onTap: () {
+              landinaModal(Container());
+            },
+            title: "بروزرسانی",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(CupertinoIcons.app),
           ),
           LandinaListTile(
             onTap: () {

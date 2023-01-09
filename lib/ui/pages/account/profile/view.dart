@@ -24,6 +24,7 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -159,7 +160,12 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
-            return RefreshIndicator(
+            return LiquidPullToRefresh(
+              color: const Color(0xffF1F1F1),
+              backgroundColor: const Color(0xff0F172A),
+              showChildOpacityTransition: false,
+              height: 100,
+              borderWidth: 2,
               onRefresh: () {
                 return Future.delayed(const Duration(seconds: 5), () {
                   setState(() {
