@@ -15,8 +15,23 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  bool notifications = true;
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      Config.box.write("notifications", notifications);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +55,73 @@ class SettingsPage extends StatelessWidget {
         ),
         children: [
           LandinaListTile(
-            onTap: () {},
+            onTap: () {
+              landinaModal(
+                Column(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border.symmetric(
+                          horizontal: BorderSide(
+                            width: 0.5,
+                            color: Color(0xffF1F1F1),
+                          ),
+                        ),
+                      ),
+                      child: ListTile(
+                        onTap: () {
+                          setState(() {
+                            notifications = !notifications;
+                          });
+                        },
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 25),
+                        leading: const AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: CircleAvatar(
+                            backgroundColor: Color(0xffF1F1F1),
+                            foregroundColor: Color(0xff3B3B3B),
+                            child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                          ),
+                        ),
+                        focusColor: const Color(0xfff1f1f1),
+                        title: const Text(
+                          "فعال کردن اعلان ها",
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff3B3B3B),
+                          ),
+                        ),
+                        subtitle: const Text(
+                          "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                        trailing: Transform.scale(
+                          scale: 0.8,
+                          child: CupertinoSwitch(
+                            value: true,
+                            activeColor: const Color(0xff3B3B3B),
+                            onChanged: (value) => setState(
+                              () {
+                                notifications = !notifications;
+                                value = notifications;
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
             title: "اعلان ها",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",

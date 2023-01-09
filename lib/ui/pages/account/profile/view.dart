@@ -100,52 +100,55 @@ class _ProfilePageState extends State<ProfilePage> {
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
             landinaModal(
-              ButtonBarSuper(
-                lineSpacing: 15,
-                wrapType: WrapType.balanced,
-                wrapFit: WrapFit.divided,
-                children: [
-                  LandinaTextButton(
-                    title: "تنظیمات",
-                    onPressed: () {
-                      Navigator.pop(context);
-                      Get.toNamed("/settings");
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "تماس با پشتیبانی",
-                    isLoading: isLoading,
-                    onPressed: () async {
-                      setState(() {
-                        isLoading = true;
-                      });
-
-                      await Future.delayed(const Duration(seconds: 5), () {
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: ButtonBarSuper(
+                  lineSpacing: 15,
+                  wrapType: WrapType.balanced,
+                  wrapFit: WrapFit.divided,
+                  children: [
+                    LandinaTextButton(
+                      title: "تنظیمات",
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Get.toNamed("/settings");
+                      },
+                    ),
+                    LandinaTextButton(
+                      title: "تماس با پشتیبانی",
+                      isLoading: isLoading,
+                      onPressed: () async {
                         setState(() {
-                          isLoading = false;
-                          Navigator.pop(context);
+                          isLoading = true;
                         });
-                      });
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "می خوام از حسابم خارج بشم",
-                    backgroundColor: true,
-                    onPressed: () {
-                      Config.box.remove("username");
-                      Config.box.remove("email");
-                      Config.box.remove("password");
 
-                      setState(() {
-                        Config.loggedIn = false;
-                      });
+                        await Future.delayed(const Duration(seconds: 5), () {
+                          setState(() {
+                            isLoading = false;
+                            Navigator.pop(context);
+                          });
+                        });
+                      },
+                    ),
+                    LandinaTextButton(
+                      title: "می خوام از حسابم خارج بشم",
+                      backgroundColor: true,
+                      onPressed: () {
+                        Config.box.remove("username");
+                        Config.box.remove("email");
+                        Config.box.remove("password");
 
-                      Navigator.pop(context);
+                        setState(() {
+                          Config.loggedIn = false;
+                        });
 
-                      Get.back();
-                    },
-                  ),
-                ],
+                        Navigator.pop(context);
+
+                        Get.back();
+                      },
+                    ),
+                  ],
+                ),
               ),
             );
           },
@@ -193,33 +196,37 @@ class _ProfilePageState extends State<ProfilePage> {
                             GestureDetector(
                               onTap: () {
                                 landinaModal(
-                                  ButtonBarSuper(
-                                    lineSpacing: 15,
-                                    wrapType: WrapType.balanced,
-                                    wrapFit: WrapFit.divided,
-                                    children: [
-                                      LandinaTextButton(
-                                        title: "استفاده از دوربین",
-                                        onPressed: () {
-                                          Navigator.pop(context);
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30),
+                                    child: ButtonBarSuper(
+                                      lineSpacing: 15,
+                                      wrapType: WrapType.balanced,
+                                      wrapFit: WrapFit.divided,
+                                      children: [
+                                        LandinaTextButton(
+                                          title: "استفاده از دوربین",
+                                          onPressed: () {
+                                            Navigator.pop(context);
 
-                                          profileGet
-                                              .uploadImage(ImageSource.camera);
-                                        },
-                                      ),
-                                      LandinaTextButton(
-                                        title: "انتخاب از گالری",
-                                        backgroundColor: true,
-                                        onPressed: () {
-                                          Navigator.pop(context);
-
-                                          setState(() {
                                             profileGet.uploadImage(
-                                                ImageSource.gallery);
-                                          });
-                                        },
-                                      ),
-                                    ],
+                                                ImageSource.camera);
+                                          },
+                                        ),
+                                        LandinaTextButton(
+                                          title: "انتخاب از گالری",
+                                          backgroundColor: true,
+                                          onPressed: () {
+                                            Navigator.pop(context);
+
+                                            setState(() {
+                                              profileGet.uploadImage(
+                                                  ImageSource.gallery);
+                                            });
+                                          },
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 );
                               },

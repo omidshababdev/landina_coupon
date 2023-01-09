@@ -1,3 +1,4 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
@@ -73,23 +74,33 @@ class _HomePageState extends State<HomePage> {
                   ? landinaModal(
                       Column(
                         children: [
-                          LandinaTextButton(
-                            title: AppLocalizations.of(context)!.loginToAccount,
-                            onPressed: () {
-                              Navigator.pop(context);
-                              Get.toNamed("/login");
-                            },
-                          ),
-                          const SizedBox(height: 15),
-                          LandinaTextButton(
-                            title:
-                                AppLocalizations.of(context)!.createAnAccount,
-                            onPressed: () {
-                              Navigator.pop(context);
-                              setState(() {
-                                Get.toNamed("/signUp/username");
-                              });
-                            },
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: ButtonBarSuper(
+                              lineSpacing: 15,
+                              wrapType: WrapType.balanced,
+                              wrapFit: WrapFit.divided,
+                              children: [
+                                LandinaTextButton(
+                                  title: AppLocalizations.of(context)!
+                                      .loginToAccount,
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Get.toNamed("/login");
+                                  },
+                                ),
+                                LandinaTextButton(
+                                  title: AppLocalizations.of(context)!
+                                      .createAnAccount,
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    setState(() {
+                                      Get.toNamed("/signUp/username");
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

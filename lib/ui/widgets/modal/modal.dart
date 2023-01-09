@@ -11,7 +11,7 @@ Future landinaModal(Widget child) {
           children: [
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
+              padding: const EdgeInsets.only(top: 20, bottom: 40),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: SmoothBorderRadius.only(
@@ -25,7 +25,20 @@ Future landinaModal(Widget child) {
                   ),
                 ),
               ),
-              child: child,
+              child: Column(
+                children: [
+                  Container(
+                    width: 80,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: const Color(0xffF1F1F1),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  child,
+                ],
+              ),
             ),
           ],
         );
