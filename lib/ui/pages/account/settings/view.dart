@@ -153,14 +153,18 @@ class _SettingsPageState extends State<SettingsPage> {
             leading: const Icon(Ionicons.help),
           ),
           LandinaListTile(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed("/about");
+            },
             title: "درباره",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(IconlyLight.info_circle),
           ),
           LandinaListTile(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed("/language");
+            },
             title: "زبان برنامه",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
@@ -177,7 +181,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaListTile(
             onTap: () {
-              landinaModal(Container());
+              Get.toNamed("/update");
             },
             title: "بروزرسانی",
             subtitle:
