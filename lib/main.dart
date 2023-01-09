@@ -17,6 +17,7 @@ import 'package:landina_coupon/ui/pages/account/profile/followers/followers.prof
 import 'package:landina_coupon/ui/pages/account/profile/followings/followings.profile.dart';
 import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
+import 'package:landina_coupon/ui/pages/account/settings/help/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/proxy/view.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/email/email.dart';
 import 'package:landina_coupon/ui/pages/account/settings/view.dart';
@@ -145,7 +146,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/account", page: () => AccountPage()),
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/followings", page: () => FollowingsPage()),
-        GetPage(name: "/guide", page: () => FollowersPage()),
+        GetPage(name: "/help", page: () => const HelpPage()),
         GetPage(name: "/proxy", page: () => const ProxyPage()),
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/contacts", page: () => const ContactsPage()),

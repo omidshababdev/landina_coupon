@@ -4,14 +4,14 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
 
-class ProxyPage extends StatefulWidget {
-  const ProxyPage({super.key});
+class HelpPage extends StatefulWidget {
+  const HelpPage({super.key});
 
   @override
-  State<ProxyPage> createState() => _ProxyPageState();
+  State<HelpPage> createState() => _HelpPageState();
 }
 
-class _ProxyPageState extends State<ProxyPage> {
+class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -25,7 +25,7 @@ class _ProxyPageState extends State<ProxyPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: 'پروکسی',
+            title: 'راهنمایی',
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,

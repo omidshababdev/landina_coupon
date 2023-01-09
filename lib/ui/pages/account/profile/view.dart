@@ -609,9 +609,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           },
                         ),
                         LandinaTextButton(
-                          title: 'دنبال شونده ها',
+                          title: 'کوپن جدید',
                           onPressed: () {
-                            Get.toNamed("/followings");
+                            landinaModal(Container());
                           },
                         ),
                         LandinaTextButton(
@@ -954,14 +954,6 @@ class _ProfilePageState extends State<ProfilePage> {
             );
           }
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Get.toNamed("/coupon/new");
-        },
-        child: const Icon(
-          IconlyBroken.plus,
-        ),
       ),
     );
   }

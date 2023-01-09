@@ -26,39 +26,10 @@ class SettingsPage extends StatelessWidget {
         child: LandinaAppbar(
           title: "تنظیمات",
           rightIcon: Ionicons.reorder_two,
-          rightIconOnPressed: () {
-            landinaModal(
-              ButtonBarSuper(
-                lineSpacing: 15,
-                wrapType: WrapType.balanced,
-                wrapFit: WrapFit.divided,
-                children: [
-                  LandinaTextButton(
-                    title: "تنظیمات اپلیکیشن",
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "درباره ${AppLocalizations.of(context)!.appName}",
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                  LandinaTextButton(
-                    title: "می خوام از حسابم خارج بشم",
-                    backgroundColor: true,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-            );
-          },
+          rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
-            Navigator.pop(context);
+            Get.back();
           },
         ),
       ),
@@ -85,7 +56,9 @@ class SettingsPage extends StatelessWidget {
             leading: const Icon(CupertinoIcons.shield),
           ),
           LandinaListTile(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed("/help");
+            },
             title: "راهنمایی",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
@@ -97,6 +70,13 @@ class SettingsPage extends StatelessWidget {
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(IconlyLight.info_circle),
+          ),
+          LandinaListTile(
+            onTap: () {},
+            title: "زبان برنامه",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(CupertinoIcons.layers),
           ),
           LandinaListTile(
             onTap: () {
