@@ -187,18 +187,22 @@ class _AccountPageState extends State<AccountPage> {
                                   isFollowed = true,
                                 }
                               : landinaModal(
-                                  LandinaTextButton(
-                                    title:
-                                        "Un${AppLocalizations.of(context)!.follow}",
-                                    onPressed: () {
-                                      setState(() {
-                                        Config.client.unfollowUser(
-                                            widget.user!.id.toString());
-                                        isFollowed = false;
-                                        setState(() {});
-                                        Navigator.pop(context);
-                                      });
-                                    },
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30),
+                                    child: LandinaTextButton(
+                                      title:
+                                          "Un${AppLocalizations.of(context)!.follow}",
+                                      onPressed: () {
+                                        setState(() {
+                                          Config.client.unfollowUser(
+                                              widget.user!.id.toString());
+                                          isFollowed = false;
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                        });
+                                      },
+                                    ),
                                   ),
                                 );
                         });

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 Future landinaModal(Widget child) {
   return Get.bottomSheet(
+    isDismissible: true,
     StatefulBuilder(
       builder: (context, setState) {
         return Wrap(

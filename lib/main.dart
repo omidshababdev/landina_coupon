@@ -134,7 +134,6 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
         /* dark theme settings */
       ),
-      themeMode: ThemeMode.light,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: Get.deviceLocale,
       supportedLocales: AppLocalizations.supportedLocales,

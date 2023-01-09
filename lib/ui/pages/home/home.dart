@@ -74,36 +74,28 @@ class _HomePageState extends State<HomePage> {
                   ? landinaModal(
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
+                        child: ButtonBarSuper(
+                          lineSpacing: 15,
+                          wrapType: WrapType.balanced,
+                          wrapFit: WrapFit.divided,
                           children: [
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 30),
-                              child: ButtonBarSuper(
-                                lineSpacing: 15,
-                                wrapType: WrapType.balanced,
-                                wrapFit: WrapFit.divided,
-                                children: [
-                                  LandinaTextButton(
-                                    title: AppLocalizations.of(context)!
-                                        .loginToAccount,
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      Get.toNamed("/login");
-                                    },
-                                  ),
-                                  LandinaTextButton(
-                                    title: AppLocalizations.of(context)!
-                                        .createAnAccount,
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                      setState(() {
-                                        Get.toNamed("/signUp/username");
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
+                            LandinaTextButton(
+                              title:
+                                  AppLocalizations.of(context)!.loginToAccount,
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Get.toNamed("/login");
+                              },
+                            ),
+                            LandinaTextButton(
+                              title:
+                                  AppLocalizations.of(context)!.createAnAccount,
+                              onPressed: () {
+                                Navigator.pop(context);
+                                setState(() {
+                                  Get.toNamed("/signUp/username");
+                                });
+                              },
                             ),
                           ],
                         ),

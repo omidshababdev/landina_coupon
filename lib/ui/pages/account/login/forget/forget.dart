@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -27,7 +28,7 @@ class ForgetPage extends StatelessWidget {
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
             title: AppLocalizations.of(context)!.forgetPass.capitalize(),
-            rightIcon: IconlyLight.category,
+            rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {
