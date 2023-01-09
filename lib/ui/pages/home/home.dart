@@ -72,37 +72,41 @@ class _HomePageState extends State<HomePage> {
               Config.box.read("username") == null &&
                       Config.box.read("password") == null
                   ? landinaModal(
-                      Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            child: ButtonBarSuper(
-                              lineSpacing: 15,
-                              wrapType: WrapType.balanced,
-                              wrapFit: WrapFit.divided,
-                              children: [
-                                LandinaTextButton(
-                                  title: AppLocalizations.of(context)!
-                                      .loginToAccount,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Get.toNamed("/login");
-                                  },
-                                ),
-                                LandinaTextButton(
-                                  title: AppLocalizations.of(context)!
-                                      .createAnAccount,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    setState(() {
-                                      Get.toNamed("/signUp/username");
-                                    });
-                                  },
-                                ),
-                              ],
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Column(
+                          children: [
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
+                              child: ButtonBarSuper(
+                                lineSpacing: 15,
+                                wrapType: WrapType.balanced,
+                                wrapFit: WrapFit.divided,
+                                children: [
+                                  LandinaTextButton(
+                                    title: AppLocalizations.of(context)!
+                                        .loginToAccount,
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      Get.toNamed("/login");
+                                    },
+                                  ),
+                                  LandinaTextButton(
+                                    title: AppLocalizations.of(context)!
+                                        .createAnAccount,
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                      setState(() {
+                                        Get.toNamed("/signUp/username");
+                                      });
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     )
                   : {
@@ -143,60 +147,63 @@ class _HomePageState extends State<HomePage> {
                   suffixIcon: IconlyLight.filter,
                   suffixIconOnPressed: () {
                     landinaModal(
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "فیلتر مورد نظرت رو انتخاب کن",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 30),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "فیلتر مورد نظرت رو انتخاب کن",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: const Color(0xff3B3B3B).withOpacity(0.5),
-                              height: 2,
+                            const SizedBox(height: 10),
+                            Text(
+                              "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: const Color(0xff3B3B3B).withOpacity(0.5),
+                                height: 2,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 30),
-                          Wrap(
-                            spacing: 8,
-                            runSpacing: 10,
-                            children: [
-                              ...List.generate(
-                                6,
-                                (index) => Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8, vertical: 5),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    border: Border.all(
-                                      width: 1,
-                                      color: const Color(0xffF1F1F1),
+                            const SizedBox(height: 30),
+                            Wrap(
+                              spacing: 8,
+                              runSpacing: 10,
+                              children: [
+                                ...List.generate(
+                                  6,
+                                  (index) => Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 5),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: const Color(0xffF1F1F1),
+                                      ),
+                                    ),
+                                    child: const Text(
+                                      "جدیدترین ها",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500),
                                     ),
                                   ),
-                                  child: const Text(
-                                    "جدیدترین ها",
-                                    style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500),
-                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 30),
-                          LandinaTextButton(
-                            title: "تغییرات فیلتر رو اعمال کن",
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
+                              ],
+                            ),
+                            const SizedBox(height: 30),
+                            LandinaTextButton(
+                              title: "تغییرات فیلتر رو اعمال کن",
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

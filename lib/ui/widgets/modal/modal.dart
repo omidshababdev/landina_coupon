@@ -28,7 +28,7 @@ Future landinaModal(Widget child) {
               child: Column(
                 children: [
                   Container(
-                    width: 80,
+                    width: 60,
                     height: 5,
                     decoration: BoxDecoration(
                       color: const Color(0xffF1F1F1),
