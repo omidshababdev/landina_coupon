@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/constants/translation.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
@@ -25,12 +26,14 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool notifications = true;
 
+  bool lightMode = false;
+  bool darkMode = false;
+  bool defaultMode = true;
+
   @override
   void initState() {
     super.initState();
-    setState(() {
-      Config.box.write("notifications", notifications);
-    });
+    setState(() {});
   }
 
   @override
@@ -56,8 +59,9 @@ class _SettingsPageState extends State<SettingsPage> {
         children: [
           LandinaListTile(
             onTap: () {
-              landinaModal(
-                  Column(
+              landinaModal(StatefulBuilder(
+                builder: (BuildContext context, setState) {
+                  return Column(
                     children: [
                       Container(
                         decoration: const BoxDecoration(
@@ -106,12 +110,12 @@ class _SettingsPageState extends State<SettingsPage> {
                           trailing: Transform.scale(
                             scale: 0.8,
                             child: CupertinoSwitch(
-                              value: true,
+                              value: notifications,
                               activeColor: const Color(0xff3B3B3B),
                               onChanged: (value) => setState(
                                 () {
                                   notifications = !notifications;
-                                  value = notifications;
+                                  notifications = value;
                                 },
                               ),
                             ),
@@ -119,8 +123,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                     ],
-                  ),
-                  context);
+                  );
+                },
+              ), context);
             },
             title: "اعلان ها",
             subtitle:
@@ -174,8 +179,9 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaListTile(
             onTap: () {
-              landinaModal(
-                  Column(
+              landinaModal(StatefulBuilder(
+                builder: (BuildContext context, setState) {
+                  return Column(
                     children: [
                       Container(
                         decoration: const BoxDecoration(
@@ -189,7 +195,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: ListTile(
                           onTap: () {
                             setState(() {
-                              notifications = !notifications;
+                              defaultMode = !defaultMode;
+                              if (defaultMode == true) {
+                                lightMode = false;
+                                darkMode = false;
+                              }
+                              if (lightMode == false && darkMode == false) {
+                                defaultMode = true;
+                              }
                             });
                           },
                           contentPadding: const EdgeInsets.symmetric(
@@ -199,12 +212,12 @@ class _SettingsPageState extends State<SettingsPage> {
                             child: CircleAvatar(
                               backgroundColor: Color(0xffF1F1F1),
                               foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                              child: Icon(CupertinoIcons.cube_box),
                             ),
                           ),
                           focusColor: const Color(0xfff1f1f1),
                           title: const Text(
-                            "فعال کردن اعلان ها",
+                            "حالت پیش فرض دستگاه",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: TextStyle(
@@ -224,12 +237,20 @@ class _SettingsPageState extends State<SettingsPage> {
                           trailing: Transform.scale(
                             scale: 0.8,
                             child: CupertinoSwitch(
-                              value: true,
+                              value: defaultMode,
                               activeColor: const Color(0xff3B3B3B),
                               onChanged: (value) => setState(
                                 () {
-                                  notifications = !notifications;
-                                  value = notifications;
+                                  defaultMode = !defaultMode;
+                                  defaultMode = value;
+
+                                  if (defaultMode == true) {
+                                    lightMode = false;
+                                    darkMode = false;
+                                  }
+                                  if (lightMode == false && darkMode == false) {
+                                    defaultMode = true;
+                                  }
                                 },
                               ),
                             ),
@@ -248,7 +269,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: ListTile(
                           onTap: () {
                             setState(() {
-                              notifications = !notifications;
+                              lightMode = !lightMode;
+                              if (lightMode == true) {
+                                defaultMode = false;
+                                darkMode = false;
+                              }
+                              if (defaultMode == false && darkMode == false) {
+                                lightMode = true;
+                              }
                             });
                           },
                           contentPadding: const EdgeInsets.symmetric(
@@ -258,12 +286,12 @@ class _SettingsPageState extends State<SettingsPage> {
                             child: CircleAvatar(
                               backgroundColor: Color(0xffF1F1F1),
                               foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                              child: Icon(CupertinoIcons.sun_max),
                             ),
                           ),
                           focusColor: const Color(0xfff1f1f1),
                           title: const Text(
-                            "فعال کردن اعلان ها",
+                            "حالت روز (لایت مود)",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: TextStyle(
@@ -283,12 +311,21 @@ class _SettingsPageState extends State<SettingsPage> {
                           trailing: Transform.scale(
                             scale: 0.8,
                             child: CupertinoSwitch(
-                              value: true,
+                              value: lightMode,
                               activeColor: const Color(0xff3B3B3B),
                               onChanged: (value) => setState(
                                 () {
-                                  notifications = !notifications;
-                                  value = notifications;
+                                  lightMode = !lightMode;
+                                  lightMode = value;
+
+                                  if (lightMode == true) {
+                                    defaultMode = false;
+                                    darkMode = false;
+                                  }
+                                  if (defaultMode == false &&
+                                      darkMode == false) {
+                                    lightMode = true;
+                                  }
                                 },
                               ),
                             ),
@@ -307,7 +344,14 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: ListTile(
                           onTap: () {
                             setState(() {
-                              notifications = !notifications;
+                              darkMode = !darkMode;
+                              if (darkMode == true) {
+                                defaultMode = false;
+                                lightMode = false;
+                              }
+                              if (defaultMode == false && lightMode == false) {
+                                darkMode = true;
+                              }
                             });
                           },
                           contentPadding: const EdgeInsets.symmetric(
@@ -317,12 +361,12 @@ class _SettingsPageState extends State<SettingsPage> {
                             child: CircleAvatar(
                               backgroundColor: Color(0xffF1F1F1),
                               foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                              child: Icon(CupertinoIcons.moon),
                             ),
                           ),
                           focusColor: const Color(0xfff1f1f1),
                           title: const Text(
-                            "فعال کردن اعلان ها",
+                            "حالت شب (دارک مود)",
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: TextStyle(
@@ -342,12 +386,20 @@ class _SettingsPageState extends State<SettingsPage> {
                           trailing: Transform.scale(
                             scale: 0.8,
                             child: CupertinoSwitch(
-                              value: true,
+                              value: darkMode,
                               activeColor: const Color(0xff3B3B3B),
                               onChanged: (value) => setState(
                                 () {
-                                  notifications = !notifications;
-                                  value = notifications;
+                                  darkMode = !darkMode;
+                                  darkMode = value;
+                                  if (darkMode == true) {
+                                    defaultMode = false;
+                                    lightMode = false;
+                                  }
+                                  if (defaultMode == false &&
+                                      lightMode == false) {
+                                    darkMode = true;
+                                  }
                                 },
                               ),
                             ),
@@ -355,8 +407,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                     ],
-                  ),
-                  context);
+                  );
+                },
+              ), context);
             },
             title: "طرح زمینه",
             subtitle:
@@ -374,8 +427,9 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaListTile(
             onTap: () {
-              landinaModal(
-                  Container(
+              landinaModal(StatefulBuilder(
+                builder: (BuildContext context, setState) {
+                  return Container(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Column(
                       children: [
@@ -413,8 +467,9 @@ class _SettingsPageState extends State<SettingsPage> {
                         )
                       ],
                     ),
-                  ),
-                  context);
+                  );
+                },
+              ), context);
             },
             title: "حذف حساب کاربری",
             subtitle:
