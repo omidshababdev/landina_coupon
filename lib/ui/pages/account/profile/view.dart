@@ -68,8 +68,9 @@ class _ProfilePageState extends State<ProfilePage> {
         child: LandinaAppbar(
           title: AppLocalizations.of(context)!.account.capitalize(),
           titleOnTap: () {
-            landinaModal(
-                Container(
+            landinaModal(StatefulBuilder(
+              builder: (BuildContext context, setState) {
+                return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,8 +101,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                     ],
                   ),
-                ),
-                context);
+                );
+              },
+            ), context);
           },
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
@@ -124,7 +126,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             },
                           ),
                           LandinaTextButton(
-                            title: "تماس با پشتیبانی",
+                            title: "اشتراک گذاری پروفایل",
                             isLoading: isLoading,
                             onPressed: () async {
                               setState(() => isLoading = true);
@@ -306,8 +308,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                           nameController.text =
                                               snapshot.data!.name;
                                         });
-                                        landinaModal(
-                                            Container(
+                                        landinaModal(StatefulBuilder(
+                                          builder:
+                                              (BuildContext context, setState) {
+                                            return Container(
                                               padding:
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 30),
@@ -381,8 +385,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                            context);
+                                            );
+                                          },
+                                        ), context);
                                       },
                                       child: Text(
                                         snapshot.data!.name,
@@ -394,8 +399,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        landinaModal(
-                                            Container(
+                                        landinaModal(StatefulBuilder(
+                                          builder:
+                                              (BuildContext context, setState) {
+                                            return Container(
                                               padding:
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 30),
@@ -419,8 +426,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                            context);
+                                            );
+                                          },
+                                        ), context);
                                       },
                                       child: snapshot.data!.accountType ==
                                               'personal'
@@ -476,8 +484,10 @@ class _ProfilePageState extends State<ProfilePage> {
                                       usernameController.text =
                                           snapshot.data!.username;
                                     });
-                                    landinaModal(
-                                        Container(
+                                    landinaModal(StatefulBuilder(
+                                      builder:
+                                          (BuildContext context, setState) {
+                                        return Container(
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 30),
                                           child: Column(
@@ -531,8 +541,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                               ),
                                             ],
                                           ),
-                                        ),
-                                        context);
+                                        );
+                                      },
+                                    ), context);
                                   },
                                   child: Text(
                                     snapshot.data!.username,
@@ -554,8 +565,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             setState(() {
                               bioController.text = snapshot.data!.bio;
                             });
-                            landinaModal(
-                                Container(
+                            landinaModal(StatefulBuilder(
+                              builder: (BuildContext context, setState) {
+                                return Container(
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 30),
                                   child: Column(
@@ -608,8 +620,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ],
                                   ),
-                                ),
-                                context);
+                                );
+                              },
+                            ), context);
                           },
                           child: ReadMoreText(
                             snapshot.data!.bio,
@@ -642,15 +655,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         LandinaTextButton(
                           title: 'کوپن جدید',
-                          backgroundColor: true,
                           onPressed: () {
-                            landinaModal(Container(), context);
+                            Get.toNamed("coupon/new");
                           },
                         ),
                         LandinaTextButton(
-                          title: 'آمار و ارقام',
+                          title: 'دنبال کننده ها',
                           onPressed: () {
-                            Get.toNamed("/analytics");
+                            Get.toNamed("/followers");
                           },
                         ),
                         LandinaTextButton(
