@@ -304,6 +304,402 @@ class _LanguagePageState extends State<LanguagePage> {
                   ),
                 ),
               ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    horizontal: BorderSide(
+                      width: 0.5,
+                      color: Color(0xffF1F1F1),
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      langs[1] = !langs[1];
+                      Get.updateLocale(const Locale("fa"));
+                    });
+                  },
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  leading: const AspectRatio(
+                    aspectRatio: 1 / 1,
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xffF1F1F1),
+                      foregroundColor: Color(0xff3B3B3B),
+                      child: Text(
+                        "FA",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    ),
+                  ),
+                  focusColor: const Color(0xfff1f1f1),
+                  title: const Text(
+                    "فارسی",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3B3B3B),
+                    ),
+                  ),
+                  subtitle: const Text(
+                    "Persian",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: "Poppins",
+                    ),
+                  ),
+                  trailing: Transform.scale(
+                    scale: 0.8,
+                    child: CupertinoSwitch(
+                      value: myLocale.languageCode == "fa" ? true : false,
+                      activeColor: const Color(0xff3B3B3B),
+                      onChanged: (value) => setState(
+                        () {
+                          langs[1] = !langs[1];
+                          langs[1] = value;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    horizontal: BorderSide(
+                      width: 0.5,
+                      color: Color(0xffF1F1F1),
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      langs[1] = !langs[1];
+                      Get.updateLocale(const Locale("fa"));
+                    });
+                  },
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  leading: const AspectRatio(
+                    aspectRatio: 1 / 1,
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xffF1F1F1),
+                      foregroundColor: Color(0xff3B3B3B),
+                      child: Text(
+                        "FA",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    ),
+                  ),
+                  focusColor: const Color(0xfff1f1f1),
+                  title: const Text(
+                    "فارسی",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3B3B3B),
+                    ),
+                  ),
+                  subtitle: const Text(
+                    "Persian",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: "Poppins",
+                    ),
+                  ),
+                  trailing: Transform.scale(
+                    scale: 0.8,
+                    child: CupertinoSwitch(
+                      value: myLocale.languageCode == "fa" ? true : false,
+                      activeColor: const Color(0xff3B3B3B),
+                      onChanged: (value) => setState(
+                        () {
+                          langs[1] = !langs[1];
+                          langs[1] = value;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    horizontal: BorderSide(
+                      width: 0.5,
+                      color: Color(0xffF1F1F1),
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      langs[1] = !langs[1];
+                      Get.updateLocale(const Locale("fa"));
+                    });
+                  },
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  leading: const AspectRatio(
+                    aspectRatio: 1 / 1,
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xffF1F1F1),
+                      foregroundColor: Color(0xff3B3B3B),
+                      child: Text(
+                        "FA",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    ),
+                  ),
+                  focusColor: const Color(0xfff1f1f1),
+                  title: const Text(
+                    "فارسی",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3B3B3B),
+                    ),
+                  ),
+                  subtitle: const Text(
+                    "Persian",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: "Poppins",
+                    ),
+                  ),
+                  trailing: Transform.scale(
+                    scale: 0.8,
+                    child: CupertinoSwitch(
+                      value: myLocale.languageCode == "fa" ? true : false,
+                      activeColor: const Color(0xff3B3B3B),
+                      onChanged: (value) => setState(
+                        () {
+                          langs[1] = !langs[1];
+                          langs[1] = value;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    horizontal: BorderSide(
+                      width: 0.5,
+                      color: Color(0xffF1F1F1),
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      langs[1] = !langs[1];
+                      Get.updateLocale(const Locale("fa"));
+                    });
+                  },
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  leading: const AspectRatio(
+                    aspectRatio: 1 / 1,
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xffF1F1F1),
+                      foregroundColor: Color(0xff3B3B3B),
+                      child: Text(
+                        "FA",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    ),
+                  ),
+                  focusColor: const Color(0xfff1f1f1),
+                  title: const Text(
+                    "فارسی",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3B3B3B),
+                    ),
+                  ),
+                  subtitle: const Text(
+                    "Persian",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: "Poppins",
+                    ),
+                  ),
+                  trailing: Transform.scale(
+                    scale: 0.8,
+                    child: CupertinoSwitch(
+                      value: myLocale.languageCode == "fa" ? true : false,
+                      activeColor: const Color(0xff3B3B3B),
+                      onChanged: (value) => setState(
+                        () {
+                          langs[1] = !langs[1];
+                          langs[1] = value;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    horizontal: BorderSide(
+                      width: 0.5,
+                      color: Color(0xffF1F1F1),
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      langs[1] = !langs[1];
+                      Get.updateLocale(const Locale("fa"));
+                    });
+                  },
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  leading: const AspectRatio(
+                    aspectRatio: 1 / 1,
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xffF1F1F1),
+                      foregroundColor: Color(0xff3B3B3B),
+                      child: Text(
+                        "FA",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    ),
+                  ),
+                  focusColor: const Color(0xfff1f1f1),
+                  title: const Text(
+                    "فارسی",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3B3B3B),
+                    ),
+                  ),
+                  subtitle: const Text(
+                    "Persian",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: "Poppins",
+                    ),
+                  ),
+                  trailing: Transform.scale(
+                    scale: 0.8,
+                    child: CupertinoSwitch(
+                      value: myLocale.languageCode == "fa" ? true : false,
+                      activeColor: const Color(0xff3B3B3B),
+                      onChanged: (value) => setState(
+                        () {
+                          langs[1] = !langs[1];
+                          langs[1] = value;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border.symmetric(
+                    horizontal: BorderSide(
+                      width: 0.5,
+                      color: Color(0xffF1F1F1),
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      langs[1] = !langs[1];
+                      Get.updateLocale(const Locale("fa"));
+                    });
+                  },
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                  leading: const AspectRatio(
+                    aspectRatio: 1 / 1,
+                    child: CircleAvatar(
+                      backgroundColor: Color(0xffF1F1F1),
+                      foregroundColor: Color(0xff3B3B3B),
+                      child: Text(
+                        "FA",
+                        style: TextStyle(
+                          fontFamily: "Poppins",
+                        ),
+                      ),
+                    ),
+                  ),
+                  focusColor: const Color(0xfff1f1f1),
+                  title: const Text(
+                    "فارسی",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff3B3B3B),
+                    ),
+                  ),
+                  subtitle: const Text(
+                    "Persian",
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontFamily: "Poppins",
+                    ),
+                  ),
+                  trailing: Transform.scale(
+                    scale: 0.8,
+                    child: CupertinoSwitch(
+                      value: myLocale.languageCode == "fa" ? true : false,
+                      activeColor: const Color(0xff3B3B3B),
+                      onChanged: (value) => setState(
+                        () {
+                          langs[1] = !langs[1];
+                          langs[1] = value;
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           )),
     );
