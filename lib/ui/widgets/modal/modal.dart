@@ -53,18 +53,16 @@ class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
 }
 
 landinaModal(Widget child, BuildContext context) async {
-  return Future(
-    () => showModalBottomSheet(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (context) {
-        return StatefulBuilder(
-          builder: (BuildContext context, setState) {
-            return LandinaBottomSheet(child: child);
-          },
-        );
-      },
-    ),
+  return showModalBottomSheet(
+    elevation: 0,
+    backgroundColor: Colors.transparent,
+    context: context,
+    builder: (context) {
+      return StatefulBuilder(
+        builder: (BuildContext context, setState) {
+          return LandinaBottomSheet(child: child);
+        },
+      );
+    },
   );
 }
