@@ -46,7 +46,7 @@ class _PasswordPageState extends State<PasswordPage> {
             title: AppLocalizations.of(context)!.password.capitalize(),
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
-              landinaModal(Text("data"));
+              landinaModal(Text("data"), context);
             },
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {

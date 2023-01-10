@@ -59,9 +59,7 @@ class ForgetPage extends StatelessWidget {
                     hintText:
                         AppLocalizations.of(context)!.emailAddress.capitalize(),
                     suffixIcon: IconlyLight.info_circle,
-                    suffixIconOnPressed: () {
-                      landinaModal(Text("data"));
-                    },
+                    suffixIconOnPressed: () {},
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},
                     obscureText: false,

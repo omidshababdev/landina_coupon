@@ -41,7 +41,7 @@ class _UsernamePageState extends State<UsernamePage> {
             title: 'نام کاربری',
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
-              landinaModal(Text("data"));
+              landinaModal(Text("data"), context);
             },
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {
@@ -75,10 +75,10 @@ class _UsernamePageState extends State<UsernamePage> {
                     textfieldController: Config.usernameController,
                     suffixIconOnPressed: () {
                       landinaModal(
-                        Text(
-                          AppLocalizations.of(context)!.username,
-                        ),
-                      );
+                          Text(
+                            AppLocalizations.of(context)!.username,
+                          ),
+                          context);
                     },
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},

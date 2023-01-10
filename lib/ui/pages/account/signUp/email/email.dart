@@ -40,7 +40,7 @@ class _EmailPageState extends State<EmailPage> {
             title: AppLocalizations.of(context)!.emailAddress,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
-              landinaModal(Text("data"));
+              landinaModal(Text("data"), context);
             },
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {
@@ -73,7 +73,7 @@ class _EmailPageState extends State<EmailPage> {
                     hintText: AppLocalizations.of(context)!.emailAddress,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {
-                      landinaModal(Text("data"));
+                      landinaModal(Text("data"), context);
                     },
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},

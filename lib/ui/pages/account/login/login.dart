@@ -47,27 +47,7 @@ class _LoginPageState extends State<LoginPage> {
           child: LandinaAppbar(
             title: AppLocalizations.of(context)!.loginToAccount,
             rightIcon: Ionicons.reorder_two,
-            rightIconOnPressed: () {
-              landinaModal(
-                Wrap(
-                  runSpacing: 15,
-                  children: [
-                    LandinaTextButton(
-                      title: AppLocalizations.of(context)!.brandName,
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    LandinaTextButton(
-                      title: "ورود به حساب",
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-              );
-            },
+            rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,
             leftIconOnPressed: () {
               Navigator.pop(context);
@@ -100,9 +80,7 @@ class _LoginPageState extends State<LoginPage> {
                     hintText: AppLocalizations.of(context)!.landinaID,
                     maxLines: 1,
                     suffixIcon: IconlyLight.info_circle,
-                    suffixIconOnPressed: () {
-                      landinaModal(Text("data"));
-                    },
+                    suffixIconOnPressed: () {},
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},
                     obscureText: false,

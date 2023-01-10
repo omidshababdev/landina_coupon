@@ -352,34 +352,35 @@ class _CouponPageState extends State<CouponPage> {
                     backgroundColor: true,
                     onPressed: () {
                       landinaModal(
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "کوپن کپی شد!",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "کوپن کپی شد!",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: const Color(0xff3B3B3B).withOpacity(0.5),
-                                height: 2,
+                              Text(
+                                "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  color:
+                                      const Color(0xff3B3B3B).withOpacity(0.5),
+                                  height: 2,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 30),
-                            LandinaTextButton(
-                              title: "ثبت نظر",
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ],
-                        ),
-                      );
+                              const SizedBox(height: 30),
+                              LandinaTextButton(
+                                title: "ثبت نظر",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          ),
+                          context);
                       Clipboard.setData(
                         ClipboardData(text: widget.couponInfo.code),
                       );

@@ -43,39 +43,39 @@ class _LinksPageState extends State<LinksPage> {
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
             landinaModal(
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "درباره لینک های من",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff3B3B3B).withOpacity(1),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "درباره لینک های من",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xff3B3B3B).withOpacity(1),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      "در این صفحه می توانید لینک های خود را مشاهده ویرایش فعال / غیرفعال و یا حذف کنید. برای اضافه کردن لینک های جدید و کردن لینک های طولانی به اپلیکیشن لندینا لینک مراجعه کنید.",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xff3B3B3B).withOpacity(0.8),
+                      const SizedBox(height: 5),
+                      Text(
+                        "در این صفحه می توانید لینک های خود را مشاهده ویرایش فعال / غیرفعال و یا حذف کنید. برای اضافه کردن لینک های جدید و کردن لینک های طولانی به اپلیکیشن لندینا لینک مراجعه کنید.",
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xff3B3B3B).withOpacity(0.8),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 15),
-                    LandinaTextButton(
-                      title: "اضافه کردن لینک جدید",
-                      onPressed: () async {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
+                      const SizedBox(height: 15),
+                      LandinaTextButton(
+                        title: "اضافه کردن لینک جدید",
+                        onPressed: () async {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+                context);
           },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
@@ -121,48 +121,49 @@ class _LinksPageState extends State<LinksPage> {
                       },
                       onLongPress: () {
                         landinaModal(
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            child: ButtonBarSuper(
-                              lineSpacing: 15,
-                              wrapType: WrapType.balanced,
-                              wrapFit: WrapFit.divided,
-                              children: [
-                                LandinaTextButton(
-                                  title: "مشاهده لینک",
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                LandinaTextButton(
-                                  title: "ویرایش اطلاعات",
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                LandinaTextButton(
-                                  title: "کپی کردن",
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                LandinaTextButton(
-                                  title: "به اشتراک گذاری",
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                LandinaTextButton(
-                                  title: "حذف لینک",
-                                  backgroundColor: true,
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
+                              child: ButtonBarSuper(
+                                lineSpacing: 15,
+                                wrapType: WrapType.balanced,
+                                wrapFit: WrapFit.divided,
+                                children: [
+                                  LandinaTextButton(
+                                    title: "مشاهده لینک",
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  LandinaTextButton(
+                                    title: "ویرایش اطلاعات",
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  LandinaTextButton(
+                                    title: "کپی کردن",
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  LandinaTextButton(
+                                    title: "به اشتراک گذاری",
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  LandinaTextButton(
+                                    title: "حذف لینک",
+                                    backgroundColor: true,
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
+                            context);
                       },
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 25),

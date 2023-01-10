@@ -46,7 +46,7 @@ class _CouponState extends State<Coupon> {
     return GestureDetector(
       onTap: widget.onTap,
       onLongPress: () {
-        landinaModal(Text("data"));
+        landinaModal(Text("data"), context);
       },
       child: Container(
         constraints: const BoxConstraints(
@@ -280,76 +280,92 @@ class _CouponState extends State<Coupon> {
                     child: IconButton(
                       onPressed: () {
                         landinaModal(
-                          ButtonBarSuper(
-                            lineSpacing: 15,
-                            wrapType: WrapType.balanced,
-                            wrapFit: WrapFit.divided,
-                            children: [
-                              if (widget.userId == Config.box.read("myId"))
-                                LandinaTextButton(
-                                  title: "حذف کوپن",
-                                  onPressed: () {
-                                    landinaModal(
-                                      Column(
-                                        children: [
-                                          const Text(
-                                            "واقعا میخوای حذفش کنی؟",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
+                              child: ButtonBarSuper(
+                                lineSpacing: 15,
+                                wrapType: WrapType.balanced,
+                                wrapFit: WrapFit.divided,
+                                children: [
+                                  if (widget.userId == Config.box.read("myId"))
+                                    LandinaTextButton(
+                                      title: "حذف کوپن",
+                                      onPressed: () {
+                                        landinaModal(
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 30),
+                                              child: Column(
+                                                children: [
+                                                  const Text(
+                                                    "واقعا میخوای حذفش کنی؟",
+                                                    style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(height: 15),
+                                                  ButtonBarSuper(
+                                                    lineSpacing: 15,
+                                                    wrapType: WrapType.balanced,
+                                                    wrapFit:
+                                                        WrapFit.proportional,
+                                                    children: [
+                                                      LandinaTextButton(
+                                                        title: "حذفش کن",
+                                                        backgroundColor: true,
+                                                        onPressed: () async {
+                                                          Navigator.pop(
+                                                              context);
+                                                          Navigator.pop(
+                                                              context);
+                                                          await Config.client
+                                                              .deleteCoupon(
+                                                            widget.couponId
+                                                                .toString(),
+                                                          );
+                                                          setState(() {
+                                                            //
+                                                          });
+                                                        },
+                                                      ),
+                                                      LandinaTextButton(
+                                                        title: "نه نمی خواد",
+                                                        onPressed: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                      ),
+                                                    ],
+                                                  )
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          const SizedBox(height: 20),
-                                          ButtonBarSuper(
-                                            lineSpacing: 15,
-                                            wrapType: WrapType.balanced,
-                                            wrapFit: WrapFit.proportional,
-                                            children: [
-                                              LandinaTextButton(
-                                                title: "حذفش کن",
-                                                backgroundColor: true,
-                                                onPressed: () async {
-                                                  Navigator.pop(context);
-                                                  Navigator.pop(context);
-                                                  await Config.client
-                                                      .deleteCoupon(
-                                                    widget.couponId.toString(),
-                                                  );
-                                                  setState(() {
-                                                    //
-                                                  });
-                                                },
-                                              ),
-                                              LandinaTextButton(
-                                                title: "نه نمی خواد",
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                  Navigator.pop(context);
-                                                },
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              LandinaTextButton(
-                                title: "گزارش خطا",
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
+                                            context);
+                                      },
+                                    ),
+                                  LandinaTextButton(
+                                    title: "گزارش خطا",
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  LandinaTextButton(
+                                    title: "می خوام ذخیرش کنم",
+                                    backgroundColor: true,
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
                               ),
-                              LandinaTextButton(
-                                title: "می خوام ذخیرش کنم",
-                                backgroundColor: true,
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
-                          ),
-                        );
+                            ),
+                            context);
                       },
                       icon: const Icon(Ionicons.reorder_two),
                     ),
@@ -391,34 +407,37 @@ class _CouponState extends State<Coupon> {
               backgroundColor: false,
               onPressed: () {
                 landinaModal(
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "کوپن کپی شد!",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                        ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "کوپن کپی شد!",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Text(
+                            "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: const Color(0xff3B3B3B).withOpacity(0.5),
+                              height: 2,
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          LandinaTextButton(
+                            title: "ثبت نظر",
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
                       ),
-                      Text(
-                        "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: const Color(0xff3B3B3B).withOpacity(0.5),
-                          height: 2,
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      LandinaTextButton(
-                        title: "ثبت نظر",
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  ),
-                );
+                    ),
+                    context);
                 Clipboard.setData(
                   ClipboardData(text: widget.couponCode),
                 );

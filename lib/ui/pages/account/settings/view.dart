@@ -57,70 +57,70 @@ class _SettingsPageState extends State<SettingsPage> {
           LandinaListTile(
             onTap: () {
               landinaModal(
-                Column(
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border.symmetric(
-                          horizontal: BorderSide(
-                            width: 0.5,
-                            color: Color(0xffF1F1F1),
+                  Column(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                              width: 0.5,
+                              color: Color(0xffF1F1F1),
+                            ),
                           ),
                         ),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          setState(() {
-                            notifications = !notifications;
-                          });
-                        },
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 25),
-                        leading: const AspectRatio(
-                          aspectRatio: 1 / 1,
-                          child: CircleAvatar(
-                            backgroundColor: Color(0xffF1F1F1),
-                            foregroundColor: Color(0xff3B3B3B),
-                            child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              notifications = !notifications;
+                            });
+                          },
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 25),
+                          leading: const AspectRatio(
+                            aspectRatio: 1 / 1,
+                            child: CircleAvatar(
+                              backgroundColor: Color(0xffF1F1F1),
+                              foregroundColor: Color(0xff3B3B3B),
+                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                            ),
                           ),
-                        ),
-                        focusColor: const Color(0xfff1f1f1),
-                        title: const Text(
-                          "فعال کردن اعلان ها",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff3B3B3B),
+                          focusColor: const Color(0xfff1f1f1),
+                          title: const Text(
+                            "فعال کردن اعلان ها",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff3B3B3B),
+                            ),
                           ),
-                        ),
-                        subtitle: const Text(
-                          "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 13,
+                          subtitle: const Text(
+                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
                           ),
-                        ),
-                        trailing: Transform.scale(
-                          scale: 0.8,
-                          child: CupertinoSwitch(
-                            value: true,
-                            activeColor: const Color(0xff3B3B3B),
-                            onChanged: (value) => setState(
-                              () {
-                                notifications = !notifications;
-                                value = notifications;
-                              },
+                          trailing: Transform.scale(
+                            scale: 0.8,
+                            child: CupertinoSwitch(
+                              value: true,
+                              activeColor: const Color(0xff3B3B3B),
+                              onChanged: (value) => setState(
+                                () {
+                                  notifications = !notifications;
+                                  value = notifications;
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              );
+                    ],
+                  ),
+                  context);
             },
             title: "اعلان ها",
             subtitle:
@@ -175,188 +175,188 @@ class _SettingsPageState extends State<SettingsPage> {
           LandinaListTile(
             onTap: () {
               landinaModal(
-                Column(
-                  children: [
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border.symmetric(
-                          horizontal: BorderSide(
-                            width: 0.5,
-                            color: Color(0xffF1F1F1),
+                  Column(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                              width: 0.5,
+                              color: Color(0xffF1F1F1),
+                            ),
                           ),
                         ),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          setState(() {
-                            notifications = !notifications;
-                          });
-                        },
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 25),
-                        leading: const AspectRatio(
-                          aspectRatio: 1 / 1,
-                          child: CircleAvatar(
-                            backgroundColor: Color(0xffF1F1F1),
-                            foregroundColor: Color(0xff3B3B3B),
-                            child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              notifications = !notifications;
+                            });
+                          },
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 25),
+                          leading: const AspectRatio(
+                            aspectRatio: 1 / 1,
+                            child: CircleAvatar(
+                              backgroundColor: Color(0xffF1F1F1),
+                              foregroundColor: Color(0xff3B3B3B),
+                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                            ),
                           ),
-                        ),
-                        focusColor: const Color(0xfff1f1f1),
-                        title: const Text(
-                          "فعال کردن اعلان ها",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff3B3B3B),
+                          focusColor: const Color(0xfff1f1f1),
+                          title: const Text(
+                            "فعال کردن اعلان ها",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff3B3B3B),
+                            ),
                           ),
-                        ),
-                        subtitle: const Text(
-                          "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 13,
+                          subtitle: const Text(
+                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
                           ),
-                        ),
-                        trailing: Transform.scale(
-                          scale: 0.8,
-                          child: CupertinoSwitch(
-                            value: true,
-                            activeColor: const Color(0xff3B3B3B),
-                            onChanged: (value) => setState(
-                              () {
-                                notifications = !notifications;
-                                value = notifications;
-                              },
+                          trailing: Transform.scale(
+                            scale: 0.8,
+                            child: CupertinoSwitch(
+                              value: true,
+                              activeColor: const Color(0xff3B3B3B),
+                              onChanged: (value) => setState(
+                                () {
+                                  notifications = !notifications;
+                                  value = notifications;
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border.symmetric(
-                          horizontal: BorderSide(
-                            width: 0.5,
-                            color: Color(0xffF1F1F1),
+                      Container(
+                        decoration: const BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                              width: 0.5,
+                              color: Color(0xffF1F1F1),
+                            ),
                           ),
                         ),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          setState(() {
-                            notifications = !notifications;
-                          });
-                        },
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 25),
-                        leading: const AspectRatio(
-                          aspectRatio: 1 / 1,
-                          child: CircleAvatar(
-                            backgroundColor: Color(0xffF1F1F1),
-                            foregroundColor: Color(0xff3B3B3B),
-                            child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              notifications = !notifications;
+                            });
+                          },
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 25),
+                          leading: const AspectRatio(
+                            aspectRatio: 1 / 1,
+                            child: CircleAvatar(
+                              backgroundColor: Color(0xffF1F1F1),
+                              foregroundColor: Color(0xff3B3B3B),
+                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                            ),
                           ),
-                        ),
-                        focusColor: const Color(0xfff1f1f1),
-                        title: const Text(
-                          "فعال کردن اعلان ها",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff3B3B3B),
+                          focusColor: const Color(0xfff1f1f1),
+                          title: const Text(
+                            "فعال کردن اعلان ها",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff3B3B3B),
+                            ),
                           ),
-                        ),
-                        subtitle: const Text(
-                          "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 13,
+                          subtitle: const Text(
+                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
                           ),
-                        ),
-                        trailing: Transform.scale(
-                          scale: 0.8,
-                          child: CupertinoSwitch(
-                            value: true,
-                            activeColor: const Color(0xff3B3B3B),
-                            onChanged: (value) => setState(
-                              () {
-                                notifications = !notifications;
-                                value = notifications;
-                              },
+                          trailing: Transform.scale(
+                            scale: 0.8,
+                            child: CupertinoSwitch(
+                              value: true,
+                              activeColor: const Color(0xff3B3B3B),
+                              onChanged: (value) => setState(
+                                () {
+                                  notifications = !notifications;
+                                  value = notifications;
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border.symmetric(
-                          horizontal: BorderSide(
-                            width: 0.5,
-                            color: Color(0xffF1F1F1),
+                      Container(
+                        decoration: const BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                              width: 0.5,
+                              color: Color(0xffF1F1F1),
+                            ),
                           ),
                         ),
-                      ),
-                      child: ListTile(
-                        onTap: () {
-                          setState(() {
-                            notifications = !notifications;
-                          });
-                        },
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 25),
-                        leading: const AspectRatio(
-                          aspectRatio: 1 / 1,
-                          child: CircleAvatar(
-                            backgroundColor: Color(0xffF1F1F1),
-                            foregroundColor: Color(0xff3B3B3B),
-                            child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              notifications = !notifications;
+                            });
+                          },
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 25),
+                          leading: const AspectRatio(
+                            aspectRatio: 1 / 1,
+                            child: CircleAvatar(
+                              backgroundColor: Color(0xffF1F1F1),
+                              foregroundColor: Color(0xff3B3B3B),
+                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
+                            ),
                           ),
-                        ),
-                        focusColor: const Color(0xfff1f1f1),
-                        title: const Text(
-                          "فعال کردن اعلان ها",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff3B3B3B),
+                          focusColor: const Color(0xfff1f1f1),
+                          title: const Text(
+                            "فعال کردن اعلان ها",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff3B3B3B),
+                            ),
                           ),
-                        ),
-                        subtitle: const Text(
-                          "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 13,
+                          subtitle: const Text(
+                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: TextStyle(
+                              fontSize: 13,
+                            ),
                           ),
-                        ),
-                        trailing: Transform.scale(
-                          scale: 0.8,
-                          child: CupertinoSwitch(
-                            value: true,
-                            activeColor: const Color(0xff3B3B3B),
-                            onChanged: (value) => setState(
-                              () {
-                                notifications = !notifications;
-                                value = notifications;
-                              },
+                          trailing: Transform.scale(
+                            scale: 0.8,
+                            child: CupertinoSwitch(
+                              value: true,
+                              activeColor: const Color(0xff3B3B3B),
+                              onChanged: (value) => setState(
+                                () {
+                                  notifications = !notifications;
+                                  value = notifications;
+                                },
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              );
+                    ],
+                  ),
+                  context);
             },
             title: "طرح زمینه",
             subtitle:
@@ -375,46 +375,46 @@ class _SettingsPageState extends State<SettingsPage> {
           LandinaListTile(
             onTap: () {
               landinaModal(
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Column(
-                    children: [
-                      const Text(
-                        "واقعا میخوای حذفش کنی؟",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Column(
+                      children: [
+                        const Text(
+                          "واقعا میخوای حذفش کنی؟",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      ButtonBarSuper(
-                        lineSpacing: 15,
-                        wrapType: WrapType.balanced,
-                        wrapFit: WrapFit.proportional,
-                        children: [
-                          LandinaTextButton(
-                            title: "حذفش کن",
-                            backgroundColor: true,
-                            onPressed: () async {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                              await Config.client.deleteUser(
-                                Config.box.read("myId"),
-                              );
-                            },
-                          ),
-                          LandinaTextButton(
-                            title: "نه نمی خواد",
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      )
-                    ],
+                        const SizedBox(height: 15),
+                        ButtonBarSuper(
+                          lineSpacing: 15,
+                          wrapType: WrapType.balanced,
+                          wrapFit: WrapFit.proportional,
+                          children: [
+                            LandinaTextButton(
+                              title: "حذفش کن",
+                              backgroundColor: true,
+                              onPressed: () async {
+                                Navigator.pop(context);
+                                Navigator.pop(context);
+                                await Config.client.deleteUser(
+                                  Config.box.read("myId"),
+                                );
+                              },
+                            ),
+                            LandinaTextButton(
+                              title: "نه نمی خواد",
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              );
+                  context);
             },
             title: "حذف حساب کاربری",
             subtitle:
