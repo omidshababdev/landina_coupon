@@ -1,9 +1,12 @@
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
+import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 class ProxyPage extends StatefulWidget {
   const ProxyPage({super.key});
@@ -30,7 +33,46 @@ class _ProxyPageState extends State<ProxyPage> {
             child: LandinaAppbar(
               title: 'پروکسی',
               rightIcon: Ionicons.reorder_two,
-              rightIconOnPressed: () {},
+              rightIconOnPressed: () {
+                landinaModal(StatefulBuilder(
+                  builder: (BuildContext context, setState) {
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Column(
+                        children: [
+                          ButtonBarSuper(
+                            lineSpacing: 15,
+                            wrapType: WrapType.balanced,
+                            wrapFit: WrapFit.divided,
+                            children: [
+                              LandinaTextButton(
+                                title: "افزودن پروکسی جدید",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Get.toNamed("/settings");
+                                },
+                              ),
+                              LandinaTextButton(
+                                title: "جستجوی پروکسی",
+                                onPressed: () {},
+                              ),
+                              LandinaTextButton(
+                                title: "حذف کردن همه پروکسی ها",
+                                backgroundColor: true,
+                                onPressed: () {
+                                  Navigator.pop(context);
+
+                                  Get.back();
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ), context);
+              },
               leftIcon: IconlyLight.arrow_left,
               leftIconOnPressed: () {
                 Get.back();
@@ -38,6 +80,10 @@ class _ProxyPageState extends State<ProxyPage> {
             ),
           ),
           body: ListView(
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(
+              parent: ClampingScrollPhysics(),
+            ),
             children: [
               Container(
                 decoration: const BoxDecoration(

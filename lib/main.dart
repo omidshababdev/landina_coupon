@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:landina_coupon/constants/translation.dart';
 
 /* ROUTES */
 import 'package:landina_coupon/ui/pages/account/account.dart';
@@ -84,6 +85,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
   @override
   Widget build(BuildContext context) {
     Locale myLocale = window.locale;
+
     PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
 
     return GetMaterialApp(
@@ -162,6 +164,9 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/categories", page: () => const CategoriesPage()),
         GetPage(name: "/coupon/new", page: () => const NewCouponPage()),
       ],
+      translationsKeys: Translation.translationsKeys,
+      fallbackLocale: const Locale("en"),
+      defaultTransition: Transition.native,
       home: HomePage(),
     );
   }
