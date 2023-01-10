@@ -30,6 +30,7 @@ import 'package:readmore/readmore.dart';
 class ProfilePage extends StatefulWidget {
   Future? couponInfo;
   Future? userInfo;
+
   ProfilePage({super.key});
 
   @override
@@ -40,6 +41,8 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
+
+  var counter = 1;
 
   final profileGet = ProfileGet();
 
@@ -102,56 +105,55 @@ class _ProfilePageState extends State<ProfilePage> {
           },
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
-            landinaModal(
-                Container(
+            landinaModal(StatefulBuilder(
+              builder: (BuildContext context, setState) {
+                return Container(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: ButtonBarSuper(
-                    lineSpacing: 15,
-                    wrapType: WrapType.balanced,
-                    wrapFit: WrapFit.divided,
+                  child: Column(
                     children: [
-                      LandinaTextButton(
-                        title: "تنظیمات",
-                        onPressed: () {
-                          Navigator.pop(context);
-                          Get.toNamed("/settings");
-                        },
-                      ),
-                      LandinaTextButton(
-                        title: "تماس با پشتیبانی",
-                        isLoading: isLoading,
-                        onPressed: () async {
-                          isLoading = true;
-
-                          await Future.delayed(const Duration(seconds: 5), () {
-                            setState(() {
-                              isLoading = false;
+                      ButtonBarSuper(
+                        lineSpacing: 15,
+                        wrapType: WrapType.balanced,
+                        wrapFit: WrapFit.divided,
+                        children: [
+                          LandinaTextButton(
+                            title: "تنظیمات",
+                            onPressed: () {
                               Navigator.pop(context);
-                            });
-                          });
-                        },
-                      ),
-                      LandinaTextButton(
-                        title: "می خوام از حسابم خارج بشم",
-                        backgroundColor: true,
-                        onPressed: () {
-                          Config.box.remove("username");
-                          Config.box.remove("email");
-                          Config.box.remove("password");
+                              Get.toNamed("/settings");
+                            },
+                          ),
+                          LandinaTextButton(
+                            title: "تماس با پشتیبانی",
+                            isLoading: isLoading,
+                            onPressed: () async {
+                              setState(() => isLoading = true);
+                            },
+                          ),
+                          LandinaTextButton(
+                            title: "می خوام از حسابم خارج بشم",
+                            backgroundColor: true,
+                            onPressed: () {
+                              Config.box.remove("username");
+                              Config.box.remove("email");
+                              Config.box.remove("password");
 
-                          setState(() {
-                            Config.loggedIn = false;
-                          });
+                              setState(() {
+                                Config.loggedIn = false;
+                              });
 
-                          Navigator.pop(context);
+                              Navigator.pop(context);
 
-                          Get.back();
-                        },
+                              Get.back();
+                            },
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ),
-                context);
+                );
+              },
+            ), context);
           },
           leftIcon: IconlyLight.arrow_left,
           leftIconOnPressed: () {
