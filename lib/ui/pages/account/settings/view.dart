@@ -22,10 +22,7 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-enum ThemeMode { dark, light }
-
 class _SettingsPageState extends State<SettingsPage> {
-  ThemeMode? _character = ThemeMode.light;
   bool notifications = true;
 
   @override
@@ -131,7 +128,9 @@ class _SettingsPageState extends State<SettingsPage> {
             leading: const Icon(IconlyLight.notification),
           ),
           LandinaListTile(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed("/analytics");
+            },
             title: "آمار صفحه",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
@@ -376,41 +375,44 @@ class _SettingsPageState extends State<SettingsPage> {
           LandinaListTile(
             onTap: () {
               landinaModal(
-                Column(
-                  children: [
-                    const Text(
-                      "واقعا میخوای حذفش کنی؟",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: Column(
+                    children: [
+                      const Text(
+                        "واقعا میخوای حذفش کنی؟",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    ButtonBarSuper(
-                      lineSpacing: 15,
-                      wrapType: WrapType.balanced,
-                      wrapFit: WrapFit.proportional,
-                      children: [
-                        LandinaTextButton(
-                          title: "حذفش کن",
-                          backgroundColor: true,
-                          onPressed: () async {
-                            Navigator.pop(context);
-                            Navigator.pop(context);
-                            await Config.client.deleteUser(
-                              Config.box.read("myId"),
-                            );
-                          },
-                        ),
-                        LandinaTextButton(
-                          title: "نه نمی خواد",
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    )
-                  ],
+                      const SizedBox(height: 15),
+                      ButtonBarSuper(
+                        lineSpacing: 15,
+                        wrapType: WrapType.balanced,
+                        wrapFit: WrapFit.proportional,
+                        children: [
+                          LandinaTextButton(
+                            title: "حذفش کن",
+                            backgroundColor: true,
+                            onPressed: () async {
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                              await Config.client.deleteUser(
+                                Config.box.read("myId"),
+                              );
+                            },
+                          ),
+                          LandinaTextButton(
+                            title: "نه نمی خواد",
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               );
             },

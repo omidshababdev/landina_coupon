@@ -11,6 +11,7 @@ import 'package:get_storage/get_storage.dart';
 
 /* ROUTES */
 import 'package:landina_coupon/ui/pages/account/account.dart';
+import 'package:landina_coupon/ui/pages/account/profile/analytics/view.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/chats.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
 import 'package:landina_coupon/ui/pages/account/profile/analytics/followers/followers.profile.dart';
@@ -148,6 +149,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/account", page: () => AccountPage()),
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/followings", page: () => FollowingsPage()),
+        GetPage(name: "/analytics", page: () => const AnalyticsPage()),
         GetPage(name: "/help", page: () => const HelpPage()),
         GetPage(name: "/about", page: () => const AboutPage()),
         GetPage(name: "/proxy", page: () => const ProxyPage()),

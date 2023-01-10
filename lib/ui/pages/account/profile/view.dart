@@ -642,7 +642,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         LandinaTextButton(
                           title: 'آمار و ارقام',
                           onPressed: () {
-                            Get.toNamed("/followers");
+                            Get.toNamed("/analytics");
                           },
                         ),
                         LandinaTextButton(
