@@ -32,7 +32,7 @@ class _LanguagePageState extends State<LanguagePage> {
           appBar: PreferredSize(
             preferredSize: const Size.fromHeight(65),
             child: LandinaAppbar(
-              title: 'زبان برنامه',
+              title: 'زبان حساب',
               rightIcon: Ionicons.reorder_two,
               rightIconOnPressed: () {},
               leftIcon: IconlyLight.arrow_left,

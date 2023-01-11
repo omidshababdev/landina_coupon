@@ -20,6 +20,7 @@ import 'package:landina_coupon/ui/pages/account/profile/analytics/followings/fol
 import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
 import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/settings/about/about.dart';
+import 'package:landina_coupon/ui/pages/account/settings/fonts/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/help/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/language/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/proxy/view.dart';
@@ -154,6 +155,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/analytics", page: () => const AnalyticsPage()),
         GetPage(name: "/help", page: () => const HelpPage()),
         GetPage(name: "/about", page: () => const AboutPage()),
+        GetPage(name: "/fonts", page: () => const FontsPage()),
         GetPage(name: "/proxy", page: () => const ProxyPage()),
         GetPage(name: "/update", page: () => const UpdatePage()),
         GetPage(name: "/language", page: () => const LanguagePage()),

@@ -171,10 +171,19 @@ class _SettingsPageState extends State<SettingsPage> {
             onTap: () {
               Get.toNamed("/language");
             },
-            title: "زبان برنامه",
+            title: "زبان حساب",
             subtitle:
                 "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
             leading: const Icon(IconlyLight.paper_negative),
+          ),
+          LandinaListTile(
+            onTap: () {
+              Get.toNamed("/fonts");
+            },
+            title: "فونت اکانت",
+            subtitle:
+                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            leading: const Icon(IconlyLight.edit),
           ),
           LandinaListTile(
             onTap: () {
