@@ -24,6 +24,7 @@ import 'package:landina_coupon/ui/pages/account/settings/fonts/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/help/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/language/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/proxy/view.dart';
+import 'package:landina_coupon/ui/pages/account/settings/soon/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/update/view.dart';
 import 'package:landina_coupon/ui/pages/account/signUp/email/email.dart';
 import 'package:landina_coupon/ui/pages/account/settings/view.dart';
@@ -143,6 +144,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       supportedLocales: AppLocalizations.supportedLocales,
       initialRoute: "/",
       getPages: [
+        GetPage(name: "/soon", page: () => const SoonPage()),
         GetPage(name: "/login", page: () => const LoginPage()),
         GetPage(name: "/signUp/username", page: () => const UsernamePage()),
         GetPage(name: "/signUp/email", page: () => const EmailPage()),

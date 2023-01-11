@@ -127,35 +127,31 @@ class _SettingsPageState extends State<SettingsPage> {
               ), context);
             },
             title: "اعلان ها",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "همه اعلان های برنامه رو می تونی از اینجا تنظیم کنی.",
             leading: const Icon(IconlyLight.notification),
           ),
           LandinaListTile(
             onTap: () {
-              Get.toNamed("/analytics");
+              Get.toNamed("/soon");
             },
             title: "آمار صفحه",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.activity),
           ),
           LandinaListTile(
             onTap: () {
-              Get.toNamed("/proxy");
+              Get.toNamed("/soon");
             },
             title: "پروکسی",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(CupertinoIcons.shield),
           ),
           LandinaListTile(
             onTap: () {
-              Get.toNamed("/help");
+              Get.toNamed("/soon");
             },
             title: "راهنمایی",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(Ionicons.help),
           ),
           LandinaListTile(
@@ -163,26 +159,23 @@ class _SettingsPageState extends State<SettingsPage> {
               Get.toNamed("/about");
             },
             title: "درباره",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.info_circle),
           ),
           LandinaListTile(
             onTap: () {
-              Get.toNamed("/language");
+              Get.toNamed("/soon");
             },
             title: "زبان حساب",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.paper_negative),
           ),
           LandinaListTile(
             onTap: () {
-              Get.toNamed("/fonts");
+              Get.toNamed("/soon");
             },
             title: "فونت اکانت",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.edit),
           ),
           LandinaListTile(
@@ -421,16 +414,15 @@ class _SettingsPageState extends State<SettingsPage> {
             },
             title: "طرح زمینه",
             subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+                "از این قسمت می تونی تم برنامه رو برای دید بهتر در شب و روز تنظیم کنی.",
             leading: const Icon(CupertinoIcons.pencil_outline),
           ),
           LandinaListTile(
             onTap: () {
-              Get.toNamed("/update");
+              Get.toNamed("/soon");
             },
             title: "بروزرسانی",
-            subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(CupertinoIcons.app),
           ),
           LandinaListTile(
@@ -481,7 +473,7 @@ class _SettingsPageState extends State<SettingsPage> {
             },
             title: "حذف حساب کاربری",
             subtitle:
-                "از اینجا می تونی هر تغییری رو که میخوای توی حسابت ایجاد کنی.",
+                "اگه دیگه این اکانت بدردت نمی خوره می تونی از اینجا حذفش کنی",
             leading: const Icon(IconlyLight.delete),
           ),
         ],
