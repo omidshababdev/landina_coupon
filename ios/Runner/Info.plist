@@ -59,7 +59,7 @@
           <key>CFBundleTypeRole</key>
           <string>Editor</string>
           <key>CFBundleURLName</key>
-          <string>unilinks.example.com</string>
+          <string>landina.co/coupon/</string>
           <key>CFBundleURLSchemes</key>
           <array>
               <string>logrckt</string>

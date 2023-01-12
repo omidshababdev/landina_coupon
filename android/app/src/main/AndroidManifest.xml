@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.landina_coupon">
+    package="co.landina.coupon">
    <application
         android:label="Landina Coupon"
         android:name="${applicationName}"
@@ -43,6 +43,7 @@
         <!-- Accepts URIs that begin with https://YOUR_HOST -->
         <data
           android:scheme="https"
+          android:pathPrefix="/coupon/"
           android:host="landina.co" />
       </intent-filter>
         </activity>
