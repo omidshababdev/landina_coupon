@@ -93,6 +93,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Landina Coupon',
+      themeMode: ThemeMode.light,
       theme: ThemeData(
         fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
         backgroundColor: Colors.white,
