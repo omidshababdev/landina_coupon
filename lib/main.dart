@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 /* PACKAGES */
@@ -9,6 +10,8 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/constants/translation.dart';
+import 'package:flutter/foundation.dart';
+import 'package:uni_links/uni_links.dart';
 
 /* ROUTES */
 import 'package:landina_coupon/ui/pages/account/account.dart';
@@ -38,6 +41,7 @@ import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 
 /* LOCALIZATIONS */
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:uni_links/uni_links.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -82,6 +86,11 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
     // Instabug.start('526221477a496ef5b199095f54c9b198',
     //     [Instabug.invocationEvent.shake, InvocationEvent.screenshot]);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -143,7 +152,12 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: Get.deviceLocale,
       supportedLocales: AppLocalizations.supportedLocales,
+      unknownRoute: GetPage(name: "/soon", page: () => const SoonPage()),
       initialRoute: "/",
+      routingCallback: (routing) {
+        //
+      },
+      // onGenerateRoute: Router.generateRoute,
       getPages: [
         GetPage(name: "/soon", page: () => const SoonPage()),
         GetPage(name: "/login", page: () => const LoginPage()),
