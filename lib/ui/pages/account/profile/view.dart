@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 
 import 'package:flutter/material.dart';
@@ -24,7 +25,6 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
-import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -168,588 +168,558 @@ class _ProfilePageState extends State<ProfilePage> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {
-            return LiquidPullToRefresh(
-              color: const Color(0xffF1F1F1),
-              backgroundColor: const Color(0xff0F172A),
-              showChildOpacityTransition: false,
-              height: 100,
-              borderWidth: 2,
-              onRefresh: () {
-                return Future.delayed(const Duration(seconds: 5), () {
-                  setState(() {
-                    //
-                  });
-                });
-              },
-              child: ListView(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(
-                  parent: ClampingScrollPhysics(),
-                ),
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 25),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Wrap(
-                          spacing: 15,
-                          runSpacing: 15,
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                landinaModal(
-                                    Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 30),
-                                      child: ButtonBarSuper(
-                                        lineSpacing: 15,
-                                        wrapType: WrapType.balanced,
-                                        wrapFit: WrapFit.divided,
-                                        children: [
-                                          LandinaTextButton(
-                                            title: "استفاده از دوربین",
-                                            onPressed: () {
-                                              Navigator.pop(context);
+            return ListView(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              shrinkWrap: true,
+              physics: const BouncingScrollPhysics(
+                parent: ClampingScrollPhysics(),
+              ),
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Wrap(
+                        spacing: 15,
+                        runSpacing: 15,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              landinaModal(
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30),
+                                    child: ButtonBarSuper(
+                                      lineSpacing: 15,
+                                      wrapType: WrapType.balanced,
+                                      wrapFit: WrapFit.divided,
+                                      children: [
+                                        LandinaTextButton(
+                                          title: "استفاده از دوربین",
+                                          onPressed: () {
+                                            Navigator.pop(context);
 
+                                            profileGet.uploadImage(
+                                                ImageSource.camera);
+                                          },
+                                        ),
+                                        LandinaTextButton(
+                                          title: "انتخاب از گالری",
+                                          backgroundColor: true,
+                                          onPressed: () {
+                                            Navigator.pop(context);
+
+                                            setState(() {
                                               profileGet.uploadImage(
-                                                  ImageSource.camera);
-                                            },
-                                          ),
-                                          LandinaTextButton(
-                                            title: "انتخاب از گالری",
-                                            backgroundColor: true,
-                                            onPressed: () {
-                                              Navigator.pop(context);
-
-                                              setState(() {
-                                                profileGet.uploadImage(
-                                                    ImageSource.gallery);
-                                              });
-                                            },
-                                          ),
-                                        ],
-                                      ),
+                                                  ImageSource.gallery);
+                                            });
+                                          },
+                                        ),
+                                      ],
                                     ),
-                                    context);
-                              },
-                              child: Obx(
-                                () => profileGet.profileImage.value != null &&
-                                        profileGet.profileImage.value!.path !=
-                                            ''
-                                    ? Container(
-                                        width: 80,
-                                        height: 80,
-                                        decoration: ShapeDecoration(
-                                          color: const Color(0xffF1F1F1),
-                                          image: DecorationImage(
-                                            image: FileImage(
-                                              profileGet.profileImage.value!,
-                                            ),
-                                            fit: BoxFit.cover,
+                                  ),
+                                  context);
+                            },
+                            child: Obx(
+                              () => profileGet.profileImage.value != null &&
+                                      profileGet.profileImage.value!.path != ''
+                                  ? Container(
+                                      width: 80,
+                                      height: 80,
+                                      decoration: ShapeDecoration(
+                                        color: const Color(0xffF1F1F1),
+                                        image: DecorationImage(
+                                          image: FileImage(
+                                            profileGet.profileImage.value!,
                                           ),
-                                          shape: SmoothRectangleBorder(
-                                            borderRadius: SmoothBorderRadius(
-                                              cornerRadius: 18,
-                                              cornerSmoothing: 0.5,
+                                          fit: BoxFit.cover,
+                                        ),
+                                        shape: SmoothRectangleBorder(
+                                          borderRadius: SmoothBorderRadius(
+                                            cornerRadius: 18,
+                                            cornerSmoothing: 0.5,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  : snapshot.data!.image != null
+                                      ? Container(
+                                          width: 80,
+                                          height: 80,
+                                          decoration: ShapeDecoration(
+                                            color: const Color(0xffF1F1F1),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                "${Config.baseUrl}users/image/${Config.box.read("myId")}",
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
+                                            shape: SmoothRectangleBorder(
+                                              borderRadius: SmoothBorderRadius(
+                                                cornerRadius: 18,
+                                                cornerSmoothing: 0.5,
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      : Container(
+                                          width: 80,
+                                          height: 80,
+                                          decoration: ShapeDecoration(
+                                            color: const Color(0xffF1F1F1),
+                                            shape: SmoothRectangleBorder(
+                                              borderRadius: SmoothBorderRadius(
+                                                cornerRadius: 18,
+                                                cornerSmoothing: 0.5,
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      )
-                                    : snapshot.data!.image != null
+                            ),
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Wrap(
+                                spacing: 8,
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        nameController.text =
+                                            snapshot.data!.name;
+                                      });
+                                      landinaModal(StatefulBuilder(
+                                        builder:
+                                            (BuildContext context, setState) {
+                                          return Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 30),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "ویرایش نام حساب کاربری",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color:
+                                                        const Color(0xff3B3B3B)
+                                                            .withOpacity(1),
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 5),
+                                                Text(
+                                                  "توی فیلد زیر اسمی رو که میخوای صفحت به اون تغییر کنه رو وارد کن ...",
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w400,
+                                                    color:
+                                                        const Color(0xff3B3B3B)
+                                                            .withOpacity(0.8),
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 25),
+                                                LandinaTextField(
+                                                  hintText: "نام حساب کاربری",
+                                                  maxLines: 1,
+                                                  textfieldController:
+                                                      nameController,
+                                                  prefixIcon: IconlyLight.paper,
+                                                  prefixIconOnPressed: () {},
+                                                  suffixIcon:
+                                                      IconlyLight.info_circle,
+                                                  suffixIconOnPressed: () {},
+                                                  obscureText: false,
+                                                  enabled: true,
+                                                ),
+                                                const SizedBox(height: 15),
+                                                LandinaTextButton(
+                                                  title:
+                                                      "تغییر نام حساب کاربری",
+                                                  isLoading: isLoading,
+                                                  onPressed: () async {
+                                                    setState(() {
+                                                      isLoading = true;
+                                                    });
+
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            seconds: 5), () {
+                                                      setState(() {
+                                                        isLoading = false;
+                                                        Navigator.pop(context);
+                                                      });
+                                                    });
+                                                    await Config.client
+                                                        .updateUser(
+                                                      "name",
+                                                      nameController.text,
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ), context);
+                                    },
+                                    child: Text(
+                                      snapshot.data!.name,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      landinaModal(StatefulBuilder(
+                                        builder:
+                                            (BuildContext context, setState) {
+                                          return Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 30),
+                                            child: ButtonBarSuper(
+                                              lineSpacing: 15,
+                                              wrapType: WrapType.balanced,
+                                              wrapFit: WrapFit.divided,
+                                              children: [
+                                                LandinaTextButton(
+                                                  title: "شخصی",
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+                                                LandinaTextButton(
+                                                  title: "کسب و کار",
+                                                  backgroundColor: true,
+                                                  onPressed: () {
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ), context);
+                                    },
+                                    child: snapshot.data!.accountType ==
+                                            'personal'
                                         ? Container(
-                                            width: 80,
-                                            height: 80,
-                                            decoration: ShapeDecoration(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 2,
+                                            ),
+                                            decoration: BoxDecoration(
                                               color: const Color(0xffF1F1F1),
-                                              image: DecorationImage(
-                                                image: NetworkImage(
-                                                  "${Config.baseUrl}users/image/${Config.box.read("myId")}",
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                              shape: SmoothRectangleBorder(
-                                                borderRadius:
-                                                    SmoothBorderRadius(
-                                                  cornerRadius: 18,
-                                                  cornerSmoothing: 0.5,
-                                                ),
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            child: Text(
+                                              snapshot.data!.accountType,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(0.5),
                                               ),
                                             ),
                                           )
                                         : Container(
-                                            width: 80,
-                                            height: 80,
-                                            decoration: ShapeDecoration(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 8,
+                                              vertical: 2,
+                                            ),
+                                            decoration: BoxDecoration(
                                               color: const Color(0xffF1F1F1),
-                                              shape: SmoothRectangleBorder(
-                                                borderRadius:
-                                                    SmoothBorderRadius(
-                                                  cornerRadius: 18,
-                                                  cornerSmoothing: 0.5,
-                                                ),
+                                              borderRadius:
+                                                  BorderRadius.circular(50),
+                                            ),
+                                            child: Text(
+                                              snapshot.data!.accountType,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(0.5),
                                               ),
                                             ),
                                           ),
+                                  )
+                                ],
                               ),
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Wrap(
-                                  spacing: 8,
-                                  crossAxisAlignment: WrapCrossAlignment.center,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          nameController.text =
-                                              snapshot.data!.name;
-                                        });
-                                        landinaModal(StatefulBuilder(
-                                          builder:
-                                              (BuildContext context, setState) {
-                                            return Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 30),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "ویرایش نام حساب کاربری",
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: const Color(
-                                                              0xff3B3B3B)
-                                                          .withOpacity(1),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  Text(
-                                                    "توی فیلد زیر اسمی رو که میخوای صفحت به اون تغییر کنه رو وارد کن ...",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: const Color(
-                                                              0xff3B3B3B)
-                                                          .withOpacity(0.8),
-                                                    ),
-                                                  ),
-                                                  const SizedBox(height: 25),
-                                                  LandinaTextField(
-                                                    hintText: "نام حساب کاربری",
-                                                    maxLines: 1,
-                                                    textfieldController:
-                                                        nameController,
-                                                    prefixIcon:
-                                                        IconlyLight.paper,
-                                                    prefixIconOnPressed: () {},
-                                                    suffixIcon:
-                                                        IconlyLight.info_circle,
-                                                    suffixIconOnPressed: () {},
-                                                    obscureText: false,
-                                                    enabled: true,
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  LandinaTextButton(
-                                                    title:
-                                                        "تغییر نام حساب کاربری",
-                                                    isLoading: isLoading,
-                                                    onPressed: () async {
-                                                      setState(() {
-                                                        isLoading = true;
-                                                      });
-
-                                                      await Future.delayed(
-                                                          const Duration(
-                                                              seconds: 5), () {
-                                                        setState(() {
-                                                          isLoading = false;
-                                                          Navigator.pop(
-                                                              context);
-                                                        });
-                                                      });
-                                                      await Config.client
-                                                          .updateUser(
-                                                        "name",
-                                                        nameController.text,
-                                                      );
-                                                    },
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ), context);
-                                      },
-                                      child: Text(
-                                        snapshot.data!.name,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 18,
-                                        ),
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        landinaModal(StatefulBuilder(
-                                          builder:
-                                              (BuildContext context, setState) {
-                                            return Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 30),
-                                              child: ButtonBarSuper(
-                                                lineSpacing: 15,
-                                                wrapType: WrapType.balanced,
-                                                wrapFit: WrapFit.divided,
-                                                children: [
-                                                  LandinaTextButton(
-                                                    title: "شخصی",
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                  ),
-                                                  LandinaTextButton(
-                                                    title: "کسب و کار",
-                                                    backgroundColor: true,
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ), context);
-                                      },
-                                      child: snapshot.data!.accountType ==
-                                              'personal'
-                                          ? Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                horizontal: 8,
-                                                vertical: 2,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xffF1F1F1),
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                              ),
-                                              child: Text(
-                                                snapshot.data!.accountType,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12,
-                                                  color: const Color(0xff3B3B3B)
-                                                      .withOpacity(0.5),
-                                                ),
-                                              ),
-                                            )
-                                          : Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                horizontal: 8,
-                                                vertical: 2,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                color: const Color(0xffF1F1F1),
-                                                borderRadius:
-                                                    BorderRadius.circular(50),
-                                              ),
-                                              child: Text(
-                                                snapshot.data!.accountType,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 12,
-                                                  color: const Color(0xff3B3B3B)
-                                                      .withOpacity(0.5),
-                                                ),
+                              const SizedBox(height: 5),
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    usernameController.text =
+                                        snapshot.data!.username;
+                                  });
+                                  landinaModal(StatefulBuilder(
+                                    builder: (BuildContext context, setState) {
+                                      return Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 30),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "ویرایش نام کاربری",
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(1),
                                               ),
                                             ),
-                                    )
-                                  ],
-                                ),
-                                const SizedBox(height: 5),
-                                GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      usernameController.text =
-                                          snapshot.data!.username;
-                                    });
-                                    landinaModal(StatefulBuilder(
-                                      builder:
-                                          (BuildContext context, setState) {
-                                        return Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 30),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "ویرایش نام کاربری",
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: const Color(0xff3B3B3B)
-                                                      .withOpacity(1),
-                                                ),
+                                            const SizedBox(height: 5),
+                                            Text(
+                                              "توی فیلد زیر نام کاربری که می خوای داشته باشی رو وارد کن. حواست باشه که باید انگلیسی و بدون فاصله باشه.",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w400,
+                                                color: const Color(0xff3B3B3B)
+                                                    .withOpacity(0.8),
                                               ),
-                                              const SizedBox(height: 5),
-                                              Text(
-                                                "توی فیلد زیر نام کاربری که می خوای داشته باشی رو وارد کن. حواست باشه که باید انگلیسی و بدون فاصله باشه.",
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: const Color(0xff3B3B3B)
-                                                      .withOpacity(0.8),
-                                                ),
-                                              ),
-                                              const SizedBox(height: 25),
-                                              LandinaTextField(
-                                                hintText: "نام کاربری",
-                                                maxLines: 1,
-                                                textfieldController:
-                                                    usernameController,
-                                                prefixIcon: IconlyLight.paper,
-                                                prefixIconOnPressed: () {},
-                                                suffixIcon:
-                                                    IconlyLight.info_circle,
-                                                suffixIconOnPressed: () {},
-                                                obscureText: false,
-                                                enabled: true,
-                                              ),
-                                              const SizedBox(height: 15),
-                                              LandinaTextButton(
-                                                title: "تغییر نام کاربری",
-                                                onPressed: () async {
-                                                  await Config.client
-                                                      .updateUser(
-                                                    "username",
-                                                    usernameController.text,
-                                                  );
-                                                  Navigator.pop(context);
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    ), context);
-                                  },
-                                  child: Text(
-                                    snapshot.data!.username,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: "Poppins",
-                                      color: const Color(0xff3B3B3B)
-                                          .withOpacity(0.8),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              bioController.text = snapshot.data!.bio;
-                            });
-                            landinaModal(StatefulBuilder(
-                              builder: (BuildContext context, setState) {
-                                return Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "ویرایش توضیحات حساب",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: const Color(0xff3B3B3B)
-                                              .withOpacity(1),
+                                            ),
+                                            const SizedBox(height: 25),
+                                            LandinaTextField(
+                                              hintText: "نام کاربری",
+                                              maxLines: 1,
+                                              textfieldController:
+                                                  usernameController,
+                                              prefixIcon: IconlyLight.paper,
+                                              prefixIconOnPressed: () {},
+                                              suffixIcon:
+                                                  IconlyLight.info_circle,
+                                              suffixIconOnPressed: () {},
+                                              obscureText: false,
+                                              enabled: true,
+                                            ),
+                                            const SizedBox(height: 15),
+                                            LandinaTextButton(
+                                              title: "تغییر نام کاربری",
+                                              onPressed: () async {
+                                                await Config.client.updateUser(
+                                                  "username",
+                                                  usernameController.text,
+                                                );
+                                                Navigator.pop(context);
+                                              },
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        "توی فیلد زیر توضیحاتی که می خوای داشته باشی رو وارد کن..",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xff3B3B3B)
-                                              .withOpacity(0.8),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 25),
-                                      LandinaTextField(
-                                        hintText: "توضیحات حساب",
-                                        minLines: 1,
-                                        maxLines: 3,
-                                        textfieldController: bioController,
-                                        prefixIcon: IconlyLight.paper,
-                                        prefixIconOnPressed: () {},
-                                        suffixIcon: IconlyLight.info_circle,
-                                        suffixIconOnPressed: () {},
-                                        obscureText: false,
-                                        enabled: true,
-                                      ),
-                                      const SizedBox(height: 15),
-                                      LandinaTextButton(
-                                        title: "تغییر توضیحات حساب",
-                                        onPressed: () async {
-                                          await Config.client.updateUser(
-                                            "bio",
-                                            bioController.text,
-                                          );
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ],
+                                      );
+                                    },
+                                  ), context);
+                                },
+                                child: Text(
+                                  snapshot.data!.username,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: "Poppins",
+                                    color: const Color(0xff3B3B3B)
+                                        .withOpacity(0.8),
                                   ),
-                                );
-                              },
-                            ), context);
-                          },
-                          child: ReadMoreText(
-                            snapshot.data!.bio,
-                            trimLines: 2,
-                            trimMode: TrimMode.Line,
-                            trimCollapsedText: 'بیشتر',
-                            trimExpandedText: '',
-                            moreStyle: TextStyle(
-                              height: 2,
-                              fontWeight: FontWeight.w600,
-                              color: const Color(0xff3B3B3B).withOpacity(1),
-                            ),
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              height: 2,
-                              color: const Color(0xff3B3B3B).withOpacity(0.8),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: ButtonBarSuper(
-                      lineSpacing: 10,
-                      wrapType: WrapType.balanced,
-                      wrapFit: WrapFit.divided,
-                      children: [
-                        LandinaTextButton(
-                          title: 'کوپن جدید',
-                          onPressed: () {
-                            Get.toNamed("coupon/new");
-                          },
-                        ),
-                        LandinaTextButton(
-                          title: 'دنبال کننده ها',
-                          onPressed: () {
-                            Get.toNamed("/followers");
-                          },
-                        ),
-                        LandinaTextButton(
-                          title: 'پیام ها',
-                          onPressed: () {
-                            Get.toNamed("/chats");
-                          },
-                        ),
-                        LandinaTextButton(
-                          title: 'اطلاعات تماس',
-                          onPressed: () {
-                            Get.toNamed("/contacts");
-                          },
-                        ),
-                        LandinaTextButton(
-                          title: 'لینک های من',
-                          onPressed: () {
-                            Get.toNamed("/links");
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  FutureBuilder(
-                    future:
-                        Config.client.getUserCoupons(Config.box.read("myId")),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return ListView.separated(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(
-                            parent: ClampingScrollPhysics(),
-                          ),
-                          itemCount: snapshot.data.length,
-                          itemBuilder: (context, index) {
-                            final couponInfo = snapshot.data![index];
-                            return Coupon(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        CouponPage(couponInfo: couponInfo),
-                                  ),
-                                );
-                              },
-                              couponId: couponInfo.id,
-                              userId: couponInfo.userId,
-                              title: couponInfo.name,
-                              description: couponInfo.desc,
-                              couponCode: couponInfo.code,
-                            );
-                          },
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(height: 15),
-                        );
-                      } else {
-                        return Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25, vertical: 50),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                "assets/images/not_found.png",
-                                width: 250,
-                              ),
-                              const SizedBox(height: 25),
-                              Text(
-                                "هنوز هیچ کوپنی اینجا نیست!",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                  color:
-                                      const Color(0xff3B3B3B).withOpacity(0.9),
                                 ),
                               ),
                             ],
                           ),
-                        );
-                      }
-                    },
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            bioController.text = snapshot.data!.bio;
+                          });
+                          landinaModal(StatefulBuilder(
+                            builder: (BuildContext context, setState) {
+                              return Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 30),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "ویرایش توضیحات حساب",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: const Color(0xff3B3B3B)
+                                            .withOpacity(1),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 5),
+                                    Text(
+                                      "توی فیلد زیر توضیحاتی که می خوای داشته باشی رو وارد کن..",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w400,
+                                        color: const Color(0xff3B3B3B)
+                                            .withOpacity(0.8),
+                                      ),
+                                    ),
+                                    const SizedBox(height: 25),
+                                    LandinaTextField(
+                                      hintText: "توضیحات حساب",
+                                      minLines: 1,
+                                      maxLines: 3,
+                                      textfieldController: bioController,
+                                      prefixIcon: IconlyLight.paper,
+                                      prefixIconOnPressed: () {},
+                                      suffixIcon: IconlyLight.info_circle,
+                                      suffixIconOnPressed: () {},
+                                      obscureText: false,
+                                      enabled: true,
+                                    ),
+                                    const SizedBox(height: 15),
+                                    LandinaTextButton(
+                                      title: "تغییر توضیحات حساب",
+                                      onPressed: () async {
+                                        await Config.client.updateUser(
+                                          "bio",
+                                          bioController.text,
+                                        );
+                                        setState(() {});
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ), context);
+                        },
+                        child: ReadMoreText(
+                          snapshot.data!.bio,
+                          trimLines: 2,
+                          trimMode: TrimMode.Line,
+                          trimCollapsedText: 'بیشتر',
+                          trimExpandedText: '',
+                          moreStyle: TextStyle(
+                            height: 2,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xff3B3B3B).withOpacity(1),
+                          ),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            height: 2,
+                            color: const Color(0xff3B3B3B).withOpacity(0.8),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ButtonBarSuper(
+                    lineSpacing: 10,
+                    wrapType: WrapType.balanced,
+                    wrapFit: WrapFit.divided,
+                    children: [
+                      LandinaTextButton(
+                        title: 'کوپن جدید',
+                        onPressed: () {
+                          Get.toNamed("coupon/new");
+                        },
+                      ),
+                      LandinaTextButton(
+                        title: 'دنبال کننده ها',
+                        onPressed: () {
+                          Get.toNamed("/followers");
+                        },
+                      ),
+                      LandinaTextButton(
+                        title: 'پیام ها',
+                        onPressed: () {
+                          Get.toNamed("/chats");
+                        },
+                      ),
+                      LandinaTextButton(
+                        title: 'اطلاعات تماس',
+                        onPressed: () {
+                          Get.toNamed("/contacts");
+                        },
+                      ),
+                      LandinaTextButton(
+                        title: 'لینک های من',
+                        onPressed: () {
+                          Get.toNamed("/links");
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 25),
+                FutureBuilder(
+                  future: Config.client.getUserCoupons(Config.box.read("myId")),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return ListView.separated(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(
+                          parent: ClampingScrollPhysics(),
+                        ),
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+                          final couponInfo = snapshot.data![index];
+                          return Coupon(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      CouponPage(couponInfo: couponInfo),
+                                ),
+                              );
+                            },
+                            couponId: couponInfo.id,
+                            userId: couponInfo.userId,
+                            title: couponInfo.name,
+                            description: couponInfo.desc,
+                            couponCode: couponInfo.code,
+                          );
+                        },
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(height: 15),
+                      );
+                    } else {
+                      return Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 25, vertical: 50),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              "assets/images/not_found.png",
+                              width: 250,
+                            ),
+                            const SizedBox(height: 25),
+                            Text(
+                              "هنوز هیچ کوپنی اینجا نیست!",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff3B3B3B).withOpacity(0.9),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
+                  },
+                ),
+              ],
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return ListView(
