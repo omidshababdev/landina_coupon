@@ -26,24 +26,11 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool notifications = true;
 
-  bool lightMode = false;
-  bool darkMode = false;
-  bool defaultMode = true;
-
   PackageInfo? packageInfo;
   String? appName;
   String? packageName;
   String? version;
   String? buildNumber;
-
-  PackageInfo _packageInfo = PackageInfo(
-    appName: 'Unknown',
-    packageName: 'Unknown',
-    version: 'Unknown',
-    buildNumber: 'Unknown',
-    buildSignature: 'Unknown',
-    installerStore: 'Unknown',
-  );
 
   @override
   void initState() {
@@ -54,7 +41,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Future<void> _initPackageInfo() async {
     final info = await PackageInfo.fromPlatform();
     setState(() {
-      _packageInfo = info;
+      Config.packageInfo = info;
     });
   }
 
@@ -187,7 +174,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaListTile(
             onTap: () {
-              Get.toNamed("/soon");
+              Get.toNamed("/language");
             },
             title: "زبان حساب",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
@@ -219,13 +206,16 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: ListTile(
                           onTap: () {
                             setState(() {
-                              defaultMode = !defaultMode;
-                              if (defaultMode == true) {
-                                lightMode = false;
-                                darkMode = false;
+                              Config.defaultMode = !Config.defaultMode;
+                              if (Config.defaultMode == true) {
+                                Get.changeThemeMode(ThemeMode.system);
+                                Config.themeStatus("defaultMode");
+                                Config.lightMode = false;
+                                Config.darkMode = false;
                               }
-                              if (lightMode == false && darkMode == false) {
-                                defaultMode = true;
+                              if (Config.lightMode == false &&
+                                  Config.darkMode == false) {
+                                Config.defaultMode = true;
                               }
                             });
                           },
@@ -261,19 +251,21 @@ class _SettingsPageState extends State<SettingsPage> {
                           trailing: Transform.scale(
                             scale: 0.8,
                             child: CupertinoSwitch(
-                              value: defaultMode,
+                              value: Config.defaultMode,
                               activeColor: const Color(0xff3B3B3B),
                               onChanged: (value) => setState(
                                 () {
-                                  defaultMode = !defaultMode;
-                                  defaultMode = value;
-
-                                  if (defaultMode == true) {
-                                    lightMode = false;
-                                    darkMode = false;
+                                  Config.defaultMode = !Config.defaultMode;
+                                  Config.defaultMode = value;
+                                  if (Config.defaultMode == true) {
+                                    Get.changeThemeMode(ThemeMode.system);
+                                    Config.themeStatus("defaultMode");
+                                    Config.lightMode = false;
+                                    Config.darkMode = false;
                                   }
-                                  if (lightMode == false && darkMode == false) {
-                                    defaultMode = true;
+                                  if (Config.lightMode == false &&
+                                      Config.darkMode == false) {
+                                    Config.defaultMode = true;
                                   }
                                 },
                               ),
@@ -293,13 +285,16 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: ListTile(
                           onTap: () {
                             setState(() {
-                              lightMode = !lightMode;
-                              if (lightMode == true) {
-                                defaultMode = false;
-                                darkMode = false;
+                              Config.lightMode = !Config.lightMode;
+                              if (Config.lightMode == true) {
+                                Get.changeThemeMode(ThemeMode.light);
+                                Config.themeStatus("lightMode");
+                                Config.defaultMode = false;
+                                Config.darkMode = false;
                               }
-                              if (defaultMode == false && darkMode == false) {
-                                lightMode = true;
+                              if (Config.defaultMode == false &&
+                                  Config.darkMode == false) {
+                                Config.lightMode = true;
                               }
                             });
                           },
@@ -335,20 +330,22 @@ class _SettingsPageState extends State<SettingsPage> {
                           trailing: Transform.scale(
                             scale: 0.8,
                             child: CupertinoSwitch(
-                              value: lightMode,
+                              value: Config.lightMode,
                               activeColor: const Color(0xff3B3B3B),
                               onChanged: (value) => setState(
                                 () {
-                                  lightMode = !lightMode;
-                                  lightMode = value;
+                                  Config.lightMode = !Config.lightMode;
+                                  Config.lightMode = value;
 
-                                  if (lightMode == true) {
-                                    defaultMode = false;
-                                    darkMode = false;
+                                  if (Config.lightMode == true) {
+                                    Get.changeThemeMode(ThemeMode.light);
+                                    Config.themeStatus("lightMode");
+                                    Config.defaultMode = false;
+                                    Config.darkMode = false;
                                   }
-                                  if (defaultMode == false &&
-                                      darkMode == false) {
-                                    lightMode = true;
+                                  if (Config.defaultMode == false &&
+                                      Config.darkMode == false) {
+                                    Config.lightMode = true;
                                   }
                                 },
                               ),
@@ -368,13 +365,16 @@ class _SettingsPageState extends State<SettingsPage> {
                         child: ListTile(
                           onTap: () {
                             setState(() {
-                              darkMode = !darkMode;
-                              if (darkMode == true) {
-                                defaultMode = false;
-                                lightMode = false;
+                              Config.darkMode = !Config.darkMode;
+                              if (Config.darkMode == true) {
+                                Get.changeThemeMode(ThemeMode.dark);
+                                Config.themeStatus("darkMode");
+                                Config.defaultMode = false;
+                                Config.lightMode = false;
                               }
-                              if (defaultMode == false && lightMode == false) {
-                                darkMode = true;
+                              if (Config.defaultMode == false &&
+                                  Config.lightMode == false) {
+                                Config.darkMode = true;
                               }
                             });
                           },
@@ -410,19 +410,21 @@ class _SettingsPageState extends State<SettingsPage> {
                           trailing: Transform.scale(
                             scale: 0.8,
                             child: CupertinoSwitch(
-                              value: darkMode,
+                              value: Config.darkMode,
                               activeColor: const Color(0xff3B3B3B),
                               onChanged: (value) => setState(
                                 () {
-                                  darkMode = !darkMode;
-                                  darkMode = value;
-                                  if (darkMode == true) {
-                                    defaultMode = false;
-                                    lightMode = false;
+                                  Config.darkMode = !Config.darkMode;
+                                  Config.darkMode = value;
+                                  if (Config.darkMode == true) {
+                                    Get.changeThemeMode(ThemeMode.dark);
+                                    Config.themeStatus("darkMode");
+                                    Config.defaultMode = false;
+                                    Config.lightMode = false;
                                   }
-                                  if (defaultMode == false &&
-                                      lightMode == false) {
-                                    darkMode = true;
+                                  if (Config.defaultMode == false &&
+                                      Config.lightMode == false) {
+                                    Config.darkMode = true;
                                   }
                                 },
                               ),

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/translation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:uni_links/uni_links.dart';
@@ -83,7 +84,6 @@ class _LandinaCouponState extends State<LandinaCoupon> {
   @override
   void initState() {
     super.initState();
-
     // Instabug.start('526221477a496ef5b199095f54c9b198',
     //     [Instabug.invocationEvent.shake, InvocationEvent.screenshot]);
   }
@@ -101,8 +101,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Landina Coupon',
-      themeMode: ThemeMode.light,
+      title: Config.packageInfo.appName,
+      themeMode: Config.getThemeStatus(),
       theme: ThemeData(
         fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
         backgroundColor: Colors.white,
