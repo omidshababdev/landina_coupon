@@ -58,7 +58,7 @@ class _AccountPageState extends State<AccountPage> {
 
   setUserProperty() async {
     await FirebaseAnalytics.instance.setUserProperty(
-      name: "${widget.user!.name}",
+      name: "user",
       value: "${widget.user!.email}",
     );
   }
