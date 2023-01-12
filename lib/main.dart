@@ -15,34 +15,33 @@ import 'package:flutter/foundation.dart';
 import 'package:uni_links/uni_links.dart';
 
 /* ROUTES */
-import 'package:landina_coupon/ui/pages/account/account.dart';
+import 'package:landina_coupon/ui/pages/account/view.dart';
 import 'package:landina_coupon/ui/pages/account/profile/analytics/view.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/chats.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
 import 'package:landina_coupon/ui/pages/account/profile/analytics/followers/followers.profile.dart';
 import 'package:landina_coupon/ui/pages/account/profile/analytics/followings/followings.profile.dart';
 import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
-import 'package:landina_coupon/ui/pages/account/login/forget/forget.dart';
+import 'package:landina_coupon/ui/pages/account/register/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/settings/about/about.dart';
 import 'package:landina_coupon/ui/pages/account/settings/fonts/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/help/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/language/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/proxy/view.dart';
-import 'package:landina_coupon/ui/pages/account/settings/soon/view.dart';
+import 'package:landina_coupon/ui/pages/soon/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/update/view.dart';
-import 'package:landina_coupon/ui/pages/account/signUp/email/email.dart';
+import 'package:landina_coupon/ui/pages/account/register/signup/email/email.dart';
 import 'package:landina_coupon/ui/pages/account/settings/view.dart';
-import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
-import 'package:landina_coupon/ui/pages/account/signUp/username/username.dart';
+import 'package:landina_coupon/ui/pages/account/register/signup/password/password.dart';
+import 'package:landina_coupon/ui/pages/account/register/signup/username/username.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/coupon/new/new.coupon.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
-import 'package:landina_coupon/ui/pages/account/login/login.dart';
+import 'package:landina_coupon/ui/pages/account/register/login/login.dart';
 import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 
 /* LOCALIZATIONS */
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:uni_links/uni_links.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,8 +61,6 @@ Future main() async {
     return true;
   };
 
-  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-
   await GetStorage.init();
 
   runApp(
@@ -81,11 +78,13 @@ class LandinaCoupon extends StatefulWidget {
 class _LandinaCouponState extends State<LandinaCoupon> {
   VoidCallback rebuildOnLocaleChange() => () => setState(() {});
 
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
+
   @override
   void initState() {
     super.initState();
-    // Instabug.start('526221477a496ef5b199095f54c9b198',
-    //     [Instabug.invocationEvent.shake, InvocationEvent.screenshot]);
   }
 
   @override
@@ -166,7 +165,12 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/signUp/password", page: () => const PasswordPage()),
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => ProfilePage()),
-        GetPage(name: "/account", page: () => AccountPage()),
+        GetPage(
+            name: "/account",
+            page: () => AccountPage(
+                  analytics: analytics,
+                  observer: observer,
+                )),
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/followings", page: () => FollowingsPage()),
         GetPage(name: "/analytics", page: () => const AnalyticsPage()),

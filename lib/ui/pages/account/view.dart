@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
@@ -25,7 +26,10 @@ class AccountPage extends StatefulWidget {
   Future? unfollow;
   Future? follow;
 
-  AccountPage({super.key, this.user});
+  FirebaseAnalytics? analytics;
+  FirebaseAnalyticsObserver? observer;
+
+  AccountPage({super.key, this.user, this.analytics, this.observer});
 
   @override
   State<AccountPage> createState() => _AccountPageState();
@@ -33,17 +37,30 @@ class AccountPage extends StatefulWidget {
 
 class _AccountPageState extends State<AccountPage> {
   bool? isFollowed;
+
   @override
   void initState() {
     super.initState();
 
-    setState(() {
-      widget.userInfo = Config.client.getUser(widget.user!.id);
+    setState(
+      () {
+        widget.userInfo = Config.client.getUser(widget.user!.id);
 
-      Config.client
-          .getFollowedUser(Config.box.read("myId"), widget.user!.id.toString())
-          .then((value) => print(isFollowed = value));
-    });
+        Config.client
+            .getFollowedUser(
+                Config.box.read("myId"), widget.user!.id.toString())
+            .then((value) => print(isFollowed = value));
+
+        setUserProperty();
+      },
+    );
+  }
+
+  setUserProperty() async {
+    await FirebaseAnalytics.instance.setUserProperty(
+      name: "${widget.user!.name}",
+      value: "${widget.user!.email}",
+    );
   }
 
   @override

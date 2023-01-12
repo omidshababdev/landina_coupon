@@ -3,7 +3,7 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
-import 'package:landina_coupon/ui/pages/account/signUp/password/password.dart';
+import 'package:landina_coupon/ui/pages/account/register/signup/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
@@ -15,16 +15,15 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 // Internationalization and localizations
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class UsernamePage extends StatefulWidget {
-  const UsernamePage({super.key});
+class EmailPage extends StatefulWidget {
+  const EmailPage({super.key});
 
   @override
-  State<UsernamePage> createState() => _UsernamePageState();
+  State<EmailPage> createState() => _EmailPageState();
 }
 
-class _UsernamePageState extends State<UsernamePage> {
+class _EmailPageState extends State<EmailPage> {
   bool? isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -38,7 +37,7 @@ class _UsernamePageState extends State<UsernamePage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: 'نام کاربری',
+            title: AppLocalizations.of(context)!.emailAddress,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"), context);
@@ -69,16 +68,12 @@ class _UsernamePageState extends State<UsernamePage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
+                    textfieldController: Config.emailController,
                     maxLines: 1,
-                    hintText: AppLocalizations.of(context)!.username,
+                    hintText: AppLocalizations.of(context)!.emailAddress,
                     suffixIcon: IconlyLight.info_circle,
-                    textfieldController: Config.usernameController,
                     suffixIconOnPressed: () {
-                      landinaModal(
-                          Text(
-                            AppLocalizations.of(context)!.username,
-                          ),
-                          context);
+                      landinaModal(Text("data"), context);
                     },
                     prefixIcon: IconlyLight.user,
                     prefixIconOnPressed: () {},
@@ -101,7 +96,7 @@ class _UsernamePageState extends State<UsernamePage> {
                           isLoading = false;
                         });
                       });
-                      Get.toNamed("/signUp/email");
+                      Get.toNamed("/signUp/password");
                     },
                   ),
                 ),
