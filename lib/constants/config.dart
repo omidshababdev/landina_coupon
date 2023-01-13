@@ -17,8 +17,8 @@ class Config {
   static TextEditingController emailController = TextEditingController();
   static TextEditingController passwordController = TextEditingController();
 
-  static String baseUrl = "http://localhost:8800/";
-  // static String baseUrl = "https://landina-account.onrender.com/";
+  // static String baseUrl = "http://localhost:8800/";
+  static String baseUrl = "https://landina-account.onrender.com/";
 
   static ApiServices client = ApiServices();
   static UploadServices upload = UploadServices();
