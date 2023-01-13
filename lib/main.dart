@@ -13,7 +13,6 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/translation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:landina_coupon/ui/pages/notifications/view.dart';
-// import 'package:uni_links/uni_links.dart';
 
 /* ROUTES */
 import 'package:landina_coupon/ui/pages/account/view.dart';
