@@ -63,9 +63,36 @@ class _HomePageState extends State<HomePage> {
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
             title: AppLocalizations.of(context)!.appName,
-            rightIcon: IconlyLight.category,
+            rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
-              Get.toNamed('/categories');
+              landinaModal(
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: ButtonBarSuper(
+                      lineSpacing: 15,
+                      wrapType: WrapType.balanced,
+                      wrapFit: WrapFit.divided,
+                      children: [
+                        LandinaTextButton(
+                          title: "اعلان ها",
+                          onPressed: () {
+                            Navigator.pop(context);
+                            Get.toNamed("/notifications");
+                          },
+                        ),
+                        LandinaTextButton(
+                          title: 'دسته بندی ها',
+                          onPressed: () {
+                            Navigator.pop(context);
+                            setState(() {
+                              Get.toNamed("/categories");
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  context);
             },
             leftIcon: IconlyLight.profile,
             leftIconOnPressed: () {

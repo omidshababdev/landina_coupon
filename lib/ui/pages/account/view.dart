@@ -82,187 +82,225 @@ class _AccountPageState extends State<AccountPage> {
         future: widget.userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
-              snapshot.connectionState == ConnectionState.done ||
-              snapshot.hasData) {
-            return ListView(
-              key: const PageStorageKey<String>('profile'),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(
-                parent: ClampingScrollPhysics(),
-              ),
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Wrap(
-                        spacing: 15,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          Container(
-                            width: 80,
-                            height: 80,
-                            decoration: ShapeDecoration(
-                              color: const Color(0xffF1F1F1),
-                              shape: SmoothRectangleBorder(
-                                borderRadius: SmoothBorderRadius(
-                                  cornerRadius: 18,
-                                  cornerSmoothing: 0.5,
+              snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              return ListView(
+                key: const PageStorageKey<String>('profile'),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(
+                  parent: ClampingScrollPhysics(),
+                ),
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Wrap(
+                          spacing: 15,
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            Container(
+                              width: 80,
+                              height: 80,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xffF1F1F1),
+                                shape: SmoothRectangleBorder(
+                                  borderRadius: SmoothBorderRadius(
+                                    cornerRadius: 18,
+                                    cornerSmoothing: 0.5,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Wrap(
-                                spacing: 8,
-                                crossAxisAlignment: WrapCrossAlignment.center,
-                                children: [
-                                  Text(
-                                    "${widget.user!.name}",
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 2,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffF1F1F1),
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Text(
-                                      "${widget.user!.accountType}",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 12,
-                                        color: const Color(0xff3B3B3B)
-                                            .withOpacity(0.5),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Wrap(
+                                  spacing: 8,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  children: [
+                                    Text(
+                                      "${widget.user!.name}",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                "${widget.user!.username}",
-                                style: TextStyle(
-                                  fontFamily: "Poppins",
-                                  fontWeight: FontWeight.w400,
-                                  color:
-                                      const Color(0xff3B3B3B).withOpacity(0.8),
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                        vertical: 2,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xffF1F1F1),
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: Text(
+                                        "${widget.user!.accountType}",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 12,
+                                          color: const Color(0xff3B3B3B)
+                                              .withOpacity(0.5),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                                Text(
+                                  "${widget.user!.username}",
+                                  style: TextStyle(
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xff3B3B3B)
+                                        .withOpacity(0.8),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20),
+                        ReadMoreText(
+                          "${widget.user!.bio}",
+                          trimLines: 2,
+                          trimMode: TrimMode.Line,
+                          trimCollapsedText: 'بیشتر',
+                          trimExpandedText: '',
+                          moreStyle: TextStyle(
+                            height: 2,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xff3B3B3B).withOpacity(1),
                           ),
-                        ],
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            height: 2,
+                            color: const Color(0xff3B3B3B).withOpacity(0.8),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  ButtonBarSuper(
+                    lineSpacing: 15,
+                    wrapType: WrapType.balanced,
+                    wrapFit: WrapFit.divided,
+                    children: [
+                      LandinaTextButton(
+                        title: isFollowed != true
+                            ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
+                            : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
+                        backgroundColor: isFollowed != true ? true : false,
+                        onPressed: () {
+                          setState(() {
+                            isFollowed != true
+                                ? {
+                                    Config.client
+                                        .followUser(widget.user!.id.toString()),
+                                    setState(() {}),
+                                    isFollowed = true,
+                                  }
+                                : landinaModal(
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30),
+                                      child: LandinaTextButton(
+                                        title:
+                                            "Un${AppLocalizations.of(context)!.follow}",
+                                        onPressed: () {
+                                          setState(() {
+                                            Config.client.unfollowUser(
+                                                widget.user!.id.toString());
+                                            isFollowed = false;
+                                            setState(() {});
+                                            Navigator.pop(context);
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    context);
+                          });
+                        },
                       ),
-                      const SizedBox(height: 20),
-                      ReadMoreText(
-                        "${widget.user!.bio}",
-                        trimLines: 2,
-                        trimMode: TrimMode.Line,
-                        trimCollapsedText: 'بیشتر',
-                        trimExpandedText: '',
-                        moreStyle: TextStyle(
-                          height: 2,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff3B3B3B).withOpacity(1),
-                        ),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          height: 2,
-                          color: const Color(0xff3B3B3B).withOpacity(0.8),
-                        ),
+                      LandinaTextButton(
+                        title: 'لینک ها',
+                        onPressed: () {
+                          Get.toNamed("/links");
+                        },
+                      ),
+                      LandinaTextButton(
+                        title: 'اطلاعات تماس',
+                        onPressed: () {
+                          Get.toNamed("/contacts");
+                        },
                       ),
                     ],
                   ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 25, vertical: 50),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/not_found.png",
+                          width: 250,
+                        ),
+                        const SizedBox(height: 25),
+                        Text(
+                          "هنوز هیچ کوپنی اینجا نیست!",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xff3B3B3B).withOpacity(0.9),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              );
+            } else if (snapshot.hasError) {
+              return Center(
+                child: LandinaIconButton(
+                  icon: Ionicons.reload,
+                  onPressed: () async {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext context) => super.widget),
+                    );
+                  },
                 ),
-                const SizedBox(height: 20),
-                ButtonBarSuper(
-                  lineSpacing: 15,
-                  wrapType: WrapType.balanced,
-                  wrapFit: WrapFit.divided,
+              );
+            } else {
+              return Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    LandinaTextButton(
-                      title: isFollowed != true
-                          ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
-                          : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
-                      backgroundColor: isFollowed != true ? true : false,
-                      onPressed: () {
-                        setState(() {
-                          isFollowed != true
-                              ? {
-                                  Config.client
-                                      .followUser(widget.user!.id.toString()),
-                                  setState(() {}),
-                                  isFollowed = true,
-                                }
-                              : landinaModal(
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 30),
-                                    child: LandinaTextButton(
-                                      title:
-                                          "Un${AppLocalizations.of(context)!.follow}",
-                                      onPressed: () {
-                                        setState(() {
-                                          Config.client.unfollowUser(
-                                              widget.user!.id.toString());
-                                          isFollowed = false;
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  context);
-                        });
-                      },
+                    Image.asset(
+                      "assets/images/not_found.png",
+                      width: 250,
                     ),
-                    LandinaTextButton(
-                      title: 'لینک ها',
-                      onPressed: () {
-                        Get.toNamed("/links");
-                      },
-                    ),
-                    LandinaTextButton(
-                      title: 'اطلاعات تماس',
-                      onPressed: () {
-                        Get.toNamed("/contacts");
-                      },
+                    const SizedBox(height: 25),
+                    Text(
+                      "هنوز هیچ کوپنی اینجا نیست!",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: const Color(0xff3B3B3B).withOpacity(0.9),
+                      ),
                     ),
                   ],
                 ),
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/not_found.png",
-                        width: 250,
-                      ),
-                      const SizedBox(height: 25),
-                      Text(
-                        "هنوز هیچ کوپنی اینجا نیست!",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xff3B3B3B).withOpacity(0.9),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            );
+              );
+            }
           } else if (snapshot.connectionState == ConnectionState.waiting) {
             return ListView(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),

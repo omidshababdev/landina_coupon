@@ -12,6 +12,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/translation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:landina_coupon/ui/pages/notifications/view.dart';
 import 'package:uni_links/uni_links.dart';
 
 /* ROUTES */
@@ -166,11 +167,12 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => ProfilePage()),
         GetPage(
-            name: "/account",
-            page: () => AccountPage(
-                  analytics: analytics,
-                  observer: observer,
-                )),
+          name: "/account",
+          page: () => AccountPage(
+            analytics: analytics,
+            observer: observer,
+          ),
+        ),
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/followings", page: () => FollowingsPage()),
         GetPage(name: "/analytics", page: () => const AnalyticsPage()),
@@ -179,6 +181,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/fonts", page: () => const FontsPage()),
         GetPage(name: "/proxy", page: () => const ProxyPage()),
         GetPage(name: "/update", page: () => const UpdatePage()),
+        GetPage(name: "/notifications", page: () => const NotificationsPage()),
         GetPage(name: "/language", page: () => const LanguagePage()),
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/contacts", page: () => const ContactsPage()),
