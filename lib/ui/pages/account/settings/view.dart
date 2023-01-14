@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/colors.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -195,11 +196,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   return Column(
                     children: [
                       Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border.symmetric(
                             horizontal: BorderSide(
                               width: 0.5,
-                              color: Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? const Color(0xffF1F1F1)
+                                  : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
                           ),
                         ),
@@ -221,14 +224,33 @@ class _SettingsPageState extends State<SettingsPage> {
                           },
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 25),
-                          leading: const AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: CircleAvatar(
-                              backgroundColor: Color(0xffF1F1F1),
-                              foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.cube_box),
-                            ),
-                          ),
+                          leading: Config.darkMode != true
+                              ? AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.1),
+                                    foregroundColor: Colors.black,
+                                    child: const Icon(CupertinoIcons.sun_max),
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: borderColor,
+                                    ),
+                                  ),
+                                  child: const AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.white,
+                                      child: Icon(CupertinoIcons.cube_box),
+                                    ),
+                                  ),
+                                ),
                           focusColor: const Color(0xfff1f1f1),
                           title: const Text(
                             "حالت پیش فرض دستگاه",
@@ -274,11 +296,13 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border.symmetric(
                             horizontal: BorderSide(
                               width: 0.5,
-                              color: Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? const Color(0xffF1F1F1)
+                                  : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
                           ),
                         ),
@@ -300,14 +324,33 @@ class _SettingsPageState extends State<SettingsPage> {
                           },
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 25),
-                          leading: const AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: CircleAvatar(
-                              backgroundColor: Color(0xffF1F1F1),
-                              foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.sun_max),
-                            ),
-                          ),
+                          leading: Config.darkMode != true
+                              ? AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.1),
+                                    foregroundColor: Colors.black,
+                                    child: const Icon(CupertinoIcons.sun_max),
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: borderColor,
+                                    ),
+                                  ),
+                                  child: const AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.white,
+                                      child: Icon(CupertinoIcons.sun_max),
+                                    ),
+                                  ),
+                                ),
                           focusColor: const Color(0xfff1f1f1),
                           title: const Text(
                             "حالت روز (لایت مود)",
@@ -354,11 +397,13 @@ class _SettingsPageState extends State<SettingsPage> {
                         ),
                       ),
                       Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border.symmetric(
                             horizontal: BorderSide(
                               width: 0.5,
-                              color: Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? const Color(0xffF1F1F1)
+                                  : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
                           ),
                         ),
@@ -380,14 +425,33 @@ class _SettingsPageState extends State<SettingsPage> {
                           },
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 10, horizontal: 25),
-                          leading: const AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: CircleAvatar(
-                              backgroundColor: Color(0xffF1F1F1),
-                              foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.moon),
-                            ),
-                          ),
+                          leading: Config.darkMode != true
+                              ? AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.1),
+                                    foregroundColor: Colors.black,
+                                    child: const Icon(CupertinoIcons.sun_max),
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: borderColor,
+                                    ),
+                                  ),
+                                  child: const AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.white,
+                                      child: Icon(CupertinoIcons.moon),
+                                    ),
+                                  ),
+                                ),
                           focusColor: const Color(0xfff1f1f1),
                           title: const Text(
                             "حالت شب (دارک مود)",

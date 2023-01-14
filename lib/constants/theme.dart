@@ -42,9 +42,8 @@ var appBarTheme = AppBarTheme(
   elevation: 0,
   toolbarHeight: 65,
   centerTitle: true,
-  backgroundColor:
-      SchedulerBinding.instance.window.platformBrightness == ThemeMode.light
-          ? const Color(0xff0F172A).withOpacity(0.1)
-          : const Color(0xFFFFFFFF).withOpacity(0.1),
+  backgroundColor: Config.darkMode == true
+      ? const Color(0xff0F172A).withOpacity(0.1)
+      : const Color(0xFFFFFFFF).withOpacity(0.1),
   titleTextStyle: appBarTitle,
 );
