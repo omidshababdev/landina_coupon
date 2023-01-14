@@ -16,8 +16,7 @@ class Config {
   static bool defaultMode = false;
 
   static Locale myLocale = window.locale;
-
-  // PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
+  static List rightAlignLangs = ['fa'];
 
   static TextEditingController usernameController = TextEditingController();
   static TextEditingController emailController = TextEditingController();

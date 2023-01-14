@@ -95,8 +95,6 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
   @override
   Widget build(BuildContext context) {
-    Locale myLocale = window.locale;
-
     PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
 
     return GetMaterialApp(
