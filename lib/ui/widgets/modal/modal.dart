@@ -1,5 +1,6 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:landina_coupon/constants/colors.dart';
 
 class LandinaBottomSheet extends StatefulWidget {
   Widget child;
@@ -17,9 +18,9 @@ class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
         Container(
           width: double.infinity,
           padding: const EdgeInsets.only(top: 20, bottom: 40),
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: SmoothBorderRadius.only(
+          decoration: BoxDecoration(
+            color: primaryColor,
+            borderRadius: const SmoothBorderRadius.only(
               topLeft: SmoothRadius(
                 cornerRadius: 30,
                 cornerSmoothing: 2,
@@ -36,7 +37,7 @@ class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
                 width: 60,
                 height: 5,
                 decoration: BoxDecoration(
-                  color: const Color(0xffF1F1F1),
+                  color: secondaryColor,
                   borderRadius: BorderRadius.circular(50),
                 ),
               ),

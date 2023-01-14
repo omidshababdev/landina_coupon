@@ -32,7 +32,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
     PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
     return ClipRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 20.0),
         child: AppBar(
           leadingWidth: 66,
           leading: Padding(
@@ -50,7 +50,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
               child: IconButton(
                 icon: Icon(
                   widget.rightIcon,
-                  color: primaryColor,
+                  color: secondaryColor,
                 ),
                 onPressed: widget.rightIconOnPressed,
                 // hoverColor: Colors.transparent,
@@ -63,7 +63,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
               widget.title!,
               style: TextStyle(
                 fontSize: 18,
-                color: primaryColor,
+                color: secondaryColor,
               ),
             ),
           ),
@@ -82,7 +82,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                 child: IconButton(
                   icon: Icon(
                     widget.leftIcon,
-                    color: primaryColor,
+                    color: secondaryColor,
                   ),
                   onPressed: widget.leftIconOnPressed,
                   hoverColor: Colors.transparent,

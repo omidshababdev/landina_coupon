@@ -3,6 +3,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.model.dart';
 import 'package:landina_coupon/models/user.model.dart';
@@ -144,9 +145,9 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                border: Border.symmetric(
+              decoration: BoxDecoration(
+                color: primaryColor,
+                border: const Border.symmetric(
                   horizontal: BorderSide(
                     width: 1,
                     color: Color(0xffF1F1F1),

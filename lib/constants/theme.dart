@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/constants/text.styles.dart';
 
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData(
@@ -11,19 +13,12 @@ ThemeData lightThemeData(BuildContext context) {
     secondaryHeaderColor: secondaryColor,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: appBarTheme,
-    iconTheme: const IconThemeData(color: contentColorLightTheme),
-    colorScheme: const ColorScheme.light(
+    iconTheme: IconThemeData(color: contentColorLightTheme),
+    colorScheme: ColorScheme.light(
       primary: primaryColor,
       secondary: secondaryColor,
       error: errorColor,
-      background: primaryColorDark,
-    ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: Colors.white,
-      selectedItemColor: contentColorLightTheme.withOpacity(0.7),
-      unselectedItemColor: contentColorLightTheme.withOpacity(0.32),
-      // selectedIconTheme:  IconThemeData(color: primaryColor),
-      showUnselectedLabels: true,
+      background: primaryColor,
     ),
   );
 }
@@ -33,15 +28,16 @@ ThemeData darkThemeData(BuildContext context) {
     fontFamily: Config.rightAlignLangs.contains(Config.myLocale.languageCode)
         ? "Estedad"
         : "Poppins",
-    primaryColor: primaryColorDark,
-    backgroundColor: backgroundColorDark,
+    primaryColor: primaryColor,
+    backgroundColor: backgroundColor,
     scaffoldBackgroundColor: contentColorLightTheme,
     appBarTheme: appBarTheme,
-    iconTheme: const IconThemeData(color: contentColorDarkTheme),
+    iconTheme: IconThemeData(color: contentColorDarkTheme),
     colorScheme: const ColorScheme.dark().copyWith(
-      primary: primaryColorDark,
-      secondary: secondaryColorDark,
-      error: errorColorDark,
+      primary: primaryColor,
+      secondary: secondaryColor,
+      error: errorColor,
+      background: backgroundColor,
     ),
   );
 }
@@ -50,11 +46,9 @@ var appBarTheme = AppBarTheme(
   elevation: 0,
   toolbarHeight: 65,
   centerTitle: true,
-  titleTextStyle: TextStyle(
-    fontFamily: Config.rightAlignLangs.contains(Config.myLocale.languageCode)
-        ? "Estedad"
-        : "Poppins",
-    fontWeight: FontWeight.w500,
-    color: primaryColor,
-  ),
+  backgroundColor:
+      SchedulerBinding.instance.window.platformBrightness == ThemeMode.light
+          ? const Color(0xff0F172A).withOpacity(0.1)
+          : const Color(0xFFFFFFFF).withOpacity(0.1),
+  titleTextStyle: appBarTitle,
 );

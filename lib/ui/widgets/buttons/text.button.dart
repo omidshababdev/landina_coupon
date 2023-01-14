@@ -62,7 +62,7 @@ class LandinaTextButton extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: backgroundColor == true
-                    ? LandinaTextStylesLight.textButton
+                    ? textButtonTitle
                     : LandinaTextStylesDark.textButton,
               ),
       ),
