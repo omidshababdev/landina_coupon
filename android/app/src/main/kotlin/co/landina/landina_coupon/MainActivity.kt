@@ -1,4 +1,4 @@
-package com.example.landina_coupon
+package co.landina.landina_coupon
 
 import io.flutter.embedding.android.FlutterActivity
 
