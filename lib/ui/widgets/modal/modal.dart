@@ -49,6 +49,14 @@ class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
                     cornerSmoothing: 2,
                   ),
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.15),
+                    spreadRadius: 30,
+                    blurRadius: 15,
+                    offset: const Offset(0, 15),
+                  ),
+                ],
               ),
               child: Column(
                 children: [

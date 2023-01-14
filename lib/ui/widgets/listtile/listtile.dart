@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landina_coupon/constants/config.dart';
 
 class LandinaListTile extends StatelessWidget {
   String? title;
@@ -17,25 +18,47 @@ class LandinaListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         border: Border.symmetric(
           horizontal: BorderSide(
             width: 0.5,
-            color: Color(0xffF1F1F1),
+            color: Config.darkMode != true
+                ? const Color(0xffF1F1F1).withOpacity(0.5)
+                : const Color(0xffF1F1F1).withOpacity(0.1),
           ),
         ),
       ),
       child: ListTile(
         contentPadding:
             const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-        leading: AspectRatio(
-          aspectRatio: 1 / 1,
-          child: CircleAvatar(
-            backgroundColor: const Color(0xffF1F1F1),
-            foregroundColor: const Color(0xff3B3B3B),
-            child: leading,
-          ),
-        ),
+        leading: Config.darkMode != true
+            ? AspectRatio(
+                aspectRatio: 1 / 1,
+                child: CircleAvatar(
+                  backgroundColor: Colors.white.withOpacity(0.1),
+                  foregroundColor: Colors.black,
+                  child: leading,
+                ),
+              )
+            : Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  border: Border.all(
+                    width: 1,
+                    color: Config.darkMode != true
+                        ? const Color(0xffF1F1F1).withOpacity(0.5)
+                        : const Color(0xffF1F1F1).withOpacity(0.1),
+                  ),
+                ),
+                child: AspectRatio(
+                  aspectRatio: 1 / 1,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.transparent,
+                    foregroundColor: Colors.white,
+                    child: leading,
+                  ),
+                ),
+              ),
         focusColor: const Color(0xfff1f1f1),
         title: Text(
           "$title",

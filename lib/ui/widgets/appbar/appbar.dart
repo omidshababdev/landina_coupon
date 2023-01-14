@@ -35,7 +35,17 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 20.0),
         child: Container(
-          decoration: const BoxDecoration(color: Colors.transparent),
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: Border.symmetric(
+              horizontal: BorderSide(
+                width: 1,
+                color: Config.darkMode != true
+                    ? const Color(0xffF1F1F1).withOpacity(0.5)
+                    : const Color(0xffF1F1F1).withOpacity(0.1),
+              ),
+            ),
+          ),
           child: AppBar(
             backgroundColor: Config.darkMode != true
                 ? Colors.white.withOpacity(0.6)
@@ -49,7 +59,9 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                   color: Colors.transparent,
                   border: Border.all(
                     width: 1,
-                    color: const Color.fromARGB(10, 0, 0, 0),
+                    color: Config.darkMode != true
+                        ? const Color(0xffF1F1F1).withOpacity(0.5)
+                        : const Color(0xffF1F1F1).withOpacity(0.1),
                   ),
                   borderRadius: BorderRadius.circular(50),
                 ),
@@ -81,7 +93,9 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       width: 1,
-                      color: const Color.fromARGB(10, 0, 0, 0),
+                      color: Config.darkMode != true
+                          ? const Color(0xffF1F1F1).withOpacity(0.5)
+                          : const Color(0xffF1F1F1).withOpacity(0.1),
                     ),
                     borderRadius: BorderRadius.circular(50),
                   ),

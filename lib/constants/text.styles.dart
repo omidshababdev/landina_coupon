@@ -3,33 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
 
-const header = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-const header2 = TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
-const caption =
-    TextStyle(fontSize: 23, fontWeight: FontWeight.normal, height: 2.5);
-const textButtonTitle = TextStyle(
-  color: Colors.white,
-  fontWeight: FontWeight.w600,
-);
-var appBarTitle = TextStyle(
-  fontFamily: Config.rightAlignLangs.contains(Config.myLocale.languageCode)
-      ? "Estedad"
-      : "Poppins",
-  fontWeight: FontWeight.w500,
-  color: secondaryColor,
-);
-const textfield =
-    TextStyle(fontSize: 17, fontWeight: FontWeight.normal, color: Colors.black);
+class LandinaTextStylesLight {
+  LandinaTextStylesLight._();
 
-const small =
-    TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Colors.grey);
-const headline =
-    TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black);
-const title =
-    TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black);
+  static const header = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const header2 = TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
+  static const caption =
+      TextStyle(fontSize: 23, fontWeight: FontWeight.normal, height: 2.5);
+  static const textButtonTitle = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.w600,
+  );
+  var appBarTitle = TextStyle(
+    fontFamily: Config.rightAlignLangs.contains(Config.myLocale.languageCode)
+        ? "Estedad"
+        : "Poppins",
+    fontWeight: FontWeight.w500,
+    color: secondaryColor,
+  );
+  static const textfield = TextStyle(
+      fontSize: 17, fontWeight: FontWeight.normal, color: Colors.black);
 
-const chat =
-    TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white);
+  static const small = TextStyle(
+      fontSize: 14, fontWeight: FontWeight.normal, color: Colors.grey);
+  static const headline = TextStyle(
+      fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black);
+  static const title =
+      TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: Colors.black);
+
+  static const chat =
+      TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white);
+}
 
 class LandinaTextStylesDark {
   LandinaTextStylesDark._();

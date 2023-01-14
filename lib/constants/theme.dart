@@ -30,7 +30,12 @@ ThemeData darkThemeData(BuildContext context) {
         : "Poppins",
     primaryColor: primaryColor,
     appBarTheme: appBarTheme,
-    scaffoldBackgroundColor: Colors.black.withOpacity(0.6),
+    scaffoldBackgroundColor: Colors.black,
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(
+        color: Colors.white,
+      ),
+    ),
     iconTheme: IconThemeData(color: contentColorDarkTheme),
     colorScheme: const ColorScheme.dark().copyWith(
       primary: primaryColor,
@@ -45,5 +50,11 @@ var appBarTheme = AppBarTheme(
   elevation: 0,
   toolbarHeight: 65,
   centerTitle: true,
-  titleTextStyle: appBarTitle,
+  titleTextStyle: TextStyle(
+    fontFamily: Config.rightAlignLangs.contains(Config.myLocale.languageCode)
+        ? "Estedad"
+        : "Poppins",
+    fontWeight: FontWeight.w500,
+    color: secondaryColor,
+  ),
 );
