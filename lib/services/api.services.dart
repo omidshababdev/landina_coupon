@@ -350,18 +350,26 @@ class ApiServices {
   }
 
   // Search Coupons
-  static Future<List<CouponModel>> searchCoupons(String query) async {
+  static Future<List<CouponModel>> searchCoupons(String? query) async {
     final res = await http.get(
       Uri.parse('${Config.baseUrl}coupons/$query'),
     );
 
-    if (res.statusCode == 200) {
-      final List coupons = json.decode(res.body);
+    try {
+      if (res.statusCode == 200) {
+        final List coupons = json.decode(res.body);
 
-      return coupons.map((json) => CouponModel.fromJson(json)).toList();
+        return coupons.map((json) => CouponModel.fromJson(json)).toList();
+      } else if (res.statusCode == 404) {
+        null;
+      } else {
+        'Failed to get coupons.';
+      }
+    } catch (err) {
+      err;
     }
 
-    return searchCoupons(" ");
+    return searchCoupons(query);
   }
 
   // Get User Followers

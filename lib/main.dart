@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/constants/theme.dart';
 import 'package:landina_coupon/constants/translation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:landina_coupon/ui/pages/notifications/view.dart';
@@ -102,52 +103,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       debugShowCheckedModeBanner: false,
       title: Config.packageInfo.appName,
       themeMode: Config.getThemeStatus(),
-      theme: ThemeData(
-        fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
-        backgroundColor: Colors.white,
-        appBarTheme: const AppBarTheme(
-          elevation: 0,
-          toolbarHeight: 65,
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-          titleTextStyle: TextStyle(
-            fontFamily: "Estedad",
-            fontWeight: FontWeight.w500,
-          ),
-          systemOverlayStyle: SystemUiOverlayStyle(
-            // Status bar color
-            statusBarColor: Colors.white,
-
-            // Status bar brightness (optional)
-            statusBarIconBrightness:
-                Brightness.dark, // For Android (dark icons)
-            statusBarBrightness: Brightness.light, // For iOS (dark icons)
-          ),
-        ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Color(0xff0F172A),
-          elevation: 0,
-          focusElevation: 0,
-          hoverElevation: 0,
-          highlightElevation: 0,
-        ),
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        fontFamily: myLocale.languageCode == "en" ? "Poppins" : "Estedad",
-        appBarTheme: const AppBarTheme(
-          elevation: 0,
-          toolbarHeight: 65,
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-            fontFamily: "Estedad",
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-
-        /* dark theme settings */
-      ),
+      theme: lightThemeData(context),
+      darkTheme: darkThemeData(context),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: Get.deviceLocale,
       supportedLocales: AppLocalizations.supportedLocales,

@@ -31,8 +31,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
-  List<CouponModel> coupons = [];
-  String query = '';
+  List<CouponModel>? coupons;
+  String? query;
 
   @override
   void initState() {
@@ -45,7 +45,9 @@ class _HomePageState extends State<HomePage> {
     final coupons = await ApiServices.searchCoupons(query);
 
     setState(() {
+      // if (query != null) {
       this.coupons = coupons;
+      // }
     });
   }
 
@@ -246,9 +248,9 @@ class _HomePageState extends State<HomePage> {
                         physics: const BouncingScrollPhysics(
                           parent: ClampingScrollPhysics(),
                         ),
-                        itemCount: coupons.length,
+                        itemCount: coupons!.length,
                         itemBuilder: (context, index) {
-                          final couponInfo = coupons[index];
+                          final couponInfo = coupons![index];
                           return Coupon(
                             couponId: couponInfo.id,
                             userId: couponInfo.userId,

@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/services/api.services.dart';
@@ -13,12 +15,16 @@ class Config {
   static bool darkMode = false;
   static bool defaultMode = false;
 
+  static Locale myLocale = window.locale;
+
+  // PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
+
   static TextEditingController usernameController = TextEditingController();
   static TextEditingController emailController = TextEditingController();
   static TextEditingController passwordController = TextEditingController();
 
-  // static String baseUrl = "http://localhost:8800/";
-  static String baseUrl = "https://landina-account.iran.liara.run/";
+  static String baseUrl = "http://localhost:8800/";
+  // static String baseUrl = "https://landina-account.iran.liara.run/";
   // static String baseUrl = "https://landina-account.onrender.com/";
 
   static ApiServices client = ApiServices();
