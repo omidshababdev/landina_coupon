@@ -74,11 +74,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   return Column(
                     children: [
                       Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border.symmetric(
                             horizontal: BorderSide(
                               width: 0.5,
-                              color: Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
+                                  : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
                           ),
                         ),
@@ -201,7 +203,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             horizontal: BorderSide(
                               width: 0.5,
                               color: Config.darkMode != true
-                                  ? const Color(0xffF1F1F1)
+                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
                           ),
@@ -239,7 +241,11 @@ class _SettingsPageState extends State<SettingsPage> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 1,
-                                      color: borderColor,
+                                      color: Config.darkMode != true
+                                          ? const Color(0xffF1F1F1)
+                                              .withOpacity(0.5)
+                                          : const Color(0xffF1F1F1)
+                                              .withOpacity(0.1),
                                     ),
                                   ),
                                   child: const AspectRatio(
@@ -301,7 +307,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             horizontal: BorderSide(
                               width: 0.5,
                               color: Config.darkMode != true
-                                  ? const Color(0xffF1F1F1)
+                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
                           ),
@@ -402,7 +408,7 @@ class _SettingsPageState extends State<SettingsPage> {
                             horizontal: BorderSide(
                               width: 0.5,
                               color: Config.darkMode != true
-                                  ? const Color(0xffF1F1F1)
+                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
                           ),

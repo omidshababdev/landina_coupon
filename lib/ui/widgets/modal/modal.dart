@@ -17,52 +17,59 @@ class LandinaBottomSheet extends StatefulWidget {
 class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    return ClipRect(
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-        child: Container(
-          decoration: const BoxDecoration(color: Colors.transparent),
-          child: Wrap(
-            children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.only(top: 20, bottom: 40),
-                decoration: BoxDecoration(
-                  color: Config.darkMode == true
-                      ? Colors.black.withOpacity(0.6)
-                      : Colors.white.withOpacity(0.6),
-                  borderRadius: const SmoothBorderRadius.only(
-                    topLeft: SmoothRadius(
-                      cornerRadius: 30,
-                      cornerSmoothing: 2,
-                    ),
-                    topRight: SmoothRadius(
-                      cornerRadius: 30,
-                      cornerSmoothing: 2,
-                    ),
+    return Wrap(
+      children: [
+        ClipRRect(
+          borderRadius: const SmoothBorderRadius.only(
+            topLeft: SmoothRadius(
+              cornerRadius: 30,
+              cornerSmoothing: 2,
+            ),
+            topRight: SmoothRadius(
+              cornerRadius: 30,
+              cornerSmoothing: 2,
+            ),
+          ),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.only(top: 20, bottom: 40),
+              decoration: BoxDecoration(
+                color: Config.darkMode == true
+                    ? Colors.black.withOpacity(0.6)
+                    : Colors.white.withOpacity(0.6),
+                borderRadius: const SmoothBorderRadius.only(
+                  topLeft: SmoothRadius(
+                    cornerRadius: 30,
+                    cornerSmoothing: 2,
+                  ),
+                  topRight: SmoothRadius(
+                    cornerRadius: 30,
+                    cornerSmoothing: 2,
                   ),
                 ),
-                child: Column(
-                  children: [
-                    Container(
-                      width: 40,
-                      height: 5,
-                      decoration: BoxDecoration(
-                        color: Config.darkMode != true
-                            ? Colors.black.withOpacity(0.1)
-                            : const Color(0xffF1F1F1).withOpacity(0.3),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    widget.child,
-                  ],
-                ),
               ),
-            ],
+              child: Column(
+                children: [
+                  Container(
+                    width: 40,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      color: Config.darkMode != true
+                          ? Colors.black.withOpacity(0.1)
+                          : const Color(0xffF1F1F1).withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  widget.child,
+                ],
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
