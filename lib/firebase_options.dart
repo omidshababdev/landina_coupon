@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD5qNPea4gG2xypAPpT8jv3aoLBEUjir0M',
-    appId: '1:629123764170:android:1b2f1cbc47389883240933',
+    appId: '1:629123764170:android:c23cea0d95272deb240933',
     messagingSenderId: '629123764170',
     projectId: 'landina-coupon',
     storageBucket: 'landina-coupon.appspot.com',
