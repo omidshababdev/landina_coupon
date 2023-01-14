@@ -32,7 +32,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
     PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
     return ClipRect(
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 20.0),
+        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
         child: AppBar(
           leadingWidth: 66,
           leading: Padding(

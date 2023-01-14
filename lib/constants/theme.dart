@@ -10,8 +10,6 @@ ThemeData lightThemeData(BuildContext context) {
         ? "Estedad"
         : "Poppins",
     primaryColor: primaryColor,
-    secondaryHeaderColor: secondaryColor,
-    scaffoldBackgroundColor: Colors.white,
     appBarTheme: appBarTheme,
     iconTheme: IconThemeData(color: contentColorLightTheme),
     colorScheme: ColorScheme.light(
@@ -29,8 +27,6 @@ ThemeData darkThemeData(BuildContext context) {
         ? "Estedad"
         : "Poppins",
     primaryColor: primaryColor,
-    backgroundColor: backgroundColor,
-    scaffoldBackgroundColor: contentColorLightTheme,
     appBarTheme: appBarTheme,
     iconTheme: IconThemeData(color: contentColorDarkTheme),
     colorScheme: const ColorScheme.dark().copyWith(

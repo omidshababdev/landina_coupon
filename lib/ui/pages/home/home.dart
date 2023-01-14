@@ -146,7 +146,6 @@ class _HomePageState extends State<HomePage> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: primaryColor,
                 border: const Border.symmetric(
                   horizontal: BorderSide(
                     width: 1,

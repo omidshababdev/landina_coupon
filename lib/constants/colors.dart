@@ -6,7 +6,7 @@ var primaryColor =
         ? const Color(0xFFF1F1F1)
         : const Color(0xff0F172A);
 var backgroundColor =
-    SchedulerBinding.instance.window.platformBrightness == ThemeMode.light
+    SchedulerBinding.instance.window.platformBrightness != ThemeMode.light
         ? const Color(0xff0F172A)
         : const Color(0xFFF1F1F1);
 var secondaryColor =
