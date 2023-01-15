@@ -8,7 +8,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
+import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:get/get.dart';
 
