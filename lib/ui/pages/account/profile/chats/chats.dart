@@ -1,16 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class ChatsPage extends StatefulWidget {
   const ChatsPage({super.key});

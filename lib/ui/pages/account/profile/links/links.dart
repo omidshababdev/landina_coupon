@@ -265,11 +265,13 @@ class _LinksPageState extends State<LinksPage> {
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     border: Border.symmetric(
                       horizontal: BorderSide(
                         width: 0.5,
-                        color: Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),
                     ),
                   ),
