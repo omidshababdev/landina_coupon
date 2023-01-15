@@ -55,7 +55,9 @@ class _LinksPageState extends State<LinksPage> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xff3B3B3B).withOpacity(1),
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                       const SizedBox(height: 5),
@@ -64,7 +66,9 @@ class _LinksPageState extends State<LinksPage> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: const Color(0xff3B3B3B).withOpacity(0.8),
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                       const SizedBox(height: 15),

@@ -22,24 +22,48 @@ class LandinaTextButton extends StatelessWidget {
       width: double.infinity,
       height: 60,
       decoration: Config.darkMode != true
-          ? ShapeDecoration(
-              color: Colors.black.withOpacity(0.05),
-              shape: SmoothRectangleBorder(
-                borderRadius: SmoothBorderRadius(
-                  cornerRadius: 10,
-                  cornerSmoothing: 0.5,
+          ? backgroundColor != true
+              ? ShapeDecoration(
+                  color: Colors.black.withOpacity(0.05),
+                  shape: SmoothRectangleBorder(
+                    borderRadius: SmoothBorderRadius(
+                      cornerRadius: 10,
+                      cornerSmoothing: 0.5,
+                    ),
+                  ),
+                )
+              : ShapeDecoration(
+                  color: Colors.black,
+                  shape: SmoothRectangleBorder(
+                    borderRadius: SmoothBorderRadius(
+                      cornerRadius: 10,
+                      cornerSmoothing: 0.5,
+                    ),
+                  ),
+                )
+          : backgroundColor != true
+              ? ShapeDecoration(
+                  color: Colors.transparent,
+                  shape: SmoothRectangleBorder(
+                    side: BorderSide(
+                      width: 1,
+                      color: const Color(0xffF1F1F1).withOpacity(0.1),
+                    ),
+                    borderRadius: SmoothBorderRadius(
+                      cornerRadius: 10,
+                      cornerSmoothing: 0.5,
+                    ),
+                  ),
+                )
+              : ShapeDecoration(
+                  color: Colors.white.withOpacity(0.08),
+                  shape: SmoothRectangleBorder(
+                    borderRadius: SmoothBorderRadius(
+                      cornerRadius: 10,
+                      cornerSmoothing: 0.5,
+                    ),
+                  ),
                 ),
-              ),
-            )
-          : ShapeDecoration(
-              color: Colors.white.withOpacity(0.08),
-              shape: SmoothRectangleBorder(
-                borderRadius: SmoothBorderRadius(
-                  cornerRadius: 10,
-                  cornerSmoothing: 0.5,
-                ),
-              ),
-            ),
       child: TextButton(
         onPressed: onPressed,
         style: ButtonStyle(
@@ -49,24 +73,31 @@ class LandinaTextButton extends StatelessWidget {
             ),
           ),
         ),
-        child: isLoading == true
-            ? SizedBox(
-                height: 25,
-                width: 25,
-                child: CircularProgressIndicator(
-                  color: backgroundColor != true
-                      ? const Color(0xff0F172A).withOpacity(0.5)
-                      : Colors.white,
-                  strokeWidth: 1,
-                ),
-              )
-            : Text(
+        child: isLoading != true
+            ? Text(
                 title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: backgroundColor == true
-                    ? LandinaTextStylesLight.textButtonTitle
-                    : LandinaTextStylesDark.textButton,
+                style: TextStyle(
+                  color: Config.darkMode != true
+                      ? backgroundColor != true
+                          ? Colors.black
+                          : Colors.white
+                      : Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              )
+            : SizedBox(
+                height: 25,
+                width: 25,
+                child: CircularProgressIndicator(
+                  color: Config.darkMode != true
+                      ? backgroundColor != true
+                          ? Colors.black.withOpacity(0.5)
+                          : Colors.white
+                      : Colors.white,
+                  strokeWidth: 1,
+                ),
               ),
       ),
     );

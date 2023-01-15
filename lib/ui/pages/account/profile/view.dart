@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             },
                           ),
                           LandinaTextButton(
-                            title: "اشتراک گذاری پروفایل",
+                            title: "اشتراک گذاری",
                             isLoading: isLoading,
                             onPressed: () async {
                               setState(() => isLoading = true);
