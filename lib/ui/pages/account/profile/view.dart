@@ -6,6 +6,7 @@ import 'package:figma_squircle/figma_squircle.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:iconly/iconly.dart';
@@ -80,7 +81,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: const Color(0xff3B3B3B).withOpacity(1),
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                       const SizedBox(height: 5),
@@ -89,7 +92,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: const Color(0xff3B3B3B).withOpacity(0.8),
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -308,8 +313,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.w600,
                                                     color:
-                                                        const Color(0xff3B3B3B)
-                                                            .withOpacity(1),
+                                                        Config.darkMode != true
+                                                            ? Colors.black
+                                                            : Colors.white,
                                                   ),
                                                 ),
                                                 const SizedBox(height: 5),
@@ -319,8 +325,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     fontSize: 14,
                                                     fontWeight: FontWeight.w400,
                                                     color:
-                                                        const Color(0xff3B3B3B)
-                                                            .withOpacity(0.8),
+                                                        Config.darkMode != true
+                                                            ? Colors.black
+                                                            : Colors.white,
                                                   ),
                                                 ),
                                                 const SizedBox(height: 25),
@@ -370,10 +377,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                     },
                                     child: Text(
                                       snapshot.data!.name,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18,
-                                      ),
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                          color: Config.darkMode != true
+                                              ? Colors.black
+                                              : Colors.white),
                                     ),
                                   ),
                                   GestureDetector(
@@ -408,48 +417,28 @@ class _ProfilePageState extends State<ProfilePage> {
                                         },
                                       ), context);
                                     },
-                                    child: snapshot.data!.accountType ==
-                                            'personal'
-                                        ? Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 8,
-                                              vertical: 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xffF1F1F1),
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                            ),
-                                            child: Text(
-                                              snapshot.data!.accountType,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: const Color(0xff3B3B3B)
-                                                    .withOpacity(0.5),
-                                              ),
-                                            ),
-                                          )
-                                        : Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 8,
-                                              vertical: 2,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: const Color(0xffF1F1F1),
-                                              borderRadius:
-                                                  BorderRadius.circular(50),
-                                            ),
-                                            child: Text(
-                                              snapshot.data!.accountType,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: const Color(0xff3B3B3B)
-                                                    .withOpacity(0.5),
-                                              ),
-                                            ),
-                                          ),
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 8,
+                                        vertical: 2,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: Config.darkMode != true
+                                            ? Colors.black.withOpacity(0.05)
+                                            : Colors.white.withOpacity(0.1),
+                                        borderRadius: BorderRadius.circular(50),
+                                      ),
+                                      child: Text(
+                                        snapshot.data!.accountType,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 12,
+                                          color: Config.darkMode != true
+                                              ? Colors.black
+                                              : Colors.white,
+                                        ),
+                                      ),
+                                    ),
                                   )
                                 ],
                               ),
@@ -474,8 +463,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600,
-                                                color: const Color(0xff3B3B3B)
-                                                    .withOpacity(1),
+                                                color: Config.darkMode != true
+                                                    ? Colors.black
+                                                    : Colors.white,
                                               ),
                                             ),
                                             const SizedBox(height: 5),
@@ -484,8 +474,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                               style: TextStyle(
                                                 fontSize: 14,
                                                 fontWeight: FontWeight.w400,
-                                                color: const Color(0xff3B3B3B)
-                                                    .withOpacity(0.8),
+                                                color: Config.darkMode != true
+                                                    ? Colors.black
+                                                    : Colors.white,
                                               ),
                                             ),
                                             const SizedBox(height: 25),
@@ -524,8 +515,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                   style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontFamily: "Poppins",
-                                    color: const Color(0xff3B3B3B)
-                                        .withOpacity(0.8),
+                                    color: Config.darkMode != true
+                                        ? Colors.black
+                                        : Colors.white,
                                   ),
                                 ),
                               ),
@@ -552,8 +544,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,
-                                        color: const Color(0xff3B3B3B)
-                                            .withOpacity(1),
+                                        color: Config.darkMode != true
+                                            ? Colors.black
+                                            : Colors.white,
                                       ),
                                     ),
                                     const SizedBox(height: 5),
@@ -562,8 +555,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                       style: TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w400,
-                                        color: const Color(0xff3B3B3B)
-                                            .withOpacity(0.8),
+                                        color: Config.darkMode != true
+                                            ? Colors.black
+                                            : Colors.white,
                                       ),
                                     ),
                                     const SizedBox(height: 25),
@@ -606,12 +600,16 @@ class _ProfilePageState extends State<ProfilePage> {
                           moreStyle: TextStyle(
                             height: 2,
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xff3B3B3B).withOpacity(1),
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             height: 2,
-                            color: const Color(0xff3B3B3B).withOpacity(0.8),
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
                           ),
                         ),
                       ),
@@ -700,8 +698,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              "assets/images/not_found.png",
+                            SvgPicture.asset(
+                              "assets/svg/not_found.svg",
+                              color: Config.darkMode != true
+                                  ? Colors.black
+                                  : Colors.white,
                               width: 250,
                             ),
                             const SizedBox(height: 25),
@@ -710,7 +711,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xff3B3B3B).withOpacity(0.9),
+                                color: Config.darkMode != true
+                                    ? Colors.black
+                                    : Colors.white,
                               ),
                             ),
                           ],

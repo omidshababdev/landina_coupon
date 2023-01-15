@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:landina_coupon/constants/config.dart';
 
 class LandinaTextField extends StatefulWidget {
   String? hintText;
@@ -48,7 +49,12 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
       decoration: BoxDecoration(
-        border: Border.all(width: 1, color: const Color(0xffF1F1F1)),
+        border: Border.all(
+          width: 1,
+          color: Config.darkMode != true
+              ? const Color(0xffF1F1F1).withOpacity(0.5)
+              : const Color(0xffF1F1F1).withOpacity(0.1),
+        ),
         borderRadius: const SmoothBorderRadius.only(
           topLeft: SmoothRadius(
             cornerRadius: 12,
@@ -90,22 +96,26 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
             onPressed: widget.prefixIconOnPressed,
             icon: Icon(
               widget.prefixIcon,
-              color: const Color(0xff3b3b3b).withOpacity(0.5),
+              color: Config.darkMode != true ? Colors.black : Colors.white,
             ),
           ),
           suffixIcon: Container(
             decoration: BoxDecoration(
               border: myLocale.languageCode == "en"
-                  ? const Border(
+                  ? Border(
                       left: BorderSide(
                         width: 1,
-                        color: Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),
                     )
-                  : const Border(
+                  : Border(
                       right: BorderSide(
                         width: 1,
-                        color: Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),
                     ),
             ),
@@ -113,7 +123,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
               onPressed: widget.suffixIconOnPressed,
               icon: Icon(
                 widget.suffixIcon,
-                color: const Color(0xff3b3b3b).withOpacity(0.5),
+                color: Config.darkMode != true ? Colors.black : Colors.white,
               ),
             ),
           ),

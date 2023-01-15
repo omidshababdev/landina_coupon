@@ -4,9 +4,7 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
 import 'package:get/get.dart';
 
@@ -16,14 +14,14 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
-class NewCouponPage extends StatefulWidget {
-  const NewCouponPage({super.key});
+class CouponEdit extends StatefulWidget {
+  const CouponEdit({super.key});
 
   @override
-  State<NewCouponPage> createState() => _NewCouponPageState();
+  State<CouponEdit> createState() => _CouponEditState();
 }
 
-class _NewCouponPageState extends State<NewCouponPage> {
+class _CouponEditState extends State<CouponEdit> {
   TextEditingController nameController = TextEditingController();
   TextEditingController codeController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
@@ -116,8 +114,19 @@ class _NewCouponPageState extends State<NewCouponPage> {
         ),
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
+          color: Config.darkMode != true ? Colors.white : Colors.black,
           child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  width: 1,
+                  color: Config.darkMode != true
+                      ? const Color(0xffF1F1F1).withOpacity(0.5)
+                      : const Color(0xffF1F1F1).withOpacity(0.1),
+                ),
+              ),
+            ),
             child: LandinaTextButton(
               title: 'ایجاد کوپن جدید',
               backgroundColor: true,

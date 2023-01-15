@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/colors.dart';
@@ -145,11 +146,16 @@ class _HomePageState extends State<HomePage> {
         body: Column(
           children: [
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               decoration: BoxDecoration(
-                color: Config.darkMode != true
-                    ? const Color(0xffF1F1F1).withOpacity(0.5)
-                    : const Color(0xffF1F1F1).withOpacity(0.1),
+                border: Border.symmetric(
+                  horizontal: BorderSide(
+                    width: 1,
+                    color: Config.darkMode != true
+                        ? const Color(0xffF1F1F1).withOpacity(0.5)
+                        : const Color(0xffF1F1F1).withOpacity(0.1),
+                  ),
+                ),
               ),
               child: LandinaTextField(
                 onChanged: (value) {
@@ -285,8 +291,11 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.asset(
-                              "assets/images/not_found.png",
+                            SvgPicture.asset(
+                              "assets/svg/not_found.svg",
+                              color: Config.darkMode != true
+                                  ? Colors.black
+                                  : Colors.white,
                               width: 250,
                             ),
                             const SizedBox(height: 25),
@@ -295,7 +304,9 @@ class _HomePageState extends State<HomePage> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
-                                color: const Color(0xff3B3B3B).withOpacity(0.9),
+                                color: Config.darkMode != true
+                                    ? Colors.black
+                                    : Colors.white,
                               ),
                             ),
                           ],
@@ -318,7 +329,9 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 20),
                           decoration: ShapeDecoration(
-                            color: const Color(0xffF1F1F1),
+                            color: Config.darkMode != true
+                                ? Colors.black.withOpacity(0.05)
+                                : Colors.white.withOpacity(0.08),
                             shape: SmoothRectangleBorder(
                               borderRadius: SmoothBorderRadius(
                                 cornerRadius: 20,

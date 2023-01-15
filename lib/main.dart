@@ -36,7 +36,7 @@ import 'package:landina_coupon/ui/pages/account/settings/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/password/password.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/username/username.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
-import 'package:landina_coupon/ui/pages/coupon/new/new.coupon.dart';
+import 'package:landina_coupon/ui/pages/coupon/edit/coupon.edit.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 import 'package:landina_coupon/ui/pages/account/register/login/login.dart';
 import 'package:landina_coupon/ui/pages/account/profile/view.dart';
@@ -142,7 +142,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/chats", page: () => const ChatsPage()),
         GetPage(name: "/links", page: () => LinksPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
-        GetPage(name: "/coupon/new", page: () => const NewCouponPage()),
+        GetPage(name: "/coupon/edit", page: () => const CouponEdit()),
       ],
       translationsKeys: Translation.translationsKeys,
       fallbackLocale: const Locale("en"),
