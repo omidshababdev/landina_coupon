@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -48,18 +49,20 @@ class _ContactsPageState extends State<ChatsPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  "assets/images/hand_shake.png",
+                SvgPicture.asset(
+                  "assets/svg/not_found.svg",
+                  color: Config.darkMode != true ? Colors.black : Colors.white,
                   width: 250,
                 ),
                 const SizedBox(height: 25),
                 Text(
-                  "بهت قول میدیم بزودی این صفحه رو میسازیم!",
+                  "هنوز هیچ پیامی اینجا ندادی!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: const Color(0xff3B3B3B).withOpacity(0.9),
+                    color:
+                        Config.darkMode != true ? Colors.black : Colors.white,
                   ),
                 ),
               ],

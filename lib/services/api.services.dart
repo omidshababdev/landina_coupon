@@ -350,7 +350,7 @@ class ApiServices {
   }
 
   // Search Coupons
-  static Future<List<CouponModel>> searchCoupons(String? query) async {
+  static Future searchCoupons(String? query) async {
     final res = await http.get(
       Uri.parse('${Config.baseUrl}coupons/$query'),
     );
@@ -361,12 +361,12 @@ class ApiServices {
 
         return coupons.map((json) => CouponModel.fromJson(json)).toList();
       } else if (res.statusCode == 404) {
-        null;
+        return null;
       } else {
-        'Failed to get coupons.';
+        return 'Failed to get coupons.';
       }
     } catch (err) {
-      err;
+      return err;
     }
 
     return searchCoupons(query);

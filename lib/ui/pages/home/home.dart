@@ -34,7 +34,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
   List<CouponModel>? coupons;
-  String? query;
+  String? query = "";
 
   @override
   void initState() {
@@ -47,9 +47,9 @@ class _HomePageState extends State<HomePage> {
     final coupons = await ApiServices.searchCoupons(query);
 
     setState(() {
-      // if (query != null) {
-      this.coupons = coupons;
-      // }
+      if (query != null) {
+        this.coupons = coupons;
+      }
     });
   }
 
