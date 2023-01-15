@@ -67,7 +67,7 @@ class _SettingsPageState extends State<SettingsPage> {
           parent: ClampingScrollPhysics(),
         ),
         children: [
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               landinaModal(StatefulBuilder(
                 builder: (BuildContext context, setState) {
@@ -143,7 +143,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "همه اعلان های برنامه رو می تونی از اینجا تنظیم کنی.",
             leading: const Icon(IconlyLight.notification),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/soon");
             },
@@ -151,7 +151,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.activity),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/soon");
             },
@@ -159,7 +159,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(CupertinoIcons.shield),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/soon");
             },
@@ -167,7 +167,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(Ionicons.help),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/about");
             },
@@ -175,7 +175,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.info_circle),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/language");
             },
@@ -183,7 +183,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.paper_negative),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/soon");
             },
@@ -191,7 +191,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.edit),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               landinaModal(StatefulBuilder(
                 builder: (BuildContext context, setState) {
@@ -512,7 +512,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 "از این قسمت می تونی تم برنامه رو برای دید بهتر در شب و روز تنظیم کنی.",
             leading: const Icon(CupertinoIcons.pencil_outline),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/soon");
             },
@@ -520,7 +520,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(CupertinoIcons.app),
           ),
-          LandinaListTile(
+          LandinaSimpleListTile(
             onTap: () {
               landinaModal(StatefulBuilder(
                 builder: (BuildContext context, setState) {
