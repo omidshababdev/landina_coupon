@@ -1,6 +1,7 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/colors.dart';
@@ -232,8 +233,11 @@ class _LinksPageState extends State<LinksPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        "assets/images/not_found.png",
+                      SvgPicture.asset(
+                        "assets/svg/not_found.svg",
+                        color: Config.darkMode != true
+                            ? Colors.black
+                            : Colors.white,
                         width: 250,
                       ),
                       const SizedBox(height: 25),
@@ -242,7 +246,9 @@ class _LinksPageState extends State<LinksPage> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: const Color(0xff3B3B3B).withOpacity(0.9),
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                     ],
