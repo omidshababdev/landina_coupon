@@ -1,11 +1,12 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/text.styles.dart';
 
 class LandinaTextButton extends StatelessWidget {
   final String title;
   bool? isLoading = true;
-  bool? backgroundColor = true;
+  bool? backgroundColor = false;
   final VoidCallback onPressed;
   LandinaTextButton({
     Key? key,
@@ -20,9 +21,9 @@ class LandinaTextButton extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 60,
-      decoration: backgroundColor == true
+      decoration: Config.darkMode != true
           ? ShapeDecoration(
-              color: const Color(0xff0F172A),
+              color: Colors.black.withOpacity(0.05),
               shape: SmoothRectangleBorder(
                 borderRadius: SmoothBorderRadius(
                   cornerRadius: 10,
@@ -31,7 +32,7 @@ class LandinaTextButton extends StatelessWidget {
               ),
             )
           : ShapeDecoration(
-              color: const Color(0xffF1F1F1),
+              color: Colors.white.withOpacity(0.08),
               shape: SmoothRectangleBorder(
                 borderRadius: SmoothBorderRadius(
                   cornerRadius: 10,

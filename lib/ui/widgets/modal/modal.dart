@@ -36,9 +36,9 @@ class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
               width: double.infinity,
               padding: const EdgeInsets.only(top: 20, bottom: 40),
               decoration: BoxDecoration(
-                color: Config.darkMode == true
-                    ? Colors.black.withOpacity(0.6)
-                    : Colors.white.withOpacity(0.6),
+                color: Config.darkMode != true
+                    ? Colors.white
+                    : Colors.black.withOpacity(0.6),
                 borderRadius: const SmoothBorderRadius.only(
                   topLeft: SmoothRadius(
                     cornerRadius: 30,
