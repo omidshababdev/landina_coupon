@@ -1,7 +1,9 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.model.dart';
@@ -394,7 +396,7 @@ class _CouponState extends State<Coupon> {
             const SizedBox(height: 30),
             LandinaTextButton(
               title: AppLocalizations.of(context)!.copyCouponCode,
-              backgroundColor: false,
+              backgroundColor: true,
               onPressed: () {
                 landinaModal(
                     Container(
@@ -433,8 +435,117 @@ class _CouponState extends State<Coupon> {
                 );
               },
             ),
-            const SizedBox(height: 10),
-            //
+            const SizedBox(height: 20),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    //
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        width: 1,
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
+                      ),
+                    ),
+                    child: Wrap(
+                      spacing: 5,
+                      children: const [
+                        Icon(
+                          CupertinoIcons.hand_thumbsup,
+                          size: 15,
+                        ),
+                        Text(
+                          "47,689",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    //
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        width: 1,
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
+                      ),
+                    ),
+                    child: Wrap(
+                      spacing: 5,
+                      children: const [
+                        Icon(
+                          CupertinoIcons.hand_thumbsdown,
+                          size: 15,
+                        ),
+                        Text(
+                          "689",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    //
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        width: 1,
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
+                      ),
+                    ),
+                    child: Wrap(
+                      spacing: 5,
+                      children: const [
+                        Icon(
+                          CupertinoIcons.share,
+                          size: 15,
+                        ),
+                        Text(
+                          "اشتراک گذاری",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
