@@ -433,6 +433,8 @@ class _CouponState extends State<Coupon> {
                 );
               },
             ),
+            const SizedBox(height: 10),
+            //
           ],
         ),
       ),
