@@ -37,8 +37,8 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
         child: Container(
           decoration: BoxDecoration(
             color: Colors.transparent,
-            border: Border.symmetric(
-              horizontal: BorderSide(
+            border: Border(
+              bottom: BorderSide(
                 width: 1,
                 color: Config.darkMode != true
                     ? const Color(0xffF1F1F1).withOpacity(0.5)

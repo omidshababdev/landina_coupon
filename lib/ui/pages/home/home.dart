@@ -225,6 +225,7 @@ class _HomePageState extends State<HomePage> {
                             const SizedBox(height: 30),
                             LandinaTextButton(
                               title: "تغییرات فیلتر رو اعمال کن",
+                              backgroundColor: true,
                               onPressed: () {
                                 Navigator.pop(context);
                               },

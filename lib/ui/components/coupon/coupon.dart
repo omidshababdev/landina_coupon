@@ -415,7 +415,9 @@ class _CouponState extends State<Coupon> {
                             "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
                             style: TextStyle(
                               fontSize: 13,
-                              color: const Color(0xff3B3B3B).withOpacity(0.5),
+                              color: Config.darkMode != true
+                                  ? Colors.black
+                                  : Colors.white,
                               height: 2,
                             ),
                           ),
@@ -535,6 +537,90 @@ class _CouponState extends State<Coupon> {
                         ),
                         Text(
                           "اشتراک گذاری",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Wrap(
+              spacing: 8,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    //
+                  },
+                  child: Wrap(
+                    spacing: -15,
+                    children: [
+                      Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
+                        ),
+                      ),
+                      Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
+                        ),
+                      ),
+                      Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    //
+                  },
+                  child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      border: Border.all(
+                        width: 1,
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
+                      ),
+                    ),
+                    child: Wrap(
+                      spacing: 5,
+                      children: const [
+                        Text(
+                          "47,689",
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: "Poppins",
+                          ),
+                        ),
+                        Text(
+                          "نظر گذاشتن",
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
