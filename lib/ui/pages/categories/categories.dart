@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/categories/categories.box.dart';
-import 'package:landina_coupon/ui/components/categories/categories.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize

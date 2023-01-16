@@ -1,6 +1,7 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:readmore/readmore.dart';
 
@@ -15,7 +16,9 @@ class _CommentState extends State<Comment> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed("/coupon/comments");
+      },
       onLongPress: () {},
       child: Container(
         width: double.infinity,

@@ -13,6 +13,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/theme.dart';
 import 'package:landina_coupon/constants/translation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:landina_coupon/ui/pages/coupon/comments/comments.coupon.dart';
 import 'package:landina_coupon/ui/pages/notifications/view.dart';
 
 /* ROUTES */
@@ -143,6 +144,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/links", page: () => LinksPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
         GetPage(name: "/coupon/new", page: () => const NewCouponPage()),
+        GetPage(name: "/coupon/comments", page: () => const CommentsPage()),
       ],
       translationsKeys: Translation.translationsKeys,
       fallbackLocale: const Locale("en"),

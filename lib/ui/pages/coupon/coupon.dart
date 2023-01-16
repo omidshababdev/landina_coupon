@@ -61,7 +61,7 @@ class _CouponPageState extends State<CouponPage> {
         ),
         body: ListView(
           key: PageStorageKey(widget.couponInfo.id),
-          padding: const EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.only(top: 20, bottom: 30),
           shrinkWrap: true,
           physics: const BouncingScrollPhysics(
             parent: ClampingScrollPhysics(),

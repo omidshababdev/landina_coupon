@@ -1,5 +1,6 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/comment/comment.dart';
 
@@ -14,7 +15,9 @@ class _CommentsState extends State<Comments> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed("/coupon/comments");
+      },
       onLongPress: () {},
       child: Container(
         width: double.infinity,
@@ -40,7 +43,7 @@ class _CommentsState extends State<Comments> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      //
+                      Get.toNamed("/coupon/comments");
                     },
                     child: Wrap(
                       spacing: -15,
@@ -80,7 +83,7 @@ class _CommentsState extends State<Comments> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      //
+                      Get.toNamed("/coupon/comments");
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -121,6 +124,9 @@ class _CommentsState extends State<Comments> {
             ),
             Comment(),
             GestureDetector(
+              onTap: () {
+                Get.toNamed("/coupon/comments");
+              },
               child: Container(
                 width: double.infinity,
                 padding:

@@ -554,7 +554,7 @@ class _CouponState extends State<Coupon> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    //
+                    Get.toNamed("/coupon/comments");
                   },
                   child: Wrap(
                     spacing: -15,
@@ -594,7 +594,7 @@ class _CouponState extends State<Coupon> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    //
+                    Get.toNamed("/coupon/comments");
                   },
                   child: Container(
                     padding:

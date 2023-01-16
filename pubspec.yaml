@@ -13,6 +13,7 @@ dependencies:
   syncfusion_flutter_barcodes: ^20.4.42
   assorted_layout_widgets: ^7.0.0
   cupertino_icons: ^1.0.2
+  fl_chart: ^0.55.2
   figma_squircle: ^0.5.3
   firebase: ^9.0.3
   firebase_core: ^2.4.1
