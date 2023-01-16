@@ -64,17 +64,20 @@ class LandinaSimpleListTile extends StatelessWidget {
           "$title",
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w500,
-            color: Color(0xff3B3B3B),
+            color: Config.darkMode != true ? Colors.black : Colors.white,
           ),
         ),
         subtitle: Text(
           "$subtitle",
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
-          style: const TextStyle(
+          style: TextStyle(
+            color: Config.darkMode != true
+                ? Colors.black.withOpacity(0.5)
+                : Colors.white.withOpacity(0.5),
             fontSize: 13,
           ),
         ),

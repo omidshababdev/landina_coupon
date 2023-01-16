@@ -72,28 +72,28 @@ class LandinaButtonListTile extends StatelessWidget {
           "$title",
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w500,
-            color: Color(0xff3B3B3B),
+            color: Config.darkMode != true ? Colors.black : Colors.white,
           ),
         ),
         subtitle: Text(
           "$subtitle",
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
-          style: const TextStyle(
+          style: TextStyle(
+            color: Config.darkMode != true
+                ? Colors.black.withOpacity(0.5)
+                : Colors.white.withOpacity(0.5),
+            fontFamily: "Poppins",
             fontSize: 13,
           ),
         ),
         onTap: onTap,
-        trailing: Container(
+        trailing: SizedBox(
           width: 100,
           height: 50,
-          decoration: BoxDecoration(
-            color: const Color(0xffF1F1F1),
-            borderRadius: BorderRadius.circular(10),
-          ),
           child: LandinaTextButton(
             title: "$buttonTitle",
             backgroundColor: buttonColor,

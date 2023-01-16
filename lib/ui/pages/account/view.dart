@@ -109,7 +109,7 @@ class _AccountPageState extends State<AccountPage> {
                               decoration: ShapeDecoration(
                                 color: Config.darkMode != true
                                     ? Colors.black.withOpacity(0.05)
-                                    : Colors.white.withOpacity(0.1),
+                                    : Colors.white.withOpacity(0.05),
                                 shape: SmoothRectangleBorder(
                                   borderRadius: SmoothBorderRadius(
                                     cornerRadius: 18,

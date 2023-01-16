@@ -14,14 +14,14 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
-class CouponEdit extends StatefulWidget {
-  const CouponEdit({super.key});
+class NewCouponPage extends StatefulWidget {
+  const NewCouponPage({super.key});
 
   @override
-  State<CouponEdit> createState() => _CouponEditState();
+  State<NewCouponPage> createState() => _NewCouponPageState();
 }
 
-class _CouponEditState extends State<CouponEdit> {
+class _NewCouponPageState extends State<NewCouponPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController codeController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
