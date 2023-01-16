@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:landina_coupon/constants/config.dart';
 
-class LandinaSwitchListTile extends StatelessWidget {
+class LandinaSwitchListTile extends StatefulWidget {
   String? title;
   String? subtitle;
   VoidCallback? onTap;
@@ -15,6 +15,11 @@ class LandinaSwitchListTile extends StatelessWidget {
     this.leading,
   }) : super(key: key);
 
+  @override
+  State<LandinaSwitchListTile> createState() => _LandinaSwitchListTileState();
+}
+
+class _LandinaSwitchListTileState extends State<LandinaSwitchListTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +42,7 @@ class LandinaSwitchListTile extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.white.withOpacity(0.1),
                   foregroundColor: Colors.black,
-                  child: leading,
+                  child: widget.leading,
                 ),
               )
             : Container(
@@ -55,13 +60,13 @@ class LandinaSwitchListTile extends StatelessWidget {
                   child: CircleAvatar(
                     backgroundColor: Colors.transparent,
                     foregroundColor: Colors.white,
-                    child: leading,
+                    child: widget.leading,
                   ),
                 ),
               ),
         focusColor: const Color(0xfff1f1f1),
         title: Text(
-          "$title",
+          "${widget.title}",
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
           style: const TextStyle(
@@ -71,14 +76,14 @@ class LandinaSwitchListTile extends StatelessWidget {
           ),
         ),
         subtitle: Text(
-          "$subtitle",
+          "${widget.subtitle}",
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
           style: const TextStyle(
             fontSize: 13,
           ),
         ),
-        onTap: onTap,
+        onTap: widget.onTap,
       ),
     );
   }

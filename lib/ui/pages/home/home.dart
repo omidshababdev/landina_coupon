@@ -39,7 +39,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     init();
   }
 
@@ -186,7 +185,9 @@ class _HomePageState extends State<HomePage> {
                               "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
                               style: TextStyle(
                                 fontSize: 13,
-                                color: const Color(0xff3B3B3B).withOpacity(0.5),
+                                color: Config.darkMode != true
+                                    ? Colors.black
+                                    : Colors.white,
                                 height: 2,
                               ),
                             ),
@@ -204,7 +205,11 @@ class _HomePageState extends State<HomePage> {
                                       borderRadius: BorderRadius.circular(30),
                                       border: Border.all(
                                         width: 1,
-                                        color: const Color(0xffF1F1F1),
+                                        color: Config.darkMode != true
+                                            ? const Color(0xffF1F1F1)
+                                                .withOpacity(0.5)
+                                            : const Color(0xffF1F1F1)
+                                                .withOpacity(0.1),
                                       ),
                                     ),
                                     child: const Text(

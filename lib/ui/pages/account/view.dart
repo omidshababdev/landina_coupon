@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -106,7 +107,9 @@ class _AccountPageState extends State<AccountPage> {
                               width: 80,
                               height: 80,
                               decoration: ShapeDecoration(
-                                color: const Color(0xffF1F1F1),
+                                color: Config.darkMode != true
+                                    ? Colors.black.withOpacity(0.05)
+                                    : Colors.white.withOpacity(0.1),
                                 shape: SmoothRectangleBorder(
                                   borderRadius: SmoothBorderRadius(
                                     cornerRadius: 18,
@@ -124,9 +127,12 @@ class _AccountPageState extends State<AccountPage> {
                                   children: [
                                     Text(
                                       "${widget.user!.name}",
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 18,
+                                        color: Config.darkMode != true
+                                            ? Colors.black
+                                            : Colors.white,
                                       ),
                                     ),
                                     Container(
@@ -135,7 +141,9 @@ class _AccountPageState extends State<AccountPage> {
                                         vertical: 2,
                                       ),
                                       decoration: BoxDecoration(
-                                        color: const Color(0xffF1F1F1),
+                                        color: Config.darkMode != true
+                                            ? Colors.black.withOpacity(0.05)
+                                            : Colors.white.withOpacity(0.1),
                                         borderRadius: BorderRadius.circular(50),
                                       ),
                                       child: Text(
@@ -143,8 +151,9 @@ class _AccountPageState extends State<AccountPage> {
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 12,
-                                          color: const Color(0xff3B3B3B)
-                                              .withOpacity(0.5),
+                                          color: Config.darkMode != true
+                                              ? Colors.black
+                                              : Colors.white,
                                         ),
                                       ),
                                     ),
@@ -155,8 +164,9 @@ class _AccountPageState extends State<AccountPage> {
                                   style: TextStyle(
                                     fontFamily: "Poppins",
                                     fontWeight: FontWeight.w400,
-                                    color: const Color(0xff3B3B3B)
-                                        .withOpacity(0.8),
+                                    color: Config.darkMode != true
+                                        ? Colors.black
+                                        : Colors.white,
                                   ),
                                 ),
                               ],
@@ -173,12 +183,16 @@ class _AccountPageState extends State<AccountPage> {
                           moreStyle: TextStyle(
                             height: 2,
                             fontWeight: FontWeight.w600,
-                            color: const Color(0xff3B3B3B).withOpacity(1),
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
                           ),
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             height: 2,
-                            color: const Color(0xff3B3B3B).withOpacity(0.8),
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
                           ),
                         ),
                       ],
@@ -246,8 +260,11 @@ class _AccountPageState extends State<AccountPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          "assets/images/not_found.png",
+                        SvgPicture.asset(
+                          "assets/svg/not_found.svg",
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
                           width: 250,
                         ),
                         const SizedBox(height: 25),
@@ -256,7 +273,9 @@ class _AccountPageState extends State<AccountPage> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: const Color(0xff3B3B3B).withOpacity(0.9),
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
                           ),
                         ),
                       ],

@@ -7,7 +7,7 @@ class LandinaTextButton extends StatelessWidget {
   final String title;
   bool? isLoading = true;
   bool? backgroundColor = false;
-  final VoidCallback onPressed;
+  VoidCallback? onPressed;
   LandinaTextButton({
     Key? key,
     required this.title,

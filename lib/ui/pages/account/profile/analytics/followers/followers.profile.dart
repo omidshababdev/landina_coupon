@@ -12,6 +12,7 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:landina_coupon/ui/widgets/listtile/button.listtile.dart';
 import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 
@@ -72,98 +73,53 @@ class _LinksPageState extends State<FollowersPage> {
 
                   print(isFollowed.runtimeType);
 
-                  return Container(
-                    decoration: const BoxDecoration(
-                      border: Border.symmetric(
-                        horizontal: BorderSide(
-                          width: 0.5,
-                          color: Color(0xffF1F1F1),
+                  return LandinaButtonListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              AccountPage(user: userInfo[index]),
                         ),
+                      );
+                    },
+                    leading: const AspectRatio(
+                      aspectRatio: 1 / 1,
+                      child: CircleAvatar(
+                        backgroundColor: Color(0xffF1F1F1),
+                        foregroundColor: Color(0xff3B3B3B),
                       ),
                     ),
-                    child: ListTile(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                AccountPage(user: userInfo[index]),
-                          ),
-                        );
-                      },
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 25),
-                      leading: const AspectRatio(
-                        aspectRatio: 1 / 1,
-                        child: CircleAvatar(
-                          backgroundColor: Color(0xffF1F1F1),
-                          foregroundColor: Color(0xff3B3B3B),
-                        ),
-                      ),
-                      focusColor: const Color(0xfff1f1f1),
-                      title: Text(
-                        "${snapshot.data[index].name}",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff3B3B3B),
-                        ),
-                      ),
-                      subtitle: Text(
-                        "${snapshot.data[index].username}",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: const TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 13,
-                        ),
-                      ),
-                      trailing: Container(
-                        width: 100,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: LandinaTextButton(
-                          title: isFollowed[index] != true
-                              ? AppLocalizations.of(context)!
-                                  .follow
-                                  .capitalize()
-                              : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
-                          backgroundColor:
-                              isFollowed[index] != true ? true : false,
-                          onPressed: () {
-                            setState(() {
-                              isFollowed[index] != Future.value(true)
-                                  ? {
-                                      Config.client.followUser(
-                                          snapshot.data[index]!.id.toString()),
-                                      isFollowed[index] = Future.value(true),
-                                    }
-                                  : landinaModal(
-                                      LandinaTextButton(
-                                        title:
-                                            "Un${AppLocalizations.of(context)!.follow}",
-                                        onPressed: () {
-                                          setState(() {
-                                            Config.client.unfollowUser(snapshot
-                                                .data[index]!.id
-                                                .toString());
-                                            isFollowed[index] =
-                                                Future.value(true);
-                                            Navigator.pop(context);
-                                          });
-                                        },
-                                      ),
-                                      context);
-                            });
-                          },
-                        ),
-                      ),
-                    ),
+                    title: snapshot.data[index].name,
+                    subtitle: snapshot.data[index].username,
+                    buttonTitle: isFollowed[index] != true
+                        ? AppLocalizations.of(context)!.follow.capitalize()
+                        : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
+                    buttonColor: isFollowed[index] != true ? true : false,
+                    buttonOnPressed: () {
+                      setState(() {
+                        isFollowed[index] != Future.value(true)
+                            ? {
+                                Config.client.followUser(
+                                    snapshot.data[index]!.id.toString()),
+                                isFollowed[index] = Future.value(true),
+                              }
+                            : landinaModal(
+                                LandinaTextButton(
+                                  title:
+                                      "Un${AppLocalizations.of(context)!.follow}",
+                                  onPressed: () {
+                                    setState(() {
+                                      Config.client.unfollowUser(
+                                          snapshot.data[index]!.id.toString());
+                                      isFollowed[index] = Future.value(true);
+                                      Navigator.pop(context);
+                                    });
+                                  },
+                                ),
+                                context);
+                      });
+                    },
                   );
                 },
               );
