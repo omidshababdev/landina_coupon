@@ -67,12 +67,12 @@ class _CouponPageState extends State<CouponPage> {
             parent: ClampingScrollPhysics(),
           ),
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Text(
                     widget.couponInfo.name,
                     style: TextStyle(
                       fontSize: 16,
@@ -82,8 +82,11 @@ class _CouponPageState extends State<CouponPage> {
                           Config.darkMode != true ? Colors.black : Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 15),
-                  ReadMoreText(
+                ),
+                const SizedBox(height: 15),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: ReadMoreText(
                     widget.couponInfo.desc,
                     trimLines: 3,
                     trimMode: TrimMode.Line,
@@ -104,8 +107,45 @@ class _CouponPageState extends State<CouponPage> {
                           Config.darkMode != true ? Colors.black : Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 25),
-                  Row(
+                ),
+                const SizedBox(height: 35),
+                SingleChildScrollView(
+                  key: const PageStorageKey<String>('CategoriesBox'),
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics(),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Wrap(
+                    spacing: 15,
+                    children: [
+                      ...List.generate(
+                        8,
+                        (index) => Container(
+                          constraints: const BoxConstraints(
+                            maxWidth: 250,
+                            maxHeight: 150,
+                          ),
+                          decoration: ShapeDecoration(
+                            color: Config.darkMode != true
+                                ? Colors.black.withOpacity(0.05)
+                                : Colors.white.withOpacity(0.05),
+                            shape: SmoothRectangleBorder(
+                              borderRadius: SmoothBorderRadius(
+                                cornerRadius: 20,
+                                cornerSmoothing: 0.5,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 25),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
                     children: [
                       Expanded(
                         child: FutureBuilder(
@@ -348,8 +388,11 @@ class _CouponPageState extends State<CouponPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 25),
-                  Container(
+                ),
+                const SizedBox(height: 25),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Container(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 15, vertical: 15),
                     decoration: BoxDecoration(
@@ -375,8 +418,11 @@ class _CouponPageState extends State<CouponPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 15),
-                  LandinaTextButton(
+                ),
+                const SizedBox(height: 15),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: LandinaTextButton(
                     title: AppLocalizations.of(context)!.copyCouponCode,
                     backgroundColor: true,
                     onPressed: () {
@@ -422,8 +468,11 @@ class _CouponPageState extends State<CouponPage> {
                       );
                     },
                   ),
-                  const SizedBox(height: 20),
-                  Wrap(
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Wrap(
                     spacing: 8,
                     runSpacing: 8,
                     children: [
@@ -533,10 +582,13 @@ class _CouponPageState extends State<CouponPage> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
-                  Comments(),
-                ],
-              ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Comments(),
+                ),
+              ],
             ),
           ],
         ),

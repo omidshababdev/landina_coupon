@@ -15,6 +15,10 @@ class Config {
   static bool darkMode = false;
   static bool defaultMode = false;
 
+  static setNotifAllowed(bool value) =>
+      GetStorage().write("notifications", value);
+  static bool isNotifAllowed() => GetStorage().read("notifications");
+
   static Locale myLocale = window.locale;
   static List rightAlignLangs = ['fa'];
 
@@ -22,8 +26,8 @@ class Config {
   static TextEditingController emailController = TextEditingController();
   static TextEditingController passwordController = TextEditingController();
 
-  static String baseUrl = "http://localhost:8800/";
-  // static String baseUrl = "https://landina-account.iran.liara.run/";
+  // static String baseUrl = "http://localhost:8800/";
+  static String baseUrl = "https://landina-account.iran.liara.run/";
   // static String baseUrl = "https://landina-account.onrender.com/";
 
   static ApiServices client = ApiServices();

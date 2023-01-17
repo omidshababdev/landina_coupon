@@ -1,70 +1,73 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/main.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/utilities/uniqueId.utilites.dart';
 
-Future<void> allowNotification(context) async {
+Future<void> allowNotifModal(context) async {
   await AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+    Config.setNotifAllowed(isAllowed);
     if (!isAllowed) {
       landinaModal(
-        StatefulBuilder(
-          builder: (BuildContext context, setState) {
-            return Container(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Column(
-                children: [
-                  const Text(
-                    "بهم اجازه ارسال نوتیفیکیشن رو میدی؟",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              children: [
+                const Text(
+                  "بهم اجازه ارسال نوتیفیکیشن رو میدی؟",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
                   ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "قول میدم اذیتت نکنم! فقط اعلان های واجب رو برات ارسال می کنم تا حواست پرت نشه!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w300,
-                    ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "قول میدم اذیتت نکنم! فقط اعلان های واجب رو برات ارسال می کنم تا حواست پرت نشه!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w300,
                   ),
-                  const SizedBox(height: 15),
-                  ButtonBarSuper(
-                    lineSpacing: 15,
-                    wrapType: WrapType.balanced,
-                    wrapFit: WrapFit.proportional,
-                    children: [
-                      LandinaTextButton(
-                        title: "بله حتما",
-                        backgroundColor: true,
-                        onPressed: () async {
-                          AwesomeNotifications()
-                              .requestPermissionToSendNotifications()
-                              .then(
-                                (_) => Navigator.pop(context),
-                              );
-                        },
-                      ),
-                      LandinaTextButton(
-                        title: "نه اصلا",
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            );
-          },
-        ),
-        context,
-      );
+                ),
+                const SizedBox(height: 15),
+                ButtonBarSuper(
+                  lineSpacing: 15,
+                  wrapType: WrapType.balanced,
+                  wrapFit: WrapFit.proportional,
+                  children: [
+                    LandinaTextButton(
+                      title: "بله حتما",
+                      backgroundColor: true,
+                      onPressed: () async {
+                        AwesomeNotifications()
+                            .requestPermissionToSendNotifications()
+                            .then(
+                              (_) => Navigator.pop(context),
+                            );
+                      },
+                    ),
+                    LandinaTextButton(
+                      title: "نه اصلا",
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          context);
     }
+  });
+}
+
+Future<void> notificationStatus(context) async {
+  await AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+    Config.setNotifAllowed(isAllowed);
   });
 }
 
@@ -74,8 +77,9 @@ Future<void> followedNotification() async {
       id: createUniqueId(),
       channelKey: "related_channel",
       title:
-          "${Emojis.money_chart_increasing_with_yen + Emojis.plant_cactus} دنبالت کرد!",
+          "${Emojis.money_chart_increasing_with_yen + Emojis.plant_cactus} نوتیفیکیشن جدید!",
       body: "بدنه نوتیفیکیشن اینجاست!",
+      bigPicture: "asset://assets/images/hand_shake.png ",
       notificationLayout: NotificationLayout.BigPicture,
       actionType: ActionType.Default,
     ),

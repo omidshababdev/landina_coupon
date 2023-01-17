@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     init();
 
-    allowNotification(context);
+    allowNotifModal(context);
   }
 
   Future init() async {
