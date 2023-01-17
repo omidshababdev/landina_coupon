@@ -476,13 +476,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.6.2"
-  insta_like_button:
-    dependency: "direct main"
-    description:
-      name: insta_like_button
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.1.1"
   intl:
     dependency: "direct main"
     description:

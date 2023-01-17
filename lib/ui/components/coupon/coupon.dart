@@ -7,6 +7,7 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/user.model.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/pages/account/view.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
@@ -410,6 +411,7 @@ class _CouponState extends State<Coupon> {
               title: AppLocalizations.of(context)!.copyCouponCode,
               backgroundColor: true,
               onPressed: () {
+                followedNotification();
                 landinaModal(
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
