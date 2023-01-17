@@ -74,9 +74,8 @@ Future<void> followedNotification() async {
       id: createUniqueId(),
       channelKey: "related_channel",
       title:
-          "${Emojis.money_chart_increasing_with_yen + Emojis.plant_cactus} نوتیفیکیشن جدید!",
+          "${Emojis.money_chart_increasing_with_yen + Emojis.plant_cactus} دنبالت کرد!",
       body: "بدنه نوتیفیکیشن اینجاست!",
-      bigPicture: "asset://assets/images/hand_shake.png ",
       notificationLayout: NotificationLayout.BigPicture,
       actionType: ActionType.Default,
     ),
