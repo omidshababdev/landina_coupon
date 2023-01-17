@@ -18,6 +18,7 @@ Future<void> allowNotifModal(context) async {
               children: [
                 const Text(
                   "بهم اجازه ارسال نوتیفیکیشن رو میدی؟",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w400,

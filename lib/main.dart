@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 
 /* PACKAGES */
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';

@@ -101,6 +101,7 @@ class _AccountPageState extends State<AccountPage> {
                       children: [
                         Wrap(
                           spacing: 15,
+                          runSpacing: 15,
                           crossAxisAlignment: WrapCrossAlignment.center,
                           children: [
                             Container(
@@ -123,6 +124,7 @@ class _AccountPageState extends State<AccountPage> {
                               children: [
                                 Wrap(
                                   spacing: 8,
+                                  runSpacing: 8,
                                   crossAxisAlignment: WrapCrossAlignment.center,
                                   children: [
                                     Text(
@@ -335,6 +337,7 @@ class _AccountPageState extends State<AccountPage> {
                     children: [
                       Wrap(
                         spacing: 15,
+                        runSpacing: 15,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Container(
@@ -487,6 +490,7 @@ class _AccountPageState extends State<AccountPage> {
                     children: [
                       Wrap(
                         spacing: 15,
+                        runSpacing: 15,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Container(

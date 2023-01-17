@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -58,72 +59,112 @@ class _LinksPageState extends State<FollowersPage> {
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return ListView.builder(
-                key: PageStorageKey<String>('{$userInfo.name}followers'),
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(
-                  parent: ClampingScrollPhysics(),
-                ),
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  final isFollowed = List.filled(
-                      snapshot.data.length,
-                      Config.client.getFollowedUser(Config.box.read("myId"),
-                          snapshot.data[index]!.id.toString()));
-
-                  print(isFollowed.runtimeType);
-
-                  return LandinaButtonListTile(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              AccountPage(user: userInfo[index]),
+              return Column(
+                children: [
+                  ListView.builder(
+                    key: PageStorageKey<String>('{$userInfo.name}followers'),
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(
+                      parent: ClampingScrollPhysics(),
+                    ),
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      final isFollowed = List.filled(
+                        snapshot.data.length,
+                        Config.client.getFollowedUser(
+                          Config.box.read("myId"),
+                          snapshot.data[index]!.id.toString(),
                         ),
                       );
+
+                      print(isFollowed.runtimeType);
+
+                      return LandinaButtonListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  AccountPage(user: userInfo[index]),
+                            ),
+                          );
+                        },
+                        leading: AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: CircleAvatar(
+                            backgroundColor: Config.darkMode != true
+                                ? Colors.black.withOpacity(0.05)
+                                : Colors.white.withOpacity(0.05),
+                            foregroundColor: Color(0xff3B3B3B),
+                          ),
+                        ),
+                        title: snapshot.data[index].name,
+                        subtitle: snapshot.data[index].username,
+                        buttonTitle: isFollowed[index] != true
+                            ? AppLocalizations.of(context)!.follow.capitalize()
+                            : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
+                        buttonColor: isFollowed[index] != true ? true : false,
+                        buttonOnPressed: () {
+                          setState(() {
+                            isFollowed[index] != Future.value(true)
+                                ? {
+                                    Config.client.followUser(
+                                        snapshot.data[index]!.id.toString()),
+                                    isFollowed[index] = Future.value(true),
+                                  }
+                                : landinaModal(
+                                    LandinaTextButton(
+                                      title:
+                                          "Un${AppLocalizations.of(context)!.follow}",
+                                      onPressed: () {
+                                        setState(() {
+                                          Config.client.unfollowUser(snapshot
+                                              .data[index]!.id
+                                              .toString());
+                                          isFollowed[index] =
+                                              Future.value(true);
+                                          Navigator.pop(context);
+                                        });
+                                      },
+                                    ),
+                                    context);
+                          });
+                        },
+                      );
                     },
-                    leading: AspectRatio(
-                      aspectRatio: 1 / 1,
-                      child: CircleAvatar(
-                        backgroundColor: Config.darkMode != true
-                            ? Colors.black.withOpacity(0.05)
-                            : Colors.white.withOpacity(0.05),
-                        foregroundColor: Color(0xff3B3B3B),
-                      ),
-                    ),
-                    title: snapshot.data[index].name,
-                    subtitle: snapshot.data[index].username,
-                    buttonTitle: isFollowed[index] != true
-                        ? AppLocalizations.of(context)!.follow.capitalize()
-                        : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
-                    buttonColor: isFollowed[index] != true ? true : false,
-                    buttonOnPressed: () {
-                      setState(() {
-                        isFollowed[index] != Future.value(true)
-                            ? {
-                                Config.client.followUser(
-                                    snapshot.data[index]!.id.toString()),
-                                isFollowed[index] = Future.value(true),
-                              }
-                            : landinaModal(
-                                LandinaTextButton(
-                                  title:
-                                      "Un${AppLocalizations.of(context)!.follow}",
-                                  onPressed: () {
-                                    setState(() {
-                                      Config.client.unfollowUser(
-                                          snapshot.data[index]!.id.toString());
-                                      isFollowed[index] = Future.value(true);
-                                      Navigator.pop(context);
-                                    });
-                                  },
+                  ),
+                  snapshot.data.length < 10
+                      ? Center(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 50),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/svg/not_found.svg",
+                                  color: Config.darkMode != true
+                                      ? Colors.black
+                                      : Colors.white,
+                                  width: 250,
                                 ),
-                                context);
-                      });
-                    },
-                  );
-                },
+                                const SizedBox(height: 25),
+                                Text(
+                                  "دیگه بیشتر از این اینجا نیست!",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Config.darkMode != true
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : Container(),
+                ],
               );
             } else if (snapshot.hasError) {
               return Center(
@@ -139,8 +180,11 @@ class _LinksPageState extends State<FollowersPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        "assets/images/not_found.png",
+                      SvgPicture.asset(
+                        "assets/svg/not_found.svg",
+                        color: Config.darkMode != true
+                            ? Colors.black
+                            : Colors.white,
                         width: 250,
                       ),
                       const SizedBox(height: 25),
@@ -149,7 +193,9 @@ class _LinksPageState extends State<FollowersPage> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: const Color(0xff3B3B3B).withOpacity(0.9),
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
                         ),
                       ),
                     ],

@@ -97,7 +97,7 @@ class _CommentsPageState extends State<CommentsPage> {
             ),
             child: LandinaTextField(
               hintText: "چه نظری درباره این کوپن داری؟",
-              prefixIcon: Ionicons.send,
+              prefixIcon: IconlyLight.info_circle,
               suffixIcon: Ionicons.prism_outline,
             ),
           ),

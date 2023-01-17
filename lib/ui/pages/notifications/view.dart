@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/models/user.model.dart';
 import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -32,6 +33,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
   @override
   Widget build(BuildContext context) {
+    @override
+    void initState() {
+      super.initState();
+    }
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
@@ -102,7 +108,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
               : Container(),
           const SizedBox(height: 25),
           FutureBuilder(
-            future: Config.client.getUser(Config.box.read("myId")),
+            future: null,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
                 return Container();
