@@ -173,15 +173,19 @@ class _LinksPageState extends State<LinksPage> {
                       },
                       contentPadding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 25),
-                      leading: const AspectRatio(
+                      leading: AspectRatio(
                         aspectRatio: 1 / 1,
                         child: CircleAvatar(
-                          backgroundColor: Color(0xffF1F1F1),
+                          backgroundColor: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           foregroundColor: Color(0xff3B3B3B),
                           child: Icon(CupertinoIcons.link),
                         ),
                       ),
-                      focusColor: const Color(0xfff1f1f1),
+                      focusColor: Config.darkMode != true
+                          ? Colors.black.withOpacity(0.05)
+                          : Colors.white.withOpacity(0.05),
                       title: Text(
                         "${snapshot.data[index].name}",
                         overflow: TextOverflow.ellipsis,
@@ -282,20 +286,26 @@ class _LinksPageState extends State<LinksPage> {
                   child: ListTile(
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 25),
-                    leading: const AspectRatio(
+                    leading: AspectRatio(
                       aspectRatio: 1 / 1,
                       child: CircleAvatar(
-                        backgroundColor: Color(0xffF1F1F1),
+                        backgroundColor: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                         foregroundColor: Color(0xff3B3B3B),
                       ),
                     ),
-                    focusColor: const Color(0xfff1f1f1),
+                    focusColor: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     title: Container(
                       width: 50,
                       height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: const Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                       ),
                     ),
                     subtitle: Container(
@@ -303,14 +313,18 @@ class _LinksPageState extends State<LinksPage> {
                       height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: const Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                       ),
                     ),
                     trailing: Container(
                       width: 40,
                       height: 25,
                       decoration: BoxDecoration(
-                        color: const Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                         borderRadius: BorderRadius.circular(50),
                       ),
                     ),
@@ -340,31 +354,39 @@ class _LinksPageState extends State<LinksPage> {
               itemCount: 10,
               itemBuilder: (context, index) {
                 return Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     border: Border.symmetric(
                       horizontal: BorderSide(
                         width: 0.5,
-                        color: Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                       ),
                     ),
                   ),
                   child: ListTile(
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 25),
-                    leading: const AspectRatio(
+                    leading: AspectRatio(
                       aspectRatio: 1 / 1,
                       child: CircleAvatar(
-                        backgroundColor: Color(0xffF1F1F1),
+                        backgroundColor: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                         foregroundColor: Color(0xff3B3B3B),
                       ),
                     ),
-                    focusColor: const Color(0xfff1f1f1),
+                    focusColor: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     title: Container(
                       width: 100,
                       height: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: const Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                       ),
                     ),
                     subtitle: Container(
@@ -372,7 +394,9 @@ class _LinksPageState extends State<LinksPage> {
                       height: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: const Color(0xffF1F1F1),
+                        color: Config.darkMode != true
+                            ? Colors.black.withOpacity(0.05)
+                            : Colors.white.withOpacity(0.05),
                       ),
                     ),
                   ),

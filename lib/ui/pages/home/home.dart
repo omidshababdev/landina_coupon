@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
@@ -144,98 +146,106 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Column(
           children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              decoration: BoxDecoration(
-                border: Border.symmetric(
-                  horizontal: BorderSide(
-                    width: 1,
-                    color: Config.darkMode != true
-                        ? const Color(0xffF1F1F1).withOpacity(0.5)
-                        : const Color(0xffF1F1F1).withOpacity(0.1),
+            ClipRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 20.0),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    border: Border.symmetric(
+                      horizontal: BorderSide(
+                        width: 1,
+                        color: Config.darkMode != true
+                            ? const Color(0xffF1F1F1).withOpacity(0.5)
+                            : const Color(0xffF1F1F1).withOpacity(0.1),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              child: LandinaTextField(
-                onChanged: (value) {
-                  searchCoupons(searchController.text);
-                },
-                textfieldController: searchController,
-                hintText: AppLocalizations.of(context)!.searchField,
-                maxLines: 1,
-                prefixIcon: IconlyLight.search,
-                prefixIconOnPressed: () {},
-                suffixIcon: IconlyLight.filter,
-                suffixIconOnPressed: () {
-                  landinaModal(
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 30),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "فیلتر مورد نظرت رو انتخاب کن",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: Config.darkMode != true
-                                    ? Colors.black
-                                    : Colors.white,
-                                height: 2,
-                              ),
-                            ),
-                            const SizedBox(height: 30),
-                            Wrap(
-                              spacing: 8,
-                              runSpacing: 10,
+                  child: LandinaTextField(
+                    onChanged: (value) {
+                      searchCoupons(searchController.text);
+                    },
+                    textfieldController: searchController,
+                    hintText: AppLocalizations.of(context)!.searchField,
+                    maxLines: 1,
+                    prefixIcon: IconlyLight.search,
+                    prefixIconOnPressed: () {},
+                    suffixIcon: IconlyLight.filter,
+                    suffixIconOnPressed: () {
+                      landinaModal(
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 30),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                ...List.generate(
-                                  6,
-                                  (index) => Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 5),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(30),
-                                      border: Border.all(
-                                        width: 1,
-                                        color: Config.darkMode != true
-                                            ? const Color(0xffF1F1F1)
-                                                .withOpacity(0.5)
-                                            : const Color(0xffF1F1F1)
-                                                .withOpacity(0.1),
+                                const Text(
+                                  "فیلتر مورد نظرت رو انتخاب کن",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    color: Config.darkMode != true
+                                        ? Colors.black
+                                        : Colors.white,
+                                    height: 2,
+                                  ),
+                                ),
+                                const SizedBox(height: 30),
+                                Wrap(
+                                  spacing: 8,
+                                  runSpacing: 10,
+                                  children: [
+                                    ...List.generate(
+                                      6,
+                                      (index) => Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8, vertical: 5),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                          border: Border.all(
+                                            width: 1,
+                                            color: Config.darkMode != true
+                                                ? const Color(0xffF1F1F1)
+                                                    .withOpacity(0.5)
+                                                : const Color(0xffF1F1F1)
+                                                    .withOpacity(0.1),
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          "جدیدترین ها",
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500),
+                                        ),
                                       ),
                                     ),
-                                    child: const Text(
-                                      "جدیدترین ها",
-                                      style: TextStyle(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
+                                  ],
+                                ),
+                                const SizedBox(height: 30),
+                                LandinaTextButton(
+                                  title: "تغییرات فیلتر رو اعمال کن",
+                                  backgroundColor: true,
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
                                 ),
                               ],
                             ),
-                            const SizedBox(height: 30),
-                            LandinaTextButton(
-                              title: "تغییرات فیلتر رو اعمال کن",
-                              backgroundColor: true,
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ],
-                        ),
-                      ),
-                      context);
-                },
-                obscureText: false,
+                          ),
+                          context);
+                    },
+                    obscureText: false,
+                  ),
+                ),
               ),
             ),
             Expanded(

@@ -67,13 +67,14 @@ Future main() async {
   await GetStorage.init();
 
   AwesomeNotifications().initialize(
-    'resource://drawable/notification_icon',
+    'resource://drawable/res_notification_app_icon',
     [
       // notification icon
       NotificationChannel(
-        channelGroupKey: 'basic_test',
-        channelKey: 'basic',
+        channelGroupKey: 'basic_channel',
+        channelKey: 'basic_channel',
         channelName: 'Basic notifications',
+        defaultColor: Colors.teal,
         channelDescription: 'Notification channel for basic tests',
         channelShowBadge: true,
         importance: NotificationImportance.High,
