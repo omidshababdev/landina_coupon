@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 /* PACKAGES */
+import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -46,6 +47,9 @@ import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 /* LOCALIZATIONS */
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'ui/widgets/buttons/text.button.dart';
+import 'ui/widgets/modal/modal.dart';
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -69,11 +73,22 @@ Future main() async {
   AwesomeNotifications().initialize(
     'resource://drawable/res_notification_app_icon',
     [
-      // notification icon
+      // Local Notification
       NotificationChannel(
         channelGroupKey: 'basic_channel',
         channelKey: 'basic_channel',
         channelName: 'Basic notifications',
+        defaultColor: Colors.teal,
+        channelDescription: 'Notification channel for basic tests',
+        channelShowBadge: true,
+        importance: NotificationImportance.High,
+        enableVibration: true,
+      ),
+      // Basic Notification
+      NotificationChannel(
+        channelGroupKey: 'related_channel',
+        channelKey: 'related_channel',
+        channelName: 'Related notifications',
         defaultColor: Colors.teal,
         channelDescription: 'Notification channel for basic tests',
         channelShowBadge: true,
