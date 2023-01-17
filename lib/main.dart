@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 /* PACKAGES */
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -64,6 +65,22 @@ Future main() async {
   };
 
   await GetStorage.init();
+
+  AwesomeNotifications().initialize(
+    'resource://drawable/notification_icon',
+    [
+      // notification icon
+      NotificationChannel(
+        channelGroupKey: 'basic_test',
+        channelKey: 'basic',
+        channelName: 'Basic notifications',
+        channelDescription: 'Notification channel for basic tests',
+        channelShowBadge: true,
+        importance: NotificationImportance.High,
+        enableVibration: true,
+      ),
+    ],
+  );
 
   runApp(
     const LandinaCoupon(),

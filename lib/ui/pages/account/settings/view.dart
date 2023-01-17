@@ -145,7 +145,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaSimpleListTile(
             onTap: () {
-              Get.toNamed("/soon");
+              Get.toNamed("/analytics");
             },
             title: "آمار صفحه",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
