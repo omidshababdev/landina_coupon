@@ -45,13 +45,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
           },
         ),
       ),
-      body: ListView(
-        key: const PageStorageKey<String>('notifications'),
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        shrinkWrap: true,
-        physics: const BouncingScrollPhysics(
-          parent: ClampingScrollPhysics(),
-        ),
+      body: Column(
         children: [
           Config.isNotifAllowed() != true
               ? Container(
@@ -107,20 +101,41 @@ class _NotificationsPageState extends State<NotificationsPage> {
                 )
               : Container(),
           const SizedBox(height: 25),
-          SvgPicture.asset(
-            "assets/svg/not_found.svg",
-            color: Config.darkMode != true ? Colors.black : Colors.white,
-            width: 250,
-          ),
-          const SizedBox(height: 25),
-          Text(
-            "هنوز هیچ اعلانی اینجا نداری!",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w500,
-              color: Config.darkMode != true ? Colors.black : Colors.white,
-            ),
+          FutureBuilder(
+            future: Config.client.getUser(Config.box.read("myId")),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return Container();
+              } else if (snapshot.hasError) {
+                return Container();
+              } else {
+                return Center(
+                  child: Column(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/svg/not_found.svg",
+                        color: Config.darkMode != true
+                            ? Colors.black
+                            : Colors.white,
+                        width: 250,
+                      ),
+                      const SizedBox(height: 25),
+                      Text(
+                        "هنوز هیچ اعلانی اینجا نداری!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            },
           ),
         ],
       ),
