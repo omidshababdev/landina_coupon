@@ -47,6 +47,7 @@ import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 /* LOCALIZATIONS */
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'services/notification.services.dart';
 import 'ui/widgets/buttons/text.button.dart';
 import 'ui/widgets/modal/modal.dart';
 
@@ -73,27 +74,59 @@ Future main() async {
   AwesomeNotifications().initialize(
     'resource://drawable/res_notification_app_icon',
     [
-      // Local Notification
+      // Error Notification
       NotificationChannel(
-        channelGroupKey: 'basic_channel',
-        channelKey: 'basic_channel',
-        channelName: 'Basic notifications',
+        channelGroupKey: 'landina_coupon_channel',
+        channelKey: 'error_channel',
+        channelName: 'Error notifications',
         defaultColor: Colors.teal,
-        channelDescription: 'Notification channel for basic tests',
+        channelDescription: 'Notification channel for errors',
         channelShowBadge: true,
         importance: NotificationImportance.High,
         enableVibration: true,
       ),
-      // Basic Notification
+
+      // Followed by Notification
       NotificationChannel(
-        channelGroupKey: 'related_channel',
-        channelKey: 'related_channel',
-        channelName: 'Related notifications',
+        channelGroupKey: 'landina_coupon_channel',
+        channelKey: 'followed_by_channel',
+        channelName: 'Followed by notifications',
         defaultColor: Colors.teal,
-        channelDescription: 'Notification channel for basic tests',
+        channelDescription: 'Notification channel for when someone follows you',
         channelShowBadge: true,
         importance: NotificationImportance.High,
         enableVibration: true,
+      ),
+
+      // Sth Created Notification
+      NotificationChannel(
+        channelGroupKey: 'landina_coupon_channel',
+        channelKey: 'sth_created_channel',
+        channelName: 'Something Created notifications',
+        defaultColor: Colors.teal,
+        channelDescription: 'Notification channel for when something created',
+        channelShowBadge: true,
+        importance: NotificationImportance.High,
+        enableVibration: true,
+      ),
+
+      // Landina Notifications
+      NotificationChannel(
+        channelGroupKey: 'landina_coupon_channel',
+        channelKey: 'landina_notifications_channel',
+        channelName: 'Landina Notifications',
+        defaultColor: Colors.teal,
+        channelDescription:
+            'Notification channel for when Landina Notifications',
+        channelShowBadge: true,
+        importance: NotificationImportance.High,
+        enableVibration: true,
+      ),
+    ],
+    channelGroups: [
+      NotificationChannelGroup(
+        channelGroupKey: 'landina_coupon_channel',
+        channelGroupName: 'Landina Notifications',
       ),
     ],
   );
@@ -104,6 +137,9 @@ Future main() async {
 }
 
 class LandinaCoupon extends StatefulWidget {
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+
   const LandinaCoupon({super.key});
 
   @override
@@ -119,6 +155,17 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
   @override
   void initState() {
+    // Only after at least the action method is set, the notification events are delivered
+    AwesomeNotifications().setListeners(
+      onActionReceivedMethod: NotificationController.onActionReceivedMethod,
+      onNotificationCreatedMethod:
+          NotificationController.onNotificationCreatedMethod,
+      onNotificationDisplayedMethod:
+          NotificationController.onNotificationDisplayedMethod,
+      onDismissActionReceivedMethod:
+          NotificationController.onDismissActionReceivedMethod,
+    );
+
     super.initState();
   }
 
@@ -132,6 +179,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
     PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
 
     return GetMaterialApp(
+      // The navigator key is necessary to allow to navigate through static methods
+      navigatorKey: LandinaCoupon.navigatorKey,
       debugShowCheckedModeBanner: false,
       title: Config.packageInfo.appName,
       themeMode: Config.getThemeStatus(),

@@ -12,6 +12,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.model.dart';
 import 'package:landina_coupon/models/user.model.dart';
 import 'package:landina_coupon/services/api.services.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
@@ -43,65 +44,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     init();
-    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
-      if (!isAllowed) {
-        landinaModal(
-          StatefulBuilder(
-            builder: (BuildContext context, setState) {
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  children: [
-                    const Text(
-                      "بهم اجازه ارسال نوتیفیکیشن رو میدی؟",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      "قول میدم اذیتت نکنم! فقط اعلان های واجب رو برات ارسال می کنم تا حواست پرت نشه!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    ButtonBarSuper(
-                      lineSpacing: 15,
-                      wrapType: WrapType.balanced,
-                      wrapFit: WrapFit.proportional,
-                      children: [
-                        LandinaTextButton(
-                          title: "بله حتما",
-                          backgroundColor: true,
-                          onPressed: () async {
-                            AwesomeNotifications()
-                                .requestPermissionToSendNotifications()
-                                .then(
-                                  (_) => Navigator.pop(context),
-                                );
-                          },
-                        ),
-                        LandinaTextButton(
-                          title: "نه اصلا",
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            },
-          ),
-          context,
-        );
-      }
-    });
+
+    allowNotification(context);
   }
 
   Future init() async {
