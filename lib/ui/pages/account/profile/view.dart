@@ -236,7 +236,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                         width: 80,
                                         height: 80,
                                         decoration: ShapeDecoration(
-                                          color: const Color(0xffF1F1F1),
+                                          color: Config.darkMode != true
+                                              ? Colors.black.withOpacity(0.05)
+                                              : Colors.white.withOpacity(0.05),
                                           image: DecorationImage(
                                             image: FileImage(
                                               profileGet.profileImage.value!,
@@ -256,7 +258,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                             width: 80,
                                             height: 80,
                                             decoration: ShapeDecoration(
-                                              color: const Color(0xffF1F1F1),
+                                              color: Config.darkMode != true
+                                                  ? Colors.black
+                                                      .withOpacity(0.05)
+                                                  : Colors.white
+                                                      .withOpacity(0.05),
                                               image: DecorationImage(
                                                 image: NetworkImage(
                                                   "${Config.baseUrl}users/image/${Config.box.read("myId")}",
@@ -276,7 +282,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                             width: 80,
                                             height: 80,
                                             decoration: ShapeDecoration(
-                                              color: const Color(0xffF1F1F1),
+                                              color: Config.darkMode != true
+                                                  ? Colors.black
+                                                      .withOpacity(0.05)
+                                                  : Colors.white
+                                                      .withOpacity(0.05),
                                               shape: SmoothRectangleBorder(
                                                 borderRadius:
                                                     SmoothBorderRadius(
@@ -815,7 +825,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             width: 80,
                             height: 80,
                             decoration: ShapeDecoration(
-                              color: const Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? Colors.black.withOpacity(0.05)
+                                  : Colors.white.withOpacity(0.05),
                               shape: SmoothRectangleBorder(
                                 borderRadius: SmoothBorderRadius(
                                   cornerRadius: 18,
@@ -831,7 +843,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 100,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -840,7 +854,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 150,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -852,7 +868,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -860,7 +878,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -873,7 +893,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -888,7 +910,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -903,7 +927,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -947,7 +973,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             width: 80,
                             height: 80,
                             decoration: ShapeDecoration(
-                              color: const Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? Colors.black.withOpacity(0.05)
+                                  : Colors.white.withOpacity(0.05),
                               shape: SmoothRectangleBorder(
                                 borderRadius: SmoothBorderRadius(
                                   cornerRadius: 18,
@@ -963,7 +991,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 100,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -972,7 +1002,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 width: 150,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -984,7 +1016,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -992,7 +1026,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -1005,7 +1041,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -1020,7 +1058,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -1035,7 +1075,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,

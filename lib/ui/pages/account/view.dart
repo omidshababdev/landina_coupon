@@ -341,7 +341,9 @@ class _AccountPageState extends State<AccountPage> {
                             width: 80,
                             height: 80,
                             decoration: ShapeDecoration(
-                              color: const Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? Colors.black.withOpacity(0.05)
+                                  : Colors.white.withOpacity(0.05),
                               shape: SmoothRectangleBorder(
                                 borderRadius: SmoothBorderRadius(
                                   cornerRadius: 18,
@@ -357,7 +359,9 @@ class _AccountPageState extends State<AccountPage> {
                                 width: 100,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -366,7 +370,9 @@ class _AccountPageState extends State<AccountPage> {
                                 width: 150,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -378,7 +384,9 @@ class _AccountPageState extends State<AccountPage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -386,7 +394,9 @@ class _AccountPageState extends State<AccountPage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -399,7 +409,9 @@ class _AccountPageState extends State<AccountPage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -414,7 +426,9 @@ class _AccountPageState extends State<AccountPage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -429,7 +443,9 @@ class _AccountPageState extends State<AccountPage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -477,7 +493,9 @@ class _AccountPageState extends State<AccountPage> {
                             width: 80,
                             height: 80,
                             decoration: ShapeDecoration(
-                              color: const Color(0xffF1F1F1),
+                              color: Config.darkMode != true
+                                  ? Colors.black.withOpacity(0.05)
+                                  : Colors.white.withOpacity(0.05),
                               shape: SmoothRectangleBorder(
                                 borderRadius: SmoothBorderRadius(
                                   cornerRadius: 18,
@@ -493,7 +511,9 @@ class _AccountPageState extends State<AccountPage> {
                                 width: 100,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -502,7 +522,9 @@ class _AccountPageState extends State<AccountPage> {
                                 width: 150,
                                 height: 15,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xffF1F1F1),
+                                  color: Config.darkMode != true
+                                      ? Colors.black.withOpacity(0.05)
+                                      : Colors.white.withOpacity(0.05),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                               ),
@@ -514,7 +536,9 @@ class _AccountPageState extends State<AccountPage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -522,7 +546,9 @@ class _AccountPageState extends State<AccountPage> {
                       Container(
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xffF1F1F1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(20),
                         ),
                       ),
@@ -535,7 +561,9 @@ class _AccountPageState extends State<AccountPage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -550,7 +578,9 @@ class _AccountPageState extends State<AccountPage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
@@ -565,7 +595,9 @@ class _AccountPageState extends State<AccountPage> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                   decoration: ShapeDecoration(
-                    color: const Color(0xffF1F1F1),
+                    color: Config.darkMode != true
+                        ? Colors.black.withOpacity(0.05)
+                        : Colors.white.withOpacity(0.05),
                     shape: SmoothRectangleBorder(
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 20,
