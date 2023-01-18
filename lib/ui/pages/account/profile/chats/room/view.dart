@@ -5,17 +5,16 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
-import 'package:landina_coupon/ui/widgets/comment/comment.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
-class CommentsPage extends StatefulWidget {
-  const CommentsPage({super.key});
+class RoomChatPage extends StatefulWidget {
+  const RoomChatPage({super.key});
 
   @override
-  State<CommentsPage> createState() => _CommentsPageState();
+  State<RoomChatPage> createState() => _RoomChatPageState();
 }
 
-class _CommentsPageState extends State<CommentsPage> {
+class _RoomChatPageState extends State<RoomChatPage> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,7 +28,7 @@ class _CommentsPageState extends State<CommentsPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: "نظرات",
+            title: 'روم چت',
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,
@@ -38,47 +37,32 @@ class _CommentsPageState extends State<CommentsPage> {
             },
           ),
         ),
-        body: ListView(
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(
-            parent: ClampingScrollPhysics(),
-          ),
-          children: [
-            const Comment(),
-            Center(
-              child: Container(
-                constraints: const BoxConstraints(
-                  maxWidth: 325,
-                  maxHeight: 500,
+        body: Center(
+          child: Container(
+            width: 325,
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  "assets/svg/not_found.svg",
+                  color: Config.darkMode != true ? Colors.black : Colors.white,
+                  width: 250,
                 ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      "assets/svg/not_found.svg",
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
-                      width: 250,
-                    ),
-                    const SizedBox(height: 25),
-                    Text(
-                      "دیگه نظری اینجا نیست!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                        color: Config.darkMode != true
-                            ? Colors.black
-                            : Colors.white,
-                      ),
-                    ),
-                  ],
+                const SizedBox(height: 25),
+                Text(
+                  "هنوز هیچ پیامی اینجا ندادی!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color:
+                        Config.darkMode != true ? Colors.black : Colors.white,
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
         bottomNavigationBar: BottomAppBar(
           elevation: 0,

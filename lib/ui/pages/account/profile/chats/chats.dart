@@ -6,8 +6,6 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 class ChatsPage extends StatefulWidget {
   const ChatsPage({super.key});
 

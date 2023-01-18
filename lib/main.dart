@@ -14,6 +14,8 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/theme.dart';
 import 'package:landina_coupon/constants/translation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:landina_coupon/ui/pages/account/profile/chats/room/view.dart';
+import 'package:landina_coupon/ui/pages/account/profile/chats/single/view.dart';
 import 'package:landina_coupon/ui/pages/coupon/comments/comments.coupon.dart';
 import 'package:landina_coupon/ui/pages/notifications/view.dart';
 
@@ -222,6 +224,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/contacts", page: () => const ContactsPage()),
         GetPage(name: "/chats", page: () => const ChatsPage()),
+        GetPage(name: "/chats/single", page: () => const SingleChatPage()),
+        GetPage(name: "/chats/room", page: () => const RoomChatPage()),
         GetPage(name: "/links", page: () => LinksPage()),
         GetPage(name: "/categories", page: () => const CategoriesPage()),
         GetPage(name: "/coupon/new", page: () => const NewCouponPage()),
