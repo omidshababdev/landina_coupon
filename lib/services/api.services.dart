@@ -42,12 +42,21 @@ class ApiServices {
 
         return userModel;
       } else {
-        Get.snackbar(res.statusCode.toString(), res.body.toString());
+        landinaNotification(
+          "landina_notifications_channel",
+          res.statusCode.toString(),
+          res.body.toString(),
+        );
+
         return "Failed to Register.";
       }
     } catch (err) {
-      print(err);
-      Get.snackbar("Failed to Register", "$err");
+      landinaNotification(
+        "landina_notifications_channel",
+        "ثبت نام موفقیت آمیز نبود!",
+        "$err",
+      );
+
       return err;
     }
   }
@@ -81,12 +90,21 @@ class ApiServices {
 
         return loginModel;
       } else {
-        Get.snackbar("ورود با موفقیت انجام نشد", "واقعا متاسفیم :(");
+        landinaNotification(
+          "landina_notifications_channel",
+          "ورود با موفقیت انجام نشد",
+          "واقعا متاسفیم :(",
+        );
 
         return "Failed to Login.";
       }
     } catch (err) {
-      Get.snackbar("یک خطایی رخ داده", err.toString());
+      landinaNotification(
+        "landina_notifications_channel",
+        "یک خطایی رخ داده",
+        err.toString(),
+      );
+
       return err;
     }
   }
@@ -227,8 +245,11 @@ class ApiServices {
 
         Config.box.remove("myId");
 
-        Get.snackbar("حساب کاربری با موفقیت حذف شد",
-            "هر وقت خواستی می تونی دوباره یک حساب جدید بسازی ...");
+        landinaNotification(
+          "landina_notifications_channel",
+          "حساب کاربری با موفقیت حذف شد",
+          "هر وقت خواستی می تونی دوباره یک حساب جدید بسازی ...",
+        );
 
         Get.offAll(HomePage());
         Get.toNamed('/home');
@@ -282,8 +303,11 @@ class ApiServices {
       if (res.statusCode == 200) {
         Get.back();
 
-        Get.snackbar("کوپن با موفقیت ایجاد شد",
-            "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.");
+        landinaNotification(
+          "landina_notifications_channel",
+          "کوپن با موفقیت ایجاد شد",
+          "از داخل حسابت می تونی همه کوپن هایی که ایجاد کردی رو ببینی.",
+        );
       } else {
         return "Failed to create coupon.";
       }
@@ -346,10 +370,17 @@ class ApiServices {
 
     try {
       if (res.statusCode == 200) {
-        Get.snackbar("کوپن با موفقیت حذف شد",
-            "هر وقت خواستی می تونی دوباره یک کوپن جدید بسازی ...");
+        landinaNotification(
+          "landina_notifications_channel",
+          "کوپن با موفقیت حذف شد",
+          "هر وقت خواستی می تونی دوباره یک کوپن جدید بسازی ...",
+        );
       } else {
-        Get.snackbar("حذف کوپن انجام نشد!", "باید دوباره امتحان کنی.");
+        landinaNotification(
+          "landina_notifications_channel",
+          "حذف کوپن انجام نشد!",
+          "باید دوباره امتحان کنی.",
+        );
       }
     } catch (err) {
       return err;
