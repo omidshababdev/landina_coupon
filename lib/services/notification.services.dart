@@ -72,15 +72,15 @@ Future<void> notificationStatus(context) async {
   });
 }
 
-Future<void> followedNotification() async {
+Future<void> landinaNotification(
+    String channelKey, String title, String body) async {
   await AwesomeNotifications().createNotification(
     content: NotificationContent(
       id: createUniqueId(),
-      channelKey: "related_channel",
-      title:
-          "${Emojis.money_chart_increasing_with_yen + Emojis.plant_cactus} نوتیفیکیشن جدید!",
-      body: "بدنه نوتیفیکیشن اینجاست!",
-      bigPicture: "asset://assets/images/hand_shake.png ",
+      channelKey: channelKey,
+      title: title,
+      body: body,
+      bigPicture: "asset://assets/images/hand_shake.png",
       notificationLayout: NotificationLayout.BigPicture,
       actionType: ActionType.Default,
     ),

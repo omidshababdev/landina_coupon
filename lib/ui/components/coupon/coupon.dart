@@ -453,7 +453,6 @@ class _CouponState extends State<Coupon> {
                 title: AppLocalizations.of(context)!.copyCouponCode,
                 backgroundColor: true,
                 onPressed: () {
-                  followedNotification();
                   landinaModal(
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 30),

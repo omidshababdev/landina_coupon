@@ -9,6 +9,7 @@ import 'package:landina_coupon/models/login.model.dart';
 import 'package:landina_coupon/models/user.model.dart';
 
 import 'package:get/get.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
 class ApiServices {
@@ -107,11 +108,17 @@ class ApiServices {
 
     try {
       if (res.statusCode == 200) {
-        Get.snackbar('تغییر $updatePart موفقیت آمیز بود',
-            'حالا می تونی با خیال راحت ازش استفاده کنی!');
+        landinaNotification(
+          "landina_notifications_channel",
+          "ویرایش $updatePart موفقیت آمیز بود.",
+          "اطلاعات بیشتر رو اینجا می تونی ببینی.",
+        );
       } else {
-        Get.snackbar('تغییر $updatePart موفقیت آمیز نبود :(',
-            'لطفا دوباره امتحان کن. اگه بازم نتونستی حتما بهمون خبر بده!');
+        landinaNotification(
+          "landina_notifications_channel",
+          "ویرایش $updatePart موفقیت آمیز نبود.",
+          "اطلاعات بیشتر رو اینجا می تونی ببینی.",
+        );
       }
     } catch (err) {
       return err;
@@ -369,7 +376,7 @@ class ApiServices {
       return err;
     }
 
-    return searchCoupons(query);
+    // return searchCoupons(query);
   }
 
   // Get User Followers
