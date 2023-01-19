@@ -99,7 +99,7 @@ class _CommentsPageState extends State<CommentsPage> {
               hintText: "چه نظری درباره این کوپن داری؟",
               minLines: 1,
               maxLines: 3,
-              prefixIcon: IconlyLight.info_circle,
+              prefixIcon: IconlyLight.filter,
               suffixIcon: Ionicons.prism_outline,
             ),
           ),

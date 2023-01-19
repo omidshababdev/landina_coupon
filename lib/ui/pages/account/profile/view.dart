@@ -69,46 +69,49 @@ class _ProfilePageState extends State<ProfilePage> {
         child: LandinaAppbar(
           title: AppLocalizations.of(context)!.account.capitalize(),
           titleOnTap: () {
-            landinaModal(StatefulBuilder(
-              builder: (BuildContext context, setState) {
-                return Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "حساب های من",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+            landinaModal(
+              StatefulBuilder(
+                builder: (BuildContext context, setState) {
+                  return Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "حساب های من",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 5),
-                      Text(
-                        "بزودی امکان ورود به چند حساب رو اضافه می کنیم. فعلا با همین حسابت حال کن :)",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                        const SizedBox(height: 5),
+                        Text(
+                          "بزودی امکان ورود به چند حساب رو اضافه می کنیم. فعلا با همین حسابت حال کن :)",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 15),
-                      LandinaTextButton(
-                        title: "خیلی خوب",
-                        onPressed: () async {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ],
-                  ),
-                );
-              },
-            ), context);
+                        const SizedBox(height: 15),
+                        LandinaTextButton(
+                          title: "خیلی خوب",
+                          onPressed: () async {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+              context,
+            );
           },
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {
@@ -311,88 +314,97 @@ class _ProfilePageState extends State<ProfilePage> {
                                           nameController.text =
                                               snapshot.data!.name;
                                         });
-                                        landinaModal(StatefulBuilder(
-                                          builder:
-                                              (BuildContext context, setState) {
-                                            return Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 30),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "ویرایش نام حساب کاربری",
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: Config.darkMode !=
-                                                              true
-                                                          ? Colors.black
-                                                          : Colors.white,
+                                        landinaModal(
+                                          StatefulBuilder(
+                                            builder: (BuildContext context,
+                                                setState) {
+                                              return Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 30),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      "ویرایش نام حساب کاربری",
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color:
+                                                            Config.darkMode !=
+                                                                    true
+                                                                ? Colors.black
+                                                                : Colors.white,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  const SizedBox(height: 5),
-                                                  Text(
-                                                    "توی فیلد زیر اسمی رو که میخوای صفحت به اون تغییر کنه رو وارد کن ...",
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Config.darkMode !=
-                                                              true
-                                                          ? Colors.black
-                                                          : Colors.white,
+                                                    const SizedBox(height: 5),
+                                                    Text(
+                                                      "توی فیلد زیر اسمی رو که میخوای صفحت به اون تغییر کنه رو وارد کن ...",
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color:
+                                                            Config.darkMode !=
+                                                                    true
+                                                                ? Colors.black
+                                                                : Colors.white,
+                                                      ),
                                                     ),
-                                                  ),
-                                                  const SizedBox(height: 25),
-                                                  LandinaTextField(
-                                                    hintText: "نام حساب کاربری",
-                                                    maxLines: 1,
-                                                    textfieldController:
-                                                        nameController,
-                                                    prefixIcon:
-                                                        IconlyLight.paper,
-                                                    prefixIconOnPressed: () {},
-                                                    suffixIcon:
-                                                        IconlyLight.info_circle,
-                                                    suffixIconOnPressed: () {},
-                                                    obscureText: false,
-                                                    enabled: true,
-                                                  ),
-                                                  const SizedBox(height: 15),
-                                                  LandinaTextButton(
-                                                    title:
-                                                        "تغییر نام حساب کاربری",
-                                                    isLoading: isLoading,
-                                                    onPressed: () async {
-                                                      setState(() {
-                                                        isLoading = true;
-                                                      });
-
-                                                      await Future.delayed(
-                                                          const Duration(
-                                                              seconds: 5), () {
+                                                    const SizedBox(height: 25),
+                                                    LandinaTextField(
+                                                      hintText:
+                                                          "نام حساب کاربری",
+                                                      maxLines: 1,
+                                                      textfieldController:
+                                                          nameController,
+                                                      prefixIcon:
+                                                          IconlyLight.paper,
+                                                      prefixIconOnPressed:
+                                                          () {},
+                                                      suffixIcon: IconlyLight
+                                                          .info_circle,
+                                                      suffixIconOnPressed:
+                                                          () {},
+                                                      obscureText: false,
+                                                      enabled: true,
+                                                    ),
+                                                    const SizedBox(height: 15),
+                                                    LandinaTextButton(
+                                                      title:
+                                                          "تغییر نام حساب کاربری",
+                                                      isLoading: isLoading,
+                                                      onPressed: () async {
                                                         setState(() {
-                                                          isLoading = false;
-                                                          Navigator.pop(
-                                                              context);
+                                                          isLoading = true;
                                                         });
-                                                      });
-                                                      await Config.client
-                                                          .updateUser(
-                                                        "name",
-                                                        nameController.text,
-                                                      );
-                                                    },
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ), context);
+
+                                                        await Future.delayed(
+                                                            const Duration(
+                                                                seconds: 5),
+                                                            () {
+                                                          setState(() {
+                                                            isLoading = false;
+                                                            Navigator.pop(
+                                                                context);
+                                                          });
+                                                        });
+                                                        await Config.client
+                                                            .updateUser(
+                                                          "name",
+                                                          nameController.text,
+                                                        );
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                          context,
+                                        );
                                       },
                                       child: Text(
                                         snapshot.data!.name,
@@ -406,36 +418,39 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        landinaModal(StatefulBuilder(
-                                          builder:
-                                              (BuildContext context, setState) {
-                                            return Container(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 30),
-                                              child: ButtonBarSuper(
-                                                lineSpacing: 15,
-                                                wrapType: WrapType.balanced,
-                                                wrapFit: WrapFit.divided,
-                                                children: [
-                                                  LandinaTextButton(
-                                                    title: "شخصی",
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                  ),
-                                                  LandinaTextButton(
-                                                    title: "کسب و کار",
-                                                    backgroundColor: true,
-                                                    onPressed: () {
-                                                      Navigator.pop(context);
-                                                    },
-                                                  ),
-                                                ],
-                                              ),
-                                            );
-                                          },
-                                        ), context);
+                                        landinaModal(
+                                          StatefulBuilder(
+                                            builder: (BuildContext context,
+                                                setState) {
+                                              return Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 30),
+                                                child: ButtonBarSuper(
+                                                  lineSpacing: 15,
+                                                  wrapType: WrapType.balanced,
+                                                  wrapFit: WrapFit.divided,
+                                                  children: [
+                                                    LandinaTextButton(
+                                                      title: "شخصی",
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                    ),
+                                                    LandinaTextButton(
+                                                      title: "کسب و کار",
+                                                      backgroundColor: true,
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                          context,
+                                        );
                                       },
                                       child: Container(
                                         padding: const EdgeInsets.symmetric(
@@ -470,68 +485,85 @@ class _ProfilePageState extends State<ProfilePage> {
                                       usernameController.text =
                                           snapshot.data!.username;
                                     });
-                                    landinaModal(StatefulBuilder(
-                                      builder:
-                                          (BuildContext context, setState) {
-                                        return Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 30),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "ویرایش نام کاربری",
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Config.darkMode != true
-                                                      ? Colors.black
-                                                      : Colors.white,
+                                    landinaModal(
+                                      StatefulBuilder(
+                                        builder:
+                                            (BuildContext context, setState) {
+                                          return Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 30),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "ویرایش نام کاربری",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color:
+                                                        Config.darkMode != true
+                                                            ? Colors.black
+                                                            : Colors.white,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(height: 5),
-                                              Text(
-                                                "توی فیلد زیر نام کاربری که می خوای داشته باشی رو وارد کن. حواست باشه که باید انگلیسی و بدون فاصله باشه.",
-                                                style: TextStyle(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Config.darkMode != true
-                                                      ? Colors.black
-                                                      : Colors.white,
+                                                const SizedBox(height: 5),
+                                                Text(
+                                                  "توی فیلد زیر نام کاربری که می خوای داشته باشی رو وارد کن. حواست باشه که باید انگلیسی و بدون فاصله باشه.",
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w400,
+                                                    color:
+                                                        Config.darkMode != true
+                                                            ? Colors.black
+                                                            : Colors.white,
+                                                  ),
                                                 ),
-                                              ),
-                                              const SizedBox(height: 25),
-                                              LandinaTextField(
-                                                hintText: "نام کاربری",
-                                                maxLines: 1,
-                                                textfieldController:
-                                                    usernameController,
-                                                prefixIcon: IconlyLight.paper,
-                                                prefixIconOnPressed: () {},
-                                                suffixIcon:
-                                                    IconlyLight.info_circle,
-                                                suffixIconOnPressed: () {},
-                                                obscureText: false,
-                                                enabled: true,
-                                              ),
-                                              const SizedBox(height: 15),
-                                              LandinaTextButton(
-                                                title: "تغییر نام کاربری",
-                                                onPressed: () async {
-                                                  await Config.client
-                                                      .updateUser(
-                                                    "username",
-                                                    usernameController.text,
-                                                  );
-                                                  Navigator.pop(context);
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    ), context);
+                                                const SizedBox(height: 25),
+                                                LandinaTextField(
+                                                  hintText: "نام کاربری",
+                                                  maxLines: 1,
+                                                  textfieldController:
+                                                      usernameController,
+                                                  prefixIcon: IconlyLight.paper,
+                                                  prefixIconOnPressed: () {},
+                                                  suffixIcon:
+                                                      IconlyLight.info_circle,
+                                                  suffixIconOnPressed: () {},
+                                                  obscureText: false,
+                                                  enabled: true,
+                                                ),
+                                                const SizedBox(height: 15),
+                                                LandinaTextButton(
+                                                  title: "تغییر نام کاربری",
+                                                  isLoading: isLoading,
+                                                  onPressed: () async {
+                                                    setState(() {
+                                                      isLoading = true;
+                                                    });
+
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            seconds: 5), () {
+                                                      setState(() {
+                                                        isLoading = false;
+                                                        Navigator.pop(context);
+                                                      });
+                                                    });
+                                                    await Config.client
+                                                        .updateUser(
+                                                      "username",
+                                                      usernameController.text,
+                                                    );
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                      context,
+                                    );
                                   },
                                   child: Text(
                                     snapshot.data!.username,
@@ -554,66 +586,79 @@ class _ProfilePageState extends State<ProfilePage> {
                             setState(() {
                               bioController.text = snapshot.data!.bio;
                             });
-                            landinaModal(StatefulBuilder(
-                              builder: (BuildContext context, setState) {
-                                return Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "ویرایش توضیحات حساب",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Config.darkMode != true
-                                              ? Colors.black
-                                              : Colors.white,
+                            landinaModal(
+                              StatefulBuilder(
+                                builder: (BuildContext context, setState) {
+                                  return Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "ویرایش توضیحات حساب",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Config.darkMode != true
+                                                ? Colors.black
+                                                : Colors.white,
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(height: 5),
-                                      Text(
-                                        "توی فیلد زیر توضیحاتی که می خوای داشته باشی رو وارد کن..",
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w400,
-                                          color: Config.darkMode != true
-                                              ? Colors.black
-                                              : Colors.white,
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "توی فیلد زیر توضیحاتی که می خوای داشته باشی رو وارد کن..",
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                            color: Config.darkMode != true
+                                                ? Colors.black
+                                                : Colors.white,
+                                          ),
                                         ),
-                                      ),
-                                      const SizedBox(height: 25),
-                                      LandinaTextField(
-                                        hintText: "توضیحات حساب",
-                                        minLines: 1,
-                                        maxLines: 3,
-                                        textfieldController: bioController,
-                                        prefixIcon: IconlyLight.paper,
-                                        prefixIconOnPressed: () {},
-                                        suffixIcon: IconlyLight.info_circle,
-                                        suffixIconOnPressed: () {},
-                                        obscureText: false,
-                                        enabled: true,
-                                      ),
-                                      const SizedBox(height: 15),
-                                      LandinaTextButton(
-                                        title: "تغییر توضیحات حساب",
-                                        onPressed: () async {
-                                          await Config.client.updateUser(
-                                            "bio",
-                                            bioController.text,
-                                          );
-                                          setState(() {});
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ), context);
+                                        const SizedBox(height: 25),
+                                        LandinaTextField(
+                                          hintText: "توضیحات حساب",
+                                          minLines: 1,
+                                          maxLines: 3,
+                                          textfieldController: bioController,
+                                          prefixIcon: IconlyLight.paper,
+                                          prefixIconOnPressed: () {},
+                                          suffixIcon: IconlyLight.info_circle,
+                                          suffixIconOnPressed: () {},
+                                          obscureText: false,
+                                          enabled: true,
+                                        ),
+                                        const SizedBox(height: 15),
+                                        LandinaTextButton(
+                                          title: "تغییر توضیحات حساب",
+                                          isLoading: isLoading,
+                                          onPressed: () async {
+                                            setState(() {
+                                              isLoading = true;
+                                            });
+
+                                            await Future.delayed(
+                                                const Duration(seconds: 5), () {
+                                              setState(() {
+                                                isLoading = false;
+                                                Navigator.pop(context);
+                                              });
+                                            });
+                                            await Config.client.updateUser(
+                                              "bio",
+                                              bioController.text,
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
+                              context,
+                            );
                           },
                           child: ReadMoreText(
                             snapshot.data!.bio,
