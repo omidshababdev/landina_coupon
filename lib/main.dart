@@ -219,7 +219,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/fonts", page: () => const FontsPage()),
         GetPage(name: "/proxy", page: () => const ProxyPage()),
         GetPage(name: "/update", page: () => const UpdatePage()),
-        GetPage(name: "/notifications", page: () => const NotificationsPage()),
+        GetPage(name: "/notifications", page: () => NotificationsPage()),
         GetPage(name: "/language", page: () => const LanguagePage()),
         GetPage(name: "/settings", page: () => const SettingsPage()),
         GetPage(name: "/contacts", page: () => const ContactsPage()),

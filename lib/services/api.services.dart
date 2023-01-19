@@ -6,6 +6,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.model.dart';
 import 'package:landina_coupon/models/link.model.dart';
 import 'package:landina_coupon/models/login.model.dart';
+import 'package:landina_coupon/models/notification.model.dart';
 import 'package:landina_coupon/models/user.model.dart';
 
 import 'package:get/get.dart';
@@ -200,6 +201,27 @@ class ApiServices {
         return null;
       } else {
         return 'Failed to get links.';
+      }
+    } catch (err) {
+      return err;
+    }
+  }
+
+// Get User Links
+  Future getUserNotif(String userId) async {
+    final res = await http.get(
+      Uri.parse('${Config.baseUrl}users/$userId/notifications'),
+    );
+
+    try {
+      if (res.statusCode == 200) {
+        List jsonResponse = json.decode(res.body);
+
+        return jsonResponse.map((job) => NotifModel.fromJson(job)).toList();
+      } else if (res.statusCode == 404) {
+        return null;
+      } else {
+        return 'Failed to get notifications.';
       }
     } catch (err) {
       return err;
