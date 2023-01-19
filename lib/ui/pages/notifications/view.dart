@@ -56,47 +56,83 @@ class _NotificationsPageState extends State<NotificationsPage> {
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return ListView.builder(
-                key: const PageStorageKey<String>('notifications'),
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(
-                  parent: ClampingScrollPhysics(),
-                ),
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: Border.symmetric(
-                        horizontal: BorderSide(
-                          width: 0.5,
-                          color: borderColor,
-                        ),
-                      ),
+              return ListView(
+                children: [
+                  ListView.builder(
+                    key: const PageStorageKey<String>('notifications'),
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(
+                      parent: ClampingScrollPhysics(),
                     ),
-                    child: LandinaSimpleListTile(
-                      onTap: () {
-                        setState(() {});
-                      },
-                      leading: AspectRatio(
-                        aspectRatio: 1 / 1,
-                        child: CircleAvatar(
-                          backgroundColor: Config.darkMode != true
-                              ? Colors.black.withOpacity(0.05)
-                              : Colors.white.withOpacity(0.05),
-                          foregroundColor: const Color(0xff3B3B3B),
-                          child: Icon(
-                            IconlyLight.notification,
-                            color: Config.darkMode != true
-                                ? Colors.black
-                                : Colors.white,
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                              width: 0.5,
+                              color: borderColor,
+                            ),
                           ),
                         ),
-                      ),
-                      title: "${snapshot.data[index].title}",
-                      subtitle: "${snapshot.data[index].body}",
-                    ),
-                  );
-                },
+                        child: LandinaSimpleListTile(
+                          onTap: () {
+                            setState(() {});
+                          },
+                          leading: AspectRatio(
+                            aspectRatio: 1 / 1,
+                            child: CircleAvatar(
+                              backgroundColor: Config.darkMode != true
+                                  ? Colors.black.withOpacity(0.05)
+                                  : Colors.white.withOpacity(0.05),
+                              foregroundColor: const Color(0xff3B3B3B),
+                              child: Icon(
+                                IconlyLight.notification,
+                                color: Config.darkMode != true
+                                    ? Colors.black
+                                    : Colors.white,
+                              ),
+                            ),
+                          ),
+                          title: "${snapshot.data[index].title}",
+                          subtitle: "${snapshot.data[index].body}",
+                        ),
+                      );
+                    },
+                  ),
+                  snapshot.data.length < 10
+                      ? Center(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 50),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/svg/not_found.svg",
+                                  color: Config.darkMode != true
+                                      ? Colors.black
+                                      : Colors.white,
+                                  width: 250,
+                                ),
+                                const SizedBox(height: 25),
+                                Text(
+                                  "دیگه بیشتر از این اینجا نیست!",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Config.darkMode != true
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : Container(),
+                ],
               );
             } else if (snapshot.hasError) {
               return Center(
