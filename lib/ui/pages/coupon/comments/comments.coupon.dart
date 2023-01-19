@@ -80,12 +80,12 @@ class _CommentsPageState extends State<CommentsPage> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomAppBar(
-          elevation: 0,
-          color: Config.darkMode != true ? Colors.white : Colors.black,
+        bottomNavigationBar: Padding(
+          padding: MediaQuery.of(context).viewInsets,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             decoration: BoxDecoration(
+              color: Config.darkMode != true ? Colors.white : Colors.black,
               border: Border(
                 top: BorderSide(
                   width: 1,
