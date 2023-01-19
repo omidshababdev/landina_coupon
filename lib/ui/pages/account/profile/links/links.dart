@@ -96,135 +96,171 @@ class _LinksPageState extends State<LinksPage> {
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return ListView.builder(
-                key: PageStorageKey<String>('{$user.name}Links'),
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(
-                  parent: ClampingScrollPhysics(),
-                ),
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      border: Border.symmetric(
-                        horizontal: BorderSide(
-                          width: 0.5,
-                          color: borderColor,
-                        ),
-                      ),
+              return Column(
+                children: [
+                  ListView.builder(
+                    key: PageStorageKey<String>('{$user.name}Links'),
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(
+                      parent: ClampingScrollPhysics(),
                     ),
-                    child: ListTile(
-                      onTap: () {
-                        setState(() {
-                          snapshot.data[index].active =
-                              !snapshot.data[index].active;
-                          Config.client.updateLink(
-                            snapshot.data[index].id,
-                            "active",
-                            snapshot.data[index].active.toString(),
-                          );
-                        });
-                      },
-                      onLongPress: () {
-                        landinaModal(
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 30),
-                              child: ButtonBarSuper(
-                                lineSpacing: 15,
-                                wrapType: WrapType.balanced,
-                                wrapFit: WrapFit.divided,
-                                children: [
-                                  LandinaTextButton(
-                                    title: "مشاهده لینک",
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  LandinaTextButton(
-                                    title: "ویرایش اطلاعات",
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  LandinaTextButton(
-                                    title: "کپی کردن",
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  LandinaTextButton(
-                                    title: "به اشتراک گذاری",
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                  LandinaTextButton(
-                                    title: "حذف لینک",
-                                    backgroundColor: true,
-                                    onPressed: () {
-                                      Navigator.pop(context);
-                                    },
-                                  ),
-                                ],
-                              ),
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          border: Border.symmetric(
+                            horizontal: BorderSide(
+                              width: 0.5,
+                              color: borderColor,
                             ),
-                            context);
-                      },
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 10, horizontal: 25),
-                      leading: AspectRatio(
-                        aspectRatio: 1 / 1,
-                        child: CircleAvatar(
-                          backgroundColor: Config.darkMode != true
-                              ? Colors.black.withOpacity(0.05)
-                              : Colors.white.withOpacity(0.05),
-                          foregroundColor: Color(0xff3B3B3B),
-                          child: Icon(CupertinoIcons.link),
+                          ),
                         ),
-                      ),
-                      focusColor: Config.darkMode != true
-                          ? Colors.black.withOpacity(0.05)
-                          : Colors.white.withOpacity(0.05),
-                      title: Text(
-                        "${snapshot.data[index].name}",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff3B3B3B),
-                        ),
-                      ),
-                      subtitle: Text(
-                        "${snapshot.data[index].address}",
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: const TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 13,
-                        ),
-                      ),
-                      trailing: Transform.scale(
-                        scale: 0.8,
-                        child: CupertinoSwitch(
-                          value: snapshot.data[index].active,
-                          activeColor: const Color(0xff3B3B3B),
-                          onChanged: (value) => setState(
-                            () {
-                              snapshot.data[index].active = value;
+                        child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              snapshot.data[index].active =
+                                  !snapshot.data[index].active;
                               Config.client.updateLink(
                                 snapshot.data[index].id,
                                 "active",
-                                value.toString(),
+                                snapshot.data[index].active.toString(),
                               );
-                            },
+                            });
+                          },
+                          onLongPress: () {
+                            landinaModal(
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 30),
+                                  child: ButtonBarSuper(
+                                    lineSpacing: 15,
+                                    wrapType: WrapType.balanced,
+                                    wrapFit: WrapFit.divided,
+                                    children: [
+                                      LandinaTextButton(
+                                        title: "مشاهده لینک",
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                      LandinaTextButton(
+                                        title: "ویرایش اطلاعات",
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                      LandinaTextButton(
+                                        title: "کپی کردن",
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                      LandinaTextButton(
+                                        title: "به اشتراک گذاری",
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                      LandinaTextButton(
+                                        title: "حذف لینک",
+                                        backgroundColor: true,
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                context);
+                          },
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 25),
+                          leading: AspectRatio(
+                            aspectRatio: 1 / 1,
+                            child: CircleAvatar(
+                              backgroundColor: Config.darkMode != true
+                                  ? Colors.black.withOpacity(0.05)
+                                  : Colors.white.withOpacity(0.05),
+                              foregroundColor: Color(0xff3B3B3B),
+                              child: Icon(CupertinoIcons.link),
+                            ),
+                          ),
+                          focusColor: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.05)
+                              : Colors.white.withOpacity(0.05),
+                          title: Text(
+                            "${snapshot.data[index].name}",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xff3B3B3B),
+                            ),
+                          ),
+                          subtitle: Text(
+                            "${snapshot.data[index].address}",
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: const TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 13,
+                            ),
+                          ),
+                          trailing: Transform.scale(
+                            scale: 0.8,
+                            child: CupertinoSwitch(
+                              value: snapshot.data[index].active,
+                              activeColor: const Color(0xff3B3B3B),
+                              onChanged: (value) => setState(
+                                () {
+                                  snapshot.data[index].active = value;
+                                  Config.client.updateLink(
+                                    snapshot.data[index].id,
+                                    "active",
+                                    value.toString(),
+                                  );
+                                },
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  );
-                },
+                      );
+                    },
+                  ),
+                  snapshot.data.length < 10
+                      ? Center(
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 25, vertical: 50),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/svg/not_found.svg",
+                                  color: Config.darkMode != true
+                                      ? Colors.black
+                                      : Colors.white,
+                                  width: 250,
+                                ),
+                                const SizedBox(height: 25),
+                                Text(
+                                  "دیگه بیشتر از این اینجا نیست!",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Config.darkMode != true
+                                        ? Colors.black
+                                        : Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      : Container(),
+                ],
               );
             } else if (snapshot.hasError) {
               return Center(
