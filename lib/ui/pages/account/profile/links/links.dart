@@ -96,7 +96,12 @@ class _LinksPageState extends State<LinksPage> {
           if (snapshot.connectionState == ConnectionState.done ||
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
-              return Column(
+              return ListView(
+                key: PageStorageKey<String>('{$user.name}Links'),
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(
+                  parent: ClampingScrollPhysics(),
+                ),
                 children: [
                   ListView.builder(
                     key: PageStorageKey<String>('{$user.name}Links'),

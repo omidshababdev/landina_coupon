@@ -22,7 +22,7 @@ class _ContactsPageState extends State<ChatsPage> {
   void initState() {
     super.initState();
 
-    widget.userInfo = Config.client.getUserNotif(Config.box.read("myId"));
+    widget.userInfo = Config.client.getUserFollowers(Config.box.read("myId"));
   }
 
   @override
@@ -54,9 +54,13 @@ class _ContactsPageState extends State<ChatsPage> {
                 snapshot.connectionState == ConnectionState.active) {
               if (snapshot.hasData) {
                 return ListView(
+                  key: const PageStorageKey<String>('chats'),
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(
+                    parent: ClampingScrollPhysics(),
+                  ),
                   children: [
                     ListView.builder(
-                      key: const PageStorageKey<String>('chats'),
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(
                         parent: ClampingScrollPhysics(),
@@ -68,31 +72,77 @@ class _ContactsPageState extends State<ChatsPage> {
                             border: Border.symmetric(
                               horizontal: BorderSide(
                                 width: 0.5,
-                                color: borderColor,
+                                color: Config.darkMode != true
+                                    ? const Color(0xffF1F1F1).withOpacity(0.5)
+                                    : const Color(0xffF1F1F1).withOpacity(0.1),
                               ),
                             ),
                           ),
-                          child: LandinaSimpleListTile(
-                            onTap: () {
-                              Get.toNamed("/chats/single");
-                            },
-                            leading: AspectRatio(
-                              aspectRatio: 1 / 1,
-                              child: CircleAvatar(
-                                backgroundColor: Config.darkMode != true
-                                    ? Colors.black.withOpacity(0.05)
-                                    : Colors.white.withOpacity(0.05),
-                                foregroundColor: const Color(0xff3B3B3B),
-                                child: Icon(
-                                  IconlyLight.notification,
-                                  color: Config.darkMode != true
-                                      ? Colors.black
-                                      : Colors.white,
-                                ),
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 25),
+                            leading: Config.darkMode != true
+                                ? AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          Colors.white.withOpacity(0.1),
+                                      foregroundColor: Colors.black,
+                                      child: const Icon(
+                                        IconlyLight.profile,
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(100),
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Config.darkMode != true
+                                            ? const Color(0xffF1F1F1)
+                                                .withOpacity(0.5)
+                                            : const Color(0xffF1F1F1)
+                                                .withOpacity(0.1),
+                                      ),
+                                    ),
+                                    child: const AspectRatio(
+                                      aspectRatio: 1 / 1,
+                                      child: CircleAvatar(
+                                        backgroundColor: Colors.transparent,
+                                        foregroundColor: Colors.white,
+                                        child: Icon(
+                                          IconlyLight.profile,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                            focusColor: const Color(0xfff1f1f1),
+                            title: Text(
+                              "${snapshot.data[index].name}",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: Config.darkMode != true
+                                    ? Colors.black
+                                    : Colors.white,
                               ),
                             ),
-                            title: "${snapshot.data[index].title}",
-                            subtitle: "${snapshot.data[index].body}",
+                            subtitle: Text(
+                              "${snapshot.data[index].name}",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyle(
+                                color: Config.darkMode != true
+                                    ? Colors.black.withOpacity(0.5)
+                                    : Colors.white.withOpacity(0.5),
+                                fontSize: 13,
+                              ),
+                            ),
+                            onTap: () {
+                              Get.toNamed("page");
+                            },
                           ),
                         );
                       },

@@ -57,6 +57,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
               snapshot.connectionState == ConnectionState.active) {
             if (snapshot.hasData) {
               return ListView(
+                key: const PageStorageKey<String>('notifications'),
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(
+                  parent: ClampingScrollPhysics(),
+                ),
                 children: [
                   ListView.builder(
                     key: const PageStorageKey<String>('notifications'),
