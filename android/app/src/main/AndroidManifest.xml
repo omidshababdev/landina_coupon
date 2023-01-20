@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.landina.landina_coupon">
    <application
-        android:label="landina_coupon"
+        android:label="Landina Coupon"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

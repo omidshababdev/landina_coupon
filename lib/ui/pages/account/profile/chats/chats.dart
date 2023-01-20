@@ -130,7 +130,7 @@ class _ContactsPageState extends State<ChatsPage> {
                               ),
                             ),
                             subtitle: Text(
-                              "${snapshot.data[index].name}",
+                              "${snapshot.data[index].bio}",
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: TextStyle(
@@ -141,7 +141,7 @@ class _ContactsPageState extends State<ChatsPage> {
                               ),
                             ),
                             onTap: () {
-                              Get.toNamed("page");
+                              Get.toNamed("/chats/single");
                             },
                           ),
                         );
