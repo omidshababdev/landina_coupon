@@ -144,9 +144,11 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           AppLocalizations.of(context)!.forgetPass,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff3B3B3B),
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 13,
                           ),
                         ),
@@ -155,7 +157,9 @@ class _LoginPageState extends State<LoginPage> {
                         width: 2,
                         height: 15,
                         decoration: BoxDecoration(
-                          color: const Color(0xff3B3B3B).withOpacity(0.1),
+                          color: Config.darkMode != true
+                              ? Colors.black.withOpacity(0.5)
+                              : Colors.white.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
@@ -165,9 +169,11 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           AppLocalizations.of(context)!.createAnAccount,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Color(0xff3B3B3B),
+                            color: Config.darkMode != true
+                                ? Colors.black
+                                : Colors.white,
                             fontSize: 13,
                           ),
                         ),

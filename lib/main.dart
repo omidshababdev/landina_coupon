@@ -49,8 +49,6 @@ import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'services/notification.services.dart';
-import 'ui/widgets/buttons/text.button.dart';
-import 'ui/widgets/modal/modal.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
