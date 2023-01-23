@@ -39,33 +39,36 @@ class _SingleChatPageState extends State<SingleChatPage> {
         ),
         body: ListView(
           children: [
-            Center(
-              child: Container(
-                width: 325,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      "assets/svg/not_found.svg",
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
-                      width: 250,
-                    ),
-                    const SizedBox(height: 25),
-                    Text(
-                      "هنوز هیچ پیامی اینجا ندادی!",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
+            Expanded(
+              child: Center(
+                child: Container(
+                  width: 325,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 25, vertical: 50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/svg/not_found.svg",
                         color: Config.darkMode != true
                             ? Colors.black
                             : Colors.white,
+                        width: 250,
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 25),
+                      Text(
+                        "هنوز هیچ پیامی اینجا ندادی!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Config.darkMode != true
+                              ? Colors.black
+                              : Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
