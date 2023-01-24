@@ -522,6 +522,14 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaSimpleListTile(
             onTap: () {
+              Get.toNamed("/soon");
+            },
+            title: "پشتیبان گیری از اطلاعات حساب",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
+            leading: const Icon(CupertinoIcons.app),
+          ),
+          LandinaSimpleListTile(
+            onTap: () {
               landinaModal(StatefulBuilder(
                 builder: (BuildContext context, setState) {
                   return Container(

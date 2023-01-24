@@ -80,8 +80,8 @@ Future<void> landinaNotification(
       channelKey: channelKey,
       title: title,
       body: body,
-      bigPicture: "asset://assets/images/hand_shake.png",
-      notificationLayout: NotificationLayout.BigPicture,
+      // bigPicture: "asset://assets/images/hand_shake.png",
+      notificationLayout: NotificationLayout.Default,
       actionType: ActionType.Default,
     ),
   );
