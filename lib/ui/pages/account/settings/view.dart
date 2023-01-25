@@ -187,7 +187,7 @@ class _SettingsPageState extends State<SettingsPage> {
             onTap: () {
               Get.toNamed("/soon");
             },
-            title: "فونت اکانت",
+            title: "فونت اپلیکیشن",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.edit),
           ),
@@ -524,7 +524,7 @@ class _SettingsPageState extends State<SettingsPage> {
             onTap: () {
               Get.toNamed("/soon");
             },
-            title: "پشتیبان گیری از اطلاعات حساب",
+            title: "بک آپ اطلاعات",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(CupertinoIcons.app),
           ),

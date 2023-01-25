@@ -14,6 +14,8 @@ import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
 class ApiServices {
+  
+
   // SignUp User
   Future signUpUser(String username, String email, String password) async {
     http.Response res =
@@ -477,4 +479,16 @@ class ApiServices {
       return err;
     }
   }
+}
+
+class AuthServices{
+  //
+}
+
+class AccountServices{
+  //
+}
+
+class NotificationServices{
+  //
 }
