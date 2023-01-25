@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: "none"
 
-version: 1.0.0+1
+version: 1.0.0
 
 environment:
   sdk: ">=2.18.4 <3.0.0"
@@ -14,6 +14,7 @@ dependencies:
   awesome_notifications: ^0.7.4+1
   cupertino_icons: ^1.0.2
   custom_refresh_indicator: ^2.0.1
+  dynamic_fonts: ^2.0.0
   figma_squircle: ^0.5.3
   firebase: ^9.0.3
   firebase_analytics: ^10.1.0
