@@ -6,6 +6,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -52,11 +53,16 @@ import 'services/notification.services.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(options: DefaultFirebaseConfig.platformOptions);
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  // Get any initial links
+  final PendingDynamicLinkData? initialLink =
+      await FirebaseDynamicLinks.instance.getInitialLink();
 
   await Firebase.initializeApp();
   FlutterError.onError = (errorDetails) {
@@ -131,7 +137,7 @@ Future main() async {
   );
 
   runApp(
-    const LandinaCoupon(),
+    LandinaCoupon(initialLink),
   );
 }
 
@@ -139,7 +145,7 @@ class LandinaCoupon extends StatefulWidget {
   static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
 
-  const LandinaCoupon({super.key});
+  const LandinaCoupon(PendingDynamicLinkData? initialLink, {super.key});
 
   @override
   State<LandinaCoupon> createState() => _LandinaCouponState();
