@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/constants/text.styles.dart';
 
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData(
