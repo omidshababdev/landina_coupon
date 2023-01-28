@@ -171,7 +171,7 @@ class _SettingsPageState extends State<SettingsPage> {
             onTap: () {
               Get.toNamed("/about");
             },
-            title: "درباره",
+            title: "درباره لندینا",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.info_circle),
           ),

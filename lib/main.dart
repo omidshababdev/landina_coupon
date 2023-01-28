@@ -181,8 +181,6 @@ class _LandinaCouponState extends State<LandinaCoupon> {
 
   @override
   Widget build(BuildContext context) {
-    PlatformDispatcher.instance.onLocaleChanged = rebuildOnLocaleChange();
-
     return GetMaterialApp(
       // The navigator key is necessary to allow to navigate through static methods
       navigatorKey: LandinaCoupon.navigatorKey,
