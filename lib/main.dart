@@ -3,10 +3,6 @@ import 'dart:ui';
 
 /* PACKAGES */
 import 'package:awesome_notifications/awesome_notifications.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -59,20 +55,6 @@ Future main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-
-  // Get any initial links
-  final PendingDynamicLinkData? initialLink =
-      await FirebaseDynamicLinks.instance.getInitialLink();
-
-  await Firebase.initializeApp();
-  FlutterError.onError = (errorDetails) {
-    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  };
-  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
 
   await GetStorage.init();
 
@@ -137,7 +119,7 @@ Future main() async {
   );
 
   runApp(
-    LandinaCoupon(initialLink),
+    LandinaCoupon(),
   );
 }
 
@@ -145,7 +127,7 @@ class LandinaCoupon extends StatefulWidget {
   static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
 
-  const LandinaCoupon(PendingDynamicLinkData? initialLink, {super.key});
+  const LandinaCoupon({super.key});
 
   @override
   State<LandinaCoupon> createState() => _LandinaCouponState();
@@ -153,10 +135,6 @@ class LandinaCoupon extends StatefulWidget {
 
 class _LandinaCouponState extends State<LandinaCoupon> {
   VoidCallback rebuildOnLocaleChange() => () => setState(() {});
-
-  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   void initState() {
@@ -208,11 +186,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/profile", page: () => ProfilePage()),
         GetPage(
           name: "/account",
-          page: () => AccountPage(
-            analytics: analytics,
-            observer: observer,
-          ),
-        ),
+          page: () => AccountPage()),
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/followings", page: () => FollowingsPage()),
         GetPage(name: "/analytics", page: () => const AnalyticsPage()),

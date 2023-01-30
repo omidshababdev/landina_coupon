@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 class AboutPage extends StatelessWidget {
@@ -28,8 +30,9 @@ class AboutPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/hand_shake.png",
+              SvgPicture.asset(
+                "assets/svg/hand_shake.svg",
+                color: Config.darkMode != true ? Colors.black : Colors.white,
                 width: 250,
               ),
               const SizedBox(height: 25),
@@ -39,7 +42,7 @@ class AboutPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
-                  color: const Color(0xff3B3B3B).withOpacity(0.9),
+                  color: Config.darkMode != true ? Colors.black : Colors.white,
                 ),
               ),
             ],

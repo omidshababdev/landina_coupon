@@ -1,6 +1,5 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:figma_squircle/figma_squircle.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
@@ -27,10 +26,7 @@ class AccountPage extends StatefulWidget {
   Future? unfollow;
   Future? follow;
 
-  FirebaseAnalytics? analytics;
-  FirebaseAnalyticsObserver? observer;
-
-  AccountPage({super.key, this.user, this.analytics, this.observer});
+  AccountPage({super.key, this.user});
 
   @override
   State<AccountPage> createState() => _AccountPageState();
@@ -51,16 +47,7 @@ class _AccountPageState extends State<AccountPage> {
             .getFollowedUser(
                 Config.box.read("myId"), widget.user!.id.toString())
             .then((value) => print(isFollowed = value));
-
-        setUserProperty();
       },
-    );
-  }
-
-  setUserProperty() async {
-    await FirebaseAnalytics.instance.setUserProperty(
-      name: "user",
-      value: "${widget.user!.email}",
     );
   }
 
