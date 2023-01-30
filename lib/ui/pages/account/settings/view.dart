@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/colors.dart';
+import 'package:landina_coupon/ui/widgets/listtile/switch.listtile.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -69,75 +70,69 @@ class _SettingsPageState extends State<SettingsPage> {
         children: [
           LandinaSimpleListTile(
             onTap: () {
-              landinaModal(StatefulBuilder(
-                builder: (BuildContext context, setState) {
-                  return Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.symmetric(
-                            horizontal: BorderSide(
-                              width: 0.5,
-                              color: Config.darkMode != true
-                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
-                                  : const Color(0xffF1F1F1).withOpacity(0.1),
-                            ),
-                          ),
-                        ),
-                        child: ListTile(
+              landinaModal(
+                StatefulBuilder(
+                  builder: (BuildContext context, setState) {
+                    return Column(
+                      children: [
+                        LandinaSwitchListTile(
                           onTap: () {
                             setState(() {
                               notifications = !notifications;
                             });
                           },
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 25),
-                          leading: const AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: CircleAvatar(
-                              backgroundColor: Color(0xffF1F1F1),
-                              foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.rectangle_3_offgrid),
-                            ),
-                          ),
-                          focusColor: const Color(0xfff1f1f1),
-                          title: const Text(
-                            "فعال کردن اعلان ها",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff3B3B3B),
-                            ),
-                          ),
-                          subtitle: const Text(
-                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                          trailing: Transform.scale(
-                            scale: 0.8,
-                            child: CupertinoSwitch(
-                              value: notifications,
-                              activeColor: const Color(0xff3B3B3B),
-                              onChanged: (value) => setState(
-                                () {
-                                  notifications = !notifications;
-                                  notifications = value;
-                                },
-                              ),
-                            ),
-                          ),
+                          leading: !context.isDarkMode
+                              ? AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.1),
+                                    foregroundColor: Colors.black,
+                                    child: const Icon(
+                                        CupertinoIcons.rectangle_3_offgrid),
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: Config.darkMode != true
+                                          ? const Color(0xffF1F1F1)
+                                              .withOpacity(0.5)
+                                          : const Color(0xffF1F1F1)
+                                              .withOpacity(0.1),
+                                    ),
+                                  ),
+                                  child: const AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.white,
+                                      child: Icon(
+                                          CupertinoIcons.rectangle_3_offgrid),
+                                    ),
+                                  ),
+                                ),
+                          title: "فعال کردن اعلان ها",
+                          subtitle:
+                              "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                          active: notifications,
+                          onChanged: (value) {
+                            setState(
+                              () {
+                                notifications = !notifications;
+                                notifications = value;
+                              },
+                            );
+                          },
                         ),
-                      ),
-                    ],
-                  );
-                },
-              ), context);
+                      ],
+                    );
+                  },
+                ),
+                context,
+              );
             },
             title: "اعلان ها",
             subtitle: "همه اعلان های برنامه رو می تونی از اینجا تنظیم کنی.",
@@ -179,7 +174,7 @@ class _SettingsPageState extends State<SettingsPage> {
             onTap: () {
               Get.toNamed("/language");
             },
-            title: "زبان حساب",
+            title: "زبان اپلیکیشن",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.paper_negative),
           ),
@@ -193,22 +188,12 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaSimpleListTile(
             onTap: () {
-              landinaModal(StatefulBuilder(
-                builder: (BuildContext context, setState) {
-                  return Column(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.symmetric(
-                            horizontal: BorderSide(
-                              width: 0.5,
-                              color: Config.darkMode != true
-                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
-                                  : const Color(0xffF1F1F1).withOpacity(0.1),
-                            ),
-                          ),
-                        ),
-                        child: ListTile(
+              landinaModal(
+                StatefulBuilder(
+                  builder: (BuildContext context, setState) {
+                    return Column(
+                      children: [
+                        LandinaSwitchListTile(
                           onTap: () {
                             setState(() {
                               Config.defaultMode = !Config.defaultMode;
@@ -224,9 +209,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               }
                             });
                           },
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 25),
-                          leading: Config.darkMode != true
+                          leading: !context.isDarkMode
                               ? AspectRatio(
                                   aspectRatio: 1 / 1,
                                   child: CircleAvatar(
@@ -257,62 +240,30 @@ class _SettingsPageState extends State<SettingsPage> {
                                     ),
                                   ),
                                 ),
-                          focusColor: const Color(0xfff1f1f1),
-                          title: const Text(
-                            "حالت پیش فرض دستگاه",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff3B3B3B),
-                            ),
-                          ),
-                          subtitle: const Text(
-                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                          trailing: Transform.scale(
-                            scale: 0.8,
-                            child: CupertinoSwitch(
-                              value: Config.defaultMode,
-                              activeColor: const Color(0xff3B3B3B),
-                              onChanged: (value) => setState(
-                                () {
-                                  Config.defaultMode = !Config.defaultMode;
-                                  Config.defaultMode = value;
-                                  if (Config.defaultMode == true) {
-                                    Get.changeThemeMode(ThemeMode.system);
-                                    Config.themeStatus("defaultMode");
-                                    Config.lightMode = false;
-                                    Config.darkMode = false;
-                                  }
-                                  if (Config.lightMode == false &&
-                                      Config.darkMode == false) {
-                                    Config.defaultMode = true;
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
+                          title: "حالت پیش فرض دستگاه",
+                          subtitle:
+                              "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                          active: Config.defaultMode,
+                          onChanged: (value) {
+                            setState(
+                              () {
+                                Config.defaultMode = !Config.defaultMode;
+                                Config.defaultMode = value;
+                                if (Config.defaultMode == true) {
+                                  Get.changeThemeMode(ThemeMode.system);
+                                  Config.themeStatus("defaultMode");
+                                  Config.lightMode = false;
+                                  Config.darkMode = false;
+                                }
+                                if (Config.lightMode == false &&
+                                    Config.darkMode == false) {
+                                  Config.defaultMode = true;
+                                }
+                              },
+                            );
+                          },
                         ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.symmetric(
-                            horizontal: BorderSide(
-                              width: 0.5,
-                              color: Config.darkMode != true
-                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
-                                  : const Color(0xffF1F1F1).withOpacity(0.1),
-                            ),
-                          ),
-                        ),
-                        child: ListTile(
+                        LandinaSwitchListTile(
                           onTap: () {
                             setState(() {
                               Config.lightMode = !Config.lightMode;
@@ -328,9 +279,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               }
                             });
                           },
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 25),
-                          leading: Config.darkMode != true
+                          leading: !context.isDarkMode
                               ? AspectRatio(
                                   aspectRatio: 1 / 1,
                                   child: CircleAvatar(
@@ -357,63 +306,31 @@ class _SettingsPageState extends State<SettingsPage> {
                                     ),
                                   ),
                                 ),
-                          focusColor: const Color(0xfff1f1f1),
-                          title: const Text(
-                            "حالت روز (لایت مود)",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff3B3B3B),
-                            ),
-                          ),
-                          subtitle: const Text(
-                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                          trailing: Transform.scale(
-                            scale: 0.8,
-                            child: CupertinoSwitch(
-                              value: Config.lightMode,
-                              activeColor: const Color(0xff3B3B3B),
-                              onChanged: (value) => setState(
-                                () {
-                                  Config.lightMode = !Config.lightMode;
-                                  Config.lightMode = value;
+                          title: "حالت روز (لایت مود)",
+                          subtitle:
+                              "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                          active: Config.lightMode,
+                          onChanged: (value) {
+                            setState(
+                              () {
+                                Config.lightMode = !Config.lightMode;
+                                Config.lightMode = value;
 
-                                  if (Config.lightMode == true) {
-                                    Get.changeThemeMode(ThemeMode.light);
-                                    Config.themeStatus("lightMode");
-                                    Config.defaultMode = false;
-                                    Config.darkMode = false;
-                                  }
-                                  if (Config.defaultMode == false &&
-                                      Config.darkMode == false) {
-                                    Config.lightMode = true;
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
+                                if (Config.lightMode == true) {
+                                  Get.changeThemeMode(ThemeMode.light);
+                                  Config.themeStatus("lightMode");
+                                  Config.defaultMode = false;
+                                  Config.darkMode = false;
+                                }
+                                if (Config.defaultMode == false &&
+                                    Config.darkMode == false) {
+                                  Config.lightMode = true;
+                                }
+                              },
+                            );
+                          },
                         ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.symmetric(
-                            horizontal: BorderSide(
-                              width: 0.5,
-                              color: Config.darkMode != true
-                                  ? const Color(0xffF1F1F1).withOpacity(0.5)
-                                  : const Color(0xffF1F1F1).withOpacity(0.1),
-                            ),
-                          ),
-                        ),
-                        child: ListTile(
+                        LandinaSwitchListTile(
                           onTap: () {
                             setState(() {
                               Config.darkMode = !Config.darkMode;
@@ -429,9 +346,7 @@ class _SettingsPageState extends State<SettingsPage> {
                               }
                             });
                           },
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 25),
-                          leading: Config.darkMode != true
+                          leading: !context.isDarkMode
                               ? AspectRatio(
                                   aspectRatio: 1 / 1,
                                   child: CircleAvatar(
@@ -458,54 +373,35 @@ class _SettingsPageState extends State<SettingsPage> {
                                     ),
                                   ),
                                 ),
-                          focusColor: const Color(0xfff1f1f1),
-                          title: const Text(
-                            "حالت شب (دارک مود)",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff3B3B3B),
-                            ),
-                          ),
-                          subtitle: const Text(
-                            "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: TextStyle(
-                              fontSize: 13,
-                            ),
-                          ),
-                          trailing: Transform.scale(
-                            scale: 0.8,
-                            child: CupertinoSwitch(
-                              value: Config.darkMode,
-                              activeColor: const Color(0xff3B3B3B),
-                              onChanged: (value) => setState(
-                                () {
-                                  Config.darkMode = !Config.darkMode;
-                                  Config.darkMode = value;
-                                  if (Config.darkMode == true) {
-                                    Get.changeThemeMode(ThemeMode.dark);
-                                    Config.themeStatus("darkMode");
-                                    Config.defaultMode = false;
-                                    Config.lightMode = false;
-                                  }
-                                  if (Config.defaultMode == false &&
-                                      Config.lightMode == false) {
-                                    Config.darkMode = true;
-                                  }
-                                },
-                              ),
-                            ),
-                          ),
+                          title: "حالت شب (دارک مود)",
+                          subtitle:
+                              "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                          active: Config.darkMode,
+                          onChanged: (value) {
+                            setState(
+                              () {
+                                Config.darkMode = !Config.darkMode;
+                                Config.darkMode = value;
+                                if (Config.darkMode == true) {
+                                  Get.changeThemeMode(ThemeMode.dark);
+                                  Config.themeStatus("darkMode");
+                                  Config.defaultMode = false;
+                                  Config.lightMode = false;
+                                }
+                                if (Config.defaultMode == false &&
+                                    Config.lightMode == false) {
+                                  Config.darkMode = true;
+                                }
+                              },
+                            );
+                          },
                         ),
-                      ),
-                    ],
-                  );
-                },
-              ), context);
+                      ],
+                    );
+                  },
+                ),
+                context,
+              );
             },
             title: "طرح زمینه",
             subtitle:

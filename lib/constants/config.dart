@@ -1,9 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/services/api.services.dart';
-import 'package:landina_coupon/services/upload.services.dart';
+import 'package:landina_coupon/services/upload.service.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class Config {
@@ -34,6 +35,16 @@ class Config {
   static UploadServices upload = UploadServices();
 
   static GetStorage box = GetStorage();
+
+  static appLang(value) {
+    switch (value) {
+      case "fa":
+        break;
+      default:
+        Get.deviceLocale;
+    }
+    Config.box.write("language", value);
+  }
 
   static themeStatus(value) {
     Config.box.write("themeStatus", value);

@@ -149,6 +149,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
           NotificationController.onDismissActionReceivedMethod,
     );
 
+    print(Get.deviceLocale);
+
     super.initState();
   }
 
@@ -184,9 +186,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/signUp/password", page: () => const PasswordPage()),
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => ProfilePage()),
-        GetPage(
-          name: "/account",
-          page: () => AccountPage()),
+        GetPage(name: "/account", page: () => AccountPage()),
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/followings", page: () => FollowingsPage()),
         GetPage(name: "/analytics", page: () => const AnalyticsPage()),

@@ -4,8 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
+import 'package:landina_coupon/ui/widgets/listtile/switch.listtile.dart';
 
 class LanguagePage extends StatefulWidget {
   const LanguagePage({super.key});
@@ -47,658 +49,227 @@ class _LanguagePageState extends State<LanguagePage> {
               parent: ClampingScrollPhysics(),
             ),
             children: [
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      bySystemLang = !bySystemLang;
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Icon(Ionicons.language),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "بر اساس زبان دستگاه",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "با کلیک روی این قسمت پروکسی فعال و یا غیرفعال می شود.",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: bySystemLang,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          bySystemLang = !bySystemLang;
-                          bySystemLang = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      autoTranslate = !autoTranslate;
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "Auto",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                          fontSize: 13,
+              LandinaSwitchListTile(
+                onTap: () {
+                  setState(() {
+                    bySystemLang = !bySystemLang;
+                  });
+                },
+                leading: context.isDarkMode != true
+                    ? AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: CircleAvatar(
+                            backgroundColor: Colors.white.withOpacity(0.1),
+                            foregroundColor: Colors.black,
+                            child: const Icon(Ionicons.language)),
+                      )
+                    : Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            width: 1,
+                            color: context.isDarkMode != true
+                                ? const Color(0xffF1F1F1).withOpacity(0.5)
+                                : const Color(0xffF1F1F1).withOpacity(0.1),
+                          ),
+                        ),
+                        child: const AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            foregroundColor: Colors.white,
+                            child: Icon(Ionicons.language),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "ترجمه خودکار",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
+                title: "بر اساس زبان دستگاه",
+                subtitle:
                     "با کلیک روی این قسمت پروکسی فعال و یا غیرفعال می شود.",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: autoTranslate,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          autoTranslate = !autoTranslate;
-                          autoTranslate = value;
-                        },
+                active: bySystemLang,
+                onChanged: (value) {
+                  setState(
+                    () {
+                      bySystemLang = !bySystemLang;
+                      bySystemLang = value;
+                    },
+                  );
+                },
+              ),
+              LandinaSwitchListTile(
+                onTap: () {
+                  setState(() {
+                    autoTranslate = !autoTranslate;
+                  });
+                },
+                leading: context.isDarkMode != true
+                    ? AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.1),
+                          foregroundColor: Colors.black,
+                          child: const Text(
+                            "Auto",
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                              fontSize: 13,
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            width: 1,
+                            color: context.isDarkMode != true
+                                ? const Color(0xffF1F1F1).withOpacity(0.5)
+                                : const Color(0xffF1F1F1).withOpacity(0.1),
+                          ),
+                        ),
+                        child: const AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            foregroundColor: Colors.white,
+                            child: Text(
+                              "Auto",
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
+                title: "ترجمه خودکار",
+                subtitle:
+                    "با کلیک روی این قسمت پروکسی فعال و یا غیرفعال می شود.",
+                active: autoTranslate,
+                onChanged: (value) {
+                  setState(
+                    () {
+                      autoTranslate = !autoTranslate;
+                      autoTranslate = value;
+                    },
+                  );
+                },
               ),
               const SizedBox(height: 15),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[0] = !langs[0];
-                      Get.updateLocale(const Locale("en"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "EN",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
+              LandinaSwitchListTile(
+                onTap: () {
+                  setState(() {
+                    langs[0] = !langs[0];
+                    Get.updateLocale(const Locale("en"));
+                  });
+                },
+                leading: context.isDarkMode != true
+                    ? AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.1),
+                          foregroundColor: Colors.black,
+                          child: const Text(
+                            "EN",
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            width: 1,
+                            color: context.isDarkMode != true
+                                ? const Color(0xffF1F1F1).withOpacity(0.5)
+                                : const Color(0xffF1F1F1).withOpacity(0.1),
+                          ),
+                        ),
+                        child: const AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            foregroundColor: Colors.white,
+                            child: Text(
+                              "EN",
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "انگلیسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "English",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "en" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[0] = !langs[0];
-                          langs[0] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
+                title: "انگلیسی",
+                subtitle: "English",
+                subtitleFont: "Poppins",
+                active: langs[0],
+                onChanged: (value) {
+                  bySystemLang = !bySystemLang;
+                  bySystemLang = value;
+                  setState(() {
+                    langs[0] = !langs[0];
+                    Get.updateLocale(const Locale("en"));
+                  });
+                },
               ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[1] = !langs[1];
-                      Get.updateLocale(const Locale("fa"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "FA",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
+              LandinaSwitchListTile(
+                onTap: () {
+                  setState(() {
+                    langs[1] = !langs[1];
+                    Get.updateLocale(const Locale("fa"));
+                  });
+                },
+                leading: context.isDarkMode != true
+                    ? AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.1),
+                          foregroundColor: Colors.black,
+                          child: const Text(
+                            "FA",
+                            style: TextStyle(
+                              fontFamily: "Poppins",
+                            ),
+                          ),
+                        ),
+                      )
+                    : Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          border: Border.all(
+                            width: 1,
+                            color: context.isDarkMode != true
+                                ? const Color(0xffF1F1F1).withOpacity(0.5)
+                                : const Color(0xffF1F1F1).withOpacity(0.1),
+                          ),
+                        ),
+                        child: const AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            foregroundColor: Colors.white,
+                            child: Text(
+                              "FA",
+                              style: TextStyle(
+                                fontFamily: "Poppins",
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "فارسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "Persian",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "fa" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[1] = !langs[1];
-                          langs[1] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[1] = !langs[1];
-                      Get.updateLocale(const Locale("fa"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "FA",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "فارسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "Persian",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "fa" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[1] = !langs[1];
-                          langs[1] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[1] = !langs[1];
-                      Get.updateLocale(const Locale("fa"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "FA",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "فارسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "Persian",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "fa" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[1] = !langs[1];
-                          langs[1] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[1] = !langs[1];
-                      Get.updateLocale(const Locale("fa"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "FA",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "فارسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "Persian",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "fa" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[1] = !langs[1];
-                          langs[1] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[1] = !langs[1];
-                      Get.updateLocale(const Locale("fa"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "FA",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "فارسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "Persian",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "fa" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[1] = !langs[1];
-                          langs[1] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[1] = !langs[1];
-                      Get.updateLocale(const Locale("fa"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "FA",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "فارسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "Persian",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "fa" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[1] = !langs[1];
-                          langs[1] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border.symmetric(
-                    horizontal: BorderSide(
-                      width: 0.5,
-                      color: Color(0xffF1F1F1),
-                    ),
-                  ),
-                ),
-                child: ListTile(
-                  onTap: () {
-                    setState(() {
-                      langs[1] = !langs[1];
-                      Get.updateLocale(const Locale("fa"));
-                    });
-                  },
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-                  leading: const AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: CircleAvatar(
-                      backgroundColor: Color(0xffF1F1F1),
-                      foregroundColor: Color(0xff3B3B3B),
-                      child: Text(
-                        "FA",
-                        style: TextStyle(
-                          fontFamily: "Poppins",
-                        ),
-                      ),
-                    ),
-                  ),
-                  focusColor: const Color(0xfff1f1f1),
-                  title: const Text(
-                    "فارسی",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff3B3B3B),
-                    ),
-                  ),
-                  subtitle: const Text(
-                    "Persian",
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Poppins",
-                    ),
-                  ),
-                  trailing: Transform.scale(
-                    scale: 0.8,
-                    child: CupertinoSwitch(
-                      value: myLocale.languageCode == "fa" ? true : false,
-                      activeColor: const Color(0xff3B3B3B),
-                      onChanged: (value) => setState(
-                        () {
-                          langs[1] = !langs[1];
-                          langs[1] = value;
-                        },
-                      ),
-                    ),
-                  ),
-                ),
+                title: "فارسی",
+                subtitle: "Persian",
+                subtitleFont: "Poppins",
+                active: langs[1],
+                onChanged: (value) {
+                  bySystemLang = !bySystemLang;
+                  bySystemLang = value;
+                  setState(() {
+                    langs[1] = !langs[1];
+                    Get.updateLocale(const Locale("fa"));
+                  });
+                },
               ),
             ],
           )),

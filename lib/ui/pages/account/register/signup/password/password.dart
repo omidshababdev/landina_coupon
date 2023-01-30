@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/ui/pages/account/register/signup/signup.get.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
@@ -23,6 +24,8 @@ class PasswordPage extends StatefulWidget {
 class _PasswordPageState extends State<PasswordPage> {
   bool? _passwordVisible;
   bool? isLoading = false;
+
+  final signUpGet = SignUpGet();
 
   @override
   void initState() {
@@ -76,7 +79,8 @@ class _PasswordPageState extends State<PasswordPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    textfieldController: Config.passwordController,
+                    onChanged: (newValue) =>
+                        signUpGet.username.value = newValue,
                     maxLines: 1,
                     hintText:
                         AppLocalizations.of(context)!.password.capitalize(),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/ui/pages/account/register/signup/signup.get.dart';
 import 'package:landina_coupon/ui/widgets/modal/modal.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/password/password.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -24,6 +25,8 @@ class UsernamePage extends StatefulWidget {
 
 class _UsernamePageState extends State<UsernamePage> {
   bool? isLoading = false;
+
+  final signUpGet = SignUpGet();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +75,8 @@ class _UsernamePageState extends State<UsernamePage> {
                     maxLines: 1,
                     hintText: AppLocalizations.of(context)!.username,
                     suffixIcon: IconlyLight.info_circle,
-                    textfieldController: Config.usernameController,
+                    onChanged: (newValue) =>
+                        signUpGet.username.value = newValue,
                     suffixIconOnPressed: () {
                       landinaModal(
                           Text(

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/services/upload.services.dart';
+import 'package:landina_coupon/services/upload.service.dart';
 
 class ProfileGet extends GetxController {
   Rx<File?> profileImage = File('').obs;

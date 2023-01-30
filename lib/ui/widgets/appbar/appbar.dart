@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
 
@@ -40,14 +41,14 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
             border: Border(
               bottom: BorderSide(
                 width: 1,
-                color: Config.darkMode != true
+                color: context.isDarkMode != true
                     ? const Color(0xffF1F1F1).withOpacity(0.5)
                     : const Color(0xffF1F1F1).withOpacity(0.1),
               ),
             ),
           ),
           child: AppBar(
-            backgroundColor: Config.darkMode != true
+            backgroundColor: context.isDarkMode != true
                 ? Colors.white.withOpacity(0.6)
                 : Colors.black.withOpacity(0.6),
             leadingWidth: 66,
@@ -59,7 +60,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                   color: Colors.transparent,
                   border: Border.all(
                     width: 1,
-                    color: Config.darkMode != true
+                    color: context.isDarkMode != true
                         ? const Color(0xffF1F1F1).withOpacity(0.5)
                         : const Color(0xffF1F1F1).withOpacity(0.1),
                   ),
@@ -93,7 +94,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       width: 1,
-                      color: Config.darkMode != true
+                      color: context.isDarkMode != true
                           ? const Color(0xffF1F1F1).withOpacity(0.5)
                           : const Color(0xffF1F1F1).withOpacity(0.1),
                     ),

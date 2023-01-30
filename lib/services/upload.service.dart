@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/services/base.service.dart';
-import 'package:get/get.dart';
+import 'package:landina_coupon/services/notification.services.dart';
 
 class UploadServices extends BaseService {
   final Uri url = Uri.parse('${Config.baseUrl}upload/profile');
@@ -17,20 +17,24 @@ class UploadServices extends BaseService {
           .add(await http.MultipartFile.fromPath('profile', args['profile']));
 
       final response = await http.Response.fromStream(await req.send());
-
       final decodedResponse = jsonDecode(response.body);
+
       if (response.statusCode == 200) {
         return true;
       } else {
-        Get.snackbar(
+        landinaNotification(
+          "landina_notifications_channel",
           decodedResponse['error_code'],
           decodedResponse['message'],
         );
         return false;
       }
-    } catch (er) {
-      print(er);
-      Get.snackbar('Upload Error', er.toString());
+    } catch (err) {
+      landinaNotification(
+        "landina_notifications_channel",
+        "Error",
+        err.toString(),
+      );
       return false;
     }
   }
