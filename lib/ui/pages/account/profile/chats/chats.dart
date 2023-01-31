@@ -72,7 +72,7 @@ class _ContactsPageState extends State<ChatsPage> {
                             border: Border.symmetric(
                               horizontal: BorderSide(
                                 width: 0.5,
-                                color: Config.darkMode != true
+                                color: !context.isDarkMode
                                     ? const Color(0xffF1F1F1).withOpacity(0.5)
                                     : const Color(0xffF1F1F1).withOpacity(0.1),
                               ),
@@ -81,7 +81,7 @@ class _ContactsPageState extends State<ChatsPage> {
                           child: ListTile(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 25),
-                            leading: Config.darkMode != true
+                            leading: !context.isDarkMode
                                 ? AspectRatio(
                                     aspectRatio: 1 / 1,
                                     child: CircleAvatar(
@@ -98,7 +98,7 @@ class _ContactsPageState extends State<ChatsPage> {
                                       borderRadius: BorderRadius.circular(100),
                                       border: Border.all(
                                         width: 1,
-                                        color: Config.darkMode != true
+                                        color: !context.isDarkMode
                                             ? const Color(0xffF1F1F1)
                                                 .withOpacity(0.5)
                                             : const Color(0xffF1F1F1)
@@ -124,7 +124,7 @@ class _ContactsPageState extends State<ChatsPage> {
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
-                                color: Config.darkMode != true
+                                color: !context.isDarkMode
                                     ? Colors.black
                                     : Colors.white,
                               ),
@@ -134,7 +134,7 @@ class _ContactsPageState extends State<ChatsPage> {
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: TextStyle(
-                                color: Config.darkMode != true
+                                color: !context.isDarkMode
                                     ? Colors.black.withOpacity(0.5)
                                     : Colors.white.withOpacity(0.5),
                                 fontSize: 13,
@@ -158,7 +158,7 @@ class _ContactsPageState extends State<ChatsPage> {
                                 children: [
                                   SvgPicture.asset(
                                     "assets/svg/not_found.svg",
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black
                                         : Colors.white,
                                     width: 250,
@@ -169,7 +169,7 @@ class _ContactsPageState extends State<ChatsPage> {
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w500,
-                                      color: Config.darkMode != true
+                                      color: !context.isDarkMode
                                           ? Colors.black
                                           : Colors.white,
                                     ),
@@ -205,9 +205,8 @@ class _ContactsPageState extends State<ChatsPage> {
                       children: [
                         SvgPicture.asset(
                           "assets/svg/not_found.svg",
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                           width: 250,
                         ),
                         const SizedBox(height: 25),
@@ -217,7 +216,7 @@ class _ContactsPageState extends State<ChatsPage> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black
                                 : Colors.white,
                           ),
@@ -240,7 +239,7 @@ class _ContactsPageState extends State<ChatsPage> {
                       border: Border.symmetric(
                         horizontal: BorderSide(
                           width: 0.5,
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? const Color(0xffF1F1F1).withOpacity(0.5)
                               : const Color(0xffF1F1F1).withOpacity(0.1),
                         ),
@@ -252,13 +251,13 @@ class _ContactsPageState extends State<ChatsPage> {
                       leading: AspectRatio(
                         aspectRatio: 1 / 1,
                         child: CircleAvatar(
-                          backgroundColor: Config.darkMode != true
+                          backgroundColor: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                           foregroundColor: Color(0xff3B3B3B),
                         ),
                       ),
-                      focusColor: Config.darkMode != true
+                      focusColor: !context.isDarkMode
                           ? Colors.black.withOpacity(0.05)
                           : Colors.white.withOpacity(0.05),
                       title: Container(
@@ -266,7 +265,7 @@ class _ContactsPageState extends State<ChatsPage> {
                         height: 10,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                         ),
@@ -276,7 +275,7 @@ class _ContactsPageState extends State<ChatsPage> {
                         height: 10,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                         ),
@@ -285,7 +284,7 @@ class _ContactsPageState extends State<ChatsPage> {
                         width: 40,
                         height: 25,
                         decoration: BoxDecoration(
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(50),
@@ -321,7 +320,7 @@ class _ContactsPageState extends State<ChatsPage> {
                       border: Border.symmetric(
                         horizontal: BorderSide(
                           width: 0.5,
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                         ),
@@ -333,13 +332,13 @@ class _ContactsPageState extends State<ChatsPage> {
                       leading: AspectRatio(
                         aspectRatio: 1 / 1,
                         child: CircleAvatar(
-                          backgroundColor: Config.darkMode != true
+                          backgroundColor: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                           foregroundColor: Color(0xff3B3B3B),
                         ),
                       ),
-                      focusColor: Config.darkMode != true
+                      focusColor: !context.isDarkMode
                           ? Colors.black.withOpacity(0.05)
                           : Colors.white.withOpacity(0.05),
                       title: Container(
@@ -347,7 +346,7 @@ class _ContactsPageState extends State<ChatsPage> {
                         height: 15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                         ),
@@ -357,7 +356,7 @@ class _ContactsPageState extends State<ChatsPage> {
                         height: 15,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                         ),

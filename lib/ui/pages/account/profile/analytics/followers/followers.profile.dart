@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -92,7 +93,7 @@ class _LinksPageState extends State<FollowersPage> {
                         leading: AspectRatio(
                           aspectRatio: 1 / 1,
                           child: CircleAvatar(
-                            backgroundColor: Config.darkMode != true
+                            backgroundColor: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                             foregroundColor: Color(0xff3B3B3B),
@@ -101,8 +102,8 @@ class _LinksPageState extends State<FollowersPage> {
                         title: snapshot.data[index].name,
                         subtitle: snapshot.data[index].username,
                         buttonTitle: isFollowed[index] != true
-                            ? AppLocalizations.of(context)!.follow.capitalize()
-                            : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
+                            ? AppLocalizations.of(context)!.follow
+                            : "${AppLocalizations.of(context)!.follow}ed",
                         buttonColor: isFollowed[index] != true ? true : false,
                         buttonOnPressed: () {
                           setState(() {
@@ -143,7 +144,7 @@ class _LinksPageState extends State<FollowersPage> {
                               children: [
                                 SvgPicture.asset(
                                   "assets/svg/not_found.svg",
-                                  color: Config.darkMode != true
+                                  color: !context.isDarkMode
                                       ? Colors.black
                                       : Colors.white,
                                   width: 250,
@@ -154,7 +155,7 @@ class _LinksPageState extends State<FollowersPage> {
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black
                                         : Colors.white,
                                   ),
@@ -182,9 +183,8 @@ class _LinksPageState extends State<FollowersPage> {
                     children: [
                       SvgPicture.asset(
                         "assets/svg/not_found.svg",
-                        color: Config.darkMode != true
-                            ? Colors.black
-                            : Colors.white,
+                        color:
+                            !context.isDarkMode ? Colors.black : Colors.white,
                         width: 250,
                       ),
                       const SizedBox(height: 25),
@@ -193,9 +193,8 @@ class _LinksPageState extends State<FollowersPage> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                         ),
                       ),
                     ],
@@ -216,7 +215,7 @@ class _LinksPageState extends State<FollowersPage> {
                     border: Border.symmetric(
                       horizontal: BorderSide(
                         width: 0.5,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -228,13 +227,13 @@ class _LinksPageState extends State<FollowersPage> {
                     leading: AspectRatio(
                       aspectRatio: 1 / 1,
                       child: CircleAvatar(
-                        backgroundColor: Config.darkMode != true
+                        backgroundColor: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                         foregroundColor: Color(0xff3B3B3B),
                       ),
                     ),
-                    focusColor: Config.darkMode != true
+                    focusColor: !context.isDarkMode
                         ? Colors.black.withOpacity(0.05)
                         : Colors.white.withOpacity(0.05),
                     title: Container(
@@ -242,7 +241,7 @@ class _LinksPageState extends State<FollowersPage> {
                       height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -252,7 +251,7 @@ class _LinksPageState extends State<FollowersPage> {
                       height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -261,7 +260,7 @@ class _LinksPageState extends State<FollowersPage> {
                       width: 100,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                         borderRadius: BorderRadius.circular(10),
@@ -297,7 +296,7 @@ class _LinksPageState extends State<FollowersPage> {
                     border: Border.symmetric(
                       horizontal: BorderSide(
                         width: 0.5,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -309,13 +308,13 @@ class _LinksPageState extends State<FollowersPage> {
                     leading: AspectRatio(
                       aspectRatio: 1 / 1,
                       child: CircleAvatar(
-                        backgroundColor: Config.darkMode != true
+                        backgroundColor: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                         foregroundColor: Color(0xff3B3B3B),
                       ),
                     ),
-                    focusColor: Config.darkMode != true
+                    focusColor: !context.isDarkMode
                         ? Colors.black.withOpacity(0.05)
                         : Colors.white.withOpacity(0.05),
                     title: Container(
@@ -323,7 +322,7 @@ class _LinksPageState extends State<FollowersPage> {
                       height: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -333,7 +332,7 @@ class _LinksPageState extends State<FollowersPage> {
                       height: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),

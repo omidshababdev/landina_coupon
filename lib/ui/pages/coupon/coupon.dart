@@ -78,8 +78,7 @@ class _CouponPageState extends State<CouponPage> {
                       fontSize: 16,
                       height: 2,
                       fontWeight: FontWeight.w600,
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                   ),
                 ),
@@ -96,15 +95,13 @@ class _CouponPageState extends State<CouponPage> {
                       fontSize: 13,
                       height: 2,
                       fontWeight: FontWeight.w600,
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                     style: TextStyle(
                       fontSize: 14,
                       height: 2,
                       fontWeight: FontWeight.w400,
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                   ),
                 ),
@@ -127,7 +124,7 @@ class _CouponPageState extends State<CouponPage> {
                             maxHeight: 150,
                           ),
                           decoration: ShapeDecoration(
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                             shape: SmoothRectangleBorder(
@@ -195,7 +192,7 @@ class _CouponPageState extends State<CouponPage> {
                                             width: 50,
                                             height: 50,
                                             decoration: ShapeDecoration(
-                                              color: Config.darkMode != true
+                                              color: !context.isDarkMode
                                                   ? Colors.black
                                                       .withOpacity(0.05)
                                                   : Colors.white
@@ -234,7 +231,7 @@ class _CouponPageState extends State<CouponPage> {
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
-                                            color: Config.darkMode != true
+                                            color: !context.isDarkMode
                                                 ? Colors.black
                                                 : Colors.white,
                                             fontWeight: FontWeight.w600,
@@ -263,7 +260,7 @@ class _CouponPageState extends State<CouponPage> {
                                             fontFamily: "Poppins",
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14,
-                                            color: Config.darkMode != true
+                                            color: !context.isDarkMode
                                                 ? Colors.black.withOpacity(0.5)
                                                 : Colors.white.withOpacity(0.5),
                                           ),
@@ -285,7 +282,7 @@ class _CouponPageState extends State<CouponPage> {
                                     width: 50,
                                     height: 50,
                                     decoration: ShapeDecoration(
-                                      color: Config.darkMode != true
+                                      color: !context.isDarkMode
                                           ? Colors.black.withOpacity(0.05)
                                           : Colors.white.withOpacity(0.05),
                                       shape: SmoothRectangleBorder(
@@ -304,7 +301,7 @@ class _CouponPageState extends State<CouponPage> {
                                         width: 80,
                                         height: 10,
                                         decoration: BoxDecoration(
-                                          color: Config.darkMode != true
+                                          color: !context.isDarkMode
                                               ? Colors.black.withOpacity(0.05)
                                               : Colors.white.withOpacity(0.05),
                                           borderRadius:
@@ -316,7 +313,7 @@ class _CouponPageState extends State<CouponPage> {
                                         width: 100,
                                         height: 10,
                                         decoration: BoxDecoration(
-                                          color: Config.darkMode != true
+                                          color: !context.isDarkMode
                                               ? Colors.black.withOpacity(0.05)
                                               : Colors.white.withOpacity(0.05),
                                           borderRadius:
@@ -336,7 +333,7 @@ class _CouponPageState extends State<CouponPage> {
                                     width: 50,
                                     height: 50,
                                     decoration: ShapeDecoration(
-                                      color: Config.darkMode != true
+                                      color: !context.isDarkMode
                                           ? Colors.black.withOpacity(0.05)
                                           : Colors.white.withOpacity(0.05),
                                       shape: SmoothRectangleBorder(
@@ -355,7 +352,7 @@ class _CouponPageState extends State<CouponPage> {
                                         width: 80,
                                         height: 10,
                                         decoration: BoxDecoration(
-                                          color: Config.darkMode != true
+                                          color: !context.isDarkMode
                                               ? Colors.black.withOpacity(0.05)
                                               : Colors.white.withOpacity(0.05),
                                           borderRadius:
@@ -367,7 +364,7 @@ class _CouponPageState extends State<CouponPage> {
                                         width: 100,
                                         height: 10,
                                         decoration: BoxDecoration(
-                                          color: Config.darkMode != true
+                                          color: !context.isDarkMode
                                               ? Colors.black.withOpacity(0.05)
                                               : Colors.white.withOpacity(0.05),
                                           borderRadius:
@@ -398,7 +395,7 @@ class _CouponPageState extends State<CouponPage> {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 1,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? const Color(0xffF1F1F1).withOpacity(0.5)
                             : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),
@@ -411,9 +408,8 @@ class _CouponPageState extends State<CouponPage> {
                           fontFamily: "Poppins",
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                         ),
                       ),
                     ),
@@ -435,7 +431,7 @@ class _CouponPageState extends State<CouponPage> {
                                 Text(
                                   "کوپن کپی شد!",
                                   style: TextStyle(
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black
                                         : Colors.white,
                                     fontSize: 16,
@@ -446,7 +442,7 @@ class _CouponPageState extends State<CouponPage> {
                                   "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black
                                         : Colors.white,
                                     height: 2,
@@ -487,7 +483,7 @@ class _CouponPageState extends State<CouponPage> {
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
                               width: 1,
-                              color: Config.darkMode != true
+                              color: !context.isDarkMode
                                   ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
@@ -522,7 +518,7 @@ class _CouponPageState extends State<CouponPage> {
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
                               width: 1,
-                              color: Config.darkMode != true
+                              color: !context.isDarkMode
                                   ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
@@ -557,7 +553,7 @@ class _CouponPageState extends State<CouponPage> {
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
                               width: 1,
-                              color: Config.darkMode != true
+                              color: !context.isDarkMode
                                   ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),

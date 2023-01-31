@@ -146,7 +146,7 @@ class _LoginPageState extends State<LoginPage> {
                           AppLocalizations.of(context)!.forgetPass,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black
                                 : Colors.white,
                             fontSize: 13,
@@ -157,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
                         width: 2,
                         height: 15,
                         decoration: BoxDecoration(
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.5)
                               : Colors.white.withOpacity(0.5),
                           borderRadius: BorderRadius.circular(50),
@@ -171,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                           AppLocalizations.of(context)!.createAnAccount,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black
                                 : Colors.white,
                             fontSize: 13,

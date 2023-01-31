@@ -27,7 +27,7 @@ class _CommentState extends State<Comment> {
           border: Border.symmetric(
             horizontal: BorderSide(
               width: 1,
-              color: Config.darkMode != true
+              color: !context.isDarkMode
                   ? const Color(0xffF1F1F1).withOpacity(0.5)
                   : const Color(0xffF1F1F1).withOpacity(0.1),
             ),
@@ -42,7 +42,7 @@ class _CommentState extends State<Comment> {
               height: 40,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(100),
-                color: Config.darkMode != true
+                color: !context.isDarkMode
                     ? Colors.black.withOpacity(0.05)
                     : Colors.white.withOpacity(0.05),
               ),
@@ -63,9 +63,8 @@ class _CommentState extends State<Comment> {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 13,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                         ),
                       ),
                       Container(
@@ -73,7 +72,7 @@ class _CommentState extends State<Comment> {
                         height: 5,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.5),
                         ),
@@ -85,9 +84,8 @@ class _CommentState extends State<Comment> {
                         style: TextStyle(
                           fontSize: 13,
                           fontFamily: "Poppins",
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                         ),
                       ),
                     ],
@@ -102,13 +100,12 @@ class _CommentState extends State<Comment> {
                       fontSize: 13,
                       height: 2,
                       fontWeight: FontWeight.w600,
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                     style: TextStyle(
                       fontSize: 12,
                       height: 2,
-                      color: Config.darkMode != true
+                      color: !context.isDarkMode
                           ? Colors.black.withOpacity(0.5)
                           : Colors.white.withOpacity(0.5),
                     ),
@@ -129,7 +126,7 @@ class _CommentState extends State<Comment> {
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
                               width: 1,
-                              color: Config.darkMode != true
+                              color: !context.isDarkMode
                                   ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),
@@ -164,7 +161,7 @@ class _CommentState extends State<Comment> {
                             borderRadius: BorderRadius.circular(30),
                             border: Border.all(
                               width: 1,
-                              color: Config.darkMode != true
+                              color: !context.isDarkMode
                                   ? const Color(0xffF1F1F1).withOpacity(0.5)
                                   : const Color(0xffF1F1F1).withOpacity(0.1),
                             ),

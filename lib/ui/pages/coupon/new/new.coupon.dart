@@ -114,14 +114,14 @@ class _NewCouponPageState extends State<NewCouponPage> {
         ),
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
-          color: Config.darkMode != true ? Colors.white : Colors.black,
+          color: !context.isDarkMode ? Colors.white : Colors.black,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             decoration: BoxDecoration(
               border: Border(
                 top: BorderSide(
                   width: 1,
-                  color: Config.darkMode != true
+                  color: !context.isDarkMode
                       ? const Color(0xffF1F1F1).withOpacity(0.5)
                       : const Color(0xffF1F1F1).withOpacity(0.1),
                 ),

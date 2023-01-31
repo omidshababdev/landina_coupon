@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -37,7 +38,7 @@ class _SoonPageState extends State<SoonPage> {
             children: [
               SvgPicture.asset(
                 "assets/svg/hand_shake.svg",
-                color: Config.darkMode != true ? Colors.black : Colors.white,
+                color: !context.isDarkMode ? Colors.black : Colors.white,
                 width: 250,
               ),
               const SizedBox(height: 25),
@@ -47,7 +48,7 @@ class _SoonPageState extends State<SoonPage> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
-                  color: Config.darkMode != true ? Colors.black : Colors.white,
+                  color: !context.isDarkMode ? Colors.black : Colors.white,
                 ),
               ),
             ],

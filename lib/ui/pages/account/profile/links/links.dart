@@ -2,6 +2,7 @@ import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/colors.dart';
@@ -55,9 +56,8 @@ class _LinksPageState extends State<LinksPage> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                         ),
                       ),
                       const SizedBox(height: 5),
@@ -66,9 +66,8 @@ class _LinksPageState extends State<LinksPage> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -183,14 +182,14 @@ class _LinksPageState extends State<LinksPage> {
                           leading: AspectRatio(
                             aspectRatio: 1 / 1,
                             child: CircleAvatar(
-                              backgroundColor: Config.darkMode != true
+                              backgroundColor: !context.isDarkMode
                                   ? Colors.black.withOpacity(0.05)
                                   : Colors.white.withOpacity(0.05),
                               foregroundColor: Color(0xff3B3B3B),
                               child: Icon(CupertinoIcons.link),
                             ),
                           ),
-                          focusColor: Config.darkMode != true
+                          focusColor: !context.isDarkMode
                               ? Colors.black.withOpacity(0.05)
                               : Colors.white.withOpacity(0.05),
                           title: Text(
@@ -244,7 +243,7 @@ class _LinksPageState extends State<LinksPage> {
                               children: [
                                 SvgPicture.asset(
                                   "assets/svg/not_found.svg",
-                                  color: Config.darkMode != true
+                                  color: !context.isDarkMode
                                       ? Colors.black
                                       : Colors.white,
                                   width: 250,
@@ -255,7 +254,7 @@ class _LinksPageState extends State<LinksPage> {
                                   style: TextStyle(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black
                                         : Colors.white,
                                   ),
@@ -284,9 +283,8 @@ class _LinksPageState extends State<LinksPage> {
                     children: [
                       SvgPicture.asset(
                         "assets/svg/not_found.svg",
-                        color: Config.darkMode != true
-                            ? Colors.black
-                            : Colors.white,
+                        color:
+                            !context.isDarkMode ? Colors.black : Colors.white,
                         width: 250,
                       ),
                       const SizedBox(height: 25),
@@ -295,9 +293,8 @@ class _LinksPageState extends State<LinksPage> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,
-                          color: Config.darkMode != true
-                              ? Colors.black
-                              : Colors.white,
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
                         ),
                       ),
                     ],
@@ -318,7 +315,7 @@ class _LinksPageState extends State<LinksPage> {
                     border: Border.symmetric(
                       horizontal: BorderSide(
                         width: 0.5,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? const Color(0xffF1F1F1).withOpacity(0.5)
                             : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),
@@ -330,13 +327,13 @@ class _LinksPageState extends State<LinksPage> {
                     leading: AspectRatio(
                       aspectRatio: 1 / 1,
                       child: CircleAvatar(
-                        backgroundColor: Config.darkMode != true
+                        backgroundColor: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                         foregroundColor: Color(0xff3B3B3B),
                       ),
                     ),
-                    focusColor: Config.darkMode != true
+                    focusColor: !context.isDarkMode
                         ? Colors.black.withOpacity(0.05)
                         : Colors.white.withOpacity(0.05),
                     title: Container(
@@ -344,7 +341,7 @@ class _LinksPageState extends State<LinksPage> {
                       height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -354,7 +351,7 @@ class _LinksPageState extends State<LinksPage> {
                       height: 10,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -363,7 +360,7 @@ class _LinksPageState extends State<LinksPage> {
                       width: 40,
                       height: 25,
                       decoration: BoxDecoration(
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                         borderRadius: BorderRadius.circular(50),
@@ -399,7 +396,7 @@ class _LinksPageState extends State<LinksPage> {
                     border: Border.symmetric(
                       horizontal: BorderSide(
                         width: 0.5,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -411,13 +408,13 @@ class _LinksPageState extends State<LinksPage> {
                     leading: AspectRatio(
                       aspectRatio: 1 / 1,
                       child: CircleAvatar(
-                        backgroundColor: Config.darkMode != true
+                        backgroundColor: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                         foregroundColor: Color(0xff3B3B3B),
                       ),
                     ),
-                    focusColor: Config.darkMode != true
+                    focusColor: !context.isDarkMode
                         ? Colors.black.withOpacity(0.05)
                         : Colors.white.withOpacity(0.05),
                     title: Container(
@@ -425,7 +422,7 @@ class _LinksPageState extends State<LinksPage> {
                       height: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),
@@ -435,7 +432,7 @@ class _LinksPageState extends State<LinksPage> {
                       height: 15,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                       ),

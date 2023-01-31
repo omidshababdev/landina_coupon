@@ -52,7 +52,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
       decoration: BoxDecoration(
         border: Border.all(
           width: 1,
-          color: Config.darkMode != true
+          color: !context.isDarkMode
               ? const Color(0xffF1F1F1).withOpacity(0.5)
               : const Color(0xffF1F1F1).withOpacity(0.1),
         ),
@@ -126,7 +126,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
               onPressed: widget.suffixIconOnPressed,
               icon: Icon(
                 widget.suffixIcon,
-                color: Config.darkMode != true ? Colors.black : Colors.white,
+                color: !context.isDarkMode ? Colors.black : Colors.white,
               ),
             ),
           ),

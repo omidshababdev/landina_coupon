@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                     border: Border.symmetric(
                       horizontal: BorderSide(
                         width: 1,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? const Color(0xffF1F1F1).withOpacity(0.5)
                             : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),
@@ -194,7 +194,7 @@ class _HomePageState extends State<HomePage> {
                                   "از این قسمت می تونی کوپن ها رو بر اساس فیلتر های زیر فیلتر کنی.",
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black
                                         : Colors.white,
                                     height: 2,
@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                                               BorderRadius.circular(30),
                                           border: Border.all(
                                             width: 1,
-                                            color: Config.darkMode != true
+                                            color: !context.isDarkMode
                                                 ? const Color(0xffF1F1F1)
                                                     .withOpacity(0.5)
                                                 : const Color(0xffF1F1F1)
@@ -311,7 +311,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             SvgPicture.asset(
                               "assets/svg/not_found.svg",
-                              color: Config.darkMode != true
+                              color: !context.isDarkMode
                                   ? Colors.black
                                   : Colors.white,
                               width: 250,
@@ -322,7 +322,7 @@ class _HomePageState extends State<HomePage> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
-                                color: Config.darkMode != true
+                                color: !context.isDarkMode
                                     ? Colors.black
                                     : Colors.white,
                               ),
@@ -347,7 +347,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 20),
                           decoration: ShapeDecoration(
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.08),
                             shape: SmoothRectangleBorder(

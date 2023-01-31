@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 
 class LandinaIconButton extends StatelessWidget {
@@ -17,7 +18,7 @@ class LandinaIconButton extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(
           width: 1,
-          color: Config.darkMode != true
+          color: !context.isDarkMode
               ? const Color(0xffF1F1F1).withOpacity(0.5)
               : const Color(0xffF1F1F1).withOpacity(0.1),
         ),
@@ -27,7 +28,7 @@ class LandinaIconButton extends StatelessWidget {
         onPressed: onPressed,
         icon: Icon(
           icon,
-          color: Config.darkMode != true ? Colors.black : Colors.white,
+          color: !context.isDarkMode ? Colors.black : Colors.white,
         ),
       ),
     );

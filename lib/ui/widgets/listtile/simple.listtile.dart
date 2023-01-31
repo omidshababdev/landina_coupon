@@ -23,7 +23,7 @@ class LandinaSimpleListTile extends StatelessWidget {
         border: Border.symmetric(
           horizontal: BorderSide(
             width: 0.5,
-            color: Config.darkMode != true
+            color: !context.isDarkMode
                 ? const Color(0xffF1F1F1).withOpacity(0.5)
                 : const Color(0xffF1F1F1).withOpacity(0.1),
           ),

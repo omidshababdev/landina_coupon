@@ -58,8 +58,7 @@ class _CommentsPageState extends State<CommentsPage> {
                   children: [
                     SvgPicture.asset(
                       "assets/svg/not_found.svg",
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                       width: 250,
                     ),
                     const SizedBox(height: 25),
@@ -69,9 +68,8 @@ class _CommentsPageState extends State<CommentsPage> {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w500,
-                        color: Config.darkMode != true
-                            ? Colors.black
-                            : Colors.white,
+                        color:
+                            !context.isDarkMode ? Colors.black : Colors.white,
                       ),
                     ),
                   ],
@@ -85,11 +83,11 @@ class _CommentsPageState extends State<CommentsPage> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             decoration: BoxDecoration(
-              color: Config.darkMode != true ? Colors.white : Colors.black,
+              color: !context.isDarkMode ? Colors.white : Colors.black,
               border: Border(
                 top: BorderSide(
                   width: 1,
-                  color: Config.darkMode != true
+                  color: !context.isDarkMode
                       ? const Color(0xffF1F1F1).withOpacity(0.5)
                       : const Color(0xffF1F1F1).withOpacity(0.1),
                 ),
