@@ -22,15 +22,11 @@ class PasswordPage extends StatefulWidget {
 }
 
 class _PasswordPageState extends State<PasswordPage> {
-  bool? _passwordVisible;
-  bool? isLoading = false;
-
   final signUpGet = SignUpGet();
 
   @override
   void initState() {
     super.initState();
-    _passwordVisible = false;
   }
 
   @override
@@ -84,17 +80,18 @@ class _PasswordPageState extends State<PasswordPage> {
                     maxLines: 1,
                     hintText:
                         AppLocalizations.of(context)!.password.capitalize(),
-                    suffixIcon: _passwordVisible == false
+                    suffixIcon: signUpGet.passwordVisible.value == false
                         ? IconlyLight.show
                         : IconlyLight.hide,
                     suffixIconOnPressed: () {
                       setState(() {
-                        _passwordVisible = !_passwordVisible!;
+                        signUpGet.passwordVisible.value =
+                            !signUpGet.passwordVisible.value;
                       });
                     },
                     prefixIcon: IconlyLight.password,
                     prefixIconOnPressed: () {},
-                    obscureText: !_passwordVisible!,
+                    obscureText: !signUpGet.passwordVisible.value,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -104,10 +101,10 @@ class _PasswordPageState extends State<PasswordPage> {
                     title: AppLocalizations.of(context)!
                         .goToTheNextLevel
                         .capitalize(),
-                    isLoading: isLoading,
+                    isLoading: signUpGet.isLoading.value,
                     onPressed: () async {
                       setState(() {
-                        isLoading = true;
+                        signUpGet.isLoading.value = true;
                       });
 
                       await Future.delayed(const Duration(seconds: 5), () {
@@ -118,7 +115,7 @@ class _PasswordPageState extends State<PasswordPage> {
                         );
 
                         setState(() {
-                          isLoading = false;
+                          signUpGet.isLoading.value = false;
                         });
                       });
                     },

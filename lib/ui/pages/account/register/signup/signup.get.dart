@@ -7,4 +7,6 @@ class SignUpGet extends GetxController {
   var password = ''.obs;
 
   var isLoading = false.obs;
+
+  var passwordVisible = false.obs;
 }

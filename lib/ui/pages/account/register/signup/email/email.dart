@@ -23,8 +23,6 @@ class EmailPage extends StatefulWidget {
 }
 
 class _EmailPageState extends State<EmailPage> {
-  bool? isLoading = false;
-
   final signUpGet = SignUpGet();
 
   @override
@@ -86,15 +84,15 @@ class _EmailPageState extends State<EmailPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
                     title: AppLocalizations.of(context)!.goToTheNextLevel,
-                    isLoading: isLoading,
+                    isLoading: signUpGet.isLoading.value,
                     onPressed: () async {
                       setState(() {
-                        isLoading = true;
+                        signUpGet.isLoading.value = true;
                       });
 
                       await Future.delayed(const Duration(seconds: 5), () {
                         setState(() {
-                          isLoading = false;
+                          signUpGet.isLoading.value = false;
                         });
                       });
                       Get.toNamed("/signUp/password");
