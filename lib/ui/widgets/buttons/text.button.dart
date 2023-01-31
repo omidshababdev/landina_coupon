@@ -1,5 +1,6 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/text.styles.dart';
 
@@ -21,7 +22,7 @@ class LandinaTextButton extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 60,
-      decoration: Config.darkMode != true
+      decoration: !context.isDarkMode
           ? backgroundColor != true
               ? ShapeDecoration(
                   color: Colors.black.withOpacity(0.05),
@@ -79,7 +80,7 @@ class LandinaTextButton extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: Config.darkMode != true
+                  color: !context.isDarkMode
                       ? backgroundColor != true
                           ? Colors.black
                           : Colors.white
@@ -91,7 +92,7 @@ class LandinaTextButton extends StatelessWidget {
                 height: 25,
                 width: 25,
                 child: CircularProgressIndicator(
-                  color: Config.darkMode != true
+                  color: !context.isDarkMode
                       ? backgroundColor != true
                           ? Colors.black.withOpacity(0.5)
                           : Colors.white

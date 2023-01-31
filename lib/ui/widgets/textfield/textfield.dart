@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 
 class LandinaTextField extends StatefulWidget {
@@ -98,7 +99,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
             onPressed: widget.prefixIconOnPressed,
             icon: Icon(
               widget.prefixIcon,
-              color: Config.darkMode != true ? Colors.black : Colors.white,
+              color: !context.isDarkMode ? Colors.black : Colors.white,
             ),
           ),
           suffixIcon: Container(
@@ -107,7 +108,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
                   ? Border(
                       left: BorderSide(
                         width: 1,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? const Color(0xffF1F1F1).withOpacity(0.5)
                             : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),
@@ -115,7 +116,7 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
                   : Border(
                       right: BorderSide(
                         width: 1,
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? const Color(0xffF1F1F1).withOpacity(0.5)
                             : const Color(0xffF1F1F1).withOpacity(0.1),
                       ),

@@ -14,12 +14,10 @@ import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
 
 class ApiServices {
-  
-
   // SignUp User
   Future signUpUser(String username, String email, String password) async {
     http.Response res =
-        await http.post(Uri.parse('${Config.baseUrl}auth/register'),
+        await http.post(Uri.parse('${Config.baseUrl}/auth/register'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
             },
@@ -67,7 +65,7 @@ class ApiServices {
   // Login User
   Future loginUser(String username, String password) async {
     final res = await http.post(
-      Uri.parse('${Config.baseUrl}auth/login'),
+      Uri.parse('${Config.baseUrl}/auth/login'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -117,7 +115,7 @@ class ApiServices {
     final String userId = Config.box.read("myId");
     final String userToken = Config.box.read("myToken");
     final res = await http.put(
-      Uri.parse('${Config.baseUrl}users/$userId'),
+      Uri.parse('${Config.baseUrl}/users/$userId'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': userToken
@@ -149,7 +147,7 @@ class ApiServices {
   // Get a User
   Future getUser(String? userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}users/$userId'),
+      Uri.parse('${Config.baseUrl}/users/$userId'),
     );
 
     try {
@@ -170,7 +168,7 @@ class ApiServices {
   // Get User Coupons
   Future getUserCoupons(String userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}users/$userId/coupons'),
+      Uri.parse('${Config.baseUrl}/users/$userId/coupons'),
     );
 
     try {
@@ -191,7 +189,7 @@ class ApiServices {
   // Get User Links
   Future getUserLinks(String userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}users/$userId/links'),
+      Uri.parse('${Config.baseUrl}/users/$userId/links'),
     );
 
     try {
@@ -212,7 +210,7 @@ class ApiServices {
 // Get User Links
   Future getUserNotif(String userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}users/$userId/notifications'),
+      Uri.parse('${Config.baseUrl}/users/$userId/notifications'),
     );
 
     try {
@@ -235,7 +233,7 @@ class ApiServices {
       String linkId, String updatePart, String updateValue) async {
     final String userToken = Config.box.read("myToken");
     final res = await http.put(
-      Uri.parse('${Config.baseUrl}links/$linkId'),
+      Uri.parse('${Config.baseUrl}/links/$linkId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': userToken
@@ -250,7 +248,7 @@ class ApiServices {
   // Delete User
   Future deleteUser(String userId) async {
     final res = await http.delete(
-      Uri.parse('${Config.baseUrl}users/$userId'),
+      Uri.parse('${Config.baseUrl}/users/$userId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -288,7 +286,7 @@ class ApiServices {
   // Timeline Coupons
   Future timelineCoupons(String userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}coupons/$userId/timeline'),
+      Uri.parse('${Config.baseUrl}/coupons/$userId/timeline'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -309,7 +307,7 @@ class ApiServices {
   Future createCoupon(
       String name, String code, String category, String desc) async {
     final res = await http.post(
-      Uri.parse('${Config.baseUrl}coupons'),
+      Uri.parse('${Config.baseUrl}/coupons'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         "Authorization": Config.box.read("myToken")
@@ -345,7 +343,7 @@ class ApiServices {
     final String userId = Config.box.read("myId");
     final String userToken = Config.box.read("myToken");
     final res = await http.put(
-      Uri.parse('${Config.baseUrl}users/$userId/follow/$id'),
+      Uri.parse('${Config.baseUrl}/users/$userId/follow/$id'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': userToken
@@ -359,7 +357,7 @@ class ApiServices {
     final String userId = Config.box.read("myId");
     final String userToken = Config.box.read("myToken");
     final res = await http.put(
-      Uri.parse('${Config.baseUrl}users/$userId/unfollow/$id'),
+      Uri.parse('${Config.baseUrl}/users/$userId/unfollow/$id'),
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': userToken
@@ -371,7 +369,7 @@ class ApiServices {
 // Get Followed User
   Future<bool> getFollowedUser(String userId, String id) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}users/$userId/followed/$id'),
+      Uri.parse('${Config.baseUrl}/users/$userId/followed/$id'),
     );
     if (res.statusCode == 200) {
       return true;
@@ -383,7 +381,7 @@ class ApiServices {
   // Delete a Coupon
   Future deleteCoupon(String couponId) async {
     final res = await http.delete(
-      Uri.parse('${Config.baseUrl}coupons/$couponId'),
+      Uri.parse('${Config.baseUrl}/coupons/$couponId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -414,7 +412,7 @@ class ApiServices {
   // Search Coupons
   static Future searchCoupons(String? query) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}coupons/$query'),
+      Uri.parse('${Config.baseUrl}/coupons/$query'),
     );
 
     try {
@@ -437,7 +435,7 @@ class ApiServices {
   // Get User Followers
   Future getUserFollowers(String? userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}users/$userId/followers'),
+      Uri.parse('${Config.baseUrl}/users/$userId/followers'),
     );
 
     try {
@@ -460,7 +458,7 @@ class ApiServices {
   // Get User Followers
   Future getUserFollowings(String? userId) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}users/$userId/followings'),
+      Uri.parse('${Config.baseUrl}/users/$userId/followings'),
     );
 
     try {
@@ -481,14 +479,14 @@ class ApiServices {
   }
 }
 
-class AuthServices{
+class AuthServices {
   //
 }
 
-class AccountServices{
+class AccountServices {
   //
 }
 
-class NotificationServices{
+class NotificationServices {
   //
 }
