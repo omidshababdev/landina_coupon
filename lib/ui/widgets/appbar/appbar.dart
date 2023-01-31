@@ -41,14 +41,14 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
             border: Border(
               bottom: BorderSide(
                 width: 1,
-                color: context.isDarkMode != true
+                color: !context.isDarkMode
                     ? const Color(0xffF1F1F1).withOpacity(0.5)
                     : const Color(0xffF1F1F1).withOpacity(0.1),
               ),
             ),
           ),
           child: AppBar(
-            backgroundColor: context.isDarkMode != true
+            backgroundColor: !context.isDarkMode
                 ? Colors.white.withOpacity(0.6)
                 : Colors.black.withOpacity(0.6),
             leadingWidth: 66,
@@ -60,7 +60,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                   color: Colors.transparent,
                   border: Border.all(
                     width: 1,
-                    color: context.isDarkMode != true
+                    color: !context.isDarkMode
                         ? const Color(0xffF1F1F1).withOpacity(0.5)
                         : const Color(0xffF1F1F1).withOpacity(0.1),
                   ),
@@ -94,7 +94,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                   decoration: BoxDecoration(
                     border: Border.all(
                       width: 1,
-                      color: context.isDarkMode != true
+                      color: !context.isDarkMode
                           ? const Color(0xffF1F1F1).withOpacity(0.5)
                           : const Color(0xffF1F1F1).withOpacity(0.1),
                     ),

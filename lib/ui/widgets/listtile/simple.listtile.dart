@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 
 class LandinaSimpleListTile extends StatelessWidget {
@@ -31,7 +32,7 @@ class LandinaSimpleListTile extends StatelessWidget {
       child: ListTile(
         contentPadding:
             const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
-        leading: Config.darkMode != true
+        leading: !context.isDarkMode
             ? AspectRatio(
                 aspectRatio: 1 / 1,
                 child: CircleAvatar(
@@ -45,7 +46,7 @@ class LandinaSimpleListTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   border: Border.all(
                     width: 1,
-                    color: Config.darkMode != true
+                    color: !context.isDarkMode
                         ? const Color(0xffF1F1F1).withOpacity(0.5)
                         : const Color(0xffF1F1F1).withOpacity(0.1),
                   ),
@@ -67,7 +68,7 @@ class LandinaSimpleListTile extends StatelessWidget {
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w500,
-            color: Config.darkMode != true ? Colors.black : Colors.white,
+            color: !context.isDarkMode ? Colors.black : Colors.white,
           ),
         ),
         subtitle: Text(
@@ -75,7 +76,7 @@ class LandinaSimpleListTile extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
           style: TextStyle(
-            color: Config.darkMode != true
+            color: !context.isDarkMode
                 ? Colors.black.withOpacity(0.5)
                 : Colors.white.withOpacity(0.5),
             fontSize: 13,

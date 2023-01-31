@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 
 class LandinaSwitchListTile extends StatelessWidget {
@@ -29,7 +30,7 @@ class LandinaSwitchListTile extends StatelessWidget {
         border: Border.symmetric(
           horizontal: BorderSide(
             width: 0.5,
-            color: Config.darkMode != true
+            color: !context.isDarkMode
                 ? const Color(0xffF1F1F1).withOpacity(0.5)
                 : const Color(0xffF1F1F1).withOpacity(0.1),
           ),
@@ -48,7 +49,7 @@ class LandinaSwitchListTile extends StatelessWidget {
           style: TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w500,
-            color: Config.darkMode != true ? Colors.black : Colors.white,
+            color: !context.isDarkMode ? Colors.black : Colors.white,
           ),
         ),
         subtitle: Text(
@@ -57,7 +58,7 @@ class LandinaSwitchListTile extends StatelessWidget {
           maxLines: 1,
           style: TextStyle(
             fontFamily: subtitleFont,
-            color: Config.darkMode != true
+            color: !context.isDarkMode
                 ? Colors.black.withOpacity(0.5)
                 : Colors.white.withOpacity(0.5),
             fontSize: 13,

@@ -2,8 +2,7 @@ import 'dart:ui';
 
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:landina_coupon/constants/colors.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 
 class LandinaBottomSheet extends StatefulWidget {
@@ -36,7 +35,7 @@ class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
               width: double.infinity,
               padding: const EdgeInsets.only(top: 20, bottom: 40),
               decoration: BoxDecoration(
-                color: Config.darkMode != true
+                color: !context.isDarkMode
                     ? Colors.white
                     : Colors.black.withOpacity(0.6),
                 borderRadius: const SmoothBorderRadius.only(
@@ -64,7 +63,7 @@ class _LandinaBottomSheetState extends State<LandinaBottomSheet> {
                     width: 40,
                     height: 5,
                     decoration: BoxDecoration(
-                      color: Config.darkMode != true
+                      color: !context.isDarkMode
                           ? Colors.black.withOpacity(0.1)
                           : const Color(0xffF1F1F1).withOpacity(0.3),
                       borderRadius: BorderRadius.circular(50),

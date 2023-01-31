@@ -97,7 +97,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 1,
-                                      color: Config.darkMode != true
+                                      color: !context.isDarkMode
                                           ? const Color(0xffF1F1F1)
                                               .withOpacity(0.5)
                                           : const Color(0xffF1F1F1)
@@ -224,7 +224,7 @@ class _SettingsPageState extends State<SettingsPage> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 1,
-                                      color: Config.darkMode != true
+                                      color: !context.isDarkMode
                                           ? const Color(0xffF1F1F1)
                                               .withOpacity(0.5)
                                           : const Color(0xffF1F1F1)
