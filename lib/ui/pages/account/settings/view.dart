@@ -180,7 +180,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaSimpleListTile(
             onTap: () {
-              Get.toNamed("/soon");
+              Get.toNamed("/fonts");
             },
             title: "فونت اپلیکیشن",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
