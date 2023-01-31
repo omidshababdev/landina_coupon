@@ -80,7 +80,7 @@ class _PasswordPageState extends State<PasswordPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
                     onChanged: (newValue) =>
-                        signUpGet.username.value = newValue,
+                        signUpGet.password.value = newValue,
                     maxLines: 1,
                     hintText:
                         AppLocalizations.of(context)!.password.capitalize(),

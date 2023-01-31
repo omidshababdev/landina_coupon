@@ -71,8 +71,7 @@ class _EmailPageState extends State<EmailPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    onChanged: (newValue) =>
-                        signUpGet.username.value = newValue,
+                    onChanged: (newValue) => signUpGet.email.value = newValue,
                     maxLines: 1,
                     hintText: AppLocalizations.of(context)!.emailAddress,
                     suffixIcon: IconlyLight.info_circle,
