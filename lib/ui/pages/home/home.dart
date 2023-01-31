@@ -127,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                               onPressed: () {
                                 Navigator.pop(context);
                                 setState(() {
-                                  Get.toNamed("/signUp/username");
+                                  Get.toNamed("/signup/email");
                                 });
                               },
                             ),

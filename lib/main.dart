@@ -35,7 +35,6 @@ import 'package:landina_coupon/ui/pages/account/settings/update/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/email/email.dart';
 import 'package:landina_coupon/ui/pages/account/settings/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/password/password.dart';
-import 'package:landina_coupon/ui/pages/account/register/signup/username/username.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/coupon/new/new.coupon.dart';
 import 'package:landina_coupon/ui/pages/home/home.dart';
@@ -181,9 +180,8 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       getPages: [
         GetPage(name: "/soon", page: () => const SoonPage()),
         GetPage(name: "/login", page: () => const LoginPage()),
-        GetPage(name: "/signUp/username", page: () => const UsernamePage()),
-        GetPage(name: "/signUp/email", page: () => const EmailPage()),
-        GetPage(name: "/signUp/password", page: () => const PasswordPage()),
+        GetPage(name: "/signup/email", page: () => const EmailPage()),
+        GetPage(name: "/signup/password", page: () => const PasswordPage()),
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => ProfilePage()),
         GetPage(name: "/account", page: () => AccountPage()),

@@ -165,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Get.offNamed("/signUp/username");
+                          Get.offNamed("/signup/username");
                         },
                         child: Text(
                           AppLocalizations.of(context)!.createAnAccount,

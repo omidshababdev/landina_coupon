@@ -43,7 +43,7 @@ class _PasswordPageState extends State<PasswordPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.password.capitalizeFirst,
+            title: AppLocalizations.of(context)!.password,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"), context);
@@ -77,8 +77,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     onChanged: (newValue) =>
                         signUpGet.password.value = newValue,
                     maxLines: 1,
-                    hintText:
-                        AppLocalizations.of(context)!.password.capitalizeFirst,
+                    hintText: AppLocalizations.of(context)!.password,
                     suffixIcon: signUpGet.passwordVisible.value == false
                         ? IconlyLight.show
                         : IconlyLight.hide,
@@ -100,7 +99,9 @@ class _PasswordPageState extends State<PasswordPage> {
                     () => LandinaTextButton(
                       title: AppLocalizations.of(context)!.goToTheNextLevel,
                       isLoading: signUpGet.isLoading.value,
-                      onPressed: signUpGet.createAccount,
+                      onPressed: () {
+                        signUpGet.createAccount();
+                      },
                     ),
                   ),
                 ),

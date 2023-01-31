@@ -95,7 +95,7 @@ class _EmailPageState extends State<EmailPage> {
                           signUpGet.isLoading.value = false;
                         });
                       });
-                      Get.toNamed("/signUp/password");
+                      Get.toNamed("/signup/password");
                     },
                   ),
                 ),

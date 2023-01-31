@@ -31,7 +31,7 @@ class SignUpGet extends GetxController {
         "Please enter all the fields",
       );
 
-      isLoading.value = false;
+      return;
     }
 
     if (!isLoading.value) {
@@ -39,21 +39,32 @@ class SignUpGet extends GetxController {
 
       try {
         final service = SignUpService();
-        final result = await service.call({});
+        final result = await service.call({
+          'username': username.value,
+          'email': email.value,
+          'password': password.value,
+        });
 
         isLoading.value = false;
+
+        print(result);
+
+        if (result) {
+          landinaNotification(
+            "landina_notifications_channel",
+            "Success",
+            result.toString(),
+          );
+        }
       } catch (err) {
         landinaNotification(
           "landina_notifications_channel",
           "Error",
           err.toString(),
         );
+
+        isLoading.value = false;
       }
-
-      isLoading.value = false;
-
-      print(isLoading.value);
     }
-    print(isLoading.value);
   }
 }
