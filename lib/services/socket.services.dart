@@ -1,8 +1,9 @@
+import 'package:landina_coupon/constants/config.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 main() {
   // Dart client
-  IO.Socket socket = IO.io('http://localhost:8800');
+  IO.Socket socket = IO.io(Config.baseUrl);
   socket.onConnect((_) {
     print('connect');
     socket.emit('msg', 'test');

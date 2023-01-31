@@ -11,7 +11,7 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
-import 'package:landina_coupon/ui/widgets/modals/modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
 
 class NotificationsPage extends StatefulWidget {
   Future? userInfo;

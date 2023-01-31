@@ -10,7 +10,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
-import 'package:landina_coupon/ui/widgets/modals/modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
 import 'package:get/get.dart';
 
 // String Extension for Capitalize
@@ -117,7 +117,123 @@ class _SettingsPageState extends State<SettingsPage> {
                                     ),
                                   ),
                                 ),
-                          title: "فعال کردن اعلان ها",
+                          title: "همه اعلان ها",
+                          subtitle:
+                              "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                          active: notifications,
+                          onChanged: (value) {
+                            setState(
+                              () {
+                                notifications = !notifications;
+                                notifications = value;
+
+                                Config.setNotifAllowed(notifications);
+                                print(Config.isNotifAllowed());
+                              },
+                            );
+                          },
+                        ),
+                        LandinaSwitchListTile(
+                          onTap: () {
+                            setState(() {
+                              notifications = !notifications;
+
+                              Config.setNotifAllowed(notifications);
+                              print(Config.isNotifAllowed());
+                            });
+                          },
+                          leading: !context.isDarkMode
+                              ? AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.1),
+                                    foregroundColor: Colors.black,
+                                    child: const Icon(
+                                        CupertinoIcons.rectangle_3_offgrid),
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: !context.isDarkMode
+                                          ? const Color(0xffF1F1F1)
+                                              .withOpacity(0.5)
+                                          : const Color(0xffF1F1F1)
+                                              .withOpacity(0.1),
+                                    ),
+                                  ),
+                                  child: const AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.white,
+                                      child: Icon(
+                                          CupertinoIcons.rectangle_3_offgrid),
+                                    ),
+                                  ),
+                                ),
+                          title: "همه اعلان ها",
+                          subtitle:
+                              "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
+                          active: notifications,
+                          onChanged: (value) {
+                            setState(
+                              () {
+                                notifications = !notifications;
+                                notifications = value;
+
+                                Config.setNotifAllowed(notifications);
+                                print(Config.isNotifAllowed());
+                              },
+                            );
+                          },
+                        ),
+                        LandinaSwitchListTile(
+                          onTap: () {
+                            setState(() {
+                              notifications = !notifications;
+
+                              Config.setNotifAllowed(notifications);
+                              print(Config.isNotifAllowed());
+                            });
+                          },
+                          leading: !context.isDarkMode
+                              ? AspectRatio(
+                                  aspectRatio: 1 / 1,
+                                  child: CircleAvatar(
+                                    backgroundColor:
+                                        Colors.white.withOpacity(0.1),
+                                    foregroundColor: Colors.black,
+                                    child: const Icon(
+                                        CupertinoIcons.rectangle_3_offgrid),
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: !context.isDarkMode
+                                          ? const Color(0xffF1F1F1)
+                                              .withOpacity(0.5)
+                                          : const Color(0xffF1F1F1)
+                                              .withOpacity(0.1),
+                                    ),
+                                  ),
+                                  child: const AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.white,
+                                      child: Icon(
+                                          CupertinoIcons.rectangle_3_offgrid),
+                                    ),
+                                  ),
+                                ),
+                          title: "همه اعلان ها",
                           subtitle:
                               "در این قسمت می توانید همه نوتیفیکیشن های برنامه را غیرفعال کنید.",
                           active: notifications,
@@ -152,14 +268,14 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.activity),
           ),
-          LandinaSimpleListTile(
-            onTap: () {
-              Get.toNamed("/soon");
-            },
-            title: "پروکسی",
-            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
-            leading: const Icon(CupertinoIcons.shield),
-          ),
+          // LandinaSimpleListTile(
+          //   onTap: () {
+          //     Get.toNamed("/proxy");
+          //   },
+          //   title: "پروکسی",
+          //   subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
+          //   leading: const Icon(CupertinoIcons.shield),
+          // ),
           LandinaSimpleListTile(
             onTap: () {
               Get.toNamed("/help");
@@ -416,7 +532,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaSimpleListTile(
             onTap: () {
-              Get.toNamed("/soon");
+              Get.toNamed("/update");
             },
             title: "بروزرسانی",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",

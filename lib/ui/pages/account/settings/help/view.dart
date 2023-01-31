@@ -19,6 +19,8 @@ class _HelpPageState extends State<HelpPage> {
 
   bool isLoading = true;
 
+  double webProgress = 0.05;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -41,36 +43,52 @@ class _HelpPageState extends State<HelpPage> {
             },
           ),
         ),
-        body: Stack(
+        body: Column(
           children: [
-            WebView(
-              javascriptMode: JavascriptMode.unrestricted,
-              initialUrl: Uri.encodeFull(helpPageUrl),
-              backgroundColor:
-                  !context.isDarkMode ? Colors.white : Colors.black,
-              onPageFinished: (finish) {
-                setState(() {
-                  isLoading = false;
-                });
-              },
-              zoomEnabled: false,
-              onWebViewCreated: (controller) {
-                this.controller = controller;
-              },
-            ),
-            isLoading
-                ? Center(
-                    child: SizedBox(
-                      height: 40,
-                      width: 40,
-                      child: CircularProgressIndicator(
-                        color:
-                            !context.isDarkMode ? Colors.black : Colors.white,
-                        strokeWidth: 2,
-                      ),
+            webProgress < 1
+                ? SizedBox(
+                    height: 2,
+                    child: LinearProgressIndicator(
+                      value: webProgress,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
+                      backgroundColor: !context.isDarkMode && isLoading
+                          ? Colors.black.withOpacity(0.1)
+                          : Colors.white.withOpacity(0.1),
                     ),
                   )
                 : const SizedBox(),
+            isLoading
+                ? Expanded(
+                    child: Center(
+                      child: SizedBox(
+                        height: 40,
+                        width: 40,
+                        child: CircularProgressIndicator(
+                          color:
+                              !context.isDarkMode ? Colors.black : Colors.white,
+                          strokeWidth: 2,
+                        ),
+                      ),
+                    ),
+                  )
+                : Expanded(
+                    child: WebView(
+                      javascriptMode: JavascriptMode.unrestricted,
+                      initialUrl: Uri.encodeFull(helpPageUrl),
+                      backgroundColor:
+                          !context.isDarkMode ? Colors.white : Colors.black,
+                      zoomEnabled: false,
+                      onProgress: (progress) => setState(() {
+                        webProgress = progress / 100;
+                      }),
+                      onPageFinished: (finish) => setState(() {
+                        isLoading = false;
+                      }),
+                      onWebViewCreated: (controller) {
+                        this.controller = controller;
+                      },
+                    ),
+                  ),
           ],
         ),
       ),
