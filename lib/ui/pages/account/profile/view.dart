@@ -18,7 +18,7 @@ import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/account/profile/profile.get.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize
@@ -145,17 +145,60 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: "می خوام از حسابم خارج بشم",
                             backgroundColor: true,
                             onPressed: () {
-                              Config.box.remove("username");
-                              Config.box.remove("email");
-                              Config.box.remove("password");
+                              landinaModal(
+                                StatefulBuilder(
+                                  builder: (BuildContext context, setState) {
+                                    return Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 30),
+                                      child: Column(
+                                        children: [
+                                          const Text(
+                                            "واقعا میخوای از حسابت خارج بشی؟",
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 15),
+                                          ButtonBarSuper(
+                                            lineSpacing: 15,
+                                            wrapType: WrapType.balanced,
+                                            wrapFit: WrapFit.proportional,
+                                            children: [
+                                              LandinaTextButton(
+                                                title: "بله خارج شو",
+                                                backgroundColor: true,
+                                                onPressed: () async {
+                                                  Config.box.remove("username");
+                                                  Config.box.remove("email");
+                                                  Config.box.remove("password");
 
-                              setState(() {
-                                Config.loggedIn = false;
-                              });
+                                                  setState(() {
+                                                    Config.loggedIn = false;
+                                                  });
 
-                              Navigator.pop(context);
+                                                  Navigator.pop(context);
 
-                              Get.back();
+                                                  Get.back();
+                                                },
+                                              ),
+                                              LandinaTextButton(
+                                                title: "نه نمی خواد",
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  Navigator.pop(context);
+                                                },
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                                context,
+                              );
                             },
                           ),
                         ],

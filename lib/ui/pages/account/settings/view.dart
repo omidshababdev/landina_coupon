@@ -10,7 +10,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:get/get.dart';
 
 // String Extension for Capitalize
@@ -26,7 +26,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool notifications = true;
+  bool notifications = Config.isNotifAllowed();
 
   PackageInfo? packageInfo;
   String? appName;
@@ -79,6 +79,9 @@ class _SettingsPageState extends State<SettingsPage> {
                           onTap: () {
                             setState(() {
                               notifications = !notifications;
+
+                              Config.setNotifAllowed(notifications);
+                              print(Config.isNotifAllowed());
                             });
                           },
                           leading: !context.isDarkMode
@@ -123,6 +126,9 @@ class _SettingsPageState extends State<SettingsPage> {
                               () {
                                 notifications = !notifications;
                                 notifications = value;
+
+                                Config.setNotifAllowed(notifications);
+                                print(Config.isNotifAllowed());
                               },
                             );
                           },
@@ -156,7 +162,7 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaSimpleListTile(
             onTap: () {
-              Get.toNamed("/soon");
+              Get.toNamed("/help");
             },
             title: "راهنمایی",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
@@ -418,57 +424,60 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           LandinaSimpleListTile(
             onTap: () {
-              Get.toNamed("/soon");
+              Get.toNamed("/backup");
             },
             title: "بک آپ اطلاعات",
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
-            leading: const Icon(CupertinoIcons.app),
+            leading: const Icon(CupertinoIcons.cloud_upload),
           ),
           LandinaSimpleListTile(
             onTap: () {
-              landinaModal(StatefulBuilder(
-                builder: (BuildContext context, setState) {
-                  return Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    child: Column(
-                      children: [
-                        const Text(
-                          "واقعا میخوای حذفش کنی؟",
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
+              landinaModal(
+                StatefulBuilder(
+                  builder: (BuildContext context, setState) {
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      child: Column(
+                        children: [
+                          const Text(
+                            "واقعا میخوای حذفش کنی؟",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 15),
-                        ButtonBarSuper(
-                          lineSpacing: 15,
-                          wrapType: WrapType.balanced,
-                          wrapFit: WrapFit.proportional,
-                          children: [
-                            LandinaTextButton(
-                              title: "حذفش کن",
-                              backgroundColor: true,
-                              onPressed: () async {
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                                await Config.client.deleteUser(
-                                  Config.box.read("myId"),
-                                );
-                              },
-                            ),
-                            LandinaTextButton(
-                              title: "نه نمی خواد",
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ), context);
+                          const SizedBox(height: 15),
+                          ButtonBarSuper(
+                            lineSpacing: 15,
+                            wrapType: WrapType.balanced,
+                            wrapFit: WrapFit.proportional,
+                            children: [
+                              LandinaTextButton(
+                                title: "حذفش کن",
+                                backgroundColor: true,
+                                onPressed: () async {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                  await Config.client.deleteUser(
+                                    Config.box.read("myId"),
+                                  );
+                                },
+                              ),
+                              LandinaTextButton(
+                                title: "نه نمی خواد",
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                ),
+                context,
+              );
             },
             title: "حذف حساب کاربری",
             subtitle:

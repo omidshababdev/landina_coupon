@@ -16,9 +16,8 @@ class Config {
   static bool darkMode = false;
   static bool defaultMode = false;
 
-  static setNotifAllowed(bool value) =>
-      GetStorage().write("notifications", value);
-  static bool isNotifAllowed() => GetStorage().read("notifications");
+  static setNotifAllowed(bool value) => box.write("notifications", value);
+  static bool isNotifAllowed() => box.read("notifications");
 
   static Locale myLocale = window.locale;
   static List rightAlignLangs = ['fa'];

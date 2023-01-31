@@ -16,7 +16,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/button.listtile.dart';
 import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
-import 'package:landina_coupon/ui/widgets/modal/modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 
 class FollowersPage extends StatefulWidget {
   Future? userInfo;
