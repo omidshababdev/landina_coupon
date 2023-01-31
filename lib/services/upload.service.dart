@@ -5,7 +5,7 @@ import 'package:landina_coupon/services/base.service.dart';
 import 'package:landina_coupon/services/notification.services.dart';
 
 class UploadServices extends BaseService {
-  final Uri url = Uri.parse('${Config.baseUrl}upload/profile');
+  final Uri url = Uri.parse('${Config.baseUrl}/upload/profile');
   Future<bool> call(Map<String, dynamic> args) async {
     try {
       final req = http.MultipartRequest('put', url)
@@ -23,7 +23,7 @@ class UploadServices extends BaseService {
         return true;
       } else {
         landinaNotification(
-          "landina_notifications_channel",
+          "error_channel",
           decodedResponse['error_code'],
           decodedResponse['message'],
         );

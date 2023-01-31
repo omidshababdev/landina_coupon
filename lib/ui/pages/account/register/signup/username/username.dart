@@ -72,7 +72,6 @@ class _UsernamePageState extends State<UsernamePage> {
                     maxLines: 1,
                     hintText: AppLocalizations.of(context)!.username,
                     suffixIcon: IconlyLight.info_circle,
-                    textfieldController: Config.usernameController,
                     onChanged: (newValue) =>
                         signUpGet.username.value = newValue,
                     suffixIconOnPressed: () {

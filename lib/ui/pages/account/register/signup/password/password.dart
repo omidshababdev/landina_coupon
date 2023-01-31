@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -42,7 +43,7 @@ class _PasswordPageState extends State<PasswordPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.password.capitalize(),
+            title: AppLocalizations.of(context)!.password.capitalizeFirst,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"), context);
@@ -66,9 +67,7 @@ class _PasswordPageState extends State<PasswordPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    AppLocalizations.of(context)!
-                        .passPageDescription
-                        .capitalize(),
+                    AppLocalizations.of(context)!.passPageDescription,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -79,7 +78,7 @@ class _PasswordPageState extends State<PasswordPage> {
                         signUpGet.password.value = newValue,
                     maxLines: 1,
                     hintText:
-                        AppLocalizations.of(context)!.password.capitalize(),
+                        AppLocalizations.of(context)!.password.capitalizeFirst,
                     suffixIcon: signUpGet.passwordVisible.value == false
                         ? IconlyLight.show
                         : IconlyLight.hide,
@@ -97,28 +96,12 @@ class _PasswordPageState extends State<PasswordPage> {
                 const SizedBox(height: 15),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
-                  child: LandinaTextButton(
-                    title: AppLocalizations.of(context)!
-                        .goToTheNextLevel
-                        .capitalize(),
-                    isLoading: signUpGet.isLoading.value,
-                    onPressed: () async {
-                      setState(() {
-                        signUpGet.isLoading.value = true;
-                      });
-
-                      await Future.delayed(const Duration(seconds: 5), () {
-                        Config.client.signUpUser(
-                          Config.usernameController.text,
-                          Config.emailController.text,
-                          Config.passwordController.text,
-                        );
-
-                        setState(() {
-                          signUpGet.isLoading.value = false;
-                        });
-                      });
-                    },
+                  child: Obx(
+                    () => LandinaTextButton(
+                      title: AppLocalizations.of(context)!.goToTheNextLevel,
+                      isLoading: signUpGet.isLoading.value,
+                      onPressed: signUpGet.createAccount,
+                    ),
                   ),
                 ),
               ],
