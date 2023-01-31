@@ -11,7 +11,7 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
-  final String aboutPageUrl = "https://google.com";
+  final String aboutPageUrl = "https://landina.co/about";
 
   late WebViewController controller;
 
