@@ -278,6 +278,14 @@ class _SettingsPageState extends State<SettingsPage> {
           // ),
           LandinaSimpleListTile(
             onTap: () {
+              Get.toNamed("/ads");
+            },
+            title: "تبلیغات",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
+            leading: const Icon(IconlyLight.paper),
+          ),
+          LandinaSimpleListTile(
+            onTap: () {
               Get.toNamed("/help");
             },
             title: "راهنمایی",

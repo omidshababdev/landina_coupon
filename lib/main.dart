@@ -13,6 +13,7 @@ import 'package:landina_coupon/constants/translation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/room/view.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/single/view.dart';
+import 'package:landina_coupon/ui/pages/account/settings/ads/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/backup/view.dart';
 import 'package:landina_coupon/ui/pages/coupon/comments/comments.coupon.dart';
 import 'package:landina_coupon/ui/pages/notifications/view.dart';
@@ -186,6 +187,7 @@ class _LandinaCouponState extends State<LandinaCoupon> {
         GetPage(name: "/forget", page: () => const ForgetPage()),
         GetPage(name: "/profile", page: () => ProfilePage()),
         GetPage(name: "/account", page: () => AccountPage()),
+        GetPage(name: "/ads", page: () => const AdsPage()),
         GetPage(name: "/followers", page: () => FollowersPage()),
         GetPage(name: "/followings", page: () => FollowingsPage()),
         GetPage(name: "/analytics", page: () => const AnalyticsPage()),
