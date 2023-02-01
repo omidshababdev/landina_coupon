@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 /* PACKAGES */
 import 'package:awesome_notifications/awesome_notifications.dart';
@@ -120,7 +119,7 @@ Future main() async {
   );
 
   runApp(
-    LandinaCoupon(),
+    const LandinaCoupon(),
   );
 }
 
@@ -149,8 +148,6 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       onDismissActionReceivedMethod:
           NotificationController.onDismissActionReceivedMethod,
     );
-
-    print(Get.deviceLocale);
 
     super.initState();
   }
