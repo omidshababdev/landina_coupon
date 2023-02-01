@@ -11,11 +11,9 @@ ThemeData lightThemeData(BuildContext context) {
     primaryColor: primaryColor,
     appBarTheme: appBarTheme,
     scaffoldBackgroundColor: Colors.white,
-    // backgroundColor: Colors.black,
     iconTheme: IconThemeData(color: contentColorLightTheme),
     colorScheme: ColorScheme.light(
       primary: primaryColor,
-      // secondary: !context.isDarkMode ? Colors.black : Colors.white,
       error: errorColor,
       background: primaryColor,
     ),
@@ -38,7 +36,6 @@ ThemeData darkThemeData(BuildContext context) {
     iconTheme: IconThemeData(color: contentColorDarkTheme),
     colorScheme: const ColorScheme.dark().copyWith(
       primary: primaryColor,
-      secondary: !context.isDarkMode ? Colors.black : Colors.white,
       error: errorColor,
       background: backgroundColor,
     ),

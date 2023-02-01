@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:landina_coupon/constants/colors.dart';
-import 'package:landina_coupon/constants/config.dart';
 
 class LandinaAppbar extends StatefulWidget {
   String? title;

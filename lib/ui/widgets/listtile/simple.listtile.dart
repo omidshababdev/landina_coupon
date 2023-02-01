@@ -33,12 +33,21 @@ class LandinaSimpleListTile extends StatelessWidget {
         contentPadding:
             const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         leading: !context.isDarkMode
-            ? AspectRatio(
-                aspectRatio: 1 / 1,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white.withOpacity(0.1),
-                  foregroundColor: Colors.black,
-                  child: leading,
+            ? Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100),
+                  border: Border.all(
+                    width: 1,
+                    color: Color(0xffF1F1F1).withOpacity(0.5),
+                  ),
+                ),
+                child: AspectRatio(
+                  aspectRatio: 1 / 1,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white.withOpacity(0.1),
+                    foregroundColor: Colors.black,
+                    child: leading,
+                  ),
                 ),
               )
             : Container(
@@ -46,9 +55,7 @@ class LandinaSimpleListTile extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   border: Border.all(
                     width: 1,
-                    color: !context.isDarkMode
-                        ? const Color(0xffF1F1F1).withOpacity(0.5)
-                        : const Color(0xffF1F1F1).withOpacity(0.1),
+                    color: const Color(0xffF1F1F1).withOpacity(0.1),
                   ),
                 ),
                 child: AspectRatio(

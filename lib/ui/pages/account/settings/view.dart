@@ -85,14 +85,24 @@ class _SettingsPageState extends State<SettingsPage> {
                             });
                           },
                           leading: !context.isDarkMode
-                              ? AspectRatio(
-                                  aspectRatio: 1 / 1,
-                                  child: CircleAvatar(
-                                    backgroundColor:
-                                        Colors.white.withOpacity(0.1),
-                                    foregroundColor: Colors.black,
-                                    child: const Icon(
-                                        CupertinoIcons.rectangle_3_offgrid),
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.5),
+                                    ),
+                                  ),
+                                  child: AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          Colors.white.withOpacity(0.1),
+                                      foregroundColor: Colors.black,
+                                      child: const Icon(
+                                          CupertinoIcons.rectangle_3_offgrid),
+                                    ),
                                   ),
                                 )
                               : Container(
@@ -100,11 +110,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 1,
-                                      color: !context.isDarkMode
-                                          ? const Color(0xffF1F1F1)
-                                              .withOpacity(0.5)
-                                          : const Color(0xffF1F1F1)
-                                              .withOpacity(0.1),
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.1),
                                     ),
                                   ),
                                   child: const AspectRatio(
@@ -240,13 +247,24 @@ class _SettingsPageState extends State<SettingsPage> {
                             });
                           },
                           leading: !context.isDarkMode
-                              ? AspectRatio(
-                                  aspectRatio: 1 / 1,
-                                  child: CircleAvatar(
-                                    backgroundColor:
-                                        Colors.white.withOpacity(0.1),
-                                    foregroundColor: Colors.black,
-                                    child: const Icon(CupertinoIcons.sun_max),
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.5),
+                                    ),
+                                  ),
+                                  child: AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          Colors.white.withOpacity(0.1),
+                                      foregroundColor: Colors.black,
+                                      child:
+                                          const Icon(CupertinoIcons.cube_box),
+                                    ),
                                   ),
                                 )
                               : Container(
@@ -254,11 +272,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 1,
-                                      color: !context.isDarkMode
-                                          ? const Color(0xffF1F1F1)
-                                              .withOpacity(0.5)
-                                          : const Color(0xffF1F1F1)
-                                              .withOpacity(0.1),
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.1),
                                     ),
                                   ),
                                   child: const AspectRatio(
@@ -310,13 +325,23 @@ class _SettingsPageState extends State<SettingsPage> {
                             });
                           },
                           leading: !context.isDarkMode
-                              ? AspectRatio(
-                                  aspectRatio: 1 / 1,
-                                  child: CircleAvatar(
-                                    backgroundColor:
-                                        Colors.white.withOpacity(0.1),
-                                    foregroundColor: Colors.black,
-                                    child: const Icon(CupertinoIcons.sun_max),
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.5),
+                                    ),
+                                  ),
+                                  child: AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          Colors.white.withOpacity(0.1),
+                                      foregroundColor: Colors.black,
+                                      child: const Icon(CupertinoIcons.sun_max),
+                                    ),
                                   ),
                                 )
                               : Container(
@@ -324,7 +349,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 1,
-                                      color: borderColor,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.1),
                                     ),
                                   ),
                                   child: const AspectRatio(
@@ -377,13 +403,23 @@ class _SettingsPageState extends State<SettingsPage> {
                             });
                           },
                           leading: !context.isDarkMode
-                              ? AspectRatio(
-                                  aspectRatio: 1 / 1,
-                                  child: CircleAvatar(
-                                    backgroundColor:
-                                        Colors.white.withOpacity(0.1),
-                                    foregroundColor: Colors.black,
-                                    child: const Icon(CupertinoIcons.sun_max),
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.5),
+                                    ),
+                                  ),
+                                  child: AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          Colors.white.withOpacity(0.1),
+                                      foregroundColor: Colors.black,
+                                      child: const Icon(CupertinoIcons.moon),
+                                    ),
                                   ),
                                 )
                               : Container(
@@ -391,7 +427,8 @@ class _SettingsPageState extends State<SettingsPage> {
                                     borderRadius: BorderRadius.circular(100),
                                     border: Border.all(
                                       width: 1,
-                                      color: borderColor,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.1),
                                     ),
                                   ),
                                   child: const AspectRatio(
