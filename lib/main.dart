@@ -38,7 +38,7 @@ import 'package:landina_coupon/ui/pages/account/settings/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/password/password.dart';
 import 'package:landina_coupon/ui/pages/categories/categories.dart';
 import 'package:landina_coupon/ui/pages/coupon/new/new.coupon.dart';
-import 'package:landina_coupon/ui/pages/home/home.dart';
+import 'package:landina_coupon/ui/pages/home/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/login/login.dart';
 import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 

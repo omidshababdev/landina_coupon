@@ -11,7 +11,7 @@ import 'package:landina_coupon/models/user.model.dart';
 
 import 'package:get/get.dart';
 import 'package:landina_coupon/services/notification.services.dart';
-import 'package:landina_coupon/ui/pages/home/home.dart';
+import 'package:landina_coupon/ui/pages/home/view.dart';
 
 class ApiServices {
   // SignUp User
