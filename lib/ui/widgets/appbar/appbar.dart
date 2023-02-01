@@ -69,7 +69,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                 child: IconButton(
                   icon: Icon(
                     widget.rightIcon,
-                    color: secondaryColor,
+                    color: !context.isDarkMode ? Colors.black : Colors.white,
                   ),
                   onPressed: widget.rightIconOnPressed,
                   // hoverColor: Colors.transparent,
@@ -82,7 +82,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                 widget.title!,
                 style: TextStyle(
                   fontSize: 18,
-                  color: secondaryColor,
+                  color: !context.isDarkMode ? Colors.black : Colors.white,
                 ),
               ),
             ),
@@ -103,7 +103,7 @@ class _LandinaAppbarState extends State<LandinaAppbar> {
                   child: IconButton(
                     icon: Icon(
                       widget.leftIcon,
-                      color: secondaryColor,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                     onPressed: widget.leftIconOnPressed,
                     hoverColor: Colors.transparent,

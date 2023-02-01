@@ -152,6 +152,22 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.activity),
           ),
+          LandinaSimpleListTile(
+            onTap: () {
+              Get.toNamed("/auth");
+            },
+            title: "احراز هویت",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
+            leading: const Icon(Ionicons.finger_print_outline),
+          ),
+          LandinaSimpleListTile(
+            onTap: () {
+              Get.toNamed("/security");
+            },
+            title: "امنیت حساب",
+            subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
+            leading: const Icon(IconlyLight.lock),
+          ),
           // LandinaSimpleListTile(
           //   onTap: () {
           //     Get.toNamed("/proxy");

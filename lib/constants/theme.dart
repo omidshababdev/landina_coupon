@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
+import 'package:landina_coupon/ui/extensions/darkmode.extension.dart';
 
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData(
@@ -14,7 +15,7 @@ ThemeData lightThemeData(BuildContext context) {
     iconTheme: IconThemeData(color: contentColorLightTheme),
     colorScheme: ColorScheme.light(
       primary: primaryColor,
-      secondary: secondaryColor,
+      // secondary: !context.isDarkMode ? Colors.black : Colors.white,
       error: errorColor,
       background: primaryColor,
     ),
@@ -37,7 +38,7 @@ ThemeData darkThemeData(BuildContext context) {
     iconTheme: IconThemeData(color: contentColorDarkTheme),
     colorScheme: const ColorScheme.dark().copyWith(
       primary: primaryColor,
-      secondary: secondaryColor,
+      secondary: !context.isDarkMode ? Colors.black : Colors.white,
       error: errorColor,
       background: backgroundColor,
     ),
@@ -53,6 +54,5 @@ var appBarTheme = AppBarTheme(
         ? "Estedad"
         : "Poppins",
     fontWeight: FontWeight.w500,
-    color: secondaryColor,
   ),
 );

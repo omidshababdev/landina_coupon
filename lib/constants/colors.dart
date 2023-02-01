@@ -5,8 +5,6 @@ var primaryColor =
     Config.darkMode == true ? const Color(0xFFF1F1F1) : Colors.black;
 var backgroundColor =
     Config.darkMode == true ? Colors.black : const Color(0xFFF1F1F1);
-var secondaryColor =
-    Config.darkMode != true ? Colors.black : const Color(0xFFFFFFFF);
 var borderColor = Config.darkMode != true
     ? const Color(0xffF1F1F1).withOpacity(0.5)
     : const Color(0xffF1F1F1).withOpacity(0.1);
