@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/button.listtile.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 
 class ProxyPage extends StatefulWidget {
   const ProxyPage({super.key});

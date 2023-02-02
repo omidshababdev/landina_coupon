@@ -4,10 +4,10 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/signup.get.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';

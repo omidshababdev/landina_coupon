@@ -15,7 +15,7 @@ import 'package:get/get.dart';
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:readmore/readmore.dart';
 
 class AccountPage extends StatefulWidget {

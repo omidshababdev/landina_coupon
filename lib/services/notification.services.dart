@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/main.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/utilities/uniqueId.utilites.dart';
 
 Future<void> allowNotifModal(context) async {

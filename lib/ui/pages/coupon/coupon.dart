@@ -14,7 +14,7 @@ import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:readmore/readmore.dart';
 
 class CouponPage extends StatefulWidget {

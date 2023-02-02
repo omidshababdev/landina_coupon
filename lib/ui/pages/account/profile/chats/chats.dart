@@ -7,7 +7,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
+import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 
 class ChatsPage extends StatefulWidget {
   Future? userInfo;

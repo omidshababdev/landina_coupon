@@ -10,7 +10,7 @@ import 'package:landina_coupon/models/user.model.dart';
 import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/pages/account/view.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

@@ -19,7 +19,7 @@ import 'package:landina_coupon/ui/pages/account/profile/profile.get.dart';
 import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/dialogs/simple.dialog.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize
@@ -27,7 +27,7 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {

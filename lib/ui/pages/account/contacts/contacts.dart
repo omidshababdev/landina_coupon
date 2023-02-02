@@ -6,11 +6,11 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:get/get.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 
 class ContactsPage extends StatefulWidget {
   const ContactsPage({super.key});

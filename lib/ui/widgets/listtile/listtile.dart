@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:landina_coupon/constants/config.dart';
 
-class LandinaSimpleListTile extends StatelessWidget {
+class LandinaListTile extends StatelessWidget {
   String? title;
   String? subtitle;
   VoidCallback? onTap;
   Widget? leading;
 
-  LandinaSimpleListTile({
+  LandinaListTile({
     Key? key,
     this.title,
     this.subtitle,

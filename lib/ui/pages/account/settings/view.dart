@@ -9,8 +9,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/listtile/simple.listtile.dart';
-import 'package:landina_coupon/ui/widgets/modals/simple.modal.dart';
+import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
+import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:get/get.dart';
 
 // String Extension for Capitalize
@@ -68,7 +68,7 @@ class _SettingsPageState extends State<SettingsPage> {
           parent: ClampingScrollPhysics(),
         ),
         children: [
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               landinaModal(
                 StatefulBuilder(
@@ -151,7 +151,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "همه اعلان های برنامه رو می تونی از اینجا تنظیم کنی.",
             leading: const Icon(IconlyLight.notification),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/analytics");
             },
@@ -159,7 +159,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.activity),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/auth");
             },
@@ -167,7 +167,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(Ionicons.finger_print_outline),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/security");
             },
@@ -175,7 +175,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.lock),
           ),
-          // LandinaSimpleListTile(
+          // LandinaListTile(
           //   onTap: () {
           //     Get.toNamed("/proxy");
           //   },
@@ -183,7 +183,7 @@ class _SettingsPageState extends State<SettingsPage> {
           //   subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
           //   leading: const Icon(CupertinoIcons.shield),
           // ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/ads");
             },
@@ -191,7 +191,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.paper),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/help");
             },
@@ -199,7 +199,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(Ionicons.help),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/about");
             },
@@ -207,7 +207,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.info_circle),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/language");
             },
@@ -215,7 +215,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.paper_negative),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/fonts");
             },
@@ -223,7 +223,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(IconlyLight.edit),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               landinaModal(
                 StatefulBuilder(
@@ -475,7 +475,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 "از این قسمت می تونی تم برنامه رو برای دید بهتر در شب و روز تنظیم کنی.",
             leading: const Icon(CupertinoIcons.pencil_outline),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/update");
             },
@@ -483,7 +483,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(CupertinoIcons.app),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               Get.toNamed("/backup");
             },
@@ -491,7 +491,7 @@ class _SettingsPageState extends State<SettingsPage> {
             subtitle: "بهت قول میدیم بزودی این صفحه رو میسازیم ...",
             leading: const Icon(CupertinoIcons.cloud_upload),
           ),
-          LandinaSimpleListTile(
+          LandinaListTile(
             onTap: () {
               landinaModal(
                 StatefulBuilder(

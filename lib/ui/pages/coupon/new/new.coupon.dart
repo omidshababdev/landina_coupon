@@ -12,7 +12,7 @@ import 'package:get/get.dart';
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 
 class NewCouponPage extends StatefulWidget {
   const NewCouponPage({super.key});
