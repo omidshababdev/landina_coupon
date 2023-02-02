@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/ui/extensions/darkmode.extension.dart';
 
 ThemeData lightThemeData(BuildContext context) {
   return ThemeData(
     fontFamily: Config.rightAlignLangs.contains(Config.myLocale.languageCode)
         ? "Estedad"
         : "Poppins",
-    primaryColor: primaryColor,
+    primaryColor: !context.isDarkMode ? Colors.black : Colors.white,
     appBarTheme: appBarTheme,
     scaffoldBackgroundColor: Colors.white,
     iconTheme: IconThemeData(color: contentColorLightTheme),
     colorScheme: ColorScheme.light(
-      primary: primaryColor,
+      primary: !context.isDarkMode ? Colors.black : Colors.white,
       error: errorColor,
-      background: primaryColor,
+      background: !context.isDarkMode ? Colors.black : Colors.white,
     ),
   );
 }
@@ -25,7 +25,7 @@ ThemeData darkThemeData(BuildContext context) {
     fontFamily: Config.rightAlignLangs.contains(Config.myLocale.languageCode)
         ? "Estedad"
         : "Poppins",
-    primaryColor: primaryColor,
+    primaryColor: !context.isDarkMode ? Colors.black : Colors.white,
     appBarTheme: appBarTheme,
     scaffoldBackgroundColor: Colors.black,
     textTheme: const TextTheme(
@@ -35,9 +35,9 @@ ThemeData darkThemeData(BuildContext context) {
     ),
     iconTheme: IconThemeData(color: contentColorDarkTheme),
     colorScheme: const ColorScheme.dark().copyWith(
-      primary: primaryColor,
+      primary: !context.isDarkMode ? Colors.black : Colors.white,
       error: errorColor,
-      background: backgroundColor,
+      background: !context.isDarkMode ? Colors.black : Colors.white,
     ),
   );
 }

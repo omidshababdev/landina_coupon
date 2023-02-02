@@ -24,7 +24,7 @@ import 'package:landina_coupon/ui/pages/account/profile/chats/chats.dart';
 import 'package:landina_coupon/ui/pages/account/contacts/contacts.dart';
 import 'package:landina_coupon/ui/pages/account/profile/analytics/followers/followers.profile.dart';
 import 'package:landina_coupon/ui/pages/account/profile/analytics/followings/followings.profile.dart';
-import 'package:landina_coupon/ui/pages/account/profile/links/links.dart';
+import 'package:landina_coupon/ui/pages/account/profile/links/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/login/forget/forget.dart';
 import 'package:landina_coupon/ui/pages/account/settings/about/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/fonts/view.dart';

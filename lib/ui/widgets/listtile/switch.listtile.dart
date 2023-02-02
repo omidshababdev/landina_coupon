@@ -8,6 +8,7 @@ class LandinaSwitchListTile extends StatelessWidget {
   String? subtitle;
   String? subtitleFont;
   VoidCallback? onTap;
+  VoidCallback? onLongPress;
   Widget? leading;
   bool active = false;
   Function(bool)? onChanged;
@@ -18,6 +19,7 @@ class LandinaSwitchListTile extends StatelessWidget {
     this.subtitle,
     this.subtitleFont,
     this.onTap,
+    this.onLongPress,
     this.leading,
     required this.active,
     this.onChanged,
@@ -38,6 +40,7 @@ class LandinaSwitchListTile extends StatelessWidget {
       ),
       child: ListTile(
         onTap: onTap,
+        onLongPress: onLongPress,
         contentPadding:
             const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         leading: leading,

@@ -15,6 +15,7 @@ import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
+import 'package:landina_coupon/ui/widgets/listtile/switch.listtile.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 
 class LinksPage extends StatefulWidget {
@@ -110,124 +111,118 @@ class _LinksPageState extends State<LinksPage> {
                     ),
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          border: Border.symmetric(
-                            horizontal: BorderSide(
-                              width: 0.5,
-                              color: borderColor,
-                            ),
-                          ),
-                        ),
-                        child: ListTile(
-                          onTap: () {
-                            setState(() {
-                              snapshot.data[index].active =
-                                  !snapshot.data[index].active;
-                              Config.client.updateLink(
-                                snapshot.data[index].id,
-                                "active",
-                                snapshot.data[index].active.toString(),
-                              );
-                            });
-                          },
-                          onLongPress: () {
-                            landinaModal(
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30),
-                                  child: ButtonBarSuper(
-                                    lineSpacing: 15,
-                                    wrapType: WrapType.balanced,
-                                    wrapFit: WrapFit.divided,
-                                    children: [
-                                      LandinaTextButton(
-                                        title: "مشاهده لینک",
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                      LandinaTextButton(
-                                        title: "ویرایش اطلاعات",
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                      LandinaTextButton(
-                                        title: "کپی کردن",
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                      LandinaTextButton(
-                                        title: "به اشتراک گذاری",
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                      LandinaTextButton(
-                                        title: "حذف لینک",
-                                        backgroundColor: true,
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ],
+                      return LandinaSwitchListTile(
+                        onTap: () {
+                          setState(() {
+                            snapshot.data[index].active =
+                                !snapshot.data[index].active;
+                            Config.client.updateLink(
+                              snapshot.data[index].id,
+                              "active",
+                              snapshot.data[index].active.toString(),
+                            );
+                          });
+                        },
+                        onLongPress: () {
+                          landinaModal(
+                              Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 30),
+                                child: ButtonBarSuper(
+                                  lineSpacing: 15,
+                                  wrapType: WrapType.balanced,
+                                  wrapFit: WrapFit.divided,
+                                  children: [
+                                    LandinaTextButton(
+                                      title: "مشاهده لینک",
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    LandinaTextButton(
+                                      title: "ویرایش اطلاعات",
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    LandinaTextButton(
+                                      title: "کپی کردن",
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    LandinaTextButton(
+                                      title: "به اشتراک گذاری",
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                    LandinaTextButton(
+                                      title: "حذف لینک",
+                                      backgroundColor: true,
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              context);
+                        },
+                        leading: AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: !context.isDarkMode
+                              ? Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.5),
+                                    ),
+                                  ),
+                                  child: AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          Colors.white.withOpacity(0.1),
+                                      foregroundColor: Colors.black,
+                                      child: const Icon(CupertinoIcons.link),
+                                    ),
+                                  ),
+                                )
+                              : Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      width: 1,
+                                      color: const Color(0xffF1F1F1)
+                                          .withOpacity(0.1),
+                                    ),
+                                  ),
+                                  child: const AspectRatio(
+                                    aspectRatio: 1 / 1,
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      foregroundColor: Colors.white,
+                                      child: Icon(CupertinoIcons.link),
+                                    ),
                                   ),
                                 ),
-                                context);
+                        ),
+                        title: "${snapshot.data[index].name}",
+                        subtitle: "${snapshot.data[index].address}",
+                        subtitleFont: "Poppins",
+                        active: snapshot.data[index].active,
+                        onChanged: (value) => setState(
+                          () {
+                            snapshot.data[index].active = value;
+                            Config.client.updateLink(
+                              snapshot.data[index].id,
+                              "active",
+                              value.toString(),
+                            );
                           },
-                          contentPadding: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 25),
-                          leading: AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: CircleAvatar(
-                              backgroundColor: !context.isDarkMode
-                                  ? Colors.black.withOpacity(0.05)
-                                  : Colors.white.withOpacity(0.05),
-                              foregroundColor: Color(0xff3B3B3B),
-                              child: Icon(CupertinoIcons.link),
-                            ),
-                          ),
-                          focusColor: !context.isDarkMode
-                              ? Colors.black.withOpacity(0.05)
-                              : Colors.white.withOpacity(0.05),
-                          title: Text(
-                            "${snapshot.data[index].name}",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff3B3B3B),
-                            ),
-                          ),
-                          subtitle: Text(
-                            "${snapshot.data[index].address}",
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: const TextStyle(
-                              fontFamily: "Poppins",
-                              fontSize: 13,
-                            ),
-                          ),
-                          trailing: Transform.scale(
-                            scale: 0.8,
-                            child: CupertinoSwitch(
-                              value: snapshot.data[index].active,
-                              activeColor: const Color(0xff3B3B3B),
-                              onChanged: (value) => setState(
-                                () {
-                                  snapshot.data[index].active = value;
-                                  Config.client.updateLink(
-                                    snapshot.data[index].id,
-                                    "active",
-                                    value.toString(),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
                         ),
                       );
                     },

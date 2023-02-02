@@ -1,17 +1,12 @@
-import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
-import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 
 class NotificationsPage extends StatefulWidget {
   Future? userInfo;
@@ -72,37 +67,27 @@ class _NotificationsPageState extends State<NotificationsPage> {
                     ),
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          border: Border.symmetric(
-                            horizontal: BorderSide(
-                              width: 0.5,
-                              color: borderColor,
+                      return LandinaListTile(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        leading: AspectRatio(
+                          aspectRatio: 1 / 1,
+                          child: CircleAvatar(
+                            backgroundColor: !context.isDarkMode
+                                ? Colors.black.withOpacity(0.05)
+                                : Colors.white.withOpacity(0.05),
+                            foregroundColor: const Color(0xff3B3B3B),
+                            child: Icon(
+                              IconlyLight.notification,
+                              color: !context.isDarkMode
+                                  ? Colors.black
+                                  : Colors.white,
                             ),
                           ),
                         ),
-                        child: LandinaListTile(
-                          onTap: () {
-                            setState(() {});
-                          },
-                          leading: AspectRatio(
-                            aspectRatio: 1 / 1,
-                            child: CircleAvatar(
-                              backgroundColor: !context.isDarkMode
-                                  ? Colors.black.withOpacity(0.05)
-                                  : Colors.white.withOpacity(0.05),
-                              foregroundColor: const Color(0xff3B3B3B),
-                              child: Icon(
-                                IconlyLight.notification,
-                                color: !context.isDarkMode
-                                    ? Colors.black
-                                    : Colors.white,
-                              ),
-                            ),
-                          ),
-                          title: "${snapshot.data[index].title}",
-                          subtitle: "${snapshot.data[index].body}",
-                        ),
+                        title: "${snapshot.data[index].title}",
+                        subtitle: "${snapshot.data[index].body}",
                       );
                     },
                   ),
