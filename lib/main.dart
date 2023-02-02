@@ -42,9 +42,6 @@ import 'package:landina_coupon/ui/pages/home/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/login/login.dart';
 import 'package:landina_coupon/ui/pages/account/profile/view.dart';
 
-/* LOCALIZATIONS */
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import 'services/notification.services.dart';
 
 Future main() async {
@@ -167,9 +164,9 @@ class _LandinaCouponState extends State<LandinaCoupon> {
       themeMode: Config.getThemeStatus(),
       theme: lightThemeData(context),
       darkTheme: darkThemeData(context),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      // localizationsDelegates: AppLocalizations.localizationsDelegates,
       locale: Get.deviceLocale,
-      supportedLocales: AppLocalizations.supportedLocales,
+      // supportedLocales: AppLocalizations.supportedLocales,
       unknownRoute: GetPage(name: "/soon", page: () => const SoonPage()),
       initialRoute: "/",
       routingCallback: (routing) {

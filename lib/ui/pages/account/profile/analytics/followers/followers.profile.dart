@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -12,10 +11,8 @@ import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/button.listtile.dart';
-import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 
 class FollowersPage extends StatefulWidget {
@@ -102,8 +99,8 @@ class _LinksPageState extends State<FollowersPage> {
                         title: snapshot.data[index].name,
                         subtitle: snapshot.data[index].username,
                         buttonTitle: isFollowed[index] != true
-                            ? AppLocalizations.of(context)!.follow
-                            : "${AppLocalizations.of(context)!.follow}ed",
+                            ? "follow".tr
+                            : "${"follow".tr}ed",
                         buttonColor: isFollowed[index] != true ? true : false,
                         buttonOnPressed: () {
                           setState(() {
@@ -115,8 +112,7 @@ class _LinksPageState extends State<FollowersPage> {
                                   }
                                 : landinaModal(
                                     LandinaTextButton(
-                                      title:
-                                          "Un${AppLocalizations.of(context)!.follow}",
+                                      title: "Un${"follow".tr}",
                                       onPressed: () {
                                         setState(() {
                                           Config.client.unfollowUser(snapshot

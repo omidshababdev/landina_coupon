@@ -21,8 +21,6 @@ import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 
 import 'package:get/get.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 class HomePage extends StatefulWidget {
   UserModel? user;
   Future? userInfo;
@@ -69,7 +67,7 @@ class _HomePageState extends State<HomePage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.appName,
+            title: "appName".tr,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(
@@ -114,16 +112,14 @@ class _HomePageState extends State<HomePage> {
                           wrapFit: WrapFit.divided,
                           children: [
                             LandinaTextButton(
-                              title:
-                                  AppLocalizations.of(context)!.loginToAccount,
+                              title: "loginToAccount".tr,
                               onPressed: () {
                                 Navigator.pop(context);
                                 Get.toNamed("/login");
                               },
                             ),
                             LandinaTextButton(
-                              title:
-                                  AppLocalizations.of(context)!.createAnAccount,
+                              title: "createAnAccount".tr,
                               onPressed: () {
                                 Navigator.pop(context);
                                 setState(() {
@@ -170,7 +166,7 @@ class _HomePageState extends State<HomePage> {
                       searchCoupons(searchController.text);
                     },
                     textfieldController: searchController,
-                    hintText: AppLocalizations.of(context)!.searchField,
+                    hintText: "searchField".tr,
                     maxLines: 1,
                     prefixIcon: IconlyLight.search,
                     prefixIconOnPressed: () {},

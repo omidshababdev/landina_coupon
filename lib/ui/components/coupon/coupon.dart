@@ -3,17 +3,12 @@ import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/models/user.model.dart';
-import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/pages/account/view.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:get/get.dart';
 
@@ -450,7 +445,7 @@ class _CouponState extends State<Coupon> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: LandinaTextButton(
-                title: AppLocalizations.of(context)!.copyCouponCode,
+                title: "copyCouponCode".tr,
                 backgroundColor: true,
                 onPressed: () {
                   landinaModal(

@@ -11,7 +11,6 @@ import 'package:landina_coupon/ui/pages/account/view.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
@@ -50,7 +49,7 @@ class _CouponPageState extends State<CouponPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.coupon.capitalizeFirst,
+            title: "coupon".tr,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,
@@ -419,7 +418,7 @@ class _CouponPageState extends State<CouponPage> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: AppLocalizations.of(context)!.copyCouponCode,
+                    title: "copyCouponCode".tr,
                     backgroundColor: true,
                     onPressed: () {
                       landinaModal(

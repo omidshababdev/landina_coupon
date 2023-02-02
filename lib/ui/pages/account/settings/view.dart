@@ -16,8 +16,6 @@ import 'package:get/get.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 

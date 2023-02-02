@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
@@ -13,7 +12,6 @@ import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/listtile/switch.listtile.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';

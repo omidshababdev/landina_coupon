@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
-import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 
 import 'package:get/get.dart';
-
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -45,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.loginToAccount,
+            title: "loginToAccount".tr,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,
@@ -67,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    AppLocalizations.of(context)!.loginPageDescription,
+                    "loginPageDescription".tr,
                     style: const TextStyle(
                       height: 2,
                     ),
@@ -77,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText: AppLocalizations.of(context)!.landinaID,
+                    hintText: "landinaID".tr,
                     maxLines: 1,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {},
@@ -91,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText: AppLocalizations.of(context)!.password,
+                    hintText: "password".tr,
                     maxLines: 1,
                     suffixIcon: _passwordVisible == false
                         ? IconlyLight.show
@@ -111,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: AppLocalizations.of(context)!.loginToAccount,
+                    title: "loginToAccount".tr,
                     isLoading: isLoading,
                     onPressed: () async {
                       setState(() {
@@ -143,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                           Get.toNamed("/forget");
                         },
                         child: Text(
-                          AppLocalizations.of(context)!.forgetPass,
+                          "forgetPass".tr,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: !context.isDarkMode
@@ -168,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                           Get.offNamed("/signup/username");
                         },
                         child: Text(
-                          AppLocalizations.of(context)!.createAnAccount,
+                          "createAnAccount".tr,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             color: !context.isDarkMode

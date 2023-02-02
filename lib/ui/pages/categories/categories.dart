@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:landina_coupon/ui/components/categories/categories.box.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -6,7 +7,6 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/category/category.dart';
 
 class CategoriesPage extends StatelessWidget {
@@ -18,7 +18,7 @@ class CategoriesPage extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: AppLocalizations.of(context)!.categories.capitalize(),
+          title: "categories".tr,
           rightIcon: IconlyLight.category,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,

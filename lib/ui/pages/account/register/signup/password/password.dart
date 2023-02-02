@@ -12,9 +12,6 @@ import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
-// Internationalization and localizations
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 class PasswordPage extends StatefulWidget {
   const PasswordPage({super.key});
 
@@ -43,7 +40,7 @@ class _PasswordPageState extends State<PasswordPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.password,
+            title: "password".tr,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"), context);
@@ -67,7 +64,7 @@ class _PasswordPageState extends State<PasswordPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    AppLocalizations.of(context)!.passPageDescription,
+                    "passPageDescription".tr,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -77,7 +74,7 @@ class _PasswordPageState extends State<PasswordPage> {
                     onChanged: (newValue) =>
                         signUpGet.password.value = newValue,
                     maxLines: 1,
-                    hintText: AppLocalizations.of(context)!.password,
+                    hintText: "password".tr,
                     suffixIcon: signUpGet.passwordVisible.value == false
                         ? IconlyLight.show
                         : IconlyLight.hide,
@@ -97,7 +94,7 @@ class _PasswordPageState extends State<PasswordPage> {
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Obx(
                     () => LandinaTextButton(
-                      title: AppLocalizations.of(context)!.goToTheNextLevel,
+                      title: "goToTheNextLevel".tr,
                       isLoading: signUpGet.isLoading.value,
                       onPressed: () {
                         signUpGet.createAccount();

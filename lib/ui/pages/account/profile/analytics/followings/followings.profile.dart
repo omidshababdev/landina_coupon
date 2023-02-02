@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -10,9 +10,7 @@ import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 
 class FollowingsPage extends StatefulWidget {
@@ -124,10 +122,8 @@ class _LinksPageState extends State<FollowingsPage> {
                         ),
                         child: LandinaTextButton(
                           title: isFollowed != true
-                              ? AppLocalizations.of(context)!
-                                  .follow
-                                  .capitalize()
-                              : "${AppLocalizations.of(context)!.follow.capitalize()}ed",
+                              ? "follow".tr
+                              : "${"follow".tr}ed",
                           backgroundColor: isFollowed != true ? true : false,
                           onPressed: () {
                             setState(() {
@@ -135,8 +131,7 @@ class _LinksPageState extends State<FollowingsPage> {
                                   ? isFollowed = !isFollowed
                                   : landinaModal(
                                       LandinaTextButton(
-                                        title:
-                                            "Un${AppLocalizations.of(context)!.follow}",
+                                        title: "Un${"follow".tr}",
                                         onPressed: () {
                                           setState(() {
                                             isFollowed = !isFollowed;

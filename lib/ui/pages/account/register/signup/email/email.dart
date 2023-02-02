@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/signup.get.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -11,9 +10,6 @@ import 'package:get/get.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
-
-// Internationalization and localizations
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EmailPage extends StatefulWidget {
   const EmailPage({super.key});
@@ -38,7 +34,7 @@ class _EmailPageState extends State<EmailPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.emailAddress,
+            title: "emailAddress".tr,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {
               landinaModal(Text("data"), context);
@@ -62,7 +58,7 @@ class _EmailPageState extends State<EmailPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    AppLocalizations.of(context)!.emailPageDescription,
+                    "emailPageDescription".tr,
                   ),
                 ),
                 const SizedBox(height: 15),
@@ -71,7 +67,7 @@ class _EmailPageState extends State<EmailPage> {
                   child: LandinaTextField(
                     onChanged: (newValue) => signUpGet.email.value = newValue,
                     maxLines: 1,
-                    hintText: AppLocalizations.of(context)!.emailAddress,
+                    hintText: "emailAddress".tr,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {},
                     prefixIcon: IconlyLight.user,
@@ -83,7 +79,7 @@ class _EmailPageState extends State<EmailPage> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: AppLocalizations.of(context)!.goToTheNextLevel,
+                    title: "goToTheNextLevel".tr,
                     isLoading: signUpGet.isLoading.value,
                     onPressed: () async {
                       setState(() {

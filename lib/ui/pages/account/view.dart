@@ -13,8 +13,6 @@ import 'package:get/get.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
-
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:readmore/readmore.dart';
 
@@ -57,7 +55,7 @@ class _AccountPageState extends State<AccountPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: AppLocalizations.of(context)!.brandName.capitalizeFirst,
+          title: "brandName".tr,
           rightIcon: Ionicons.reorder_two,
           rightIconOnPressed: () {},
           leftIcon: IconlyLight.arrow_left,
@@ -195,8 +193,8 @@ class _AccountPageState extends State<AccountPage> {
                     children: [
                       LandinaTextButton(
                         title: isFollowed != true
-                            ? "${AppLocalizations.of(context)!.follow.capitalizeFirst}"
-                            : "${AppLocalizations.of(context)!.follow.capitalizeFirst}ed",
+                            ? "follow".tr
+                            : "${"follow".tr}ed",
                         backgroundColor: isFollowed != true ? true : false,
                         onPressed: () {
                           setState(() {
@@ -212,8 +210,7 @@ class _AccountPageState extends State<AccountPage> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 30),
                                       child: LandinaTextButton(
-                                        title:
-                                            "Un${AppLocalizations.of(context)!.follow}",
+                                        title: "Un${"follow".tr}",
                                         onPressed: () {
                                           setState(() {
                                             Config.client.unfollowUser(

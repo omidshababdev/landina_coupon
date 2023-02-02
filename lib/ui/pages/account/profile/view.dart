@@ -1,15 +1,9 @@
-import 'dart:io';
-
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
-import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/route_manager.dart';
 import 'package:iconly/iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ionicons/ionicons.dart';
@@ -25,7 +19,6 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 import 'package:readmore/readmore.dart';
@@ -69,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(65),
         child: LandinaAppbar(
-          title: AppLocalizations.of(context)!.account,
+          title: "account".tr,
           titleOnTap: () {
             landinaModal(
               StatefulBuilder(

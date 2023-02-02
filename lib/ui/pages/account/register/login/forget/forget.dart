@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
@@ -7,8 +8,6 @@ import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 
 // String Extension for Capitalize
 import 'package:landina_coupon/ui/extensions/string.extension.dart';
-
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ForgetPage extends StatelessWidget {
   const ForgetPage({super.key});
@@ -26,7 +25,7 @@ class ForgetPage extends StatelessWidget {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(65),
           child: LandinaAppbar(
-            title: AppLocalizations.of(context)!.forgetPass.capitalize(),
+            title: "forgetPass".tr,
             rightIcon: Ionicons.reorder_two,
             rightIconOnPressed: () {},
             leftIcon: IconlyLight.arrow_left,
@@ -48,15 +47,14 @@ class ForgetPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: Text(
-                    AppLocalizations.of(context)!.forgetPassPageDescription,
+                    "forgetPassPageDescription".tr,
                   ),
                 ),
                 const SizedBox(height: 15),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextField(
-                    hintText:
-                        AppLocalizations.of(context)!.emailAddress.capitalize(),
+                    hintText: "emailAddress".tr,
                     suffixIcon: IconlyLight.info_circle,
                     suffixIconOnPressed: () {},
                     prefixIcon: IconlyLight.user,
@@ -68,7 +66,7 @@ class ForgetPage extends StatelessWidget {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 15),
                   child: LandinaTextButton(
-                    title: AppLocalizations.of(context)!.sendRecoveryEmail,
+                    title: "sendRecoveryEmail".tr,
                     onPressed: () {},
                   ),
                 ),
