@@ -12,7 +12,7 @@ import 'package:landina_coupon/models/user.model.dart';
 import 'package:landina_coupon/services/api.services.dart';
 import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
-import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/coupon/view.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';

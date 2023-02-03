@@ -10,7 +10,7 @@ import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/components/coupon/coupon.dart';
 import 'package:landina_coupon/ui/pages/account/profile/profile.get.dart';
-import 'package:landina_coupon/ui/pages/coupon/coupon.dart';
+import 'package:landina_coupon/ui/pages/coupon/view.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/dialogs/simple.dialog.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
