@@ -53,8 +53,8 @@ class _CouponState extends State<Coupon> {
         ),
         padding: const EdgeInsets.symmetric(vertical: 20),
         decoration: ShapeDecoration(
-          color: Config.darkMode != true
-              ? Colors.black.withOpacity(0.05)
+          color: !context.isDarkMode
+              ? Colors.black.withOpacity(0.01)
               : Colors.white.withOpacity(0.05),
           shape: SmoothRectangleBorder(
             borderRadius: SmoothBorderRadius(
@@ -97,7 +97,7 @@ class _CouponState extends State<Coupon> {
                                       width: 50,
                                       height: 50,
                                       decoration: ShapeDecoration(
-                                        color: Config.darkMode != true
+                                        color: !context.isDarkMode
                                             ? Colors.black.withOpacity(0.05)
                                             : Colors.white.withOpacity(0.05),
                                         image: DecorationImage(
@@ -118,7 +118,7 @@ class _CouponState extends State<Coupon> {
                                       width: 50,
                                       height: 50,
                                       decoration: ShapeDecoration(
-                                        color: Config.darkMode != true
+                                        color: !context.isDarkMode
                                             ? Colors.black.withOpacity(0.05)
                                             : Colors.white.withOpacity(0.05),
                                         shape: SmoothRectangleBorder(
@@ -175,7 +175,7 @@ class _CouponState extends State<Coupon> {
                                       fontFamily: "Poppins",
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14,
-                                      color: Config.darkMode != true
+                                      color: !context.isDarkMode
                                           ? Colors.black
                                           : Colors.white.withOpacity(0.5),
                                     ),
@@ -196,7 +196,7 @@ class _CouponState extends State<Coupon> {
                               width: 50,
                               height: 50,
                               decoration: ShapeDecoration(
-                                color: Config.darkMode != true
+                                color: !context.isDarkMode
                                     ? Colors.black.withOpacity(0.05)
                                     : Colors.white.withOpacity(0.05),
                                 shape: SmoothRectangleBorder(
@@ -214,7 +214,7 @@ class _CouponState extends State<Coupon> {
                                   width: 80,
                                   height: 10,
                                   decoration: BoxDecoration(
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black.withOpacity(0.05)
                                         : Colors.white.withOpacity(0.05),
                                     borderRadius: BorderRadius.circular(20),
@@ -225,7 +225,7 @@ class _CouponState extends State<Coupon> {
                                   width: 100,
                                   height: 10,
                                   decoration: BoxDecoration(
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black.withOpacity(0.05)
                                         : Colors.white.withOpacity(0.05),
                                     borderRadius: BorderRadius.circular(20),
@@ -244,7 +244,7 @@ class _CouponState extends State<Coupon> {
                               width: 50,
                               height: 50,
                               decoration: ShapeDecoration(
-                                color: Config.darkMode != true
+                                color: !context.isDarkMode
                                     ? Colors.black.withOpacity(0.05)
                                     : Colors.white.withOpacity(0.05),
                                 shape: SmoothRectangleBorder(
@@ -262,7 +262,7 @@ class _CouponState extends State<Coupon> {
                                   width: 80,
                                   height: 10,
                                   decoration: BoxDecoration(
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black.withOpacity(0.05)
                                         : Colors.white.withOpacity(0.05),
                                     borderRadius: BorderRadius.circular(20),
@@ -273,7 +273,7 @@ class _CouponState extends State<Coupon> {
                                   width: 100,
                                   height: 10,
                                   decoration: BoxDecoration(
-                                    color: Config.darkMode != true
+                                    color: !context.isDarkMode
                                         ? Colors.black.withOpacity(0.05)
                                         : Colors.white.withOpacity(0.05),
                                     borderRadius: BorderRadius.circular(20),
@@ -388,8 +388,7 @@ class _CouponState extends State<Coupon> {
                       fontSize: 16,
                       height: 2,
                       fontWeight: FontWeight.w600,
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                   ),
                   const SizedBox(height: 5),
@@ -400,8 +399,7 @@ class _CouponState extends State<Coupon> {
                     style: TextStyle(
                       fontSize: 14,
                       height: 2,
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                   ),
                 ],
@@ -426,7 +424,7 @@ class _CouponState extends State<Coupon> {
                         maxHeight: 150,
                       ),
                       decoration: ShapeDecoration(
-                        color: Config.darkMode != true
+                        color: !context.isDarkMode
                             ? Colors.black.withOpacity(0.05)
                             : Colors.white.withOpacity(0.05),
                         shape: SmoothRectangleBorder(
@@ -465,7 +463,7 @@ class _CouponState extends State<Coupon> {
                               "حالا می تونی با جایگذاری در محل مناسب ازش استفاده کنی.",
                               style: TextStyle(
                                 fontSize: 13,
-                                color: Config.darkMode != true
+                                color: !context.isDarkMode
                                     ? Colors.black
                                     : Colors.white,
                                 height: 2,
@@ -506,7 +504,7 @@ class _CouponState extends State<Coupon> {
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
                           width: 1,
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? const Color(0xffF1F1F1).withOpacity(0.5)
                               : const Color(0xffF1F1F1).withOpacity(0.1),
                         ),
@@ -541,7 +539,7 @@ class _CouponState extends State<Coupon> {
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
                           width: 1,
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? const Color(0xffF1F1F1).withOpacity(0.5)
                               : const Color(0xffF1F1F1).withOpacity(0.1),
                         ),
@@ -576,7 +574,7 @@ class _CouponState extends State<Coupon> {
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
                           width: 1,
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? const Color(0xffF1F1F1).withOpacity(0.5)
                               : const Color(0xffF1F1F1).withOpacity(0.1),
                         ),
@@ -620,7 +618,7 @@ class _CouponState extends State<Coupon> {
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                           ),
@@ -630,7 +628,7 @@ class _CouponState extends State<Coupon> {
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                           ),
@@ -640,7 +638,7 @@ class _CouponState extends State<Coupon> {
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                           ),
@@ -659,7 +657,7 @@ class _CouponState extends State<Coupon> {
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
                           width: 1,
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? const Color(0xffF1F1F1).withOpacity(0.5)
                               : const Color(0xffF1F1F1).withOpacity(0.1),
                         ),

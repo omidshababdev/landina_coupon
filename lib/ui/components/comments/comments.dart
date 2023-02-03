@@ -1,7 +1,6 @@
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/comment/comment.dart';
 
 class Comments extends StatefulWidget {
@@ -22,8 +21,8 @@ class _CommentsState extends State<Comments> {
       child: Container(
         width: double.infinity,
         decoration: ShapeDecoration(
-          color: Config.darkMode != true
-              ? Colors.black.withOpacity(0.05)
+          color: !context.isDarkMode
+              ? Colors.black.withOpacity(0.01)
               : Colors.white.withOpacity(0.05),
           shape: SmoothRectangleBorder(
             borderRadius: SmoothBorderRadius(
@@ -53,7 +52,7 @@ class _CommentsState extends State<Comments> {
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                           ),
@@ -63,7 +62,7 @@ class _CommentsState extends State<Comments> {
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                           ),
@@ -73,7 +72,7 @@ class _CommentsState extends State<Comments> {
                           height: 30,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
-                            color: Config.darkMode != true
+                            color: !context.isDarkMode
                                 ? Colors.black.withOpacity(0.05)
                                 : Colors.white.withOpacity(0.05),
                           ),
@@ -92,7 +91,7 @@ class _CommentsState extends State<Comments> {
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(
                           width: 1,
-                          color: Config.darkMode != true
+                          color: !context.isDarkMode
                               ? const Color(0xffF1F1F1).withOpacity(0.5)
                               : const Color(0xffF1F1F1).withOpacity(0.1),
                         ),
@@ -132,7 +131,7 @@ class _CommentsState extends State<Comments> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: ShapeDecoration(
-                  color: Config.darkMode != true
+                  color: !context.isDarkMode
                       ? Colors.black.withOpacity(0.05)
                       : Colors.white.withOpacity(0.05),
                   shape: const SmoothRectangleBorder(
@@ -153,8 +152,7 @@ class _CommentsState extends State<Comments> {
                     "مشاهده همه نظرات",
                     style: TextStyle(
                       fontSize: 12,
-                      color:
-                          Config.darkMode != true ? Colors.black : Colors.white,
+                      color: !context.isDarkMode ? Colors.black : Colors.white,
                     ),
                   ),
                 ),
