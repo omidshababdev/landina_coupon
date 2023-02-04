@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 
 // String Extension for Capitalize
 
-import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class NewCouponPage extends StatefulWidget {
   const NewCouponPage({super.key});

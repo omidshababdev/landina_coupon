@@ -88,9 +88,12 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
         decoration: InputDecoration(
           hintText: widget.hintText,
           contentPadding: const EdgeInsets.symmetric(vertical: 10),
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             fontSize: 15,
             height: 2,
+            color: !context.isDarkMode
+                ? Colors.black.withOpacity(0.5)
+                : Colors.white.withOpacity(0.5),
           ),
           focusColor: Colors.black,
           border: InputBorder.none,
@@ -98,7 +101,9 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
             onPressed: widget.prefixIconOnPressed,
             icon: Icon(
               widget.prefixIcon,
-              color: !context.isDarkMode ? Colors.black : Colors.white,
+              color: !context.isDarkMode
+                  ? Colors.black.withOpacity(0.5)
+                  : Colors.white.withOpacity(0.5),
             ),
           ),
           suffixIcon: Container(
@@ -125,7 +130,9 @@ class _LandinaTextFieldState extends State<LandinaTextField> {
               onPressed: widget.suffixIconOnPressed,
               icon: Icon(
                 widget.suffixIcon,
-                color: !context.isDarkMode ? Colors.black : Colors.white,
+                color: !context.isDarkMode
+                    ? Colors.black.withOpacity(0.5)
+                    : Colors.white.withOpacity(0.5),
               ),
             ),
           ),

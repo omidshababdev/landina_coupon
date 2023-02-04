@@ -5,7 +5,7 @@ import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/comment/comment.dart';
-import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 class CommentsPage extends StatefulWidget {
   const CommentsPage({super.key});

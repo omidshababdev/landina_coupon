@@ -5,7 +5,7 @@ import 'package:landina_coupon/constants/config.dart';
 
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 
 import 'package:get/get.dart';
 

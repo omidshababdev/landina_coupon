@@ -19,7 +19,7 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 // String Extension for Capitalize
 
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
-import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
+import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
