@@ -41,7 +41,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
             parent: ClampingScrollPhysics(),
           ),
           children: [
-            Container(
+            SizedBox(
               height: 200,
               child: LineChart(
                 mainData(),

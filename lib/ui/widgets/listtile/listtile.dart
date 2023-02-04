@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:landina_coupon/constants/config.dart';
 
 class LandinaListTile extends StatelessWidget {
   String? title;

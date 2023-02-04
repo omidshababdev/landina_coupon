@@ -6,6 +6,8 @@ import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class AboutPage extends StatefulWidget {
+  const AboutPage({super.key});
+
   @override
   State<AboutPage> createState() => _AboutPageState();
 }

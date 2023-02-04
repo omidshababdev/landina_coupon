@@ -6,6 +6,7 @@ import 'package:landina_coupon/services/notification.services.dart';
 
 class UploadServices extends BaseService {
   final Uri url = Uri.parse('${Config.baseUrl}/upload/profile');
+  @override
   Future<bool> call(Map<String, dynamic> args) async {
     try {
       final req = http.MultipartRequest('put', url)

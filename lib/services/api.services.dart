@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/models/coupon.model.dart';
@@ -121,7 +120,7 @@ class ApiServices {
         'Authorization': userToken
       },
       body: jsonEncode({
-        updatePart: "$updateValue",
+        updatePart: updateValue,
       }),
     );
 
@@ -240,7 +239,7 @@ class ApiServices {
       },
       body: jsonEncode({
         "userId": Config.box.read("myId"),
-        updatePart: "$updateValue",
+        updatePart: updateValue,
       }),
     );
   }

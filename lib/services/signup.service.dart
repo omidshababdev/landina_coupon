@@ -8,6 +8,7 @@ import 'package:landina_coupon/services/notification.services.dart';
 class SignUpService extends BaseService {
   final Uri url = Uri.parse('${Config.baseUrl}/auth/register');
 
+  @override
   Future<bool> call(Map<String, dynamic> args) async {
     final client = http.Client();
     final response = await client.post(url, body: args);

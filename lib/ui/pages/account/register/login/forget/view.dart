@@ -7,7 +7,6 @@ import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/simple.textfield.dart';
 
 // String Extension for Capitalize
-import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 class ForgetPage extends StatelessWidget {
   const ForgetPage({super.key});

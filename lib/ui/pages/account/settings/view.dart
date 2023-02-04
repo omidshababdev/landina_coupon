@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/ui/widgets/listtile/switch.listtile.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:landina_coupon/constants/config.dart';
@@ -14,7 +13,6 @@ import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:get/get.dart';
 
 // String Extension for Capitalize
-import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/services/notification.services.dart';
 import 'package:landina_coupon/services/signup.service.dart';
 

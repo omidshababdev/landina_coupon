@@ -5,7 +5,6 @@ import 'package:landina_coupon/ui/components/categories/categories.box.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
 // String Extension for Capitalize
-import 'package:landina_coupon/ui/extensions/string.extension.dart';
 
 import 'package:landina_coupon/ui/widgets/category/category.dart';
 

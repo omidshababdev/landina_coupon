@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:landina_coupon/constants/config.dart';
 
 class LandinaSwitchListTile extends StatelessWidget {
   String? title;

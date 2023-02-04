@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iconly/iconly.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:landina_coupon/constants/colors.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 import 'package:get/get.dart';
 import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
-import 'package:landina_coupon/ui/widgets/listtile/listtile.dart';
 
 class ChatsPage extends StatefulWidget {
   Future? userInfo;

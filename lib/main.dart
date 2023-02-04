@@ -9,7 +9,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/constants/theme.dart';
 import 'package:landina_coupon/constants/translation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/room/view.dart';
 import 'package:landina_coupon/ui/pages/account/profile/chats/single/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/ads/view.dart';

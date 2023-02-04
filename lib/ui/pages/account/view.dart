@@ -12,7 +12,6 @@ import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:get/get.dart';
 
 // String Extension for Capitalize
-import 'package:landina_coupon/ui/extensions/string.extension.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:readmore/readmore.dart';
 
