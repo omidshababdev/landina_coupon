@@ -97,18 +97,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           title: "خیلی خوب",
                           onPressed: () async {
                             Navigator.pop(context);
-
-                            landinaSimpleDialog(
-                              "واقعا یک حساب دیگه می خوای؟",
-                              "می خوام",
-                              "نه اصلا",
-                              () {
-                                //
-                              },
-                              () {
-                                Get.back();
-                              },
-                            );
                           },
                         ),
                       ],
