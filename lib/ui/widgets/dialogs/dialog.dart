@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 
-landinaSimpleDialog(
+LandinaDialog(
   String title,
   String primaryButtonTitle,
   String secondaryButtonTitle,
