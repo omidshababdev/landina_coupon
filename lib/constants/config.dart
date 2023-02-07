@@ -22,8 +22,8 @@ class Config {
   static Locale myLocale = window.locale;
   static List rightAlignLangs = ['fa'];
 
-  // static String baseUrl = "http://localhost:8800";
-  static String baseUrl = "https://landina-account.iran.liara.run";
+  static String baseUrl = "http://localhost:8800";
+  // static String baseUrl = "https://landina-account.iran.liara.run";
   // static String baseUrl = "https://landina-account.onrender.com";
 
   static ApiServices client = ApiServices();

@@ -44,7 +44,55 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
             SizedBox(
               height: 200,
               child: LineChart(
-                mainData(),
+                LineChartData(
+                  borderData: FlBorderData(
+                    show: false,
+                  ),
+                  backgroundColor: Colors.white.withOpacity(0.1),
+                  gridData: FlGridData(
+                    show: true,
+                    horizontalInterval: 1.6,
+                    getDrawingHorizontalLine: (value) {
+                      return FlLine(
+                        dashArray: const [3, 3],
+                        color: Colors.white.withOpacity(0.2),
+                        strokeWidth: 2,
+                      );
+                    },
+                    drawVerticalLine: false,
+                  ),
+                  titlesData: FlTitlesData(
+                      show: false,
+                      leftTitles: AxisTitles(),
+                      bottomTitles: AxisTitles()),
+                  minX: 0,
+                  maxX: 11,
+                  minY: 0,
+                  maxY: 6,
+                  lineBarsData: [
+                    LineChartBarData(
+                      spots: [
+                        FlSpot(0, 3),
+                        FlSpot(2.4, 2),
+                        FlSpot(4.4, 3),
+                        FlSpot(6.4, 3.1),
+                        FlSpot(8, 4),
+                        FlSpot(9.5, 4),
+                        FlSpot(11, 5),
+                      ],
+
+                      isCurved: true,
+                      // colors: gradientColors,
+                      barWidth: 2,
+                      dotData: FlDotData(
+                        show: false,
+                      ),
+                      belowBarData: BarAreaData(
+                        show: false,
+                      ),
+                    ),
+                  ],
+                ),
                 swapAnimationCurve: Curves.linear,
                 swapAnimationDuration: const Duration(milliseconds: 1000),
               ),
@@ -54,54 +102,4 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
       ),
     );
   }
-}
-
-LineChartData mainData() {
-  return LineChartData(
-    borderData: FlBorderData(
-      show: false,
-    ),
-    gridData: FlGridData(
-      show: true,
-      horizontalInterval: 1.6,
-      getDrawingHorizontalLine: (value) {
-        return FlLine(
-          dashArray: const [3, 3],
-          // color: const Color(0xff37434d).withOpacity(0.2),
-          strokeWidth: 2,
-        );
-      },
-      drawVerticalLine: false,
-    ),
-    titlesData: FlTitlesData(
-      show: false,
-    ),
-    minX: 0,
-    maxX: 11,
-    minY: 0,
-    maxY: 6,
-    lineBarsData: [
-      LineChartBarData(
-        spots: [
-          FlSpot(0, 3),
-          FlSpot(2.4, 2),
-          FlSpot(4.4, 3),
-          FlSpot(6.4, 3.1),
-          FlSpot(8, 4),
-          FlSpot(9.5, 4),
-          FlSpot(11, 5),
-        ],
-
-        isCurved: true,
-        // colors: gradientColors,
-        barWidth: 2,
-        dotData: FlDotData(
-          show: false,
-        ),
-        belowBarData: BarAreaData(
-          show: false,
-        ),
-      ),
-    ],
-  );
 }
