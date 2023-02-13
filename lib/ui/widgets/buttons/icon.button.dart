@@ -14,6 +14,7 @@ class LandinaIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 50,
+      height: 50,
       decoration: BoxDecoration(
         border: Border.all(
           width: 1,
