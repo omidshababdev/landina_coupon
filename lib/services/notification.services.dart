@@ -5,7 +5,7 @@ import 'package:landina_coupon/constants/config.dart';
 import 'package:landina_coupon/main.dart';
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
-import 'package:landina_coupon/utilities/uniqueId.utilites.dart';
+import 'package:landina_coupon/utilities/uniqueId.utility.dart';
 
 Future<void> allowNotifModal(context) async {
   await AwesomeNotifications().isNotificationAllowed().then((isAllowed) {

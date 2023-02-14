@@ -157,7 +157,7 @@ class ApiServices {
       } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
-        return res.body;
+        return res.statusCode;
       }
     } catch (err) {
       return err;
