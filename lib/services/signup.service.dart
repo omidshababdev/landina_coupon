@@ -14,10 +14,6 @@ class SignUpService extends BaseService {
     final response = await client.post(url, body: args);
     final decodedResponse = jsonDecode(response.body);
 
-    print(response.body);
-    print(response.statusCode);
-    print(response.runtimeType);
-
     if (response.statusCode == 200) {
       return true;
     } else {
