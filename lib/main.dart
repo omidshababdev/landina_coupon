@@ -28,7 +28,7 @@ import 'package:landina_coupon/ui/pages/soon/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/update/view.dart';
 import 'package:landina_coupon/ui/pages/account/register/signup/email/view.dart';
 import 'package:landina_coupon/ui/pages/account/settings/view.dart';
-import 'package:landina_coupon/ui/pages/account/register/signup/password/view.dart';
+import 'package:landina_coupon/ui/pages/account/register/signup/pass/view.dart';
 import 'package:landina_coupon/ui/pages/categories/view.dart';
 import 'package:landina_coupon/ui/pages/coupon/new/view.dart';
 import 'package:landina_coupon/ui/pages/home/view.dart';
