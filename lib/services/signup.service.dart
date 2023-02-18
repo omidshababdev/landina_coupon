@@ -6,7 +6,7 @@ import 'package:landina_coupon/services/base.service.dart';
 import 'package:landina_coupon/services/notification.services.dart';
 
 class SignUpService extends BaseService {
-  final Uri url = Uri.parse('${Config.baseUrl}/auth/register');
+  final Uri url = Uri.parse('${Config.baseUrl}/auth/signup');
 
   @override
   Future<bool> call(Map<String, dynamic> args) async {
