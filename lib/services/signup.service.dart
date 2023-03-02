@@ -6,7 +6,7 @@ import 'package:landina_coupon/services/base.service.dart';
 import 'package:landina_coupon/services/notification.services.dart';
 
 class SignUpService extends BaseService {
-  final Uri url = Uri.parse('${Config.baseUrl}/auth/signup');
+  final Uri url = Uri.parse('${Config.baseUrl}/auth/signup/email');
 
   @override
   Future<bool> call(Map<String, dynamic> args) async {
@@ -14,7 +14,7 @@ class SignUpService extends BaseService {
     final response = await client.post(url, body: args);
     final decodedResponse = jsonDecode(response.body);
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       return true;
     } else {
       landinaNotification(

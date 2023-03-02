@@ -15,15 +15,12 @@ import 'package:landina_coupon/ui/widgets/buttons/icon.button.dart';
 import 'package:landina_coupon/ui/widgets/modals/modal.dart';
 import 'package:landina_coupon/ui/widgets/appbar/appbar.dart';
 
-// String Extension for Capitalize
-
 import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:readmore/readmore.dart';
 
 class ProfilePage extends StatefulWidget {
-  Future? couponInfo;
-  Future? userInfo;
+
 
   ProfilePage({super.key});
 
@@ -32,6 +29,11 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+
+  Future? couponInfo;
+  Future? userInfo;
+
+
   TextEditingController nameController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController bioController = TextEditingController();
@@ -42,15 +44,13 @@ class _ProfilePageState extends State<ProfilePage> {
 
   bool? isLoading = false;
 
-  Future? userInfo = Config.client.getUser(Config.box.read("myId"));
-
   @override
   void initState() {
     super.initState();
 
     setState(() {
-      widget.userInfo = Config.client.getUser(Config.box.read("myId"));
-      widget.couponInfo = Config.client.getUserCoupons(Config.box.read("myId"));
+      userInfo = Config.client.getUser(Config.box.read("myId"));
+      couponInfo = Config.client.getUserCoupons(Config.box.read("myId"));
     });
   }
 
@@ -208,7 +208,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       body: FutureBuilder(
-        future: widget.userInfo,
+        future: userInfo,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active ||
               snapshot.connectionState == ConnectionState.done) {

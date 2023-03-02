@@ -20,8 +20,7 @@ class SignUpGet extends GetxController {
   }
 
   void createAccount() async {
-    if (username.value.isEmpty ||
-        email.value.isEmpty ||
+    if (email.value.isEmpty ||
         password.value.isEmpty) {
       landinaNotification(
         "landina_notifications_channel",
@@ -38,7 +37,6 @@ class SignUpGet extends GetxController {
       try {
         final service = SignUpService();
         final result = await service.call({
-          'username': username.value,
           'email': email.value,
           'password': password.value,
         });

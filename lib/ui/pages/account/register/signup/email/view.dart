@@ -8,8 +8,6 @@ import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:get/get.dart';
 
-// String Extension for Capitalize
-
 class EmailPage extends StatefulWidget {
   const EmailPage({super.key});
 
@@ -84,6 +82,8 @@ class _EmailPageState extends State<EmailPage> {
                       setState(() {
                         signUpGet.isLoading.value = true;
                       });
+
+                      print(signUpGet.email.value);
 
                       await Future.delayed(const Duration(seconds: 5), () {
                         setState(() {

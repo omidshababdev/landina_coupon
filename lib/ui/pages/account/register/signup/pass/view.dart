@@ -95,6 +95,9 @@ class _PasswordPageState extends State<PasswordPage> {
                       title: "goToTheNextLevel".tr,
                       isLoading: signUpGet.isLoading.value,
                       onPressed: () {
+                        print(signUpGet.email.value);
+                        print(signUpGet.password.value);
+
                         signUpGet.createAccount();
                       },
                     ),

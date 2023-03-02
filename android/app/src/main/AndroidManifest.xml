@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="co.landina.landina_coupon">
    <application
-        android:label="Landina Coupon"
+        android:label="landina_coupon"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -23,14 +23,6 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-
-                <!-- Firebase Dynamic Link -->
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data
-                    android:host="couponlandina.page.link"
-                    android:scheme="https"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
