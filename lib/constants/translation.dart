@@ -33,7 +33,7 @@ final Map<String, String> en = {
   "setFilter": "Set Filter",
   "chooseYourFilter": "Choose your filter",
   "loginPageDescription": "Please enter your landina id and password.",
-  "loginToAccount": "Login to my account",
+  "loginToAccount": "Login to account",
   "forgetPass": "Forget password",
   "createAnAccount": "Create an account",
   "emailPageDescription":
@@ -73,7 +73,7 @@ final Map<String, String> fa = {
   "chooseYourFilter": "لطفا فیلتر مورد نظرت رو انتخاب کن",
   "loginPageDescription":
       "لطفا برای ورود به حساب کاربری خود اطلاعات زیر را وارد کنید.",
-  "loginToAccount": "ورود به حساب من",
+  "loginToAccount": "ورود به حساب",
   "forgetPass": "فراموشی رمز",
   "createAnAccount": "ایجاد حساب کاربری",
   "emailPageDescription":

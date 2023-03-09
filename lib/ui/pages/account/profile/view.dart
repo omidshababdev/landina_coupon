@@ -19,20 +19,11 @@ import 'package:landina_coupon/ui/widgets/buttons/text.button.dart';
 import 'package:landina_coupon/ui/widgets/textfield/textfield.dart';
 import 'package:readmore/readmore.dart';
 
-class ProfilePage extends StatefulWidget {
-
-
+class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
-
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
 
   Future? couponInfo;
   Future? userInfo;
-
 
   TextEditingController nameController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
@@ -44,15 +35,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   bool? isLoading = false;
 
-  @override
-  void initState() {
-    super.initState();
-
-    setState(() {
-      userInfo = Config.client.getUser(Config.box.read("myId"));
-      couponInfo = Config.client.getUserCoupons(Config.box.read("myId"));
-    });
-  }
+  // @override
+  // void initState() {
+  //   userInfo = Config.client.getUser(Config.box.read("myId"));
+  //   couponInfo = Config.client.getUserCoupons(Config.box.read("myId"));
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -256,10 +244,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                             onPressed: () {
                                               Navigator.pop(context);
 
-                                              setState(() {
-                                                profileGet.uploadImage(
-                                                    ImageSource.gallery);
-                                              });
+                                              profileGet.uploadImage(
+                                                  ImageSource.gallery);
                                             },
                                           ),
                                         ],
@@ -346,10 +332,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        setState(() {
-                                          nameController.text =
-                                              snapshot.data!.name;
-                                        });
+                                        nameController.text =
+                                            snapshot.data!.name;
                                         landinaModal(
                                           StatefulBuilder(
                                             builder: (BuildContext context,
@@ -515,10 +499,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                 const SizedBox(height: 5),
                                 GestureDetector(
                                   onTap: () {
-                                    setState(() {
-                                      usernameController.text =
-                                          snapshot.data!.username;
-                                    });
+                                    usernameController.text =
+                                        snapshot.data!.username;
                                     landinaModal(
                                       StatefulBuilder(
                                         builder:
@@ -615,9 +597,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         const SizedBox(height: 20),
                         GestureDetector(
                           onTap: () {
-                            setState(() {
-                              bioController.text = snapshot.data!.bio;
-                            });
+                            bioController.text = snapshot.data!.bio;
                             landinaModal(
                               StatefulBuilder(
                                 builder: (BuildContext context, setState) {
@@ -798,12 +778,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           child: LandinaIconButton(
                             icon: Ionicons.reload,
                             onPressed: () async {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        super.widget),
-                              );
+                              Get.reload();
                             },
                           ),
                         );
@@ -845,11 +820,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: LandinaIconButton(
                   icon: Ionicons.reload,
                   onPressed: () async {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => super.widget),
-                    );
+                    Get.reload();
                   },
                 ),
               );
@@ -1020,10 +991,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: LandinaIconButton(
                 icon: Ionicons.reload,
                 onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => super.widget));
+                  Get.reload();
                 },
               ),
             );

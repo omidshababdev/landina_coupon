@@ -28,7 +28,6 @@ dependencies:
   http: ^0.13.5
   iconly: ^1.0.1
   image_picker: ^0.8.6
-  # insta_like_button: ^0.1.1
   intl: ^0.17.0
   intl_phone_number_input: ^0.7.2
   ionicons: ^0.2.1
