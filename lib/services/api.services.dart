@@ -144,9 +144,9 @@ class ApiServices {
   }
 
   // Get a User
-  Future getUser(String? userId) async {
+  Future getUser(String? username) async {
     final res = await http.get(
-      Uri.parse('${Config.baseUrl}/users/$userId'),
+      Uri.parse('${Config.baseUrl}/users/$username'),
     );
 
     try {
